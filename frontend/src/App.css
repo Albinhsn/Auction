@@ -1,0 +1,19 @@
+
+    /* Chrome, Safari, Edge, Opera */
+#bid-input::-webkit-outer-spin-button,
+#bid-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+#bid-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+ul.profile-list {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+  font-weight: bold !important;
+}
