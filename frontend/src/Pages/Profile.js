@@ -1,13 +1,12 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
 export default function Profile() {
   return (
     <div>
 
-      <div className='row'>
-        <div className='col-2'></div>
+      <div className='row justify-content-center'>
         <div className='col-8'>
-          <div className='row'>
+          <div className='row justify-content-center'>
             <div className='col-8 bg-light'>              
               <p className='fs-3 text-uppercase mt-5'>Mina uppgifter</p>
             
@@ -17,7 +16,7 @@ export default function Profile() {
               </div>
 
 
-              <div className='col-7 bg-white mt-5'>
+              <div className='col-7 bg-light mt-5'>
                   <div class="mb-3 row">
                     <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
                     <div class="col-sm-7">
@@ -47,40 +46,12 @@ export default function Profile() {
                   <div className='d-flex justify-content-center'>
                     <button type="button" className='btn btn-primary'>Spara ändringar</button>
                   </div>
+                </div>
               </div>
-
             </div>
-
-            </div>
-            
-            
-            
-            
-            <div className='col-4 bg-secondary'>
-              <ul className='profile-list mt-5'>
-                <li className='text-white d-flex mt-2'>
-                  <p>ICON</p>
-                  <p className='ms-3'>Mina auktioner</p>
-                </li>
-                <li className='text-white d-flex mt-2'>
-                  <p>ICON</p>
-                  <p className='ms-3'>Mina Favoriter</p>
-                </li>
-                <li className='text-white d-flex mt-2'>
-                  <p>ICON</p>
-                  <p className='ms-3'>Mina Sökningar</p>
-                </li>
-                <li className='text-white d-flex mt-2'>
-                  <p>ICON</p>
-                  <p className='ms-3'>Min Profil</p>
-                </li>
-              </ul>
-            </div>  
           </div> 
         </div>
-        <div className='col-2'></div>
       </div>
-
     </div>
   )
 }

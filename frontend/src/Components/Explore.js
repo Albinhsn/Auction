@@ -1,11 +1,7 @@
 import React from 'react'
 import AuctionCard from './AuctionCard'
 import {useState, useEffect } from 'react'
-export default function Explore({category}) {
-    //Vad ska du explora?
-    //Genom det, skicka efter information för vad du sedan ska rendera
-    
-    const [auctionIds, setAuctionIds] = useState([])
+export default function Explore() {
     
     
 
