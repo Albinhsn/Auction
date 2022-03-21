@@ -31,6 +31,9 @@ export default function Signup() {
                     <input type="password" className="form-control" id="exampleInputPassword1" />
                 </div>
             </form>
+            <div className='d-flex justify-content-center'>
+                <button type="button" className='btn btn-primary'>Skapa Konto</button>
+            </div>
         </div>
     </div>
 
