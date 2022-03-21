@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap';
 import "./App.css"
-import {useState, useEffect } from 'react'
+import {useState} from 'react'
 
 
 //Pages and Components import
@@ -15,6 +15,8 @@ import Profile from './Pages/Profile';
 import Auction from './Pages/Auction';
 import Footer from './Components/Footer';
 import Signup from './Pages/Signup';
+import CreateAuction from './Pages/CreateAuction';
+
 
 function App() {
 
@@ -31,6 +33,7 @@ function App() {
           <Route path="/search" element={<Search/>}/>
           <Route path="/auction" element={<Auction/>}/>
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/create/auction" element={<CreateAuction/>}/>
         </Routes>
         <Footer/>
       </div>
