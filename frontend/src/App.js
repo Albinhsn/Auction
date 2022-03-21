@@ -16,6 +16,7 @@ import Auction from './Pages/Auction';
 import Footer from './Components/Footer';
 import Signup from './Pages/Signup';
 
+
 function App() {
 
   const [authId, setAuthId] = useState('')
@@ -31,7 +32,7 @@ function App() {
           <Route path="/search" element={<Search/>}/>
           <Route path="/auction" element={<Auction/>}/>
           <Route path="/signup" element={<Signup/>}/>
-        </Routes>
+        </Routes> 
         <Footer/>
       </div>
     </BrowserRouter>

@@ -17,3 +17,13 @@ ul.profile-list {
   margin: 0; /* Remove margins */
   font-weight: bold !important;
 }
+
+.jumbotron {
+  background-image: url("https://t4.ftcdn.net/jpg/04/67/93/01/360_F_467930159_UcfrOkjhFG436zoT9fSetYccBgpNkokp.jpg");
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  background-size: 100% 150%;
+  resize: both;
+  
+}

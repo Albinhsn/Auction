@@ -1,8 +1,8 @@
 import React from 'react'
 import AuctionCard from './AuctionCard'
-import {useState, useEffect } from 'react'
 export default function Explore() {
     
+    const auctions  = ["Panasonic", "Canon", "Sony", "Jeppe", "Jeppe"]
     
 
     return (
@@ -15,9 +15,11 @@ export default function Explore() {
             </div>
             <div className='row'>
                 <div className='d-flex justify-content-evenly'>
-                    <AuctionCard auctionId={'1'}/>
-                    <AuctionCard auctionId={'2'}/>
-                    <AuctionCard auctionId={'3'}/>
+                    {auctions.map(name =>{
+                        return(
+                            <AuctionCard auctionId={'1'} auctionName={name}/>
+                        )
+                    })}
                 </div>
             </div>
         </div>
