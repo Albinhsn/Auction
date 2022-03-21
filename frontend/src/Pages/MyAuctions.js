@@ -3,14 +3,6 @@ import MyAuctionsCard from '../Components/MyAuctionsCard'
 
 export default function MyAuctions(){
     const arr = [1,2,3,4,5,6]
-    const auction = {
-        Title: "Cat",
-        Category: "Animal",
-        Bid: "100",
-        State: "Pågående",
-        Time: "2022-21-03",
-        Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec suscipit metus, ac facilisis dolor."
-    }
     return (
         <div className='d-flex justify-content-center'>
             <div className='col-6'>
@@ -25,7 +17,7 @@ export default function MyAuctions(){
                 {arr.map(a => {
                     return(
                         <div className='pt-3'>
-                            <MyAuctionsCard auction={auction}/>
+                            <MyAuctionsCard/>
                         </div>
                     )
                     
