@@ -15,6 +15,7 @@ import Profile from './Pages/Profile';
 import Auction from './Pages/Auction';
 import Footer from './Components/Footer';
 import Signup from './Pages/Signup';
+import MyAuctions from './Pages/MyAuctions';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/search" element={<Search/>}/>
           <Route path="/auction" element={<Auction/>}/>
           <Route path="/signup" element={<Signup/>}/>
+          <Route path="/profile/auction" element={<MyAuctions/>}/>
         </Routes>
         <Footer/>
       </div>
