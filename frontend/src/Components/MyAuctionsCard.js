@@ -10,7 +10,7 @@ export default function MyAuctionsCard({auction}){
             <img src={auction.Img} placeholder="" style={{height: "15vh", width: "15vh"}}/>
             <div className='ps-3 row'>
                 <div className='col-8'>
-                    <p className='fs-2'>{auction.Title}</p>
+                    <p className='fs-2'>{auction.Name}</p>
                     <div className='d-flex'>
                         <p>{auction.State}</p>
                         <p className='ps-3'>{auction.Bid} SEK</p>
