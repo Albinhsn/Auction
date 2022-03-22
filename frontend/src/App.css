@@ -7,9 +7,6 @@
 }
 
 /* Firefox */
-#bid-input[type=number] {
-  -moz-appearance: textfield;
-}
 
 ul.profile-list {
   list-style-type: none; /* Remove bullets */
@@ -29,14 +26,14 @@ ul.profile-list {
 }
 .image-gallery {
   width: 100%;
-  height: auto;
+  height: 40vh;
 
 }
 
 .image-gallery-slide img {
   width: 100%;
-  height: auto;
-  max-height: 80vh;
+  height: 40vh;
+  max-height: 40vh;
   object-fit: cover;
   overflow: hidden;
   object-position: center center;
