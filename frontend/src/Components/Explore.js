@@ -2,7 +2,6 @@ import React from 'react'
 import AuctionCard from './AuctionCard'
 
 
-
 export default function Explore() {
     
     const auctions  = [{
@@ -36,7 +35,7 @@ export default function Explore() {
                 <div className='d-flex justify-content-evenly'>
                     {auctions.map(auction =>{
                         
-                        return(
+                        return(                    
                             <AuctionCard auctionId={auctions.indexOf(auction)} auction={auction}/>
                         )
                     })}
