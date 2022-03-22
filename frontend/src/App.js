@@ -17,7 +17,7 @@ import Footer from './Components/Footer';
 import Signup from './Pages/Signup';
 import Favorites from './Pages/Favorites'
 import MyAuctions from './Pages/MyAuctions';
-
+import SearchBar from './Components/SearchBar';
 
 function App() {
 
@@ -32,6 +32,7 @@ function App() {
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/login" element={<Login setAuthId={setAuthId}/>}/>
           <Route path="/search" element={<Search/>}/>
+          <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/favorites" element={<Favorites/>}/>
