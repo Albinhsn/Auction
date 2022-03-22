@@ -1,0 +1,23 @@
+import React from 'react'
+import AuctionCard from './AuctionCard'
+export default function SearchComponent() {
+
+    return (
+      <div className='row justify-content-center'>
+        <div className='col-6' style={{padding: "0"}}>
+            <div className='row'>
+                <div className='col-2'>
+                    Explore X
+                </div>
+            </div>
+            <div className='row'>
+                <div className='d-flex justify-content-evenly'>
+                    <AuctionCard auctionId={'1'}/>
+                    <AuctionCard auctionId={'2'}/>
+                    <AuctionCard auctionId={'3'}/>
+                </div>
+            </div>
+        </div>
+    </div>
+  )
+}
