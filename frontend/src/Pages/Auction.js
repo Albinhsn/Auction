@@ -1,59 +1,70 @@
 import React from 'react'
-
+import ImageGallery from 'react-image-gallery'
 export default function Auction() {
   const auctionId = new URLSearchParams(window.location.search).get('auctionId')
-  const catJam = 'https://static-cdn.jtvnw.net/jtv_user_pictures/ec92e3d9-fc70-42e7-aee0-4fd987e306f5-profile_image-300x300.png'
+  const auctions = [{
+    Name: "Panasonic",
+    Img: "https://www.panasonic.com/content/dam/pim/se/sv/HC/HC-V18/HC-V180EC/HC-V180EC-Variation_Image_for_See_All_1Global-1_se_sv.png"
+  }, {
+    Name: "Canon",
+    Img: "https://i1.adis.ws/i/canon/eos_5d_mark_iv-frt-w-ef-50mm_800x800?w=800&h=800&fmt=jpg&fmt.options=interlaced&bg=rgb(236,237,237)"
+  }, {
+    Name: "Sony",
+    Img: "https://www.sony.se/image/14df0d210e44e2526441eeb1024ad89a?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF",
+
+  }, {
+    Name: "Nikon",
+    Img: "https://www.nikon.se/imported/images/web/EU/products/digital-cameras/dslr/D3500/D3500_AFP_18_55_VR_front_classic--original.png"
+  }, {
+    Name: "GoPro",
+    Img: "https://www.scandinavianphoto.se/globalassets/1049274_gopro_hero_9_black.jpg?ref=DBB4E5E3ED&w=960&h=960&mode=max"
+  }]
+
+
   return (
-    <div>
+    <div className='d-flex align-items-center'>
       <div className='row justify-content-center'>
         <div className='col-5'>
-          <h2 className='ms-5'>Title Here</h2>
+          
         </div>
         <div className='col-4'></div>
       </div>
 
 
-      <div className='row justify-content-center' style={{height: "100vh"}}>
-        <div className='col-5'>
-          <div className='row bg-primary' style={{height: "50vh"}}>
+      <div className='row justify-content-center'>
+        <div className='col-5 bg-light'>
+          <div className='row' style={{height: "50vh"}}>
             <div className='col-1'></div>
             <div className='col-10'>
-              <img className="img-fluid" src={catJam} alt="catJam" style={{width: "100%", height: "72.5%"}}/>
+              <img className="img-fluid" src={auctions[auctionId].Img} alt={auctions[auctionId].Name} style={{width: "80vh", height: "45vh"}}/>
             </div>
             <div className='col-1'></div>
+
+            <h2 className='ms-5 pt-3'>{auctions[auctionId].Name}</h2>
           </div>
+
+          <p className='pt-4'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sit amet maximus elit, a sodales lectus. Cras quis commodo metus. Mauris dignissim cursus elit, id posuere tellus congue id. In ac lacus tempus, faucibus nibh nec, laoreet risus. Curabitur diam felis, congue accumsan diam in, tincidunt molestie massa. Donec vulputate diam nec nunc accumsan, ut sodales turpis iaculis. Cras odio tellus, tincidunt ac quam at, suscipit accumsan urna. Sed dapibus enim vel ex fringilla ullamcorper.
+          </p>
         </div>
 
 
-        <div className='col-4 bg-secondary'>
-          <div className='bg-success'>
-            <div className='row'>
-              <div className='col-2 d-flex align-items-center'>
-                Icon
-              </div>
-              <div className='col-8'>
+        <div className='col-4 bg-light'>
+          <div className='pt-5'>
                 <p className='text-uppercase fw-bold' style={{}}>Auktionen avslutas</p>
                 <div className='d-flex'>
                   <p className='fw-bold'> Tisdag, </p>
                   <p className='ms-1'>2022-03-22 10:00</p>
                 </div>
-              </div>
-            </div>
-            
-            <div className='row'>
-              <div className='col-2'></div>
-              <div className='col-8'>
                 <p>1D 21H 5M</p>
-              </div>
-            </div>
           </div>
 
 
-          <div className=''>
+          <div className='row pt-5'>
             <p className='fw-bold text-uppercase'>Nuvarande bud</p>
-            <p className='text-success fs-1'>14 100 SEK</p>
+            <p className='text-success fs-1'>120 SEK</p>
             <div className='d-flex'>
-              <input type="number" id="bid-input"/>
+              <input type="number" id="bid-input" placeholder="Minsta bud: 130"/>
               <button type="button" class="btn btn-warning ms-3">Lägg bud</button>
             </div>
           </div> 

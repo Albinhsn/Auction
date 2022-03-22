@@ -23,7 +23,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div style={{height: "100vh"}}>
+      <div>
         <Navbar authId={authId}/>
         <Routes>
           <Route index element={<Home />} />
