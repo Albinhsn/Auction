@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap';
 import "./App.css"
-import {useState, useEffect } from 'react'
+import {useState} from 'react'
 
 
 //Pages and Components import
@@ -18,6 +18,8 @@ import Signup from './Pages/Signup';
 import Favorites from './Pages/Favorites'
 import MyAuctions from './Pages/MyAuctions';
 import SearchBar from './Components/SearchBar';
+import CreateAuction from './Pages/CreateAuction';
+
 
 function App() {
 
@@ -37,6 +39,7 @@ function App() {
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/favorites" element={<Favorites/>}/>
           <Route path="/profile/auction" element={<MyAuctions/>}/>
+          <Route path="/create/auction" element={<CreateAuction/>}/>
         </Routes>
         <Footer/>
       </div>
