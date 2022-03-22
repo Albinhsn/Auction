@@ -18,43 +18,79 @@ export default function CreateAuction() {
             },  
         
     ]
-    // <ImageGallery items={[]} originalHeight="15vh" originalWidth="15vh"/>
     return (
-    <div className='row justify-content-center'>
+    <div className='row d-flex justify-content-center' style={{width: "100vw"}}>
         <div className='col-8 bg-light'>
             <div className='row'>
-                <div className='col-6'>
-                    <ImageGallery 
-                        items={images}
-                        showPlayButton={false}
-                        useBrowserFullscreen={false}
-                        originalHeight={"200"}
-                        originalWidth={"200"}
-                        className="image-gallery"
-                        />
+                <div className='col-4'>
+                    <div className='position-relative'>
+                        <ImageGallery 
+                            items={images}
+                            showPlayButton={false}
+                            useBrowserFullscreen={false}
+                            originalHeight={"200"}
+                            originalWidth={"200"}
+                            className="image-gallery"                        
+                            />
+                        <button type="button" className='btn border position-absolute top-0 end-0 mt-3' style={{zIndeX: "2"}}>X</button>
+                    </div>
+                    <div className="input-group mb-3">
+                        <input type="file" className="form-control" id="inputGroupFile01"/>
+                    </div>
+        
                 </div>
                 <div className='col-6'>
-                    <form>
-                        <input type="text" placeholder="Titel"/>
-                        <input type="number" placeholder="Minimumbud"  className='mt-2'/>
-                        
-                        <label htmlFor="condition" className='pe-5'>Välj Skick</label>
-                        <select name="condition" id="condition">
-                            <option value="excellent">Perfekt</option>
-                            <option value="excellent">Utmärkt</option>
-                            <option value="good">Bra</option>
-                            <option value="decent">Hyggligt</option>
-                            <option value="bad">Dåligt</option>
+                    <div className='d-flex flex-column'>
+                            <input type="text" placeholder="Titel" style={{ width: "20vw" }} className='align-self-center'/>
+                            <input type="number" placeholder="Minimumbud" className='mt-2 align-self-center'id="bid-input" style={{ width: "20vw" }}/>
+                            <input type="number" placeholder="Köpa direkt" className='mt-2 align-self-center ' id="bid-input" style={{ width: "20vw" }}/>
+                    </div>
+                    <div className='input-group pt-2'>
+                        <label htmlFor="condition" className='pe-5 input-group-text'> 
+                            Skick
+                        </label>
+                        <select name="condition" id="condition" className='form-select'>
+                            <option value="excellent">
+                                Perfekt
+                            </option>
+                            <option value="excellent">
+                                Utmärkt
+                            </option>
+                            <option value="good">
+                                Bra
+                            </option>
+                            <option value="decent">
+                                Hyggligt
+                            </option>
+                            <option value="bad">
+                                Dåligt
+                            </option>
                         </select>
-                        <label htmlFor="auctionType">Välj Typ Av Auktion</label>
-                        <select name="auctionType" id="auctionType">
-                            <option value="excellent">Engelsk</option>
-                            <option value="good">Holländsk</option>
-                            <option value="decent">SMRA (Simultaneous Multiple Round Auction)</option>
+                    </div>
+                    
+                    <div className='input-group pt-2'>
+                        <label 
+                            htmlFor="auctionType"
+                            className='input-group-text'
+                        >
+                            Typ Av Auktion
+                        </label>
+                        <select name="auctionType" id="auctionType" className='form-select'>
+                            <option value="excellent">
+                                Engelsk
+                            </option>
+                            <option value="good">
+                                Holländsk
+                            </option>
+                            <option value="decent">
+                                SMRA (Simultaneous Multiple Round Auction)
+                            </option>
                         </select>
-                        <TextAreaAutoSize maxRows={8} placeholder="Beskrivning" className='mt-2'/>
-                    </form>
-                    <button type="button" className='btn btn-primary'>Skapa auktion</button>
+                    </div>
+                    <div className='d-flex flex-column'>
+                        <TextAreaAutoSize maxRows={5} minRows={5} placeholder="Beskrivning" className='mt-2' id="bid-input" style={{resize: "none"}}/>
+                        <button type="button" className='btn btn-primary align-self-center mt-2' style={{width: "40%"}}>Skapa auktion</button>
+                    </div>
                 </div>    
             </div>
             
