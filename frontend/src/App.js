@@ -15,7 +15,6 @@ import Profile from './Pages/Profile';
 import Auction from './Pages/Auction';
 import Footer from './Components/Footer';
 import Signup from './Pages/Signup';
-import Favorites from './Pages/Favorites'
 import MyAuctions from './Pages/MyAuctions';
 import SearchBar from './Components/SearchBar';
 import CreateAuction from './Pages/CreateAuction';
@@ -37,7 +36,6 @@ function App() {
           <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction/>}/>
           <Route path="/signup" element={<Signup/>}/>
-          <Route path="/favorites" element={<Favorites/>}/>
           <Route path="/profile/auction" element={<MyAuctions/>}/>
           <Route path="/create/auction" element={<CreateAuction/>}/>
         </Routes>
