@@ -12,7 +12,10 @@ export default function Profile() {
             
             <div className='row mt-5'>
               <div className='col-5 bg-light mt-5'>
-                <p>Användarnamn</p>
+                <p className='fw-bold'>Användarnamn</p>
+                <p>Albinhsn</p>
+                <p className='fw-bold'>Mail</p>
+                <p>albin.henningsson@gmail.com</p>
               </div>
 
 
