@@ -22,7 +22,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div style={{height: "100vh"}}>
+      <div className="d-flex flex-column" style={{height: "100vh"}}>
         <Navbar authId={authId}/>
         <Routes>
           <Route index element={<Home />} />
