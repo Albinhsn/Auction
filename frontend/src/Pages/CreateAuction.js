@@ -23,14 +23,21 @@ export default function CreateAuction() {
         <div className='col-8 bg-light'>
             <div className='row'>
                 <div className='col-4'>
-                    <ImageGallery 
-                        items={images}
-                        showPlayButton={false}
-                        useBrowserFullscreen={false}
-                        originalHeight={"200"}
-                        originalWidth={"200"}
-                        className="image-gallery"                        
-                        />
+                    <div className='position-relative'>
+                        <ImageGallery 
+                            items={images}
+                            showPlayButton={false}
+                            useBrowserFullscreen={false}
+                            originalHeight={"200"}
+                            originalWidth={"200"}
+                            className="image-gallery"                        
+                            />
+                        <button type="button" className='btn border position-absolute top-0 end-0 mt-3' style={{zIndeX: "2"}}>X</button>
+                    </div>
+                    <div className="input-group mb-3">
+                        <input type="file" className="form-control" id="inputGroupFile01"/>
+                    </div>
+        
                 </div>
                 <div className='col-6'>
                     <div className='d-flex flex-column'>
@@ -82,7 +89,7 @@ export default function CreateAuction() {
                     </div>
                     <div className='d-flex flex-column'>
                         <TextAreaAutoSize maxRows={5} minRows={5} placeholder="Beskrivning" className='mt-2' id="bid-input" style={{resize: "none"}}/>
-                        <button type="button" className='btn btn-primary align-self-center pt-2' style={{width: "40%"}}>Skapa auktion</button>
+                        <button type="button" className='btn btn-primary align-self-center mt-2' style={{width: "40%"}}>Skapa auktion</button>
                     </div>
                 </div>    
             </div>
