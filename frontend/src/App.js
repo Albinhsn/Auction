@@ -16,6 +16,8 @@ import Auction from './Pages/Auction';
 import Footer from './Components/Footer';
 import Signup from './Pages/Signup';
 import Favorites from './Pages/Favorites'
+import MyAuctions from './Pages/MyAuctions';
+
 function App() {
 
   const [authId, setAuthId] = useState('')
@@ -32,6 +34,7 @@ function App() {
           <Route path="/auction" element={<Auction/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/favorites" element={<Favorites/>}/>
+          <Route path="/profile/auction" element={<MyAuctions/>}/>
         </Routes>
         <Footer/>
       </div>
