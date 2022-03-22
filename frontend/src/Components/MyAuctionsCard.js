@@ -1,8 +1,9 @@
-import {React} from 'react'
+import {React, useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 export default function MyAuctionsCard({auction}){
+    const [favorite, setFavorite] = useState(auction.Favorite)
 
     return(
         <div className='d-flex border border-dark'>    
@@ -17,7 +18,7 @@ export default function MyAuctionsCard({auction}){
                 </div>
                 <div className='d-flex'>
                     <p className='ps-3'>Skick: {auction.Condition}</p>
-                    <FontAwesomeIcon icon={faHeart} className="ps-3 fa-xl" style={{color: auction.Favorite}} onClick={() => console.log()}/>
+                    <FontAwesomeIcon icon={faHeart} className="ps-3 fa-xl" style={{color: favorite}} onClick={() => setFavorite((favorite) => (favorite === "red" ? "black" : "red"))}/>
                 </div>
                 <div className='col-4'>
                     <p className='d-flex' style={{fontSize: "1.5vh"}}>{auction.Description}</p>
