@@ -2,7 +2,7 @@ import React from 'react'
 import MyAuctionsCard from '../Components/MyAuctionsCard'
 
 export default function MyAuctions(){
-    const arr = [1,2,3,4,5,6]
+    const auctions = [1,2,3,4,5,6]
     return (
         <div className='d-flex justify-content-center'>
             <div className='col-6'>
@@ -14,10 +14,10 @@ export default function MyAuctions(){
                     <input type="checkbox" name="sold" className='ms-2'/>
                 </div>
                 
-                {arr.map(a => {
+                {auctions.map(auction => {
                     return(
                         <div className='pt-3'>
-                            <MyAuctionsCard/>
+                            <MyAuctionsCard auction={auction}/>
                         </div>
                     )
                     
