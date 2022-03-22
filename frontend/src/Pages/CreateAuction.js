@@ -40,6 +40,7 @@ export default function CreateAuction() {
                         
                         <label htmlFor="condition" className='pe-5'>Välj Skick</label>
                         <select name="condition" id="condition">
+                            <option value="excellent">Perfekt</option>
                             <option value="excellent">Utmärkt</option>
                             <option value="good">Bra</option>
                             <option value="decent">Hyggligt</option>
