@@ -1,12 +1,12 @@
 import React from 'react'
-import Smth from '../Components/Smth'
+import Jumbo from '../Components/Jumbo'
 import Explore from '../Components/Explore'
 
 
 export default function Home() {
   return (
     <>
-      <Smth />
+      <Jumbo />
       <Explore />
       <Explore />
       <Explore />

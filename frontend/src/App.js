@@ -18,13 +18,14 @@ import Signup from './Pages/Signup';
 import Favorites from './Pages/Favorites'
 import MyAuctions from './Pages/MyAuctions';
 
+
 function App() {
 
   const [authId, setAuthId] = useState('')
 
   return (
     <BrowserRouter>
-      <div style={{height: "100vh"}}>
+      <div>
         <Navbar authId={authId}/>
         <Routes>
           <Route index element={<Home />} />
