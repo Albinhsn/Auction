@@ -11,6 +11,7 @@ export default function CreateAuctionForm({setAuctions, auctions}) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const myRef = useRef(null);
     let [auctionInfo, setAuctionInfo] = useState({
+        Id: auctions.length,
         Title: "",
         MinimumBid: 0,
         PurchaseNow: 0,
@@ -31,8 +32,12 @@ export default function CreateAuctionForm({setAuctions, auctions}) {
             alert("Var vänlig ange godtyckligt köp nu pris")
             return
         }
+        
         auctions.push(auctionInfo)
+        
         setAuctions(auctions)
+
+        alert("Auktionen har lagts till")
     }
 
 
