@@ -9,15 +9,12 @@ const sellers = ["Albin", "Jesper", "Adrian", "Aiden", "Russel",  "Charlie", "Sh
 const cameras = ["Sony A55", "Pentax X5", "Canon Eos 400D", "Nikon D60", "Canon PowerShot g7 Mark III", "Nikon D5", "Nikon Coolpix L22", "Nikon D3100", "Canon Eos 550D", "Pentax K7", "Sony A7RIV", "Nikon D800", "Sony A68"]
 
 let imgs = {
-    "Sony A55": [
-        "https://www.kamerabild.se/sites/kamerabild.se/files/styles/article_image/public/imported/558602.jpg?itok=hkJPg6cT",        
+    "Sony A55": [      
         "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sony_SLT-A55_02s5.jpg/300px-Sony_SLT-A55_02s5.jpg"
     ],
     "Pentax X5": [
         "https://pricespy-75b8.kxcdn.com/product/standard/280/1412601.jpg",
-        "https://www.imaging-resource.com/PRODS/pentax-x5/ZYFRONT-MD.JPG?41",
-        "https://www.imaging-resource.com/PRODS/pentax-x5/ZYBACK-MD.JPG?41",
-        "https://www.imaging-resource.com/PRODS/pentax-x5/ZYLEFT-MD.JPG?41"
+        
     ],
     "Canon Eos 400D": [
         "https://pricespy-75b8.kxcdn.com/product/standard/280/132341.jpg"
@@ -35,7 +32,6 @@ let imgs = {
 
     ],
     "Nikon Coolpix L22": [
-        "https://www.cnet.com/a/img/resize/7f7091ca83190b3f19d3dc044fb6fe728f4a8c3b/hub/2011/02/01/99a6c8c5-8bb7-11e3-a24e-d4ae52e62bcc/33984466_OVR.png?auto=webp&fit=crop&height=675&width=1200",
         "https://cdn-4.nikon-cdn.com/e/Q5NM96RZZo-YRYNeYvAi9aeqFMY3fvEkMLBGAiSy_A2cHTS06eskuPufRYp4E2az_GNSUXRk1l1MHGp9Mr7pSQXa7yWyx9cG/Views/26198_L22_34r_lo.png"
     ],
     "Nikon D3100": [
@@ -58,11 +54,9 @@ let imgs = {
     ],
     "Nikon 800D": [
         "https://www.europe-nikon.com/tmp/EU/2419865273/3760176746/2327365364/27184057/1391280926/2780083465/1053240650/3915156789/2964121563/3036989078/1975208020.png",
-        "https://www.backscatter.com/ITEM_IMAGES/nkl-25480_1.jpg?resizeid=6&resizeh=600&resizew=600"
     ],  
     "Sony A68": [
-        "https://www.kamerabild.se/sites/kamerabild.se/files/styles/teaser_500/public/field/image/sonya68_0.jpg?itok=rnOVyhVa",
-        "https://www.sony.se/image/e45d80fd87f4b0b5b772363a94f39c1b?fmt=pjpeg&wid=1200&hei=470&bgcolor=F1F5F9&bgc=F1F5F9"
+        "https://www.cnet.com/a/img/hub/2015/11/05/553fd936-b056-4e60-b789-9efd284284a3/sony-a68-mfr-43.jpg"
     ],
 }
 
