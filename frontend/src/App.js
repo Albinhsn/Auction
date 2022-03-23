@@ -23,11 +23,10 @@ import CreateAuction from './Pages/CreateAuction';
 function App() {
 
   const [authId, setAuthId] = useState('')
-
   return (
     <BrowserRouter>
       <div className="d-flex flex-column" style={{height: "100vh"}}>
-        <Navbar authId={authId}/>
+        <Navbar authId={authId} setAuthId={setAuthId}/>
         <Routes>
           <Route index element={<Home />} />
           <Route path="/profile" element={<Profile/>}/>
@@ -35,7 +34,7 @@ function App() {
           <Route path="/search" element={<Search/>}/>
           <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction/>}/>
-          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId}/>}/>
           <Route path="/profile/auction" element={<MyAuctions/>}/>
           <Route path="/create/auction" element={<CreateAuction/>}/>
         </Routes>
