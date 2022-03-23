@@ -6,7 +6,7 @@ const ids = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 //Sellers & Winners
 const sellers = ["Albin", "Jesper", "Adrian", "Aiden", "Russel",  "Charlie", "Shaun", "Jenna", "Hugh", "Alvin", "Leroy", "George", "Lex", "Lee", "Alicia", "Isabelle", "Ellie", "Joe", "Samuel", "Gustav"]
 
-const cameras = ["Sony A55", "Pentax X5", "Canon Eos 400D", "Nikon D60", "Canon PowerShot g7 Mark III", "Nikon D5", "Nikon Coolpix L22", "Nikon D3100", "Canon Eos 550D", "Pentax K7", "Sony A7RIV", "Nikon D800", "Sony A68"]
+const cameras = ["Sony A55", "Pentax X5", "Canon Eos 400D", "Nikon D60", "Canon PowerShot g7 Mark III", "Nikon D5", "Nikon Coolpix L22", "Nikon D3100", "Canon Eos 550D", "Pentax K7", "Sony A7RIV", "Nikon 800D", "Sony A68"]
 
 let imgs = {
     "Sony A55": [      
