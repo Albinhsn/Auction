@@ -1,0 +1,588 @@
+[
+    {
+        "Id": 1,
+        "Bidhistory": [
+            {
+                "Id": 16,
+                "Bid": 410,
+                "Time": "2022-02-28T23:00:00.000Z"
+            },
+            {
+                "Id": 29,
+                "Bid": 420,
+                "Time": "2022-02-28T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Canon PowerShot g7 Mark III",
+        "Condition": "Bra",
+        "StopTime": "2022-03-09T21:21:07.483Z",
+        "StartTime": "2022-03-01T23:00:00.000Z",
+        "PurchaseNow": 1000,
+        "MinimalBid": 400,
+        "Seller": 0
+    },
+    {
+        "Id": 2,
+        "Bidhistory": [
+            {
+                "Id": 27,
+                "Bid": 150,
+                "Time": "2022-03-12T23:00:00.000Z"
+            },
+            {
+                "Id": 4,
+                "Bid": 160,
+                "Time": "2022-03-12T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Canon Eos 550D",
+        "Condition": "Dåligt",
+        "StopTime": "2022-03-22T14:43:45.373Z",
+        "StartTime": "2022-03-14T23:00:00.000Z",
+        "PurchaseNow": 350,
+        "MinimalBid": 140,
+        "Seller": 23
+    },
+    {
+        "Id": 3,
+        "Bidhistory": [
+            {
+                "Id": 4,
+                "Bid": 240,
+                "Time": "2021-11-13T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Pentax X5",
+        "Condition": "Dåligt",
+        "StopTime": "2021-11-23T23:35:55.997Z",
+        "StartTime": "2021-11-16T23:00:00.000Z",
+        "PurchaseNow": 575,
+        "MinimalBid": 230,
+        "Seller": 2
+    },
+    {
+        "Id": 4,
+        "Bidhistory": [
+            {
+                "Id": 4,
+                "Bid": 130,
+                "Time": "2022-04-04T22:00:00.000Z"
+            },
+            {
+                "Id": 16,
+                "Bid": 140,
+                "Time": "2022-04-04T22:00:00.000Z"
+            },
+            {
+                "Id": 22,
+                "Bid": 150,
+                "Time": "2022-04-04T22:00:00.000Z"
+            }
+        ],
+        "State": "Slut",
+        "Title": "Pentax X5",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-04-16T17:46:47.708Z",
+        "StartTime": "2022-04-08T22:00:00.000Z",
+        "PurchaseNow": 300,
+        "MinimalBid": 120,
+        "Winner": 0,
+        "Seller": 25
+    },
+    {
+        "Id": 5,
+        "Bidhistory": [],
+        "State": "Pågående",
+        "Title": "Nikon D5",
+        "Condition": "Bra",
+        "StopTime": "2022-01-16T02:36:23.951Z",
+        "StartTime": "2022-01-08T23:00:00.000Z",
+        "PurchaseNow": 2175,
+        "MinimalBid": 870,
+        "Seller": 2
+    },
+    {
+        "Id": 6,
+        "Bidhistory": [],
+        "State": "Pågående",
+        "Title": "Nikon D60",
+        "Condition": "Perfekt",
+        "StopTime": "2022-01-26T11:42:38.595Z",
+        "StartTime": "2022-01-18T23:00:00.000Z",
+        "PurchaseNow": 200,
+        "MinimalBid": 80,
+        "Seller": 28
+    },
+    {
+        "Id": 7,
+        "Bidhistory": [],
+        "State": "Pågående",
+        "Title": "Canon Eos 400D",
+        "Condition": "Perfekt",
+        "StopTime": "2022-03-22T17:56:19.726Z",
+        "StartTime": "2022-03-14T23:00:00.000Z",
+        "PurchaseNow": 1625,
+        "MinimalBid": 650,
+        "Seller": 9
+    },
+    {
+        "Id": 8,
+        "Bidhistory": [],
+        "State": "Slut",
+        "Title": "Canon Eos 400D",
+        "Condition": "Dåligt",
+        "StopTime": "2022-04-17T11:19:20.602Z",
+        "StartTime": "2022-04-09T22:00:00.000Z",
+        "PurchaseNow": 1125,
+        "MinimalBid": 450,
+        "Winner": 13,
+        "Seller": 14
+    },
+    {
+        "Id": 9,
+        "Bidhistory": [
+            {
+                "Id": 1,
+                "Bid": 100,
+                "Time": "2021-12-29T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Pentax X5",
+        "Condition": "Perfekt",
+        "StopTime": "2022-01-15T03:14:33.280Z",
+        "StartTime": "2022-01-07T23:00:00.000Z",
+        "PurchaseNow": 225,
+        "MinimalBid": 90,
+        "Seller": 14
+    },
+    {
+        "Id": 10,
+        "Bidhistory": [
+            {
+                "Id": 12,
+                "Bid": 940,
+                "Time": "2022-02-19T23:00:00.000Z"
+            },
+            {
+                "Id": 5,
+                "Bid": 950,
+                "Time": "2022-02-19T23:00:00.000Z"
+            },
+            {
+                "Id": 5,
+                "Bid": 960,
+                "Time": "2022-02-19T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Nikon Coolpix L22",
+        "Condition": "Bra",
+        "StopTime": "2022-03-09T07:37:07.699Z",
+        "StartTime": "2022-03-01T23:00:00.000Z",
+        "PurchaseNow": 2325,
+        "MinimalBid": 930,
+        "Seller": 15
+    },
+    {
+        "Id": 11,
+        "Bidhistory": [
+            {
+                "Id": 22,
+                "Bid": 910,
+                "Time": "2022-01-14T23:00:00.000Z"
+            },
+            {
+                "Id": 1,
+                "Bid": 920,
+                "Time": "2022-01-14T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Canon PowerShot g7 Mark III",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-02-02T00:21:39.861Z",
+        "StartTime": "2022-01-25T23:00:00.000Z",
+        "PurchaseNow": 2250,
+        "MinimalBid": 900,
+        "Seller": 2
+    },
+    {
+        "Id": 12,
+        "Bidhistory": [
+            {
+                "Id": 13,
+                "Bid": 660,
+                "Time": "2022-03-24T23:00:00.000Z"
+            }
+        ],
+        "State": "Slut",
+        "Title": "Nikon D3100",
+        "Condition": "Dåligt",
+        "StopTime": "2022-04-12T23:29:06.960Z",
+        "StartTime": "2022-04-05T22:00:00.000Z",
+        "PurchaseNow": 1625,
+        "MinimalBid": 650,
+        "Winner": 25,
+        "Seller": 5
+    },
+    {
+        "Id": 13,
+        "Bidhistory": [
+            {
+                "Id": 29,
+                "Bid": 510,
+                "Time": "2022-02-01T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Canon Eos 400D",
+        "Condition": "Hygglig",
+        "StopTime": "2022-02-22T12:29:37.147Z",
+        "StartTime": "2022-02-14T23:00:00.000Z",
+        "PurchaseNow": 1250,
+        "MinimalBid": 500,
+        "Seller": 10
+    },
+    {
+        "Id": 14,
+        "Bidhistory": [],
+        "State": "Pågående",
+        "Title": "Canon PowerShot g7 Mark III",
+        "Condition": "Perfekt",
+        "StopTime": "2022-02-24T03:51:36.000Z",
+        "StartTime": "2022-02-16T23:00:00.000Z",
+        "PurchaseNow": 950,
+        "MinimalBid": 380,
+        "Seller": 14
+    },
+    {
+        "Id": 15,
+        "Bidhistory": [
+            {
+                "Id": 7,
+                "Bid": 70,
+                "Time": "2022-01-15T23:00:00.000Z"
+            },
+            {
+                "Id": 8,
+                "Bid": 80,
+                "Time": "2022-01-15T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Nikon Coolpix L22",
+        "Condition": "Hygglig",
+        "StopTime": "2022-02-07T21:39:19.601Z",
+        "StartTime": "2022-01-30T23:00:00.000Z",
+        "PurchaseNow": 150,
+        "MinimalBid": 60,
+        "Seller": 29
+    },
+    {
+        "Id": 16,
+        "Bidhistory": [],
+        "State": "Slut",
+        "Title": "Nikon D800",
+        "Condition": "Perfekt",
+        "StopTime": "2022-04-09T01:08:49.038Z",
+        "StartTime": "2022-04-01T22:00:00.000Z",
+        "PurchaseNow": 950,
+        "MinimalBid": 380,
+        "Winner": 6,
+        "Seller": 26
+    },
+    {
+        "Id": 17,
+        "Bidhistory": [
+            {
+                "Id": 14,
+                "Bid": 220,
+                "Time": "2021-12-26T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Nikon D3100",
+        "Condition": "Perfekt",
+        "StopTime": "2022-01-20T18:15:02.839Z",
+        "StartTime": "2022-01-12T23:00:00.000Z",
+        "PurchaseNow": 525,
+        "MinimalBid": 210,
+        "Seller": 3
+    },
+    {
+        "Id": 18,
+        "Bidhistory": [
+            {
+                "Id": 13,
+                "Bid": 80,
+                "Time": "2022-02-12T23:00:00.000Z"
+            },
+            {
+                "Id": 27,
+                "Bid": 90,
+                "Time": "2022-02-12T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Sony A55",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-03-10T10:30:57.933Z",
+        "StartTime": "2022-03-02T23:00:00.000Z",
+        "PurchaseNow": 175,
+        "MinimalBid": 70,
+        "Seller": 0
+    },
+    {
+        "Id": 19,
+        "Bidhistory": [
+            {
+                "Id": 7,
+                "Bid": 610,
+                "Time": "2022-02-06T23:00:00.000Z"
+            },
+            {
+                "Id": 2,
+                "Bid": 620,
+                "Time": "2022-02-06T23:00:00.000Z"
+            },
+            {
+                "Id": 14,
+                "Bid": 630,
+                "Time": "2022-02-06T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Nikon D3100",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-03-05T09:15:13.387Z",
+        "StartTime": "2022-02-25T23:00:00.000Z",
+        "PurchaseNow": 1500,
+        "MinimalBid": 600,
+        "Seller": 21
+    },
+    {
+        "Id": 20,
+        "Bidhistory": [
+            {
+                "Id": 2,
+                "Bid": 920,
+                "Time": "2022-02-26T23:00:00.000Z"
+            }
+        ],
+        "State": "Slut",
+        "Title": "Nikon D5",
+        "Condition": "Hygglig",
+        "StopTime": "2022-03-26T07:07:38.740Z",
+        "StartTime": "2022-03-18T23:00:00.000Z",
+        "PurchaseNow": 2275,
+        "MinimalBid": 910,
+        "Winner": 2,
+        "Seller": 19
+    },
+    {
+        "Id": 21,
+        "Bidhistory": [
+            {
+                "Id": 15,
+                "Bid": 490,
+                "Time": "2022-01-06T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Nikon D3100",
+        "Condition": "Perfekt",
+        "StopTime": "2022-02-04T18:24:14.479Z",
+        "StartTime": "2022-01-27T23:00:00.000Z",
+        "PurchaseNow": 1200,
+        "MinimalBid": 480,
+        "Seller": 21
+    },
+    {
+        "Id": 22,
+        "Bidhistory": [
+            {
+                "Id": 15,
+                "Bid": 790,
+                "Time": "2022-02-15T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Nikon D5",
+        "Condition": "Dåligt",
+        "StopTime": "2022-03-17T13:15:44.289Z",
+        "StartTime": "2022-03-09T23:00:00.000Z",
+        "PurchaseNow": 1950,
+        "MinimalBid": 780,
+        "Seller": 3
+    },
+    {
+        "Id": 23,
+        "Bidhistory": [
+            {
+                "Id": 27,
+                "Bid": 960,
+                "Time": "2021-11-05T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Pentax X5",
+        "Condition": "Bra",
+        "StopTime": "2021-12-06T02:28:08.854Z",
+        "StartTime": "2021-11-28T23:00:00.000Z",
+        "PurchaseNow": 2375,
+        "MinimalBid": 950,
+        "Seller": 1
+    },
+    {
+        "Id": 24,
+        "Bidhistory": [
+            {
+                "Id": 18,
+                "Bid": 730,
+                "Time": "2022-03-17T23:00:00.000Z"
+            },
+            {
+                "Id": 2,
+                "Bid": 740,
+                "Time": "2022-03-17T23:00:00.000Z"
+            }
+        ],
+        "State": "Slut",
+        "Title": "Pentax K7",
+        "Condition": "Perfekt",
+        "StopTime": "2022-04-18T10:50:25.273Z",
+        "StartTime": "2022-04-10T22:00:00.000Z",
+        "PurchaseNow": 1800,
+        "MinimalBid": 720,
+        "Winner": 10,
+        "Seller": 24
+    },
+    {
+        "Id": 25,
+        "Bidhistory": [
+            {
+                "Id": 23,
+                "Bid": 70,
+                "Time": "2021-12-03T23:00:00.000Z"
+            },
+            {
+                "Id": 27,
+                "Bid": 80,
+                "Time": "2021-12-03T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Nikon D800",
+        "Condition": "Dåligt",
+        "StopTime": "2022-01-05T15:16:43.148Z",
+        "StartTime": "2021-12-28T23:00:00.000Z",
+        "PurchaseNow": 150,
+        "MinimalBid": 60,
+        "Seller": 6
+    },
+    {
+        "Id": 26,
+        "Bidhistory": [
+            {
+                "Id": 26,
+                "Bid": 620,
+                "Time": "2022-01-18T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Sony A55",
+        "Condition": "Hygglig",
+        "StopTime": "2022-02-21T19:05:07.300Z",
+        "StartTime": "2022-02-13T23:00:00.000Z",
+        "PurchaseNow": 1525,
+        "MinimalBid": 610,
+        "Seller": 6
+    },
+    {
+        "Id": 27,
+        "Bidhistory": [
+            {
+                "Id": 15,
+                "Bid": 640,
+                "Time": "2021-10-26T22:00:00.000Z"
+            },
+            {
+                "Id": 22,
+                "Bid": 650,
+                "Time": "2021-10-26T22:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Sony A7RIV",
+        "Condition": "Utmärkt",
+        "StopTime": "2021-11-30T12:48:59.248Z",
+        "StartTime": "2021-11-22T23:00:00.000Z",
+        "PurchaseNow": 1575,
+        "MinimalBid": 630,
+        "Seller": 22
+    },
+    {
+        "Id": 28,
+        "Bidhistory": [
+            {
+                "Id": 28,
+                "Bid": 400,
+                "Time": "2022-02-27T23:00:00.000Z"
+            }
+        ],
+        "State": "Slut",
+        "Title": "Pentax X5",
+        "Condition": "Perfekt",
+        "StopTime": "2022-04-04T19:33:12.546Z",
+        "StartTime": "2022-03-27T22:00:00.000Z",
+        "PurchaseNow": 975,
+        "MinimalBid": 390,
+        "Winner": 5,
+        "Seller": 28
+    },
+    {
+        "Id": 29,
+        "Bidhistory": [
+            {
+                "Id": 10,
+                "Bid": 80,
+                "Time": "2021-11-16T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Canon PowerShot g7 Mark III",
+        "Condition": "Hygglig",
+        "StopTime": "2021-12-23T09:18:27.730Z",
+        "StartTime": "2021-12-15T23:00:00.000Z",
+        "PurchaseNow": 175,
+        "MinimalBid": 70,
+        "Seller": 2
+    },
+    {
+        "Id": 30,
+        "Bidhistory": [
+            {
+                "Id": 23,
+                "Bid": 940,
+                "Time": "2021-11-26T23:00:00.000Z"
+            },
+            {
+                "Id": 9,
+                "Bid": 950,
+                "Time": "2021-11-26T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Pentax X5",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-01-02T23:28:28.244Z",
+        "StartTime": "2021-12-26T23:00:00.000Z",
+        "PurchaseNow": 2325,
+        "MinimalBid": 930,
+        "Seller": 22
+    }
+]

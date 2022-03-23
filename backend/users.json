@@ -1,0 +1,102 @@
+[
+    {
+        "Id": 1,
+        "Name": "Albin",
+        "Email": "Albin@gmail.com"
+    },
+    {
+        "Id": 2,
+        "Name": "Jesper",
+        "Email": "Jesper@gmail.com"
+    },
+    {
+        "Id": 3,
+        "Name": "Adrian",
+        "Email": "Adrian@gmail.com"
+    },
+    {
+        "Id": 4,
+        "Name": "Aiden",
+        "Email": "Aiden@gmail.com"
+    },
+    {
+        "Id": 5,
+        "Name": "Russel",
+        "Email": "Russel@gmail.com"
+    },
+    {
+        "Id": 6,
+        "Name": "Charlie",
+        "Email": "Charlie@gmail.com"
+    },
+    {
+        "Id": 7,
+        "Name": "Shaun",
+        "Email": "Shaun@gmail.com"
+    },
+    {
+        "Id": 8,
+        "Name": "Jenna",
+        "Email": "Jenna@gmail.com"
+    },
+    {
+        "Id": 9,
+        "Name": "Hugh",
+        "Email": "Hugh@gmail.com"
+    },
+    {
+        "Id": 10,
+        "Name": "Alvin",
+        "Email": "Alvin@gmail.com"
+    },
+    {
+        "Id": 11,
+        "Name": "Leroy",
+        "Email": "Leroy@gmail.com"
+    },
+    {
+        "Id": 12,
+        "Name": "George",
+        "Email": "George@gmail.com"
+    },
+    {
+        "Id": 13,
+        "Name": "Lex",
+        "Email": "Lex@gmail.com"
+    },
+    {
+        "Id": 14,
+        "Name": "Lee",
+        "Email": "Lee@gmail.com"
+    },
+    {
+        "Id": 15,
+        "Name": "Alicia",
+        "Email": "Alicia@gmail.com"
+    },
+    {
+        "Id": 16,
+        "Name": "Isabelle",
+        "Email": "Isabelle@gmail.com"
+    },
+    {
+        "Id": 17,
+        "Name": "Ellie",
+        "Email": "Ellie@gmail.com"
+    },
+    {
+        "Id": 18,
+        "Name": "Joe",
+        "Email": "Joe@gmail.com"
+    },
+    {
+        "Id": 19,
+        "Name": "Samuel",
+        "Email": "Samuel@gmail.com"
+    },
+    {
+        "Id": 20,
+        "Name": "Gustav",
+        "Email": "Gustav@gmail.com"
+    }
+]
