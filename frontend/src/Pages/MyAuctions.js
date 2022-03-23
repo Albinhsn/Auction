@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import MyAuctionsCard from '../Components/MyAuctionsCard'
 
 export default function MyAuctions({auctions, authId}){
@@ -26,7 +27,7 @@ export default function MyAuctions({auctions, authId}){
                     if(auction.Seller === authId){
                         return(
                             <div className='pt-3' key={auction.Id}>
-                                <MyAuctionsCard key={auction.Id} auction={auction}/>
+                                <Link className='text-decoration-none text-dark' to={`/auction?auctionId=${auction.Id}`}><MyAuctionsCard key={auction.Id} auction={auction}/></Link>
                             </div>
                         )
                     }
@@ -37,7 +38,7 @@ export default function MyAuctions({auctions, authId}){
                                 console.log(bid.Id, authId)
                                 return (
                                     <div className='pt-3' key={auction.Id}>
-                                        <MyAuctionsCard key={auction.Id} auction={auction} />
+                                        <Link className='text-decoration-none text-dark' to={`/auction?auctionId=${auction.Id}`}><MyAuctionsCard key={auction.Id} auction={auction} /></Link>
                                     </div>
                                 )
                             }
