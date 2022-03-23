@@ -3,8 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap';
 import "./App.css"
-import {useState} from 'react'
-import auctions from './Auctions/auctions.json'
+import {useState, useEffect} from 'react'
 
 //Pages and Components import
 import Navbar from './Components/Navbar'
@@ -18,11 +17,16 @@ import Signup from './Pages/Signup';
 import MyAuctions from './Pages/MyAuctions';
 import SearchBar from './Components/SearchBar';
 import CreateAuction from './Pages/CreateAuction';
-
+import auctionJSON from './Auctions/auctions.json'
 
 function App() {
 
   const [authId, setAuthId] = useState('')
+  const [auctions, setAuctions] = useState([])
+  
+  useEffect(() => {
+    setAuctions(auctionJSON)
+  }, [])
   return (
     <BrowserRouter>
       <div className="d-flex flex-column" style={{height: "100vh"}}>
@@ -36,7 +40,7 @@ function App() {
           <Route path="/auction" element={<Auction/>}/>
           <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId}/>}/>
           <Route path="/profile/auction" element={<MyAuctions auctions={auctions} authId={authId}/>}/>
-          <Route path="/create/auction" element={<CreateAuction/>}/>
+          <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions}/>}/>
         </Routes>
         <Footer/>
       </div>
