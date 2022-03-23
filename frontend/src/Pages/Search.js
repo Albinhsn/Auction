@@ -1,5 +1,5 @@
 import React from 'react'
-import MyAuctionsCard from '../Components/SearchComponent'
+import SearchComponent from '../Components/SearchComponent'
 import auctions from '../Auctions/auctions.json'
 export default function MyAuctions(){
     console.log(auctions)
@@ -32,9 +32,10 @@ export default function MyAuctions(){
 
 
                 {auctions.map(auction => {
+                    console.log(auction.Images[0])
                     return(
                         <div className='pt-3' key={auction.Id}>
-                            <MyAuctionsCard auction={auction}/>
+                            <SearchComponent key={auction.Id} auction={auction}/>
                         </div>
                     )
                     

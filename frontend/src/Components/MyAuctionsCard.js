@@ -4,10 +4,9 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 export default function MyAuctionsCard({auction}){
     const [favorite, setFavorite] = useState(auction.Favorite)
-
     return(
-        <div className='d-flex border border-dark'>    
-            <img src={auction.Img} placeholder="" style={{height: "15vh", width: "15vh"}}/>
+        <div className='d-flex border border-dark TEST'>    
+            <img src={auction.Im} placeholder="" style={{height: "15vh", width: "15vh"}}/>
             <div className='ps-3 col'>
                 <div className='d-flex align-items-center ps-2'>
                 <p className='fs-2'>{auction.Name}</p>

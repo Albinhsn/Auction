@@ -196,7 +196,10 @@
         "StartTime": "2021-12-10T23:00:00.000Z",
         "PurchaseNow": 1100,
         "MinimalBid": 440,
-        "Seller": 10
+        "Seller": 10,
+        "Images": [
+            "https://obj.fotosidan.se/obj/docpart/b3/b3311dc2efd2f8305b3c7de13f90b621.jpg"
+        ]
     },
     {
         "Id": 10,
@@ -221,8 +224,7 @@
         "MinimalBid": 700,
         "Seller": 17,
         "Images": [
-            "https://www.kamerabild.se/sites/kamerabild.se/files/styles/teaser_500/public/field/image/sonya68_0.jpg?itok=rnOVyhVa",
-            "https://www.sony.se/image/e45d80fd87f4b0b5b772363a94f39c1b?fmt=pjpeg&wid=1200&hei=470&bgcolor=F1F5F9&bgc=F1F5F9"
+            "https://obj.fotosidan.se/obj/docpart/b3/b3311dc2efd2f8305b3c7de13f90b621.jpg"
         ]
     },
     {
@@ -570,7 +572,7 @@
         "Winner": 8,
         "Seller": 9,
         "Images": [
-            "https://www.cnet.com/a/img/resize/7f7091ca83190b3f19d3dc044fb6fe728f4a8c3b/hub/2011/02/01/99a6c8c5-8bb7-11e3-a24e-d4ae52e62bcc/33984466_OVR.png?auto=webp&fit=crop&height=675&width=1200",
+            
             "https://cdn-4.nikon-cdn.com/e/Q5NM96RZZo-YRYNeYvAi9aeqFMY3fvEkMLBGAiSy_A2cHTS06eskuPufRYp4E2az_GNSUXRk1l1MHGp9Mr7pSQXa7yWyx9cG/Views/26198_L22_34r_lo.png"
         ]
     },
