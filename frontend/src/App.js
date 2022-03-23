@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap';
 import "./App.css"
 import {useState} from 'react'
-
+import auctions from './Auctions/auctions.json'
 
 //Pages and Components import
 import Navbar from './Components/Navbar'
@@ -35,7 +35,7 @@ function App() {
           <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction/>}/>
           <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId}/>}/>
-          <Route path="/profile/auction" element={<MyAuctions/>}/>
+          <Route path="/profile/auction" element={<MyAuctions auctions={auctions}/>}/>
           <Route path="/create/auction" element={<CreateAuction/>}/>
         </Routes>
         <Footer/>

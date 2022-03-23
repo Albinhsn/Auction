@@ -7,7 +7,7 @@ export default function MyAuctionsCard({auction}){
 
     return(
         <div className='d-flex border border-dark'>    
-            <img src={auction.Img} placeholder="" style={{height: "15vh", width: "15vh"}}/>
+            <img src={auction.Images[0]} placeholder="" style={{height: "15vh", width: "15vh"}}/>
             <div className='ps-3 col'>
                 <div className='d-flex align-items-center ps-2'>
                 <p className='fs-2'>{auction.Name}</p>
