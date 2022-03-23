@@ -1,12 +1,12 @@
-const usersNames = ["Albin", "Jesper", "Adrian", "Aiden", "Russel", "Charlie", "Shaun", "Jenna", "Hugh", "Alvin", "Leroy", "George", "Lex", "Lee", "Alicia", "Isabelle", "Ellie", "Joe", "Samuel", "Gustav"]
-
+const usersnames = ["Albin", "Jesper", "Adrian", "Aiden", "Russel", "Charlie", "Shaun", "Jenna", "Hugh", "Alvin", "Leroy", "George", "Lex", "Lee", "Alicia", "Isabelle", "Ellie", "Joe", "Samuel", "Gustav"]
+let passwords = ["dump","support","listen","drain","deprivation","draw","chemistry","convert","wedding","experiment","quarrel","bounce","scream","reform","due","series","lunch","range","ice", "horn"]
 let objs = []
-for(i = 0; i<usersNames.length; i++){
+for(i = 0; i<usersnames.length; i++){
     let obj = {
         Id: i+1,
-        Name: usersNames[i],
-        Email: `${usersNames[i]}@gmail.com`,
-
+        Name: usersnames[i],
+        Email: `${usersnames[i]}@gmail.com`,
+        Password: passwords[i]
     }
     objs.push(obj)
 }
