@@ -1,122 +1,189 @@
 [
     {
         "Id": 1,
-        "Username": "Albin",
+        "Name": "Albin",
         "Email": "Albin@gmail.com",
-        "Password": "dump"
+        "Password": "dump",
+        "Favorites": [
+            0
+        ]
     },
     {
         "Id": 2,
-        "Username": "Jesper",
+        "Name": "Jesper",
         "Email": "Jesper@gmail.com",
-        "Password": "support"
+        "Password": "support",
+        "Favorites": [
+            4,
+            18,
+            17
+        ]
     },
     {
         "Id": 3,
-        "Username": "Adrian",
+        "Name": "Adrian",
         "Email": "Adrian@gmail.com",
-        "Password": "listen"
+        "Password": "listen",
+        "Favorites": []
     },
     {
         "Id": 4,
-        "Username": "Aiden",
+        "Name": "Aiden",
         "Email": "Aiden@gmail.com",
-        "Password": "drain"
+        "Password": "drain",
+        "Favorites": [
+            29,
+            28
+        ]
     },
     {
         "Id": 5,
-        "Username": "Russel",
+        "Name": "Russel",
         "Email": "Russel@gmail.com",
-        "Password": "deprivation"
+        "Password": "deprivation",
+        "Favorites": []
     },
     {
         "Id": 6,
-        "Username": "Charlie",
+        "Name": "Charlie",
         "Email": "Charlie@gmail.com",
-        "Password": "draw"
+        "Password": "draw",
+        "Favorites": [
+            20,
+            11
+        ]
     },
     {
         "Id": 7,
-        "Username": "Shaun",
+        "Name": "Shaun",
         "Email": "Shaun@gmail.com",
-        "Password": "chemistry"
+        "Password": "chemistry",
+        "Favorites": [
+            29,
+            19
+        ]
     },
     {
         "Id": 8,
-        "Username": "Jenna",
+        "Name": "Jenna",
         "Email": "Jenna@gmail.com",
-        "Password": "convert"
+        "Password": "convert",
+        "Favorites": [
+            20
+        ]
     },
     {
         "Id": 9,
-        "Username": "Hugh",
+        "Name": "Hugh",
         "Email": "Hugh@gmail.com",
-        "Password": "wedding"
+        "Password": "wedding",
+        "Favorites": [
+            5
+        ]
     },
     {
         "Id": 10,
-        "Username": "Alvin",
+        "Name": "Alvin",
         "Email": "Alvin@gmail.com",
-        "Password": "experiment"
+        "Password": "experiment",
+        "Favorites": [
+            20,
+            19,
+            5
+        ]
     },
     {
         "Id": 11,
-        "Username": "Leroy",
+        "Name": "Leroy",
         "Email": "Leroy@gmail.com",
-        "Password": "quarrel"
+        "Password": "quarrel",
+        "Favorites": [
+            24
+        ]
     },
     {
         "Id": 12,
-        "Username": "George",
+        "Name": "George",
         "Email": "George@gmail.com",
-        "Password": "bounce"
+        "Password": "bounce",
+        "Favorites": [
+            5
+        ]
     },
     {
         "Id": 13,
-        "Username": "Lex",
+        "Name": "Lex",
         "Email": "Lex@gmail.com",
-        "Password": "scream"
+        "Password": "scream",
+        "Favorites": [
+            17
+        ]
     },
     {
         "Id": 14,
-        "Username": "Lee",
+        "Name": "Lee",
         "Email": "Lee@gmail.com",
-        "Password": "reform"
+        "Password": "reform",
+        "Favorites": [
+            19
+        ]
     },
     {
         "Id": 15,
-        "Username": "Alicia",
+        "Name": "Alicia",
         "Email": "Alicia@gmail.com",
-        "Password": "due"
+        "Password": "due",
+        "Favorites": [
+            3,
+            19,
+            14,
+            12,
+            10
+        ]
     },
     {
         "Id": 16,
-        "Username": "Isabelle",
+        "Name": "Isabelle",
         "Email": "Isabelle@gmail.com",
-        "Password": "series"
+        "Password": "series",
+        "Favorites": [
+            5,
+            20
+        ]
     },
     {
         "Id": 17,
-        "Username": "Ellie",
+        "Name": "Ellie",
         "Email": "Ellie@gmail.com",
-        "Password": "lunch"
+        "Password": "lunch",
+        "Favorites": [
+            22,
+            13
+        ]
     },
     {
         "Id": 18,
-        "Username": "Joe",
+        "Name": "Joe",
         "Email": "Joe@gmail.com",
-        "Password": "range"
+        "Password": "range",
+        "Favorites": []
     },
     {
         "Id": 19,
-        "Username": "Samuel",
+        "Name": "Samuel",
         "Email": "Samuel@gmail.com",
-        "Password": "ice"
+        "Password": "ice",
+        "Favorites": []
     },
     {
         "Id": 20,
-        "Username": "Gustav",
+        "Name": "Gustav",
         "Email": "Gustav@gmail.com",
-        "Password": "horn"
+        "Password": "horn",
+        "Favorites": [
+            1,
+            16,
+            29
+        ]
     }
 ]

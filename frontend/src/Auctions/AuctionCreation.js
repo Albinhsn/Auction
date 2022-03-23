@@ -66,7 +66,8 @@ let imgs = {
     ],
 }
 
-
+//Auctionstype
+const auctionType = ["Engelsk", "Holländsk", "SMRA", "Schweizisk"]
 
 //Conditions
 const conditions = ["Utmärkt", "Bra", "Dåligt", "Hygglig", "Perfekt"]
@@ -132,6 +133,8 @@ for(i = 1; i<31; i++){
         B.push(o)
     }
     
+    //Get random auctionType
+
 
     let obj = {
         Id: i,
@@ -145,7 +148,9 @@ for(i = 1; i<31; i++){
         MinimalBid: price,
         Winner: W,
         Seller: Sell,
-        Images: imgs[Title]
+        Images: imgs[Title],
+        Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        AuctionType: auctionType[Math.floor(Math.random() * auctionType.length)]
     }
     objs.push(obj)
 }
