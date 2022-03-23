@@ -3,8 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap';
 import "./App.css"
-import {useState} from 'react'
-
+import {useEffect, useState} from 'react'
 
 //Pages and Components import
 import Navbar from './Components/Navbar'
@@ -23,13 +22,14 @@ import CreateAuction from './Pages/CreateAuction';
 function App() {
 
   const [authId, setAuthId] = useState('')
+
   return (
     <BrowserRouter>
       <div className="d-flex flex-column" style={{height: "100vh"}}>
         <Navbar authId={authId} setAuthId={setAuthId}/>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/profile" element={<Profile authId={authId}/>}/>
           <Route path="/login" element={<Login setAuthId={setAuthId}/>}/>
           <Route path="/search" element={<Search/>}/>
           <Route path="/searchBar" element={<SearchBar/>}/>
