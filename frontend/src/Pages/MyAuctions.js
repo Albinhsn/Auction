@@ -1,9 +1,14 @@
 import React from 'react'
 import MyAuctionsCard from '../Components/MyAuctionsCard'
 
-export default function MyAuctions({auctions}){
+export default function MyAuctions({auctions, authId}){
     
-
+    if(!authId){
+        return(
+            <>
+            </>
+        )
+    }
 
     return (
         <div className='d-flex justify-content-center'>
@@ -17,12 +22,28 @@ export default function MyAuctions({auctions}){
                 </div>
                 
                 {auctions.map(auction => {
-                    return(
-                        <div className='pt-3' key={auction.Name}>
-                            <MyAuctionsCard auction={auction}/>
-                        </div>
-                    )
                     
+                    if(auction.Seller === authId){
+                        return(
+                            <div className='pt-3' key={auction.Id}>
+                                <MyAuctionsCard key={auction.Id} auction={auction}/>
+                            </div>
+                        )
+                    }
+                    return(
+                        auction.Bidhistory.map(bid => {
+                            
+                            if (bid.Id === authId) {
+                                console.log(bid.Id, authId)
+                                return (
+                                    <div className='pt-3' key={auction.Id}>
+                                        <MyAuctionsCard key={auction.Id} auction={auction} />
+                                    </div>
+                                )
+                            }
+
+                        })
+                    )   
                 })}
             </div>
         </div>

@@ -35,7 +35,7 @@ function App() {
           <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction/>}/>
           <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId}/>}/>
-          <Route path="/profile/auction" element={<MyAuctions auctions={auctions}/>}/>
+          <Route path="/profile/auction" element={<MyAuctions auctions={auctions} authId={authId}/>}/>
           <Route path="/create/auction" element={<CreateAuction/>}/>
         </Routes>
         <Footer/>

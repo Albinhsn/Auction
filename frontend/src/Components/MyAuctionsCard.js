@@ -4,25 +4,29 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 export default function MyAuctionsCard({auction}){
     const [favorite, setFavorite] = useState(auction.Favorite)
+    
+    let hbid = auction.MinimalBid
+    if(auction.Bidhistory.length > 0){
+        hbid = auction.Bidhistory[auction.Bidhistory.length - 1].Bid
+        
+    }
 
     return(
         <div className='d-flex border border-dark'>    
             <img src={auction.Images[0]} placeholder="" style={{height: "15vh", width: "15vh"}}/>
             <div className='ps-3 col'>
                 <div className='d-flex align-items-center ps-2'>
-                <p className='fs-2'>{auction.Name}</p>
-                <p className='ps-3 pt-1'>STATUS: {auction.State} - {auction.Time}</p>
+                <p className='fs-2'>{auction.Title}</p>
+                <p className='ps-3 pt-1'>STATUS: {auction.State} - {auction.StopTime}</p>
                 </div>
                 <div className='d-flex'>
-                    <p className='ps-3'>Bud: {auction.Bid} SEK - Köp nu: {auction.Purchase} SEK</p> 
+                    <p className='ps-3'>Bud: {auction.hbid} SEK - Köp nu: {auction.Purchase} SEK</p> 
                 </div>
                 <div className='d-flex'>
                     <p className='ps-3'>Skick: {auction.Condition}</p>
                     <FontAwesomeIcon icon={faHeart} className="ps-3 fa-xl" style={{color: favorite}} onClick={() => setFavorite((favorite) => (favorite === "red" ? "black" : "red"))}/>
-                </div>
-                <div className='col-4'>
-                    <p className='d-flex' style={{fontSize: "1.5vh"}}>{auction.Description}</p>
-                </div>
+                </div>               
+                <p className='d-flex' style={{ fontSize: "1.5vh" }}>{auction.Description}</p>
             </div>                     
         </div>
     )
