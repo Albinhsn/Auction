@@ -14,7 +14,7 @@ export default function Navbar({authId, setAuthId}) {
           <li><Link to={"/profile/auction"} className="nav-link">Mina Auktioner</Link></li>
           <li><Link to={"/create/auction"} className="nav-link">Skapa Auktion</Link></li>
           <li className="nav-item"><Link to={"/profile"} className="nav-link">Profile</Link></li>
-          <li className='nav-item' onClick={() => setAuthId('')}>Logga ut</li>
+          <li className='nav-item' onClick={() => setAuthId('')}><Link to={"/"} className='nav-link'>Logga ut</Link></li>
         </ul>
   </nav>
     :
