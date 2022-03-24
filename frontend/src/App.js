@@ -19,6 +19,8 @@ import SearchBar from './Components/SearchBar';
 import CreateAuction from './Pages/CreateAuction';
 import auctionJSON from './Auctions/auctions.json'
 import userJSON from './Users/users.json'
+
+
 function App() {
 
   const [authId, setAuthId] = useState('')

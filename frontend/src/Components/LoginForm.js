@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 import {useNavigate} from 'react-router'
 import {GoogleLogin } from 'react-google-login'
 
+
 export default function LoginForm({users, setAuthId, setUsers}) {
-    console.log(process.env.AUCTIONISTA_GOOGLE_CLIENT_ID)
+
+    
     const navigate = useNavigate()
     const [loginInfo, setLoginInfo] = useState({
         Email: "",
