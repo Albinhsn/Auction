@@ -6,7 +6,7 @@ export default function MyAuctions(){
   
 
     return (
-        <div className=' d-flex justify-content-center'>
+        <div className=' d-flex justify-content-center '>
             <div className='col-6'>
                     <div className="col-12 row">
                     <div className='col-8'>
@@ -32,7 +32,6 @@ export default function MyAuctions(){
 
 
                 {auctions.map(auction => {
-                    console.log(auction.Images[0])
                     return(
                         <div className='pt-3' key={auction.Id}>
                             <SearchComponent key={auction.Id} auction={auction}/>
