@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import MyAuctionsCard from '../Components/MyAuctionsCard'
 
 export default function MyAuctions({authId, auctions}){
-    console.log(auctions)
-
     return (
         <div className='d-flex justify-content-center'>
             <div className='col-6'>

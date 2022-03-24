@@ -5,31 +5,35 @@ import * as utils from '../Helpers/utils'
 
 
 
-export default function MyAuctions({auctions, user}){
+export default function Search({auctions, user}){
     
     const search = new URLSearchParams(window.location.search).get("search")
 
     const [localAuc, setAuc] = useState([])
-    useEffect(() => setAuc(auctions),[])
+    useEffect(() => {
+        if(localAuc.length == 0){
+            setAuc(auctions)
+        }
+    },[])
     const FilterAuc = (type) =>{
-        console.log("HAHAHA")
+        var newLoc = []
         switch(type){
             case "Price":
-                setAuc(utils.PriceSort(localAuc))
+                newLoc = utils.PriceSort([...localAuc])
                 break;
             case "Quality":
-                setAuc(utils.QualitySort(localAuc))
+                newLoc = utils.QualitySort([...localAuc])
                 break;
             case "Time":
-                setAuc(utils.DateSortEnd(localAuc))
+                newLoc = utils.DateSortEnd([...localAuc])
                 break;
-            default:
-                break;
-        }
+                default:
+                    newLoc = localAuc
+                    break;
+                }
+                setAuc(newLoc)
     }
     return (
-        
-        
         <div className=' d-flex justify-content-center '>
             <div className='col-6'>
                     <div className="col-12 row">
@@ -54,17 +58,15 @@ export default function MyAuctions({auctions, user}){
                     
 
 
-                {localAuc.map(auction => {
-                    
+                {
+                localAuc.map(auction => {
                     if(auction.Title.toLowerCase().includes(search.toLowerCase())){
                         return (
                             <div className='pt-3' key={auction.Id}>
                                 <SearchComponent key={auction.Id} auction={auction} user={user} />
                             </div>
                         )
-                    }
-                    
-                    
+                    }  
                 })}
             </div>
         </div>
