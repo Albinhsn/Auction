@@ -46,7 +46,7 @@ export default function MyAuctions({auctions, user}){
                     </a>
 
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a className="dropdown-item" onClick={() => FilterAuc("Price")} >Price</a></li>
+                        <li><a className="dropdown-item" onClick={e => {e.preventDefault; FilterAuc("Price");}} >Price</a></li>
                         <li><a className="dropdown-item" onClick={() =>FilterAuc("Quality")} >Quality</a></li>
                         <li><a className="dropdown-item" onClick={() =>FilterAuc("Time")} >Time</a></li>
                         </ul>

@@ -5,13 +5,13 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 export default function MyAuctionsCard({auction}){
     const [favorite, setFavorite] = useState(auction.Favorite)
-    
     let hbid = auction.MinimalBid
-    if(auction.Bidhistory.length > 0){
-        hbid = auction.Bidhistory[auction.Bidhistory.length - 1].Bid
-        
+    if(auction.Bidhistory){
+        if(auction.Bidhistory.length > 0){
+                hbid = auction.Bidhistory[auction.Bidhistory.length - 1].Bid
+                
+            }
     }
-
     return(
         <div className='d-flex border border-dark'>    
             <img src={auction.Images[0].original} placeholder="" style={{height: "15vh", width: "15vh"}}/>

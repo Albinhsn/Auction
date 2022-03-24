@@ -4,7 +4,7 @@ import MyAuctionsCard from '../Components/MyAuctionsCard'
 
 export default function MyAuctions({authId, auctions}){
     console.log(auctions)
-    console.log(authId)
+
     return (
         <div className='d-flex justify-content-center'>
             <div className='col-6'>
@@ -22,7 +22,6 @@ export default function MyAuctions({authId, auctions}){
                 
                 {auctions.map(auction => {
                    
-                    
                     if(auction.Seller === authId || auction.Winner === authId){
                         return(
                             <div className='pt-3' key={auction.Id}>
@@ -30,6 +29,7 @@ export default function MyAuctions({authId, auctions}){
                             </div>
                         )
                     }
+                    if(auction.length > 0){
                     return(
                         auction.Bidhistory.map(bid => {
                             
@@ -43,8 +43,10 @@ export default function MyAuctions({authId, auctions}){
                             }
 
                         })
-                    )   
+                    ) 
+                } 
                 })}
+                
             </div>
         </div>
     )
