@@ -3,49 +3,90 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
 
-export default function EnglishAuction({auction, setAuctions, user}) {
+export default function EnglishAuction({auction, setAuctions, user, auctions, favo}) {
     
     
-    //Set useState favorite to "red" if favorite
-    const [favorite, setFavorite] = useState("black")
-    const [watchlist, setWatchlist] = useState(false)
-    const [currentBid, setCurrentBid] = useState(120)
+   
+    const [favorite, setFavorite] = useState()
+    const [watchlist, setWatchlist] = useState(false)    
     const [userBid, setUserBid] = useState(0)
-    let [bidHistory, setbidHistory] = useState([])
 
+    const [currentBid, setCurrentBid] = useState(0)
+    const [bidHistory, setBidhistory] = useState([])
     
-    //Fixa så nuvarande bud är från bidhistory/minimum bud
-    //Ändra så att auktionen i auctions stämmer överens, lägg till i bidhistory
-    //Lägg till i min auktioner för user
-    
-    if(Object.keys(auction).length === 0) return null
-    auction.BidHistory.map(bid =>{
-        bidHistory = [...bidHistory, bid]
+    useEffect(() => {
+        if(favo && !favorite){
+            setFavorite(favo)
+        } 
+        if (currentBid === 0 && Object.keys(auction).length > 0){
+            setCurrentBid(auction.MinimalBid)
+            if(auction.BidHistory.length > 0 ) {
+                setBidhistory(auction.BidHistory)
+                setCurrentBid(auction.BidHistory[auction.BidHistory.length - 1].Bid)
+            }
+           
+        }
     })
     
+    if (Object.keys(auction).length === 0)return null
+    //Lägg till i mina auktioner för user
+    
+
+   
+
+    
+
+    
+
     const favoriteChange = () => {
-        setFavorite((favorite) => (favorite === "red" ? "black" : "red"))
-        if(favorite === "black"){
-            user.Favorites.push(auction)
+        if(!user) return
+        setFavorite((favorite) => (favorite === "red" ? "black" : "red"))        
+        if(favorite === "black" || !favorite){
+            user.Favorites.push(auction.Id)
+            console.log("added to favorite")
+            console.log(user.Favorites)
             return
         }
         for(let i = 0; i<user.Favorites.length; i++){
-            if (user.Favorites[i] === auction){
+            if (user.Favorites[i] === auction.Id){
                 user.Favorites.splice(i, 1)
+                console.log("removed from favorite")
+                console.log(user.Favorites)
             }
         }
     }
     const madeBid = () => {
-        console.log(currentBid, userBid)
+        if(!user) return
         if(currentBid > userBid + 10){
             alert("Vänligen mata in över minsta bud")
             return
         }
-
+        setCurrentBid(userBid)
+        setBidhistory([...bidHistory, {
+            Id: user.Id,
+            Bid: userBid,
+            Time: new Date().toString()
+        }])
+        auction.BidHistory = [...bidHistory, {
+            Id: user.Id,
+            Bid: userBid,
+            Time: new Date().toString()
+        }]
+        for(let i = 0; i<auctions.length; i++){
+            if(auctions[i].Id === auction.Id){
+                auctions[i].BidHistory = auction.BidHistory
+                setAuctions(auctions)
+                document.querySelector("#bid-input").value = ""
+                return
+            }
+        }
     }
 
     const watchlistChange = () => {
         setWatchlist(!watchlist)
+        if(watchlist){
+            alert("Du kommer få en mail påminnelse 2 timmar innan auktionens avslut")
+        }
     }
     return (
         <div className='d-flex align-items-center'>
@@ -104,7 +145,7 @@ export default function EnglishAuction({auction, setAuctions, user}) {
                                     <p className='fw-bold text-uppercase'>Nuvarande bud</p>
                                     <div className='d-flex align-items-center'>
                                         <p className='text-success fs-1 mb-0'>
-                                            120 SEK
+                                            {currentBid}
                                         </p>
                                         <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => favoriteChange()} style={{ color: `${favorite}` }} />
                                         <button className='btn btn-warning ms-3' type="button" onClick={() => watchlistChange()}>
@@ -112,8 +153,8 @@ export default function EnglishAuction({auction, setAuctions, user}) {
                                         </button>
                                     </div>
                                     <div className='d-flex'>
-                                        <input type="number" id="bid-input" placeholder="Minsta bud: 130" 
-                                            onChange={e => setUserBid(e.target.value)}
+                                        <input type="number" id="bid-input" className="" placeholder={`Minsta bud: ${currentBid + 10}`}
+                                            onChange={e => setUserBid(parseInt(e.target.value))}
                                         />
                                         <button type="button" className="btn btn-warning ms-3"
                                             onClick={() => madeBid()}

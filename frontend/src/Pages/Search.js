@@ -4,7 +4,6 @@ import SearchComponent from '../Components/SearchComponent'
 export default function MyAuctions({auctions, user}){
     
     const search = new URLSearchParams(window.location.search).get("search")
-    console.log(search)
     
 
     return (
