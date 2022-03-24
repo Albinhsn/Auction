@@ -42,6 +42,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
             Favorites: []
         }])
         setAuthId(data.profileObj.googleId)
+        console.log(data.profileObj)
         navigate("/")
     }
     return (

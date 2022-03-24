@@ -1,14 +1,14 @@
 
 import ProfileInfo from '../Components/ProfileInfo'
 import {useState, useEffect, React} from 'react'
-import userJSON from '../Users/users.json'
+
 import ChangeProfileInfoForm from '../Components/ChangeProfileInfoForm'
-export default function Profile({authId}) {
+export default function Profile({authId, users, setUsers}) {
   
   const [user, setUser] = useState({})
-  
+  console.log(users)
   useEffect(() => {
-    userJSON.map(u => {
+    users.map(u => {
       if(u.Id === authId){
         setUser(u)
       }
@@ -24,7 +24,7 @@ export default function Profile({authId}) {
               <div className='row mt-5'>
                 <ProfileInfo user={user}/>
 
-                <ChangeProfileInfoForm user={user}/>
+                <ChangeProfileInfoForm authId={authId} users={users} setUsers={setUsers}/>
               </div>
             </div>
           </div> 

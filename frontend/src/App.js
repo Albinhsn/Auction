@@ -32,16 +32,15 @@ function App() {
     setAuctions(auctionJSON)
     setUsers(userJSON)
   }, [])
-
   return (
     <BrowserRouter>
       <div className="d-flex flex-column" style={{height: "100vh"}}>
         <Navbar authId={authId} setAuthId={setAuthId}/>
         <Routes>
           <Route index element={<Home auctions={auctions}/>} />
-          <Route path="/profile" element={<Profile authId={authId}/>}/>
+          <Route path="/profile" element={<Profile authId={authId} users={users} setUsers={setUsers}/>}/>
           <Route path="/login" element={<Login setAuthId={setAuthId} users={users} setUsers={setUsers}/>}/>
-          <Route path="/search" element={<Search auctions={auctions}/>}/>
+          <Route path="/search" element={<Search auctions={auctions} users={users}/>}/>
           <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction auctions={auctions} users={users} authId={authId} setAuctions={setAuctions}/>}/>
           <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId} setUsers={setUsers} users={users}/>}/>

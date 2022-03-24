@@ -5,7 +5,7 @@ import * as utils from '../Helpers/utils'
 
 
 
-export default function Search({auctions, user}){
+export default function Search({auctions, user, users}){
     
     const search = new URLSearchParams(window.location.search).get("search")
 
@@ -63,7 +63,7 @@ export default function Search({auctions, user}){
                     if(auction.Title.toLowerCase().includes(search.toLowerCase())){
                         return (
                             <div className='pt-3' key={auction.Id}>
-                                <SearchComponent key={auction.Id} auction={auction} user={user} />
+                                <SearchComponent key={auction.Id} auction={auction} user={user} users={users}/>
                             </div>
                         )
                     }  

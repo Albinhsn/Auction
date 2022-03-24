@@ -1,6 +1,6 @@
 
 import { React, useState} from 'react'
-export default function ChangeProfileInfoForm({user}) {
+export default function ChangeProfileInfoForm({authId, users, setUsers}) {
     
 
     
@@ -12,20 +12,52 @@ export default function ChangeProfileInfoForm({user}) {
         ConfirmPassword: ""
     })
 
-    const saveChanges = () => {
-        if (formInput.Email === "" || formInput.ConfirmEmail === "" || formInput.Password === "" || formInput.ConfirmPassword === "" ){
-            alert("Tom inmatning")
+    const savePassword = () => {
+        if (formInput.Password === "" || formInput.ConfirmPassword === "" || formInput.ConfirmPassword != formInput.Password){
+            handleWrongInput()
+            emptyForms("password")
             return
         }
-        if(formInput.Email != formInput.ConfirmEmail || formInput.Password != formInput.ConfirmPassword ){
-            alert("Inmatningen stämmer inte överens")
-            return
+        for(let i = 0; i<users.length; i++){
+            let user = users[i]
+            user.Password = formInput.Password
+            users[i] = user
+            updateUsers(user, "password")
         }
-
-        //Change object to correct information
         
     }
 
+    const updateUsers = (u, type) => {
+        setUsers(u)
+        emptyForms(type)
+    }
+
+    const emptyForms = (type) => {
+        document.querySelector(`#${type}`).value = ""
+        document.querySelector(`#confirm-${type}`).value = ""
+    }
+    const handleWrongInput = (type) => {
+        alert("Tom/Fel inmatning")
+        
+    }
+
+
+    const saveEmail = () => {
+        if (formInput.Email === "" || formInput.ConfirmEmail === "" || formInput.ConfirmEmail != formInput.Email){
+            handleWrongInput()
+            emptyForms("email")
+            return
+        }
+        for(let i = 0; i<users.length; i++){
+            if(authId === users[i].Id){
+                let user = users[i]
+                user.Email = formInput.Email
+                users[i] =  user
+                updateUsers(users, "email")
+                console.log(users)
+            }
+        }
+    }
 
     return (
         <div className='col-7 bg-light'>
@@ -49,6 +81,13 @@ export default function ChangeProfileInfoForm({user}) {
                     />
                 </div>
             </div>
+            <div className='mb-3 row'>
+                <div className='d-flex justify-content-center'>
+                    <button type="button" className='btn btn-primary' onClick={() => saveEmail()}>
+                        Byt Email
+                    </button>
+                </div>
+            </div>
             <hr />
             <div className="mb-3 row">
                 <label className="col-sm-4 col-form-label">
@@ -59,6 +98,7 @@ export default function ChangeProfileInfoForm({user}) {
                         onChange={e => setFormInput({ ...formInput, Password: e.target.value })}
                     />
                 </div>
+                
             </div>
             <div className="mb-3 row">
                 <label className="col-sm-4 col-form-label">
@@ -72,8 +112,8 @@ export default function ChangeProfileInfoForm({user}) {
             </div>
             <hr />
             <div className='d-flex justify-content-center'>
-                <button type="button" className='btn btn-primary' onClick={() => saveChanges()}>
-                    Spara ändringar
+                <button type="button" className='btn btn-primary' onClick={() => savePassword()}>
+                    Byt Lösenord
                 </button>
             </div>
         </div>

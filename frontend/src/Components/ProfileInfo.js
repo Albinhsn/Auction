@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function ProfileInfo({user}) {
+    console.log(user)
     return (
         <div className='col-5 bg-light'>
             <p className='fw-bold'>

@@ -1,2 +1,2 @@
-str = "Panasonic"
-console.log(str.includes("P"))
+const d = new Date()
+console.log(d.toLocaleDateString("en-US"))
