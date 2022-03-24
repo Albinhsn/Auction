@@ -3,55 +3,76 @@
         "Id": 1,
         "BidHistory": [
             {
-                "Id": 3,
-                "Bid": 450,
-                "Time": "2022-03-25T23:00:00.000Z"
-            },
-            {
-                "Id": 5,
-                "Bid": 460,
-                "Time": "2022-03-25T23:00:00.000Z"
-            },
-            {
-                "Id": 7,
-                "Bid": 470,
-                "Time": "2022-03-25T23:00:00.000Z"
+                "Id": 15,
+                "Bid": 910,
+                "Time": "2022-04-06T22:00:00.000Z"
             }
         ],
         "State": "Pågående",
-        "Title": "Canon Eos 400D",
-        "Condition": "Bra",
-        "StopTime": "2022-04-02T22:10:25.688Z",
-        "StartTime": "2022-03-26T23:00:00.000Z",
-        "PurchaseNow": 1100,
-        "MinimalBid": 440,
-        "Seller": 13,
+        "Title": "Canon PowerShot g7 Mark III",
+        "Condition": "Perfekt",
+        "StopTime": "2022-04-15T11:43:33.761Z",
+        "StartTime": "2022-04-07T22:00:00.000Z",
+        "PurchaseNow": 2250,
+        "MinimalBid": 900,
+        "Seller": 6,
         "Images": [
             {
-                "original": "https://smartson.se/dA/7e73774ab4/front620-9.jpg",
+                "original": "https://www.fotokungen.com/pub_images/large/G7XMIIIsvart.jpg",
                 "thumbnail": ""
             }
         ],
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "SMRA"
+        "AuctionType": "Holländsk"
     },
     {
         "Id": 2,
         "BidHistory": [
             {
-                "Id": 14,
-                "Bid": 820,
-                "Time": "2022-04-13T22:00:00.000Z"
+                "Id": 12,
+                "Bid": 310,
+                "Time": "2022-03-19T23:00:00.000Z"
+            },
+            {
+                "Id": 16,
+                "Bid": 320,
+                "Time": "2022-03-19T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Canon PowerShot g7 Mark III",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-03-29T17:07:29.580Z",
+        "StartTime": "2022-03-21T23:00:00.000Z",
+        "PurchaseNow": 750,
+        "MinimalBid": 300,
+        "Seller": 20,
+        "Images": [
+            {
+                "original": "https://www.fotokungen.com/pub_images/large/G7XMIIIsvart.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Engelsk"
+    },
+    {
+        "Id": 3,
+        "BidHistory": [
+            {
+                "Id": 11,
+                "Bid": 340,
+                "Time": "2022-03-24T23:00:00.000Z"
             }
         ],
         "State": "Pågående",
         "Title": "Pentax K7",
-        "Condition": "Utmärkt",
-        "StopTime": "2022-04-23T08:55:18.482Z",
-        "StartTime": "2022-04-15T22:00:00.000Z",
-        "PurchaseNow": 2025,
-        "MinimalBid": 810,
-        "Seller": 28,
+        "Condition": "Hygglig",
+        "StopTime": "2022-04-04T12:53:44.094Z",
+        "StartTime": "2022-03-27T22:00:00.000Z",
+        "PurchaseNow": 825,
+        "MinimalBid": 330,
+        "Seller": 1,
         "Images": [
             {
                 "original": "https://www.cyberphoto.se/storage/77D5CF565E59C3FFF3469F0E97002BB52653F7F746A779D4C08686EF2E46F71D/0c2f363bfdac45af822c52a1f7102254/jpg/media/a75f5758cd5441d1ad48dc3dece23865/K-71855-product_2.jpg",
@@ -66,92 +87,48 @@
         "AuctionType": "SMRA"
     },
     {
-        "Id": 3,
-        "BidHistory": [
-            {
-                "Id": 1,
-                "Bid": 310,
-                "Time": "2022-03-21T23:00:00.000Z"
-            }
-        ],
-        "State": "Pågående",
-        "Title": "Nikon 800D",
-        "Condition": "Perfekt",
-        "StopTime": "2022-04-01T02:33:18.348Z",
-        "StartTime": "2022-03-24T23:00:00.000Z",
-        "PurchaseNow": 750,
-        "MinimalBid": 300,
-        "Seller": 6,
-        "Images": [
-            {
-                "original": "https://www.europe-nikon.com/tmp/EU/2419865273/3760176746/2327365364/27184057/1391280926/2780083465/1053240650/3915156789/2964121563/3036989078/1975208020.png",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Engelsk"
-    },
-    {
         "Id": 4,
-        "BidHistory": [
-            {
-                "Id": 15,
-                "Bid": 150,
-                "Time": "2021-12-26T23:00:00.000Z"
-            }
-        ],
+        "BidHistory": [],
         "State": "Slut",
-        "Title": "Canon Eos 400D",
-        "Condition": "Hygglig",
-        "StopTime": "2022-01-07T01:37:48.735Z",
-        "StartTime": "2021-12-30T23:00:00.000Z",
-        "PurchaseNow": 350,
-        "MinimalBid": 140,
-        "Winner": 22,
-        "Seller": 12,
+        "Title": "Nikon D60",
+        "Condition": "Perfekt",
+        "StopTime": "2022-02-08T03:26:29.333Z",
+        "StartTime": "2022-01-31T23:00:00.000Z",
+        "PurchaseNow": 1225,
+        "MinimalBid": 490,
+        "Winner": 23,
+        "Seller": 20,
         "Images": [
             {
-                "original": "https://smartson.se/dA/7e73774ab4/front620-9.jpg",
+                "original": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Nikon_D60_body_front.jpg",
                 "thumbnail": ""
             }
         ],
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Schweizisk"
+        "AuctionType": "Holländsk"
     },
     {
         "Id": 5,
-        "BidHistory": [
-            {
-                "Id": 1,
-                "Bid": 930,
-                "Time": "2022-04-11T22:00:00.000Z"
-            },
-            {
-                "Id": 3,
-                "Bid": 940,
-                "Time": "2022-04-11T22:00:00.000Z"
-            },
-            {
-                "Id": 10,
-                "Bid": 950,
-                "Time": "2022-04-11T22:00:00.000Z"
-            }
-        ],
+        "BidHistory": [],
         "State": "Pågående",
-        "Title": "Nikon D3100",
-        "Condition": "Dåligt",
-        "StopTime": "2022-04-24T19:06:51.882Z",
-        "StartTime": "2022-04-16T22:00:00.000Z",
-        "PurchaseNow": 2300,
-        "MinimalBid": 920,
-        "Seller": 19,
+        "Title": "Canon Eos 550D",
+        "Condition": "Bra",
+        "StopTime": "2022-04-21T23:35:08.320Z",
+        "StartTime": "2022-04-14T22:00:00.000Z",
+        "PurchaseNow": 2425,
+        "MinimalBid": 970,
+        "Seller": 14,
         "Images": [
             {
-                "original": "https://www.idg.se/editorial/0/path/1.351689!imageManager/2828603199.png",
+                "original": "https://www.canon.se/media/EOS_550D_Angle2_tcm87-932852.jpg",
                 "thumbnail": ""
             },
             {
-                "original": "https://www.kenrockwell.com/nikon/d3100/D3S_8285-0600.jpg",
+                "original": "https://www.canon.se/media/EOS_550D_Angle3_tcm87-932854.jpg",
+                "thumbnail": ""
+            },
+            {
+                "original": "https://www.canon.se/media/EOS_550D_Default_tcm87-932858.jpg",
                 "thumbnail": ""
             }
         ],
@@ -162,134 +139,68 @@
         "Id": 6,
         "BidHistory": [
             {
-                "Id": 2,
-                "Bid": 110,
-                "Time": "2022-03-13T23:00:00.000Z"
-            },
-            {
                 "Id": 16,
-                "Bid": 120,
-                "Time": "2022-03-13T23:00:00.000Z"
+                "Bid": 680,
+                "Time": "2022-03-23T23:00:00.000Z"
             },
             {
-                "Id": 5,
-                "Bid": 130,
-                "Time": "2022-03-13T23:00:00.000Z"
+                "Id": 3,
+                "Bid": 690,
+                "Time": "2022-03-23T23:00:00.000Z"
             },
             {
-                "Id": 16,
-                "Bid": 140,
-                "Time": "2022-03-13T23:00:00.000Z"
+                "Id": 19,
+                "Bid": 700,
+                "Time": "2022-03-23T23:00:00.000Z"
             }
         ],
         "State": "Pågående",
-        "Title": "Nikon 800D",
-        "Condition": "Bra",
-        "StopTime": "2022-03-27T07:09:59.349Z",
-        "StartTime": "2022-03-19T23:00:00.000Z",
-        "PurchaseNow": 250,
-        "MinimalBid": 100,
-        "Seller": 13,
+        "Title": "Sony A68",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-04-06T15:39:26.316Z",
+        "StartTime": "2022-03-29T22:00:00.000Z",
+        "PurchaseNow": 1675,
+        "MinimalBid": 670,
+        "Seller": 29,
         "Images": [
             {
-                "original": "https://www.europe-nikon.com/tmp/EU/2419865273/3760176746/2327365364/27184057/1391280926/2780083465/1053240650/3915156789/2964121563/3036989078/1975208020.png",
+                "original": "https://www.cnet.com/a/img/hub/2015/11/05/553fd936-b056-4e60-b789-9efd284284a3/sony-a68-mfr-43.jpg",
                 "thumbnail": ""
             }
         ],
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "SMRA"
+        "AuctionType": "Holländsk"
     },
     {
         "Id": 7,
         "BidHistory": [
             {
-                "Id": 6,
-                "Bid": 820,
-                "Time": "2022-03-22T23:00:00.000Z"
+                "Id": 2,
+                "Bid": 880,
+                "Time": "2022-03-27T22:00:00.000Z"
             },
             {
-                "Id": 4,
-                "Bid": 830,
-                "Time": "2022-03-22T23:00:00.000Z"
+                "Id": 14,
+                "Bid": 890,
+                "Time": "2022-03-27T22:00:00.000Z"
             },
             {
-                "Id": 0,
-                "Bid": 840,
-                "Time": "2022-03-22T23:00:00.000Z"
-            },
-            {
-                "Id": 17,
-                "Bid": 850,
-                "Time": "2022-03-22T23:00:00.000Z"
+                "Id": 18,
+                "Bid": 900,
+                "Time": "2022-03-27T22:00:00.000Z"
             }
         ],
         "State": "Pågående",
-        "Title": "Nikon D5",
-        "Condition": "Perfekt",
-        "StopTime": "2022-04-06T03:34:13.827Z",
-        "StartTime": "2022-03-29T22:00:00.000Z",
-        "PurchaseNow": 2025,
-        "MinimalBid": 810,
-        "Seller": 3,
+        "Title": "Canon PowerShot g7 Mark III",
+        "Condition": "Bra",
+        "StopTime": "2022-04-11T08:07:09.377Z",
+        "StartTime": "2022-04-03T22:00:00.000Z",
+        "PurchaseNow": 2175,
+        "MinimalBid": 870,
+        "Seller": 13,
         "Images": [
             {
-                "original": "https://cdn.pocket-lint.com/r/s/970x/assets/images/136437-cameras-review-nikon-d5-review-image1-tjar8gh7sk.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Holländsk"
-    },
-    {
-        "Id": 8,
-        "BidHistory": [],
-        "State": "Slut",
-        "Title": "Pentax K7",
-        "Condition": "Perfekt",
-        "StopTime": "2022-02-24T09:36:45.850Z",
-        "StartTime": "2022-02-16T23:00:00.000Z",
-        "PurchaseNow": 2075,
-        "MinimalBid": 830,
-        "Winner": 16,
-        "Seller": 20,
-        "Images": [
-            {
-                "original": "https://www.cyberphoto.se/storage/77D5CF565E59C3FFF3469F0E97002BB52653F7F746A779D4C08686EF2E46F71D/0c2f363bfdac45af822c52a1f7102254/jpg/media/a75f5758cd5441d1ad48dc3dece23865/K-71855-product_2.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://m.media-amazon.com/images/I/91MovaJMWKL._AC_SL1500_.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Holländsk"
-    },
-    {
-        "Id": 9,
-        "BidHistory": [
-            {
-                "Id": 16,
-                "Bid": 490,
-                "Time": "2022-04-04T22:00:00.000Z"
-            },
-            {
-                "Id": 11,
-                "Bid": 500,
-                "Time": "2022-04-04T22:00:00.000Z"
-            }
-        ],
-        "State": "Pågående",
-        "Title": "Nikon D60",
-        "Condition": "Dåligt",
-        "StopTime": "2022-04-21T09:25:34.718Z",
-        "StartTime": "2022-04-13T22:00:00.000Z",
-        "PurchaseNow": 1200,
-        "MinimalBid": 480,
-        "Seller": 0,
-        "Images": [
-            {
-                "original": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Nikon_D60_body_front.jpg",
+                "original": "https://www.fotokungen.com/pub_images/large/G7XMIIIsvart.jpg",
                 "thumbnail": ""
             }
         ],
@@ -297,158 +208,58 @@
         "AuctionType": "SMRA"
     },
     {
-        "Id": 10,
+        "Id": 8,
         "BidHistory": [
             {
-                "Id": 6,
-                "Bid": 10,
-                "Time": "2022-03-28T22:00:00.000Z"
+                "Id": 5,
+                "Bid": 820,
+                "Time": "2021-12-30T23:00:00.000Z"
             },
             {
-                "Id": 12,
-                "Bid": 20,
-                "Time": "2022-03-28T22:00:00.000Z"
+                "Id": 8,
+                "Bid": 830,
+                "Time": "2021-12-30T23:00:00.000Z"
             }
         ],
-        "State": "Pågående",
-        "Title": "Canon Eos 400D",
+        "State": "Slut",
+        "Title": "Nikon D3100",
         "Condition": "Utmärkt",
-        "StopTime": "2022-04-15T06:08:28.493Z",
-        "StartTime": "2022-04-07T22:00:00.000Z",
-        "PurchaseNow": 0,
-        "MinimalBid": 0,
-        "Seller": 11,
+        "StopTime": "2022-01-15T15:37:08.387Z",
+        "StartTime": "2022-01-07T23:00:00.000Z",
+        "PurchaseNow": 2025,
+        "MinimalBid": 810,
+        "Winner": 27,
+        "Seller": 23,
         "Images": [
             {
-                "original": "https://smartson.se/dA/7e73774ab4/front620-9.jpg",
+                "original": "https://www.idg.se/editorial/0/path/1.351689!imageManager/2828603199.png",
+                "thumbnail": ""
+            },
+            {
+                "original": "https://www.kenrockwell.com/nikon/d3100/D3S_8285-0600.jpg",
                 "thumbnail": ""
             }
         ],
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Engelsk"
+        "AuctionType": "SMRA"
     },
     {
-        "Id": 11,
+        "Id": 9,
         "BidHistory": [
             {
                 "Id": 2,
-                "Bid": 820,
-                "Time": "2022-04-03T22:00:00.000Z"
-            }
-        ],
-        "State": "Pågående",
-        "Title": "Canon Eos 400D",
-        "Condition": "Dåligt",
-        "StopTime": "2022-04-22T06:32:10.323Z",
-        "StartTime": "2022-04-14T22:00:00.000Z",
-        "PurchaseNow": 2025,
-        "MinimalBid": 810,
-        "Seller": 3,
-        "Images": [
-            {
-                "original": "https://smartson.se/dA/7e73774ab4/front620-9.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Engelsk"
-    },
-    {
-        "Id": 12,
-        "BidHistory": [],
-        "State": "Slut",
-        "Title": "Canon Eos 550D",
-        "Condition": "Bra",
-        "StopTime": "2022-01-27T06:32:22.234Z",
-        "StartTime": "2022-01-19T23:00:00.000Z",
-        "PurchaseNow": 400,
-        "MinimalBid": 160,
-        "Winner": 2,
-        "Seller": 3,
-        "Images": [
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Angle2_tcm87-932852.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Angle3_tcm87-932854.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Default_tcm87-932858.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Engelsk"
-    },
-    {
-        "Id": 13,
-        "BidHistory": [
-            {
-                "Id": 1,
                 "Bid": 700,
-                "Time": "2022-03-13T23:00:00.000Z"
-            }
-        ],
-        "State": "Pågående",
-        "Title": "Pentax K7",
-        "Condition": "Hygglig",
-        "StopTime": "2022-04-03T01:09:03.379Z",
-        "StartTime": "2022-03-26T23:00:00.000Z",
-        "PurchaseNow": 1725,
-        "MinimalBid": 690,
-        "Seller": 9,
-        "Images": [
-            {
-                "original": "https://www.cyberphoto.se/storage/77D5CF565E59C3FFF3469F0E97002BB52653F7F746A779D4C08686EF2E46F71D/0c2f363bfdac45af822c52a1f7102254/jpg/media/a75f5758cd5441d1ad48dc3dece23865/K-71855-product_2.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://m.media-amazon.com/images/I/91MovaJMWKL._AC_SL1500_.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Schweizisk"
-    },
-    {
-        "Id": 14,
-        "BidHistory": [],
-        "State": "Pågående",
-        "Title": "Nikon D60",
-        "Condition": "Utmärkt",
-        "StopTime": "2022-03-30T12:46:22.676Z",
-        "StartTime": "2022-03-22T23:00:00.000Z",
-        "PurchaseNow": 2325,
-        "MinimalBid": 930,
-        "Seller": 5,
-        "Images": [
-            {
-                "original": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Nikon_D60_body_front.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Holländsk"
-    },
-    {
-        "Id": 15,
-        "BidHistory": [
-            {
-                "Id": 12,
-                "Bid": 340,
-                "Time": "2022-04-01T22:00:00.000Z"
+                "Time": "2022-04-07T22:00:00.000Z"
             }
         ],
         "State": "Pågående",
         "Title": "Nikon Coolpix L22",
-        "Condition": "Bra",
-        "StopTime": "2022-04-24T18:05:38.136Z",
+        "Condition": "Dåligt",
+        "StopTime": "2022-04-24T13:04:13.221Z",
         "StartTime": "2022-04-16T22:00:00.000Z",
-        "PurchaseNow": 825,
-        "MinimalBid": 330,
-        "Seller": 16,
+        "PurchaseNow": 1725,
+        "MinimalBid": 690,
+        "Seller": 9,
         "Images": [
             {
                 "original": "https://cdn-4.nikon-cdn.com/e/Q5NM96RZZo-YRYNeYvAi9aeqFMY3fvEkMLBGAiSy_A2cHTS06eskuPufRYp4E2az_GNSUXRk1l1MHGp9Mr7pSQXa7yWyx9cG/Views/26198_L22_34r_lo.png",
@@ -459,30 +270,193 @@
         "AuctionType": "Schweizisk"
     },
     {
-        "Id": 16,
+        "Id": 10,
+        "BidHistory": [],
+        "State": "Pågående",
+        "Title": "Nikon D60",
+        "Condition": "Perfekt",
+        "StopTime": "2022-04-19T05:05:30.125Z",
+        "StartTime": "2022-04-11T22:00:00.000Z",
+        "PurchaseNow": 325,
+        "MinimalBid": 130,
+        "Seller": 17,
+        "Images": [
+            {
+                "original": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Nikon_D60_body_front.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Schweizisk"
+    },
+    {
+        "Id": 11,
         "BidHistory": [
             {
-                "Id": 7,
-                "Bid": 620,
-                "Time": "2022-01-17T23:00:00.000Z"
+                "Id": 5,
+                "Bid": 450,
+                "Time": "2022-03-11T23:00:00.000Z"
+            },
+            {
+                "Id": 5,
+                "Bid": 460,
+                "Time": "2022-03-11T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Pentax X5",
+        "Condition": "Dåligt",
+        "StopTime": "2022-03-30T03:07:33.682Z",
+        "StartTime": "2022-03-22T23:00:00.000Z",
+        "PurchaseNow": 1100,
+        "MinimalBid": 440,
+        "Seller": 12,
+        "Images": [
+            {
+                "original": "https://m.media-amazon.com/images/I/71U4yh8ahML._AC_SX466_.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "SMRA"
+    },
+    {
+        "Id": 12,
+        "BidHistory": [
+            {
+                "Id": 9,
+                "Bid": 70,
+                "Time": "2021-12-07T23:00:00.000Z"
+            },
+            {
+                "Id": 1,
+                "Bid": 80,
+                "Time": "2021-12-07T23:00:00.000Z"
+            },
+            {
+                "Id": 0,
+                "Bid": 90,
+                "Time": "2021-12-07T23:00:00.000Z"
             }
         ],
         "State": "Slut",
-        "Title": "Pentax K7",
-        "Condition": "Perfekt",
-        "StopTime": "2022-02-10T01:11:47.489Z",
-        "StartTime": "2022-02-02T23:00:00.000Z",
-        "PurchaseNow": 1525,
-        "MinimalBid": 610,
-        "Winner": 8,
-        "Seller": 1,
+        "Title": "Nikon 800D",
+        "Condition": "Bra",
+        "StopTime": "2021-12-27T15:12:39.451Z",
+        "StartTime": "2021-12-19T23:00:00.000Z",
+        "PurchaseNow": 150,
+        "MinimalBid": 60,
+        "Winner": 1,
+        "Seller": 19,
         "Images": [
             {
-                "original": "https://www.cyberphoto.se/storage/77D5CF565E59C3FFF3469F0E97002BB52653F7F746A779D4C08686EF2E46F71D/0c2f363bfdac45af822c52a1f7102254/jpg/media/a75f5758cd5441d1ad48dc3dece23865/K-71855-product_2.jpg",
+                "original": "https://www.europe-nikon.com/tmp/EU/2419865273/3760176746/2327365364/27184057/1391280926/2780083465/1053240650/3915156789/2964121563/3036989078/1975208020.png",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Schweizisk"
+    },
+    {
+        "Id": 13,
+        "BidHistory": [
+            {
+                "Id": 18,
+                "Bid": 810,
+                "Time": "2022-03-31T22:00:00.000Z"
+            },
+            {
+                "Id": 18,
+                "Bid": 820,
+                "Time": "2022-03-31T22:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Canon Eos 550D",
+        "Condition": "Perfekt",
+        "StopTime": "2022-04-21T11:22:54.605Z",
+        "StartTime": "2022-04-13T22:00:00.000Z",
+        "PurchaseNow": 2000,
+        "MinimalBid": 800,
+        "Seller": 18,
+        "Images": [
+            {
+                "original": "https://www.canon.se/media/EOS_550D_Angle2_tcm87-932852.jpg",
                 "thumbnail": ""
             },
             {
-                "original": "https://m.media-amazon.com/images/I/91MovaJMWKL._AC_SL1500_.jpg",
+                "original": "https://www.canon.se/media/EOS_550D_Angle3_tcm87-932854.jpg",
+                "thumbnail": ""
+            },
+            {
+                "original": "https://www.canon.se/media/EOS_550D_Default_tcm87-932858.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Schweizisk"
+    },
+    {
+        "Id": 14,
+        "BidHistory": [
+            {
+                "Id": 11,
+                "Bid": 450,
+                "Time": "2022-03-07T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Canon Eos 400D",
+        "Condition": "Dåligt",
+        "StopTime": "2022-03-29T05:32:50.629Z",
+        "StartTime": "2022-03-21T23:00:00.000Z",
+        "PurchaseNow": 1100,
+        "MinimalBid": 440,
+        "Seller": 28,
+        "Images": [
+            {
+                "original": "https://smartson.se/dA/7e73774ab4/front620-9.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "SMRA"
+    },
+    {
+        "Id": 15,
+        "BidHistory": [],
+        "State": "Pågående",
+        "Title": "Nikon D60",
+        "Condition": "Bra",
+        "StopTime": "2022-04-18T19:19:10.586Z",
+        "StartTime": "2022-04-10T22:00:00.000Z",
+        "PurchaseNow": 925,
+        "MinimalBid": 370,
+        "Seller": 11,
+        "Images": [
+            {
+                "original": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Nikon_D60_body_front.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Holländsk"
+    },
+    {
+        "Id": 16,
+        "BidHistory": [],
+        "State": "Slut",
+        "Title": "Nikon D5",
+        "Condition": "Hygglig",
+        "StopTime": "2022-03-17T19:02:12.047Z",
+        "StartTime": "2022-03-09T23:00:00.000Z",
+        "PurchaseNow": 1775,
+        "MinimalBid": 710,
+        "Winner": 12,
+        "Seller": 5,
+        "Images": [
+            {
+                "original": "https://cdn.pocket-lint.com/r/s/970x/assets/images/136437-cameras-review-nikon-d5-review-image1-tjar8gh7sk.jpg",
                 "thumbnail": ""
             }
         ],
@@ -493,45 +467,65 @@
         "Id": 17,
         "BidHistory": [
             {
-                "Id": 10,
-                "Bid": 1000,
-                "Time": "2022-03-06T23:00:00.000Z"
+                "Id": 11,
+                "Bid": 850,
+                "Time": "2022-03-28T22:00:00.000Z"
             }
         ],
         "State": "Pågående",
-        "Title": "Nikon D60",
-        "Condition": "Utmärkt",
-        "StopTime": "2022-03-31T13:49:35.647Z",
-        "StartTime": "2022-03-23T23:00:00.000Z",
-        "PurchaseNow": 2475,
-        "MinimalBid": 990,
-        "Seller": 4,
+        "Title": "Canon Eos 400D",
+        "Condition": "Perfekt",
+        "StopTime": "2022-04-22T13:31:08.166Z",
+        "StartTime": "2022-04-14T22:00:00.000Z",
+        "PurchaseNow": 2100,
+        "MinimalBid": 840,
+        "Seller": 23,
         "Images": [
             {
-                "original": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Nikon_D60_body_front.jpg",
+                "original": "https://smartson.se/dA/7e73774ab4/front620-9.jpg",
                 "thumbnail": ""
             }
         ],
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "SMRA"
+        "AuctionType": "Engelsk"
     },
     {
         "Id": 18,
         "BidHistory": [
             {
-                "Id": 9,
-                "Bid": 210,
-                "Time": "2022-03-11T23:00:00.000Z"
+                "Id": 17,
+                "Bid": 790,
+                "Time": "2022-03-06T23:00:00.000Z"
             }
         ],
         "State": "Pågående",
-        "Title": "Canon Eos 400D",
-        "Condition": "Dåligt",
-        "StopTime": "2022-04-06T00:07:07.042Z",
-        "StartTime": "2022-03-29T22:00:00.000Z",
-        "PurchaseNow": 500,
-        "MinimalBid": 200,
+        "Title": "Sony A68",
+        "Condition": "Bra",
+        "StopTime": "2022-04-01T01:15:48.170Z",
+        "StartTime": "2022-03-24T23:00:00.000Z",
+        "PurchaseNow": 1950,
+        "MinimalBid": 780,
         "Seller": 2,
+        "Images": [
+            {
+                "original": "https://www.cnet.com/a/img/hub/2015/11/05/553fd936-b056-4e60-b789-9efd284284a3/sony-a68-mfr-43.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Engelsk"
+    },
+    {
+        "Id": 19,
+        "BidHistory": [],
+        "State": "Pågående",
+        "Title": "Canon Eos 400D",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-04-11T06:58:55.048Z",
+        "StartTime": "2022-04-03T22:00:00.000Z",
+        "PurchaseNow": 1150,
+        "MinimalBid": 460,
+        "Seller": 23,
         "Images": [
             {
                 "original": "https://smartson.se/dA/7e73774ab4/front620-9.jpg",
@@ -542,68 +536,26 @@
         "AuctionType": "SMRA"
     },
     {
-        "Id": 19,
-        "BidHistory": [
-            {
-                "Id": 0,
-                "Bid": 550,
-                "Time": "2022-02-27T23:00:00.000Z"
-            }
-        ],
-        "State": "Pågående",
-        "Title": "Canon Eos 550D",
-        "Condition": "Utmärkt",
-        "StopTime": "2022-03-26T01:09:18.514Z",
-        "StartTime": "2022-03-18T23:00:00.000Z",
-        "PurchaseNow": 1350,
-        "MinimalBid": 540,
-        "Seller": 5,
-        "Images": [
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Angle2_tcm87-932852.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Angle3_tcm87-932854.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Default_tcm87-932858.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Engelsk"
-    },
-    {
         "Id": 20,
         "BidHistory": [
             {
-                "Id": 18,
-                "Bid": 820,
-                "Time": "2022-01-29T23:00:00.000Z"
+                "Id": 15,
+                "Bid": 310,
+                "Time": "2021-12-14T23:00:00.000Z"
             }
         ],
         "State": "Slut",
-        "Title": "Canon Eos 550D",
-        "Condition": "Bra",
-        "StopTime": "2022-02-26T07:27:16.920Z",
-        "StartTime": "2022-02-18T23:00:00.000Z",
-        "PurchaseNow": 2025,
-        "MinimalBid": 810,
-        "Winner": 2,
-        "Seller": 24,
+        "Title": "Nikon D5",
+        "Condition": "Perfekt",
+        "StopTime": "2022-01-11T07:59:23.002Z",
+        "StartTime": "2022-01-03T23:00:00.000Z",
+        "PurchaseNow": 750,
+        "MinimalBid": 300,
+        "Winner": 10,
+        "Seller": 12,
         "Images": [
             {
-                "original": "https://www.canon.se/media/EOS_550D_Angle2_tcm87-932852.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Angle3_tcm87-932854.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Default_tcm87-932858.jpg",
+                "original": "https://cdn.pocket-lint.com/r/s/970x/assets/images/136437-cameras-review-nikon-d5-review-image1-tjar8gh7sk.jpg",
                 "thumbnail": ""
             }
         ],
@@ -612,15 +564,221 @@
     },
     {
         "Id": 21,
+        "BidHistory": [
+            {
+                "Id": 6,
+                "Bid": 530,
+                "Time": "2022-03-08T23:00:00.000Z"
+            },
+            {
+                "Id": 19,
+                "Bid": 540,
+                "Time": "2022-03-08T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Sony A55",
+        "Condition": "Perfekt",
+        "StopTime": "2022-04-06T15:21:39.662Z",
+        "StartTime": "2022-03-29T22:00:00.000Z",
+        "PurchaseNow": 1300,
+        "MinimalBid": 520,
+        "Seller": 2,
+        "Images": [
+            {
+                "original": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sony_SLT-A55_02s5.jpg/300px-Sony_SLT-A55_02s5.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "SMRA"
+    },
+    {
+        "Id": 22,
+        "BidHistory": [
+            {
+                "Id": 11,
+                "Bid": 670,
+                "Time": "2022-03-24T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Canon Eos 400D",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-04-23T12:28:30.975Z",
+        "StartTime": "2022-04-15T22:00:00.000Z",
+        "PurchaseNow": 1650,
+        "MinimalBid": 660,
+        "Seller": 4,
+        "Images": [
+            {
+                "original": "https://smartson.se/dA/7e73774ab4/front620-9.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Schweizisk"
+    },
+    {
+        "Id": 23,
+        "BidHistory": [],
+        "State": "Pågående",
+        "Title": "Nikon 800D",
+        "Condition": "Dåligt",
+        "StopTime": "2022-04-22T15:50:48.220Z",
+        "StartTime": "2022-04-14T22:00:00.000Z",
+        "PurchaseNow": 2025,
+        "MinimalBid": 810,
+        "Seller": 26,
+        "Images": [
+            {
+                "original": "https://www.europe-nikon.com/tmp/EU/2419865273/3760176746/2327365364/27184057/1391280926/2780083465/1053240650/3915156789/2964121563/3036989078/1975208020.png",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Engelsk"
+    },
+    {
+        "Id": 24,
+        "BidHistory": [
+            {
+                "Id": 13,
+                "Bid": 660,
+                "Time": "2022-02-04T23:00:00.000Z"
+            }
+        ],
+        "State": "Slut",
+        "Title": "Nikon 800D",
+        "Condition": "Bra",
+        "StopTime": "2022-03-08T16:01:34.535Z",
+        "StartTime": "2022-02-28T23:00:00.000Z",
+        "PurchaseNow": 1625,
+        "MinimalBid": 650,
+        "Winner": 22,
+        "Seller": 16,
+        "Images": [
+            {
+                "original": "https://www.europe-nikon.com/tmp/EU/2419865273/3760176746/2327365364/27184057/1391280926/2780083465/1053240650/3915156789/2964121563/3036989078/1975208020.png",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "SMRA"
+    },
+    {
+        "Id": 25,
+        "BidHistory": [],
+        "State": "Pågående",
+        "Title": "Nikon D3100",
+        "Condition": "Perfekt",
+        "StopTime": "2022-04-04T15:34:58.489Z",
+        "StartTime": "2022-03-27T22:00:00.000Z",
+        "PurchaseNow": 125,
+        "MinimalBid": 50,
+        "Seller": 27,
+        "Images": [
+            {
+                "original": "https://www.idg.se/editorial/0/path/1.351689!imageManager/2828603199.png",
+                "thumbnail": ""
+            },
+            {
+                "original": "https://www.kenrockwell.com/nikon/d3100/D3S_8285-0600.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Engelsk"
+    },
+    {
+        "Id": 26,
+        "BidHistory": [
+            {
+                "Id": 0,
+                "Bid": 910,
+                "Time": "2022-02-26T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Nikon Coolpix L22",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-03-31T23:24:10.309Z",
+        "StartTime": "2022-03-24T23:00:00.000Z",
+        "PurchaseNow": 2250,
+        "MinimalBid": 900,
+        "Seller": 1,
+        "Images": [
+            {
+                "original": "https://cdn-4.nikon-cdn.com/e/Q5NM96RZZo-YRYNeYvAi9aeqFMY3fvEkMLBGAiSy_A2cHTS06eskuPufRYp4E2az_GNSUXRk1l1MHGp9Mr7pSQXa7yWyx9cG/Views/26198_L22_34r_lo.png",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Engelsk"
+    },
+    {
+        "Id": 27,
         "BidHistory": [],
         "State": "Pågående",
         "Title": "Canon Eos 400D",
-        "Condition": "Hygglig",
-        "StopTime": "2022-03-31T14:14:14.686Z",
-        "StartTime": "2022-03-23T23:00:00.000Z",
-        "PurchaseNow": 125,
-        "MinimalBid": 50,
-        "Seller": 1,
+        "Condition": "Dåligt",
+        "StopTime": "2022-04-05T14:35:33.881Z",
+        "StartTime": "2022-03-28T22:00:00.000Z",
+        "PurchaseNow": 275,
+        "MinimalBid": 110,
+        "Seller": 14,
+        "Images": [
+            {
+                "original": "https://smartson.se/dA/7e73774ab4/front620-9.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Schweizisk"
+    },
+    {
+        "Id": 28,
+        "BidHistory": [],
+        "State": "Slut",
+        "Title": "Canon PowerShot g7 Mark III",
+        "Condition": "Perfekt",
+        "StopTime": "2022-01-30T02:34:43.068Z",
+        "StartTime": "2022-01-22T23:00:00.000Z",
+        "PurchaseNow": 1700,
+        "MinimalBid": 680,
+        "Winner": 27,
+        "Seller": 10,
+        "Images": [
+            {
+                "original": "https://www.fotokungen.com/pub_images/large/G7XMIIIsvart.jpg",
+                "thumbnail": ""
+            }
+        ],
+        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
+        "AuctionType": "Schweizisk"
+    },
+    {
+        "Id": 29,
+        "BidHistory": [
+            {
+                "Id": 9,
+                "Bid": 70,
+                "Time": "2022-03-03T23:00:00.000Z"
+            },
+            {
+                "Id": 16,
+                "Bid": 80,
+                "Time": "2022-03-03T23:00:00.000Z"
+            }
+        ],
+        "State": "Pågående",
+        "Title": "Canon Eos 400D",
+        "Condition": "Dåligt",
+        "StopTime": "2022-04-09T16:30:53.946Z",
+        "StartTime": "2022-04-01T22:00:00.000Z",
+        "PurchaseNow": 150,
+        "MinimalBid": 60,
+        "Seller": 12,
         "Images": [
             {
                 "original": "https://smartson.se/dA/7e73774ab4/front620-9.jpg",
@@ -631,259 +789,29 @@
         "AuctionType": "Holländsk"
     },
     {
-        "Id": 22,
-        "BidHistory": [],
-        "State": "Pågående",
-        "Title": "Canon Eos 550D",
-        "Condition": "Bra",
-        "StopTime": "2022-04-08T20:53:39.895Z",
-        "StartTime": "2022-03-31T22:00:00.000Z",
-        "PurchaseNow": 425,
-        "MinimalBid": 170,
-        "Seller": 23,
-        "Images": [
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Angle2_tcm87-932852.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Angle3_tcm87-932854.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://www.canon.se/media/EOS_550D_Default_tcm87-932858.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Schweizisk"
-    },
-    {
-        "Id": 23,
-        "BidHistory": [
-            {
-                "Id": 16,
-                "Bid": 750,
-                "Time": "2022-03-16T23:00:00.000Z"
-            }
-        ],
-        "State": "Pågående",
-        "Title": "Nikon 800D",
-        "Condition": "Utmärkt",
-        "StopTime": "2022-04-16T16:23:48.929Z",
-        "StartTime": "2022-04-08T22:00:00.000Z",
-        "PurchaseNow": 1850,
-        "MinimalBid": 740,
-        "Seller": 15,
-        "Images": [
-            {
-                "original": "https://www.europe-nikon.com/tmp/EU/2419865273/3760176746/2327365364/27184057/1391280926/2780083465/1053240650/3915156789/2964121563/3036989078/1975208020.png",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "SMRA"
-    },
-    {
-        "Id": 24,
-        "BidHistory": [],
-        "State": "Slut",
-        "Title": "Nikon 800D",
-        "Condition": "Hygglig",
-        "StopTime": "2021-12-07T02:54:49.490Z",
-        "StartTime": "2021-11-29T23:00:00.000Z",
-        "PurchaseNow": 2325,
-        "MinimalBid": 930,
-        "Winner": 5,
-        "Seller": 0,
-        "Images": [
-            {
-                "original": "https://www.europe-nikon.com/tmp/EU/2419865273/3760176746/2327365364/27184057/1391280926/2780083465/1053240650/3915156789/2964121563/3036989078/1975208020.png",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Holländsk"
-    },
-    {
-        "Id": 25,
-        "BidHistory": [],
-        "State": "Pågående",
-        "Title": "Nikon D3100",
-        "Condition": "Hygglig",
-        "StopTime": "2022-04-05T13:46:21.027Z",
-        "StartTime": "2022-03-28T22:00:00.000Z",
-        "PurchaseNow": 1875,
-        "MinimalBid": 750,
-        "Seller": 10,
-        "Images": [
-            {
-                "original": "https://www.idg.se/editorial/0/path/1.351689!imageManager/2828603199.png",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://www.kenrockwell.com/nikon/d3100/D3S_8285-0600.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Holländsk"
-    },
-    {
-        "Id": 26,
-        "BidHistory": [
-            {
-                "Id": 19,
-                "Bid": 660,
-                "Time": "2022-02-28T23:00:00.000Z"
-            }
-        ],
-        "State": "Pågående",
-        "Title": "Pentax K7",
-        "Condition": "Dåligt",
-        "StopTime": "2022-04-03T09:18:35.579Z",
-        "StartTime": "2022-03-26T23:00:00.000Z",
-        "PurchaseNow": 1625,
-        "MinimalBid": 650,
-        "Seller": 18,
-        "Images": [
-            {
-                "original": "https://www.cyberphoto.se/storage/77D5CF565E59C3FFF3469F0E97002BB52653F7F746A779D4C08686EF2E46F71D/0c2f363bfdac45af822c52a1f7102254/jpg/media/a75f5758cd5441d1ad48dc3dece23865/K-71855-product_2.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://m.media-amazon.com/images/I/91MovaJMWKL._AC_SL1500_.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Schweizisk"
-    },
-    {
-        "Id": 27,
-        "BidHistory": [
-            {
-                "Id": 4,
-                "Bid": 710,
-                "Time": "2022-02-23T23:00:00.000Z"
-            }
-        ],
-        "State": "Pågående",
-        "Title": "Pentax K7",
-        "Condition": "Utmärkt",
-        "StopTime": "2022-03-30T18:20:33.383Z",
-        "StartTime": "2022-03-22T23:00:00.000Z",
-        "PurchaseNow": 1750,
-        "MinimalBid": 700,
-        "Seller": 25,
-        "Images": [
-            {
-                "original": "https://www.cyberphoto.se/storage/77D5CF565E59C3FFF3469F0E97002BB52653F7F746A779D4C08686EF2E46F71D/0c2f363bfdac45af822c52a1f7102254/jpg/media/a75f5758cd5441d1ad48dc3dece23865/K-71855-product_2.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://m.media-amazon.com/images/I/91MovaJMWKL._AC_SL1500_.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Schweizisk"
-    },
-    {
-        "Id": 28,
-        "BidHistory": [
-            {
-                "Id": 10,
-                "Bid": 980,
-                "Time": "2022-01-23T23:00:00.000Z"
-            },
-            {
-                "Id": 10,
-                "Bid": 990,
-                "Time": "2022-01-23T23:00:00.000Z"
-            }
-        ],
-        "State": "Slut",
-        "Title": "Nikon D3100",
-        "Condition": "Dåligt",
-        "StopTime": "2022-02-28T04:38:14.965Z",
-        "StartTime": "2022-02-20T23:00:00.000Z",
-        "PurchaseNow": 2425,
-        "MinimalBid": 970,
-        "Winner": 15,
-        "Seller": 2,
-        "Images": [
-            {
-                "original": "https://www.idg.se/editorial/0/path/1.351689!imageManager/2828603199.png",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://www.kenrockwell.com/nikon/d3100/D3S_8285-0600.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "Holländsk"
-    },
-    {
-        "Id": 29,
-        "BidHistory": [
-            {
-                "Id": 0,
-                "Bid": 170,
-                "Time": "2022-03-07T23:00:00.000Z"
-            }
-        ],
-        "State": "Pågående",
-        "Title": "Nikon D60",
-        "Condition": "Utmärkt",
-        "StopTime": "2022-04-13T06:23:45.862Z",
-        "StartTime": "2022-04-05T22:00:00.000Z",
-        "PurchaseNow": 400,
-        "MinimalBid": 160,
-        "Seller": 16,
-        "Images": [
-            {
-                "original": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Nikon_D60_body_front.jpg",
-                "thumbnail": ""
-            }
-        ],
-        "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "SMRA"
-    },
-    {
         "Id": 30,
         "BidHistory": [
             {
-                "Id": 2,
-                "Bid": 840,
-                "Time": "2022-02-26T23:00:00.000Z"
-            },
-            {
-                "Id": 1,
-                "Bid": 850,
-                "Time": "2022-02-26T23:00:00.000Z"
+                "Id": 0,
+                "Bid": 620,
+                "Time": "2022-02-27T23:00:00.000Z"
             }
         ],
         "State": "Pågående",
-        "Title": "Pentax K7",
-        "Condition": "Dåligt",
-        "StopTime": "2022-04-05T11:35:27.711Z",
-        "StartTime": "2022-03-28T22:00:00.000Z",
-        "PurchaseNow": 2075,
-        "MinimalBid": 830,
-        "Seller": 15,
+        "Title": "Sony A68",
+        "Condition": "Utmärkt",
+        "StopTime": "2022-04-06T18:49:17.638Z",
+        "StartTime": "2022-03-29T22:00:00.000Z",
+        "PurchaseNow": 1525,
+        "MinimalBid": 610,
+        "Seller": 18,
         "Images": [
             {
-                "original": "https://www.cyberphoto.se/storage/77D5CF565E59C3FFF3469F0E97002BB52653F7F746A779D4C08686EF2E46F71D/0c2f363bfdac45af822c52a1f7102254/jpg/media/a75f5758cd5441d1ad48dc3dece23865/K-71855-product_2.jpg",
-                "thumbnail": ""
-            },
-            {
-                "original": "https://m.media-amazon.com/images/I/91MovaJMWKL._AC_SL1500_.jpg",
+                "original": "https://www.cnet.com/a/img/hub/2015/11/05/553fd936-b056-4e60-b789-9efd284284a3/sony-a68-mfr-43.jpg",
                 "thumbnail": ""
             }
         ],
         "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        "AuctionType": "SMRA"
+        "AuctionType": "Holländsk"
     }
 ]

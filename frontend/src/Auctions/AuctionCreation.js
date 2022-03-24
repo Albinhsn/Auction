@@ -190,7 +190,7 @@ for(i = 1; i<31; i++){
 
     let obj = {
         Id: i,
-        Bidhistory: B,
+        BidHistory: B,
         State: S,
         Title: Title,
         Condition: conditions[Math.floor(Math.random() * conditions.length)],
