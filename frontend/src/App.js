@@ -30,7 +30,6 @@ function App() {
   useEffect(() => {
     setAuctions(auctionJSON)
     setUsers(userJSON)
-    console.log(authId)
   }, [])
 
   return (
@@ -43,7 +42,7 @@ function App() {
           <Route path="/login" element={<Login setAuthId={setAuthId} users={users} setUsers={setUsers}/>}/>
           <Route path="/search" element={<Search auctions={auctions}/>}/>
           <Route path="/searchBar" element={<SearchBar/>}/>
-          <Route path="/auction" element={<Auction/>}/>
+          <Route path="/auction" element={<Auction auctions={auctions}/>}/>
           <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId} setUsers={setUsers} users={users}/>}/>
           <Route path="/profile/auction" element={<MyAuctions auctions={auctions} authId={authId}/>}/>
           <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions}/>}/>

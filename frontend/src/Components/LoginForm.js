@@ -47,50 +47,46 @@ export default function LoginForm({users, setAuthId, setUsers}) {
     return (
         <div className='d-flex align-items-center justify-content-center' style={{ height: "75vh" }}>
             <div className='row card'>
-                <form className='card-body'>
-                    <div className="mb-3">
-                        <label className="form-label">
-                            Email address
-                            </label>
-                        <input type="email" className="form-control" id="exampleInputEmail1"
-                            onChange={e => setLoginInfo({...loginInfo, Email: e.target.value})}
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label className="form-label">
-                            Password
+                <div className="mb-3 card-body">
+                    <label className="form-label">
+                        Email address
                         </label>
-                        <input type="password" className="form-control"
-                                onChange={e => setLoginInfo({ ...loginInfo, Password: e.target.value })}
-                        />
-                    </div>
-                    
-                    <button type="submit" className="btn btn-primary" onClick={e => checkLogin()}>
-                        Sign In
-                    </button>
-                
-                    
-                    <GoogleLogin
-                        className='text-white ms-2 bg-primary'
-                        style={{padding: "7px"}}
-                        clientId={"44982811480-q1q6cq5d1edlu8g32s3ji20v030ba4t1.apps.googleusercontent.com"}
-                        buttonText="Sign in with Google"
-                        onSuccess={handleLogin}
-                        onFailure={handleFailure}
-                        cookiePolicy={'single_host_origin'}
-                        icon={false}
+                    <input type="email" className="form-control" id="exampleInputEmail1"
+                        onChange={e => setLoginInfo({...loginInfo, Email: e.target.value})}
                     />
-                    
-                    <div className='d-flex justify-content-center'>
-                        <p style={{ margin: "0" }} className="mt-1">
-                            <Link to={"/signup"} className="text-dark mt-1" style={{ textDecoration: "none" }}>
-                                Sign up here
-                            </Link>
-                        </p>
-                    </div>
-                </form>
-
-
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">
+                        Password
+                    </label>
+                    <input type="password" className="form-control"
+                            onChange={e => setLoginInfo({ ...loginInfo, Password: e.target.value })}
+                    />
+                </div>
+                
+                <button className="btn btn-primary" onClick={e => checkLogin()}>
+                    Sign In
+                </button>
+            
+                
+                <GoogleLogin
+                    className='text-white ms-2 bg-primary'
+                    style={{padding: "7px"}}
+                    clientId={"44982811480-q1q6cq5d1edlu8g32s3ji20v030ba4t1.apps.googleusercontent.com"}
+                    buttonText="Sign in with Google"
+                    onSuccess={handleLogin}
+                    onFailure={handleFailure}
+                    cookiePolicy={'single_host_origin'}
+                    icon={false}
+                />
+                
+                <div className='d-flex justify-content-center'>
+                    <p style={{ margin: "0" }} className="mt-1">
+                        <Link to={"/signup"} className="text-dark mt-1" style={{ textDecoration: "none" }}>
+                            Sign up here
+                        </Link>
+                    </p>
+                </div>
             </div>
         </div>
   )

@@ -1,12 +1,15 @@
 import React from 'react'
 import SearchComponent from '../Components/SearchComponent'
 
-export default function MyAuctions({auctions}){
+export default function MyAuctions({auctions, user}){
+    
+    const search = new URLSearchParams(window.location.search).get("search")
+    console.log(search)
     
 
-
-    console.log(auctions)
     return (
+        
+        
         <div className=' d-flex justify-content-center '>
             <div className='col-6'>
                     <div className="col-12 row">
@@ -33,11 +36,15 @@ export default function MyAuctions({auctions}){
 
 
                 {auctions.map(auction => {
-                    return(
-                        <div className='pt-3' key={auction.Id}>
-                            <SearchComponent key={auction.Id} auction={auction}/>
-                        </div>
-                    )
+                    
+                    if(auction.Title.toLowerCase().includes(search.toLowerCase())){
+                        return (
+                            <div className='pt-3' key={auction.Id}>
+                                <SearchComponent key={auction.Id} auction={auction} user={user} />
+                            </div>
+                        )
+                    }
+                    
                     
                 })}
             </div>

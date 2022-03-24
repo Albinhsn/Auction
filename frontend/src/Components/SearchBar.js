@@ -7,7 +7,7 @@ export default function Searchbar() {
     return (
       <div className="SearchBar input-group  w-50 ">        
         <input type="text" onChange={e => setSearchInput(e.target.value)} />
-        <Link to={`/search?${searchInput}`}><span className='input-group-text'>Sök</span></Link>
+        <Link to={`/search?search=${searchInput}`} className="text-decoration-none"><span className='input-group-text'>Sök</span></Link>
       </div>
     );
   }
