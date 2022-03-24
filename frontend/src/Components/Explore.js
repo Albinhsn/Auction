@@ -36,7 +36,7 @@ export default function Explore() {
                     {auctions.map(auction =>{
                         
                         return(                    
-                            <AuctionCard auctionId={auctions.indexOf(auction)} auction={auction}/>
+                            <AuctionCard key={auctions.indexOf(auction)} auctionId={auctions.indexOf(auction)} auction={auction}/>
                         )
                     })}
                 </div>

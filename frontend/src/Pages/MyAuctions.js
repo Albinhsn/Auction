@@ -1,15 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import MyAuctionsCard from '../Components/MyAuctionsCard'
-
-export default function MyAuctions({auctions, authId}){
-    
-    if(!authId){
-        return(
-            <>
-            </>
-        )
-    }
+import auctions from '../Auctions/auctions.json'
+export default function MyAuctions({authId}){
 
     return (
         <div className='d-flex justify-content-center'>
@@ -23,6 +16,11 @@ export default function MyAuctions({auctions, authId}){
                 </div>
                 
                 {auctions.map(auction => {
+                    // return(
+                    //     <div className='pt-3' key={auction.Id}>
+                    //         <MyAuctionsCard key={auction.Id} auction={auction}/>
+                    //     </div>
+                    // )
                     
                     if(auction.Seller === authId){
                         return(

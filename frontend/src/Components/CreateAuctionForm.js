@@ -4,14 +4,16 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import TextAreaAutoSize from 'react-textarea-autosize'
 import {useState, useRef ,React} from 'react'
 import axios from 'axios'
-import MyAuctions from '../Pages/Search';
+import { useNavigate } from 'react-router';
 
 
 export default function CreateAuctionForm({setAuctions, auctions}) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const myRef = useRef(null);
+    const navigate = useNavigate()
+
     let [auctionInfo, setAuctionInfo] = useState({
-        Id: auctions.length,
+        Id: auctions.length + 1,
         Title: "",
         MinimumBid: 0,
         PurchaseNow: 0,
@@ -32,11 +34,13 @@ export default function CreateAuctionForm({setAuctions, auctions}) {
             alert("Var vänlig ange godtyckligt köp nu pris")
             return
         }
-        
-        auctions.push(auctionInfo)
-        
-        setAuctions(auctions)
-
+        let imgs = []
+        auctionInfo.Images.map(image => {
+            imgs.push(image.original)
+        })
+        auctionInfo.Images = imgs
+        setAuctions([...auctions, auctionInfo])
+        navigate("/")
         alert("Auktionen har lagts till")
     }
 

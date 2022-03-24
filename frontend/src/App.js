@@ -41,7 +41,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/profile" element={<Profile authId={authId}/>}/>
           <Route path="/login" element={<Login setAuthId={setAuthId} users={users} setUsers={setUsers}/>}/>
-          <Route path="/search" element={<Search/>}/>
+          <Route path="/search" element={<Search auctions={auctions}/>}/>
           <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction/>}/>
           <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId} setUsers={setUsers} users={users}/>}/>
