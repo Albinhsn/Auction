@@ -56,7 +56,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
                         onChange={e => setLoginInfo({...loginInfo, Email: e.target.value})}
                     />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 justify-content-center">
                     <label className="form-label">
                         Password
                     </label>
@@ -64,7 +64,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
                             onChange={e => setLoginInfo({ ...loginInfo, Password: e.target.value })}
                     />
                 </div>
-                
+                <div className='justify-content-center'>
                 <button className="btn btn-primary" onClick={e => checkLogin()}>
                     Sign In
                 </button>
@@ -80,7 +80,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
                     cookiePolicy={'single_host_origin'}
                     icon={false}
                 />
-                
+                </div>
                 <div className='d-flex justify-content-center'>
                     <p style={{ margin: "0" }} className="mt-1">
                         <Link to={"/signup"} className="text-dark mt-1" style={{ textDecoration: "none" }}>

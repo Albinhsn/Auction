@@ -7,36 +7,45 @@ import axios from 'axios'
 import { useNavigate } from 'react-router';
 
 
-export default function CreateAuctionForm({setAuctions, auctions}) {
+export default function CreateAuctionForm({setAuctions, auctions, authId}) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const myRef = useRef(null);
     const navigate = useNavigate()
-
+    let currentDate = new Date()
     let [auctionInfo, setAuctionInfo] = useState({
         Id: auctions.length + 1,
         Title: "",
-        MinimumBid: 0,
+        MinimalBid: 0,
         PurchaseNow: 0,
         Condition: "",
         AuctionType: "",
         Description: "",
-        Images: []
+        Images: [],
+        BidHistory: [],
+        StartTime: new Date(),
+        StopTime: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()+7),
+        Seller: authId,
+        State: "Pågående"
+        
     })
 
     const createAuction = () => {
-        if (auctionInfo.Title === "" || auctionInfo.MinimumBid === 0 || auctionInfo.Condition === "" || auctionInfo.AuctionType === "" || auctionInfo.Description === "" || auctionInfo.Images === []){
+        if (auctionInfo.Title === "" || auctionInfo.MinimalBid === 0 || auctionInfo.Condition === "" || auctionInfo.AuctionType === "" || auctionInfo.Description === "" || auctionInfo.Images === []){
             alert("Var vänlig fyll i alla fält")
             return
         }
 
 
-        if (auctionInfo.MinimumBid >= auctionInfo.PurchaseNow && auctionInfo.PurchaseNow != 0){
+        if (auctionInfo.MinimalBid >= auctionInfo.PurchaseNow && auctionInfo.PurchaseNow != 0){
             alert("Var vänlig ange godtyckligt köp nu pris")
             return
         }
         let imgs = []
         auctionInfo.Images.map(image => {
-            imgs.push(image.original)
+            imgs.push({
+                original: image.original, 
+                thumbnail: ""
+            })
         })
         auctionInfo.Images = imgs
         setAuctions([...auctions, auctionInfo])
@@ -125,7 +134,7 @@ export default function CreateAuctionForm({setAuctions, auctions}) {
                                 onChange={e => setAuctionInfo({...auctionInfo, Title: e.target.value})}
                             />
                             <input type="number" placeholder="Minimumbud" className='mt-2 align-self-center' id="bid-input" style={{ width: "20vw" }} 
-                                onChange={e => setAuctionInfo({ ...auctionInfo, MinimumBid: parseInt(e.target.value) })}
+                                onChange={e => setAuctionInfo({ ...auctionInfo, MinimalBid: parseInt(e.target.value)})}
                             />
                             <input type="number" placeholder="Köpa direkt (ej obligatorisk)" className='mt-2 align-self-center ' id="bid-input" style={{ width: "20vw" }} 
                                 onChange={e => setAuctionInfo({ ...auctionInfo, PurchaseNow: parseInt(e.target.value) })}

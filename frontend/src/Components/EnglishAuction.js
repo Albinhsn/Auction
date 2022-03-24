@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
-
+import * as dates from '../Helpers/dates'
 export default function EnglishAuction({auction, setAuctions, user, auctions, favo}) {
     
     
@@ -10,7 +10,6 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
     const [favorite, setFavorite] = useState()
     const [watchlist, setWatchlist] = useState(false)    
     const [userBid, setUserBid] = useState(0)
-
     const [currentBid, setCurrentBid] = useState(0)
     const [bidHistory, setBidhistory] = useState([])
     
@@ -24,12 +23,11 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                 setBidhistory(auction.BidHistory)
                 setCurrentBid(auction.BidHistory[auction.BidHistory.length - 1].Bid)
             }
-           
         }
     })
     
     if (Object.keys(auction).length === 0)return null
-    //Lägg till i mina auktioner för user
+    
     
 
    
@@ -133,11 +131,8 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                         Auktionen avslutas:
                                     </p>
                                     <div className='d-flex'>
-                                        {auction.StopTime}
+                                        {new Date(auction.StopTime).toLocaleString("en-US")}
                                     </div>
-                                    <p>
-                                        "TID KVAR"
-                                    </p>
                                 </div>
 
 
@@ -162,17 +157,17 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                             Lägg bud
                                         </button>
                                     </div>
-                                    <div className="dropdown">
+                                    <div className="dropdown mt-2">
                                     <a className="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                         Bud Historik
                                     </a>
                                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <ul>
+                                        <ul className='mb-0 ps-0'>
                                         {bidHistory.map(bid =>{                    
                                             return(
-                                                <li key={bid.Id} className="dropdown-item" href="#">
-                                                    <p>{bid.Bid}</p>
-                                                    <p className='ms-1'>{bid.Time}</p>    
+                                                <li key={bid.Id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 align-content-center">
+                                                    <p className=''>Bud:{bid.Bid} Tid: {new Date(bid.Time).toLocaleDateString("en-US")}</p>
+                                                    
                                                 </li>
 
                                             )

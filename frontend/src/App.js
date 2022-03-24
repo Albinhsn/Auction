@@ -45,7 +45,7 @@ function App() {
           <Route path="/auction" element={<Auction auctions={auctions} users={users} authId={authId} setAuctions={setAuctions}/>}/>
           <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId} setUsers={setUsers} users={users}/>}/>
           <Route path="/profile/auction" element={<MyAuctions auctions={auctions} authId={authId}/>}/>
-          <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions}/>}/>
+          <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions} authId={authId}/>}/>
         </Routes>
         <Footer/>
       </div>

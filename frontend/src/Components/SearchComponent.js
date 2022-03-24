@@ -10,7 +10,7 @@ export default function SearchComponent({auction, user, users}){
     const [timeRemaining, setTimeRemaining] = useState(dates.getTimeRemaining(auction.StopTime))
     let auctionSeller = ""
     
-
+    console.log(auction.BidHistory.length > 0 ? auction.BidHistory[auction.BidHistory.length - 1].Bid : auction.MinimalBid)
     if(!users) return <></>
     for(let i = 0; i<users.length; i++){
         if(auction.Seller === users[i].Id){
@@ -52,7 +52,7 @@ export default function SearchComponent({auction, user, users}){
                         </p>
                     </div>
                     <p className=''>
-                        Bud: {auction.MinimalBid} SEK - Köp nu: {auction.PurchaseNow} SEK
+                        Bud: {auction.BidHistory.length > 0 ? auction.BidHistory[auction.BidHistory.length - 1].Bid : auction.MinimalBid} SEK - Köp nu: {auction.PurchaseNow} SEK
                     </p> 
                 
                     <div className='d-flex'>
