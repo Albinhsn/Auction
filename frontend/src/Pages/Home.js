@@ -3,13 +3,13 @@ import Jumbo from '../Components/Jumbo'
 import Explore from '../Components/Explore'
 
 
-export default function Home() {
+export default function Home({auctions}) {
   return (
     <>
       <Jumbo />
-      <Explore />
-      <Explore />
-      <Explore />
+      <Explore auctions={auctions} type = {"End"}/>
+      <Explore auctions={auctions}type ={"Start"}/>
+      <Explore auctions={auctions}type ={"Price"}/>
     </>
   )
 }

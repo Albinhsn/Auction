@@ -38,7 +38,7 @@ function App() {
       <div className="d-flex flex-column" style={{height: "100vh"}}>
         <Navbar authId={authId} setAuthId={setAuthId}/>
         <Routes>
-          <Route index element={<Home />} />
+          <Route index element={<Home auctions={auctions}/>} />
           <Route path="/profile" element={<Profile authId={authId}/>}/>
           <Route path="/login" element={<Login setAuthId={setAuthId} users={users} setUsers={setUsers}/>}/>
           <Route path="/search" element={<Search auctions={auctions}/>}/>
