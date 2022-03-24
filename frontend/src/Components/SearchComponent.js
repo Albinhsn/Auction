@@ -9,7 +9,7 @@ export default function SearchComponent({auction, user}){
        
         <div className='border border-dark'>
             <Link to={`/auction?auctionId=${auction.Id}`} className="link-dark d-flex text-decoration-none">    
-                <img src={auction.Images[0]} placeholder="" style={{height: "15vh", width: "15vh"}}/>
+                <img src={auction.Images[0].original} placeholder="" style={{height: "15vh", width: "15vh"}}/>
                 <div className='ps-3 col '>
                     <div className='d-flex align-items-center ps-2'>
     

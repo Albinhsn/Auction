@@ -17,6 +17,7 @@ import Signup from './Pages/Signup';
 import MyAuctions from './Pages/MyAuctions';
 import SearchBar from './Components/SearchBar';
 import CreateAuction from './Pages/CreateAuction';
+//Data Import
 import auctionJSON from './Auctions/auctions.json'
 import userJSON from './Users/users.json'
 
@@ -42,7 +43,7 @@ function App() {
           <Route path="/login" element={<Login setAuthId={setAuthId} users={users} setUsers={setUsers}/>}/>
           <Route path="/search" element={<Search auctions={auctions}/>}/>
           <Route path="/searchBar" element={<SearchBar/>}/>
-          <Route path="/auction" element={<Auction auctions={auctions}/>}/>
+          <Route path="/auction" element={<Auction auctions={auctions} users={users} authId={authId} setAuctions={setAuctions}/>}/>
           <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId} setUsers={setUsers} users={users}/>}/>
           <Route path="/profile/auction" element={<MyAuctions auctions={auctions} authId={authId}/>}/>
           <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions}/>}/>
