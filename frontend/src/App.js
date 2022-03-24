@@ -23,7 +23,7 @@ function App() {
 
   const [authId, setAuthId] = useState('')
   const [auctions, setAuctions] = useState([])
-  
+  const [users, setUsers] = useState([])
   useEffect(() => {
     setAuctions(auctionJSON)
   }, [])
