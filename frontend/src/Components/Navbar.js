@@ -24,8 +24,6 @@ export default function Navbar({authId, setAuthId}) {
           </div>
           <Searchbar className="container"/>
             <ul className="container navbar-nav justify-content-end">
-              <li><Link to={"/profile/auction"} className="nav-link">Mina Auktioner</Link></li>
-              <li><Link to={"/create/auction"} className="nav-link">Skapa Auktion</Link></li>
               <li className="nav-item"><Link to={"/Login"} className="nav-link">Login</Link></li>
             </ul>
       </nav>

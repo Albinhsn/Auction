@@ -1,14 +1,16 @@
 import {React, useState, useEffect} from 'react'
 import usersJSON from '../Users/users.json'
 import { useNavigate } from 'react-router'
-export default function SignupForm({setAuthId, authId}) {
+export default function SignupForm({setAuthId, authId, setUsers, users}) {
 
+    
     const [accountInfo, setAccountInfo] = useState({
         Username: "",
         Email: "",
         ConfirmEmail: "",
         Password: "",
-        ConfirmPassword: ""
+        ConfirmPassword: "",
+        Id: users.length > 1 ? users[users.length - 1].Id + 1 : 1
     })
     
 
@@ -49,13 +51,13 @@ export default function SignupForm({setAuthId, authId}) {
         })
 
         //Add account to json file
-        usersJSON.push(accountInfo)
-        
+        setUsers(accountInfo)
+        console.log(users)
         //Send back to
-        setAuthId(1)
+        setAuthId(accountInfo.Id)
     }
     useEffect(() =>{
-        console.log(authId)
+
         if(authId){
             navigate("/")
         }

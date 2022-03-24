@@ -18,14 +18,17 @@ import MyAuctions from './Pages/MyAuctions';
 import SearchBar from './Components/SearchBar';
 import CreateAuction from './Pages/CreateAuction';
 import auctionJSON from './Auctions/auctions.json'
-
+import userJSON from './Users/users.json'
 function App() {
 
   const [authId, setAuthId] = useState('')
   const [auctions, setAuctions] = useState([])
   const [users, setUsers] = useState([])
+  
   useEffect(() => {
     setAuctions(auctionJSON)
+    setUsers(userJSON)
+    console.log(authId)
   }, [])
 
   return (
@@ -35,11 +38,11 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/profile" element={<Profile authId={authId}/>}/>
-          <Route path="/login" element={<Login setAuthId={setAuthId}/>}/>
+          <Route path="/login" element={<Login setAuthId={setAuthId} users={users}/>}/>
           <Route path="/search" element={<Search/>}/>
           <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction/>}/>
-          <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId}/>}/>
+          <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId} setUsers={setUsers} users={users}/>}/>
           <Route path="/profile/auction" element={<MyAuctions auctions={auctions} authId={authId}/>}/>
           <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions}/>}/>
         </Routes>
