@@ -38,7 +38,7 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           <Route path="/profile" element={<Profile authId={authId}/>}/>
-          <Route path="/login" element={<Login setAuthId={setAuthId} users={users}/>}/>
+          <Route path="/login" element={<Login setAuthId={setAuthId} users={users} setUsers={setUsers}/>}/>
           <Route path="/search" element={<Search/>}/>
           <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction/>}/>
