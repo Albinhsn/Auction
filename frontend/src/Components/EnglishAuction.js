@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 
-export default function EnglishAuction({auctions, setAuctions, authId}) {
+export default function EnglishAuction({bidHistory, auction, setAuctions, user}) {
     
     
-    const auctionId = new URLSearchParams(window.location.search).get('auctionId')
+    
     const [favorite, setFavorite] = useState("black")
     const [currentBid, setCurrentBid] = useState()
 
@@ -19,7 +19,7 @@ export default function EnglishAuction({auctions, setAuctions, authId}) {
 
     return (
         <div className='d-flex align-items-center'>
-            {auctions.map(auction => {
+            {/* {auctions.map(auction => {
                 if (parseInt(auctionId) === auction.Id) {
                     return (
 
@@ -84,7 +84,7 @@ export default function EnglishAuction({auctions, setAuctions, authId}) {
 
                     )
                 }
-            })}
+            })} */}
 
         </div>
     )   
