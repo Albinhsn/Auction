@@ -13,15 +13,14 @@ let imgs = {
         "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Sony_SLT-A55_02s5.jpg/300px-Sony_SLT-A55_02s5.jpg"
     ],
     "Pentax X5": [
-        "https://pricespy-75b8.kxcdn.com/product/standard/280/1412601.jpg",
+        "https://m.media-amazon.com/images/I/71U4yh8ahML._AC_SX466_.jpg"
         
     ],
     "Canon Eos 400D": [
-        "https://pricespy-75b8.kxcdn.com/product/standard/280/132341.jpg"
+        "https://smartson.se/dA/7e73774ab4/front620-9.jpg"
     ],
     "Nikon D60": [
         "https://upload.wikimedia.org/wikipedia/commons/8/8d/Nikon_D60_body_front.jpg",
-        "https://pricespy-75b8.kxcdn.com/product/standard/280/271662.jpg"
     ],
     "Canon PowerShot g7 Mark III": [
         "https://www.fotokungen.com/pub_images/large/G7XMIIIsvart.jpg"
@@ -92,7 +91,7 @@ for(i = 1; i<31; i++){
 
     //Generate start and stoptime depending on state 
     date = new Date()
-    if (S == "Slut"){
+    if (S == "Pågående"){
         D = randomDate(new Date(), new Date(date.setMonth(date.getMonth()+1)), 0, 23)
     }
     else{
@@ -120,7 +119,7 @@ for(i = 1; i<31; i++){
     //Randomize bidhistory
     for(j = 1; j<Math.floor(Math.random() * 6); j++){
         let o = {
-            Id: Math.floor(Math.random() * 30) + 1,
+            Id: Math.floor(Math.random() * 20),
             Bid: price  + j * 10,
             Time: new Date(D.getFullYear(), D.getMonth(), D.getDate() - (7 + i))
         }
