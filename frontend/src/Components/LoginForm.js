@@ -6,7 +6,7 @@ import {GoogleLogin } from 'react-google-login'
 
 export default function LoginForm({users, setAuthId, setUsers}) {
 
-    
+
     const navigate = useNavigate()
     const [loginInfo, setLoginInfo] = useState({
         Email: "",
@@ -71,11 +71,14 @@ export default function LoginForm({users, setAuthId, setUsers}) {
                 
                     
                     <GoogleLogin
+                        className='text-white ms-2 bg-primary'
+                        style={{padding: "7px"}}
                         clientId={"44982811480-q1q6cq5d1edlu8g32s3ji20v030ba4t1.apps.googleusercontent.com"}
-                        buttonText="Login with Google"
+                        buttonText="Sign in with Google"
                         onSuccess={handleLogin}
                         onFailure={handleFailure}
                         cookiePolicy={'single_host_origin'}
+                        icon={false}
                     />
                     
                     <div className='d-flex justify-content-center'>
