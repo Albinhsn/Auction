@@ -66,7 +66,6 @@ export default function CreateAuctionForm({setAuctions, auctions, authId}) {
                     auctionInfo.Images.splice(currentIndex, 1)                    
                     myRef.current.slideToIndex(currentIndex) 
                 }
-                console.log(auctionInfo.Images)
                 return
             }
             setAuctionInfo({...auctionInfo, Images: []})

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import MyAuctionsCard from '../Components/MyAuctionsCard'
+import SearchComponent from '../Components/SearchComponent'
 
-export default function MyAuctions({authId, auctions}){
+export default function MyAuctions({authId, auctions, users,}){
     return (
         <div className='d-flex justify-content-center'>
             <div className='col-6'>
@@ -20,29 +20,13 @@ export default function MyAuctions({authId, auctions}){
                 
                 {auctions.map(auction => {
                    
-                    if(auction.Seller === authId || auction.Winner === authId){
+                    if(auction.Seller === authId){
                         return(
                             <div className='pt-3' key={auction.Id}>
-                                <Link className='text-decoration-none text-dark' to={`/auction?auctionId=${auction.Id}`}><MyAuctionsCard key={auction.Id} auction={auction}/></Link>
+                                <Link className='text-decoration-none text-dark' to={`/auction?auctionId=${auction.Id}`}><SearchComponent key={auction.Id} auction={auction} users={users}/></Link>
                             </div>
                         )
                     }
-                    if(auction.length > 0){
-                    return(
-                        auction.Bidhistory.map(bid => {
-                            
-                            if (bid.Id === authId) {
-                                console.log(bid.Id, authId)
-                                return (
-                                    <div className='pt-3' key={auction.Id}>
-                                        <Link className='text-decoration-none text-dark' to={`/auction?auctionId=${auction.Id}`}><MyAuctionsCard key={auction.Id} auction={auction} /></Link>
-                                    </div>
-                                )
-                            }
-
-                        })
-                    ) 
-                } 
                 })}
                 
             </div>

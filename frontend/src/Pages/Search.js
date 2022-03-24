@@ -5,14 +5,22 @@ import * as utils from '../Helpers/utils'
 
 
 
-export default function Search({auctions, user, users}){
+export default function Search({auctions, authId, users}){
     
     const search = new URLSearchParams(window.location.search).get("search")
 
     const [localAuc, setAuc] = useState([])
+    const [user, setUser] = useState()
     useEffect(() => {
         if(localAuc.length == 0){
             setAuc(auctions)
+        }
+        if(!user && users.length > 0){
+            for(let i = 0; i<users.length; i++){
+                if(users[i].Id === parseInt(authId)){
+                    setUser(users[i])
+                }
+            }
         }
     },[])
     const FilterAuc = (type) =>{

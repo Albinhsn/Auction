@@ -32,7 +32,6 @@ export default function LoginForm({users, setAuthId, setUsers}) {
 
     const handleFailure = (resp) => {
         alert("Failed login")
-        console.log(resp)
     }
     const handleLogin = (data) => {
         setUsers([...users, {
@@ -42,7 +41,6 @@ export default function LoginForm({users, setAuthId, setUsers}) {
             Favorites: []
         }])
         setAuthId(data.profileObj.googleId)
-        console.log(data.profileObj)
         navigate("/")
     }
     return (

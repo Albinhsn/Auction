@@ -3,21 +3,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import * as dates from '../Helpers/dates'
+import * as favoriteHelper from '../Helpers/favorite'
 
-
-export default function SearchComponent({auction, user, users}){
+export default function SearchComponent({auction, users, user}){
     const [favorite, setFavorite] = useState("black")
     const [timeRemaining, setTimeRemaining] = useState(dates.getTimeRemaining(auction.StopTime))
     let auctionSeller = ""
-    
-    console.log(auction.BidHistory.length > 0 ? auction.BidHistory[auction.BidHistory.length - 1].Bid : auction.MinimalBid)
+    useEffect(() => {
+        if(favorite === "black" && user){
+            setFavorite(favoriteHelper.isFavorite(auction, user))
+        }
+    }, [])
+
     if(!users) return <></>
+    
     for(let i = 0; i<users.length; i++){
         if(auction.Seller === users[i].Id){
             auctionSeller = users[i].Name
         }
     }
-
+    
     return(
        
         <div className='border border-dark'>

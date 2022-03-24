@@ -20,8 +20,13 @@ export const DateSortEnd = (auctions) => {
          )
  }
 
- 
-
+export const PurchaseNowPriceSort = (auctions) => {
+    return auctions.sort((a,b) => {
+        const priceA = a.PurchaseNow > 0 ? a.PurchaseNow : Number.MAX_SAFE_INTEGER
+        const priceB = b.PurchaseNow > 0 ? b.PurchaseNow : Number.MAX_SAFE_INTEGER
+        return priceA - priceB
+    })
+}
 
 const qualities = {
     "Perfekt": 5,

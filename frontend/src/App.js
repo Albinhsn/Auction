@@ -20,6 +20,7 @@ import CreateAuction from './Pages/CreateAuction';
 //Data Import
 import auctionJSON from './Auctions/auctions.json'
 import userJSON from './Users/users.json'
+import Favorites from './Pages/Favorites';
 
 
 function App() {
@@ -40,12 +41,13 @@ function App() {
           <Route index element={<Home auctions={auctions}/>} />
           <Route path="/profile" element={<Profile authId={authId} users={users} setUsers={setUsers}/>}/>
           <Route path="/login" element={<Login setAuthId={setAuthId} users={users} setUsers={setUsers}/>}/>
-          <Route path="/search" element={<Search auctions={auctions} users={users}/>}/>
+          <Route path="/search" element={<Search auctions={auctions} users={users} authId={authId}/>}/>
           <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction auctions={auctions} users={users} authId={authId} setAuctions={setAuctions}/>}/>
           <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId} setUsers={setUsers} users={users}/>}/>
-          <Route path="/profile/auction" element={<MyAuctions auctions={auctions} authId={authId}/>}/>
+          <Route path="/profile/auction" element={<MyAuctions auctions={auctions} authId={authId} users={users}/>}/>
           <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions} authId={authId}/>}/>
+          <Route path="/favorites" element={<Favorites auctions={auctions} authId={authId} users={users}/>}/>
         </Routes>
         <Footer/>
       </div>

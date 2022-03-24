@@ -41,15 +41,11 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
         setFavorite((favorite) => (favorite === "red" ? "black" : "red"))        
         if(favorite === "black" || !favorite){
             user.Favorites.push(auction.Id)
-            console.log("added to favorite")
-            console.log(user.Favorites)
             return
         }
         for(let i = 0; i<user.Favorites.length; i++){
             if (user.Favorites[i] === auction.Id){
                 user.Favorites.splice(i, 1)
-                console.log("removed from favorite")
-                console.log(user.Favorites)
             }
         }
     }

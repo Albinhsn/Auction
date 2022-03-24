@@ -3,22 +3,25 @@ import AuctionCard from './AuctionCard'
 import * as utils from '../Helpers/utils'
 
 export default function Explore({auctions, type}) {
-    console.log(auctions)
     if(auctions === null || auctions.length === 0) return<></>
-    var renderAuctions
-    var title = " "
+    let renderAuctions
+    let title = " "
+    let price = " " 
     switch (type){
         case "End":
-            renderAuctions = utils.DateSortEnd(auctions).slice(0,5);
+            renderAuctions = utils.DateSortEnd(auctions.filter(a => a.State !== "Slut")).slice(0,5);
             title= "Ending Soon"
+            price = "Bid"
             break;
         case "Price":
-            renderAuctions = utils.PriceSort(auctions.filter(a => a.State !== "Slut")).slice(0,5);
-            title= "Lowest Price"
+            renderAuctions = utils.PurchaseNowPriceSort(auctions.filter(a => a.State !== "Slut")).slice(0,5);
+            title= "Cheapest Purchase Now"
+            price = "Purchase"
             break;
         case "Start":
-            title= "Starting Soon"
-            renderAuctions = utils.DateSortStart(auctions).slice(0,5).reverse();
+            renderAuctions = utils.PriceSort(auctions).slice(0,5);
+            title = "Lowest Bid"
+            price = "Bid"
             break;
         default:
             renderAuctions = auctions
@@ -36,7 +39,7 @@ export default function Explore({auctions, type}) {
                 <div className='d-flex justify-content-evenly'>
                     {renderAuctions.map((auction, i) =>{
                         return(                    
-                            <AuctionCard key={i} auctionId={auction.Id} auction={auction}/>
+                            <AuctionCard key={i} auction={auction} price={price}/>
                         )
                     })}
                 </div>

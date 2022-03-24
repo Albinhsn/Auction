@@ -54,7 +54,6 @@ export default function ChangeProfileInfoForm({authId, users, setUsers}) {
                 user.Email = formInput.Email
                 users[i] =  user
                 updateUsers(users, "email")
-                console.log(users)
             }
         }
     }

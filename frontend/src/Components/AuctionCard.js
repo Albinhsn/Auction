@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import * as dates from '../Helpers/dates'
-export default function AuctionCard({ auction}) {
+export default function AuctionCard({ auction, price}) {
   const timeRemaining = dates.getTimeRemaining(auction.StopTime)
   return (
     
@@ -28,7 +28,12 @@ export default function AuctionCard({ auction}) {
               M:{timeRemaining.Minutes}
             </p>
           </div>
-          <p>Bud: {auction.BidHistory.length > 0 ? auction.BidHistory[auction.BidHistory.length - 1].Bid : auction.MinimalBid} SEK</p>
+          <p>Bud: {
+              price === "Bid" ? 
+                auction.BidHistory.length > 0 ? auction.BidHistory[auction.BidHistory.length - 1].Bid : auction.MinimalBid
+              :
+                auction.PurchaseNow
+              } SEK</p>
         </div>
       </div>
     </Link>

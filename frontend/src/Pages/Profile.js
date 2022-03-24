@@ -6,7 +6,6 @@ import ChangeProfileInfoForm from '../Components/ChangeProfileInfoForm'
 export default function Profile({authId, users, setUsers}) {
   
   const [user, setUser] = useState({})
-  console.log(users)
   useEffect(() => {
     users.map(u => {
       if(u.Id === authId){
