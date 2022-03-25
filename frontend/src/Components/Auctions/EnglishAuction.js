@@ -152,6 +152,7 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                 </div>
                                 <p>Auktionstyp: {auction.AuctionType}</p>
                                 <p>Säljare: {seller}</p>
+                                <p>Tag: {auction.Tags}</p>
                                 <div className='row pt-5'>
                                     <p className='fw-bold text-uppercase'>Nuvarande bud</p>
                                     <div className='d-flex align-items-center'>

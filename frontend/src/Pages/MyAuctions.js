@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import SearchComponent from '../Components/Auctions/Cards/SearchComponent'
+import SearchComponent from '../Components/Auctions/Cards/SearchAuctionCard'
 
 export default function MyAuctions({authId, auctions, users,}){
     const [user, setUser] = useState('')

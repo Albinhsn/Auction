@@ -1,5 +1,4 @@
 import {React, useState, useEffect} from 'react'
-import usersJSON from '../../Users/users.json'
 import { useNavigate } from 'react-router'
 export default function SignupForm({setAuthId, authId, setUsers, users}) {
 
@@ -13,12 +12,10 @@ export default function SignupForm({setAuthId, authId, setUsers, users}) {
         Id: users.length > 1 ? users[users.length - 1].Id + 1 : 1
     })
     
-
     
     const navigate = useNavigate()
 
     const createAccount = () => {
-        console.log(accountInfo)
         
         //Check if empty input
         if (accountInfo.Username === "" || accountInfo.Email === "" || accountInfo.ConfirmEmail === "", accountInfo.Password === "", accountInfo.ConfirmPassword === ""){
@@ -39,25 +36,22 @@ export default function SignupForm({setAuthId, authId, setUsers, users}) {
         }
         
         //Check whether username or email already exists
-        usersJSON.map(user => {
+        let flag = false
+        users.map(user => {
             if(accountInfo.Username == user.Username) {
                 alert("Användarnamnet är upptaget, var vänlig välj ett nytt")
-                return
+                flag = true
             }
             if(accountInfo.Email === user.Email){
                 alert("Email adressen är upptagen, var vänlig välj en ny")
-                return
+                flag = true
             }
         })
-
-        //Add account to json file
+        if(flag) return
         setUsers([...users, accountInfo])
-        console.log(users)
-        //Send back to
         setAuthId(accountInfo.Id)
     }
     useEffect(() =>{
-
         if(authId){
             navigate("/")
         }

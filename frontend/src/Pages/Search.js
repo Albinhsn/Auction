@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchComponent from '../Components/Auctions/Cards/SearchComponent'
+import SearchComponent from '../Components/Auctions/Cards/SearchAuctionCard'
 import {useState, useEffect} from 'react'
 import * as utils from '../Helpers/utils'
 
@@ -7,43 +7,50 @@ import * as utils from '../Helpers/utils'
 
 export default function Search({auctions, authId, users}){
     
-    const search = new URLSearchParams(window.location.search).get("search")
+    let search = new URLSearchParams(window.location.search).get("search")
 
     const [localAuc, setAuc] = useState([])
     const [user, setUser] = useState()
     const [filters, setFilters] = useState([{
         B: false,
-        Name: "Nikon"
+        Name: "Nikon",
+        Type: "Name"
     },
     {
         B: false,
-        Name: "Sony"
+        Name: "Sony",
+        Type: "Name"
     },
     {
         B: false,
-        Name: "Canon"
+        Name: "Canon",
+        Type: "Name"
     },
     {
         B: false,
-        Name: "Systemkamera"
+        Name: "Systemkamera",
+        Type: "Tag"
     },
     {
         B: false,
-        Name: "Kompaktkamera"
+        Name: "Kompaktkamera",
+        Type: "Tag"
     },{
         B: false,
-        Name: "Mellanformatskamera"
+        Name: "Mellanformatskamera",
+        Type: "Tag"
     },
     {
         B: false,
-        Name: "Pågående"
+        Name: "Pågående",
+        Type: "State"
     },
     {
         B: false,
-        Name: "Slut"
+        Name: "Slut",
+        Type: "State"
     }
 ])
-    let [filterAuc, setFilterAuc] = useState([])
     
     
     
@@ -60,6 +67,7 @@ export default function Search({auctions, authId, users}){
                 }
             }
         }
+        
     },[])
     const SortAuc = (type) =>{
         var newLoc = []
@@ -103,16 +111,17 @@ export default function Search({auctions, authId, users}){
             
             return
         }
+        let filterAuc = auctions
         for(let i = 0; i<filters.length; i++){
             if(filters[i].B){
-                if(type === "Name"){
-                    filterAuc = filterAuc.concat(utils.TypeFilter(auctions, filters[i].Name))
+                if(filters[i].Type === "Name"){
+                    filterAuc = utils.TypeFilter(filterAuc, filters[i].Name)
                 }
-                else if (type === "Tag"){
-                    filterAuc = filterAuc.concat(utils.TagFilter(auctions, filters[i].Name))
+                else if (filters[i].Type === "Tag"){
+                    filterAuc = utils.TagFilter(filterAuc, filters[i].Name)
                 }
-                else if (type === "State"){
-                    filterAuc = filterAuc.concat(utils.StateFilter(auctions, filters[i].Name))
+                else if (filters[i].Type === "State"){
+                    filterAuc = utils.StateFilter(filterAuc, filters[i].Name)
                 }
             }
         }    
@@ -129,27 +138,27 @@ export default function Search({auctions, authId, users}){
                     <label className='ms-3'>
                         Pågående
                     </label>
-                    <input type="checkbox" id="Pågående" className='ms-2' onChange={e => Filter(e, "State")}/>
+                    <input type="checkbox" id="Pågående" className='ms-2' onChange={e => Filter(e)}/>
                     <label className='ms-3'>
                         Slut
                     </label>
-                    <input type="checkbox" id="Slut" className='ms-2' onChange={e => Filter(e, "State")}/>
+                    <input type="checkbox" id="Slut" className='ms-2' onChange={e => Filter(e)}/>
                     <label htmlFor="ongoing" className='ms-3'>
                         Nikon
                     </label>
-                    <input type="checkbox" id="Nikon" name="Nikon" className='ms-2' onChange={e => Filter(e, "Name")}/>
+                    <input type="checkbox" id="Nikon" name="Nikon" className='ms-2' onChange={e => Filter(e,)}/>
                     <label htmlFor="ongoing" className='ms-3'>
                         Sony
                     </label>
-                    <input type="checkbox" id="Sony" name="Sony" className='ms-2' onChange={e => Filter(e, "Name")}/>
+                    <input type="checkbox" id="Sony" name="Sony" className='ms-2' onChange={e => Filter(e)}/>
                     <label htmlFor="ongoing" className='ms-3'>
                         Canon
                     </label>
-                    <input type="checkbox" id="Canon" name="Canon" className='ms-2' onChange={e => Filter(e, "Name")}/>
+                    <input type="checkbox" id="Canon" name="Canon" className='ms-2' onChange={e => Filter(e)}/>
                     <label htmlFor="ongoing" className='ms-3'>
                         Systemkamera
                     </label>
-                    <input type="checkbox" id="Systemkamera" name="Systemkamera" className='ms-2' onChange={e => Filter(e, "Tag")}/>
+                    <input type="checkbox" id="Systemkamera" name="Systemkamera" className='ms-2' onChange={e => Filter(e)}/>
                     <label htmlFor="ongoing" className='ms-3'>
                         Mellanformatskamera
                     </label>

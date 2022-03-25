@@ -50,11 +50,9 @@ const qualities = {
         
 }
 export const TagFilter = (auctions, tag) => {
-    console.log(auctions.filter(a => a.Tags.includes(tag)))
     return auctions.filter(a => a.Tags.includes(tag))   
 }
 export const StateFilter = (auctions, state) => {
-    console.log(auctions.filter(a => a.State === state))
     return auctions.filter(a => a.State === state)
 }
 

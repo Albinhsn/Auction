@@ -31,9 +31,14 @@ export default function SearchComponent({auction, users, user,}){
                 <img src={auction.Images[0].original} placeholder="" style={{height: "15vh", width: "15vh"}}/>
     
                 <div>
-                    <p className='fs-2 '>
-                        {auction.Title}
-                    </p>
+                    <div className='d-flex'>
+                        <p className='fs-2 '>
+                            {auction.Title}
+                        </p>
+                        <p className='mt-3 ms-3'>
+                            {auction.Tags}
+                        </p>
+                    </div>
                     <div className='d-flex'>
                         <p className='pt-1'>
                             {auction.State} -
