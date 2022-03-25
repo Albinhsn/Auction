@@ -203,7 +203,7 @@ for(i = 1; i<31; i++){
         Images: imgs[Title],
         Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
         AuctionType: auctionType[Math.floor(Math.random() * auctionType.length) ],
-        Tags: tags[Math.floor(Math.random() * tags.length) - 1]
+        Tags: tags[Math.floor(Math.random() * tags.length) ]
     }
     objs.push(obj)
 }
