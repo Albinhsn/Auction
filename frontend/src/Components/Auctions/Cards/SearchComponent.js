@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import * as dates from '../../../Helpers/dates'
 import * as favoriteHelper from '../../../Helpers/favorite'
 
-export default function SearchComponent({auction, users, user}){
+export default function SearchComponent({auction, users, user,}){
     const [favorite, setFavorite] = useState("black")
     const [timeRemaining, setTimeRemaining] = useState(dates.getTimeRemaining(auction.StopTime))
     let auctionSeller = ""
@@ -43,20 +43,23 @@ export default function SearchComponent({auction, users, user}){
                             Slut: {new Date(auction.StopTime).toLocaleString("en-US")}
                         </p>
                     </div>
-                    <div className='d-flex'>
-                        <p>
-                            Tid kvar: M:{timeRemaining.Month}
-                        </p>
-                        <p className='ps-1'>
-                            D:{timeRemaining.Day}
-                        </p>
-                        <p className='ps-1'>
-                            H:{timeRemaining.Hour}
-                        </p>
-                        <p className='ps-1'>
-                            M:{timeRemaining.Minutes}
-                        </p>
-                    </div>
+                    {auction.State === "Pågående" ? 
+                        <div className='d-flex'>
+                            <p>
+                                Tid kvar: M:{timeRemaining.Month}
+                            </p>
+                            <p className='ps-1'>
+                                D:{timeRemaining.Day}
+                            </p>
+                            <p className='ps-1'>
+                                H:{timeRemaining.Hour}
+                            </p>
+                            <p className='ps-1'>
+                                M:{timeRemaining.Minutes}
+                            </p>
+                        </div>
+                        :
+                        <></>}
                     <p className=''>
                         Bud: {auction.BidHistory.length > 0 ? auction.BidHistory[auction.BidHistory.length - 1].Bid : auction.MinimalBid} SEK - Köp nu: {auction.PurchaseNow} SEK
                     </p> 

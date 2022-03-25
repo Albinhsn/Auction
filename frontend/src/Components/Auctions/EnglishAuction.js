@@ -2,6 +2,7 @@ import {React, useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
+import { useNavigate } from 'react-router'
 
 
 export default function EnglishAuction({auction, setAuctions, user, auctions, favo, authId}) {
@@ -13,7 +14,7 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
     const [userBid, setUserBid] = useState(0)
     const [currentBid, setCurrentBid] = useState(0)
     const [bidHistory, setBidhistory] = useState([])
-    
+    const navigate = useNavigate()
     useEffect(() => {
         if(favo && !favorite){
             setFavorite(favo)
@@ -68,7 +69,22 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
             }
         }
     }
+    const makePurchase = () => {
+        if (!user) return
 
+        for (let i = 0; i < auctions.length; i++) {
+            if (auctions[i].Id === auction.Id) {
+                auctions[i].State = "Slut"
+                auctions[i].Winner = user.Id
+                auctions[i].StopTime = new Date().toLocaleString("en-US")
+                setAuctions(auctions)
+                console.log(auctions)
+                alert("Grattis!")
+                navigate("/")
+                return
+            }
+        }
+    }
     const watchlistChange = () => {
         if(!authId) return
         if (!watchlist) {
@@ -171,7 +187,10 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                             </div>
                                         </div>
                                         {auction.PurchaseNow > 0 ?
-                                            <button type="button" className='btn btn-warning ms-5 mt-2'>Köp Nu {auction.PurchaseNow}</button>
+                                            <button type="button" className='btn btn-warning ms-5 mt-2'
+                                                onClick={() => makePurchase()} 
+                                                >                                                
+                                                    Köp Nu {auction.PurchaseNow}</button>
                                             :
                                             <></>
                                         }
