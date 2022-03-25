@@ -42,3 +42,31 @@ const qualities = {
     }
     )
  }
+
+ export const TypeFilter = (auctions, id) => {
+    
+        return auctions.filter(a => a.Title.includes(id))
+           
+        
+}
+export const TagFilter = (auctions, tag) => {
+    console.log(auctions.filter(a => a.Tags.includes(tag)))
+    return auctions.filter(a => a.Tags.includes(tag))   
+}
+export const StateFilter = (auctions, state) => {
+    console.log(auctions.filter(a => a.State === state))
+    return auctions.filter(a => a.State === state)
+}
+
+export const OngoingFilter = (auctions) => {
+    const temp  = auctions.filter(a => a.State !== "Slut")
+        return temp.sort((a, b) => {
+            if(a.type.length == 0) return -1
+        }
+    )
+}
+
+
+ 
+
+ 
