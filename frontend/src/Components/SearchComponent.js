@@ -12,8 +12,9 @@ export default function SearchComponent({auction, users, user}){
     useEffect(() => {
         if(favorite === "black" && user){
             setFavorite(favoriteHelper.isFavorite(auction, user))
+            console.log("GOT")
         }
-    }, [])
+    }, )
 
     if(!users) return <></>
     
