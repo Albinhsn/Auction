@@ -1,8 +1,6 @@
-
-import ProfileInfo from '../Components/Profile/ProfileInfo'
 import {useState, useEffect, React} from 'react'
-
 import ChangeProfileInfoForm from '../Components/Forms/ChangeProfileInfoForm'
+
 export default function Profile({authId, users, setUsers}) {
   
   const [user, setUser] = useState({})
@@ -21,9 +19,22 @@ export default function Profile({authId, users, setUsers}) {
           <div className='row justify-content-center'>
             <div className='col-8 bg-light'>              
               <div className='row mt-5'>
-                <ProfileInfo user={user}/>
+                <div className='col-5 bg-light'>
+                  <p className='fw-bold'>
+                    Användarnamn
+                  </p>
+                  <p>
+                    {user.Name}
+                  </p>
+                  <p className='fw-bold'>
+                    Email
+                  </p>
+                  <p>
+                    {user.Email}
+                  </p>
+                </div>
 
-                <ChangeProfileInfoForm authId={authId} users={users} setUsers={setUsers} setUser={setUser} user={user}/>
+                <ChangeProfileInfoForm authId={authId} users={users} setUsers={setUsers} setUser={setUser}/>
               </div>
             </div>
           </div> 

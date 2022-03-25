@@ -88,7 +88,7 @@ export default function Search({auctions, authId, users}){
                 setAuc(newLoc)
     }
   
-    const Filter = (e, type) => {
+    const Filter = (e) => {
         
         
         let flag = false

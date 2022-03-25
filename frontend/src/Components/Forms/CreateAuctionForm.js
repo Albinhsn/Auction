@@ -177,8 +177,8 @@ export default function CreateAuctionForm({setAuctions, auctions, authId}) {
                                 <option value="Holländsk">
                                     Holländsk
                                 </option>
-                                <option value="SMRA">
-                                    SMRA (Simultaneous Multiple Round Auction)
+                                <option value="Schweizisk">
+                                    Schweizisk
                                 </option>
                             </select>
                         </div>
