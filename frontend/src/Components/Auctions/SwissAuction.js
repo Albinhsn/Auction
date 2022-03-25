@@ -4,13 +4,14 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
 import { useNavigate } from 'react-router'
 
-export default function SwissAuction({ auction, setAuctions, user, auctions, favo, authId }) {
+export default function SwissAuction({ auction, setAuctions, user, auctions, favo, authId , users}) {
 
 
 
   const [favorite, setFavorite] = useState()
   const [watchlist, setWatchlist] = useState(false)
   const [currentBid, setCurrentBid] = useState(0)
+  const [seller, setSeller] = useState('')
   const navigate = useNavigate()
   useEffect(() => {
     if (favo && !favorite) {
@@ -18,6 +19,15 @@ export default function SwissAuction({ auction, setAuctions, user, auctions, fav
     }
     if (currentBid === 0 && Object.keys(auction).length > 0) {
       setCurrentBid(auction.PurchaseNow)
+    }
+    if (seller === '') {
+      
+      users.map(u => {
+
+        if (parseInt(auction.Seller) === parseInt(u.Id)) {
+          setSeller(u.Name)
+        }
+      })
     }
   })
 
@@ -119,7 +129,7 @@ export default function SwissAuction({ auction, setAuctions, user, auctions, fav
             </div>
           </div>  
           <p>Auktionstyp: {auction.AuctionType}</p>
-
+          <p>Säljare: {seller}</p>
           <div className='row pt-5'>
             <p className='fw-bold text-uppercase'>Nuvarande pris</p>
             <div className='d-flex align-items-center'>

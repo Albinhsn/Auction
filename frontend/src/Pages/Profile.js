@@ -23,7 +23,7 @@ export default function Profile({authId, users, setUsers}) {
               <div className='row mt-5'>
                 <ProfileInfo user={user}/>
 
-                <ChangeProfileInfoForm authId={authId} users={users} setUsers={setUsers}/>
+                <ChangeProfileInfoForm authId={authId} users={users} setUsers={setUsers} setUser={setUser} user={user}/>
               </div>
             </div>
           </div> 

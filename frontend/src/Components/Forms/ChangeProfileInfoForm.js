@@ -1,6 +1,6 @@
 
 import { React, useState} from 'react'
-export default function ChangeProfileInfoForm({authId, users, setUsers}) {
+export default function ChangeProfileInfoForm({authId, users, setUsers, setUser, user}) {
     
 
     
@@ -19,16 +19,19 @@ export default function ChangeProfileInfoForm({authId, users, setUsers}) {
             return
         }
         for(let i = 0; i<users.length; i++){
-            let user = users[i]
-            user.Password = formInput.Password
-            users[i] = user
-            updateUsers(user, "password")
+            let u = users[i]
+            u.Password = formInput.Password
+            users[i] = u
+            updateUsers(users, u , "password")
         }
         
     }
 
-    const updateUsers = (u, type) => {
-        setUsers(u)
+    const updateUsers = (users, u, type) => {
+        setUsers(users)
+        setUser(u)
+    
+
         emptyForms(type)
     }
 
@@ -50,10 +53,10 @@ export default function ChangeProfileInfoForm({authId, users, setUsers}) {
         }
         for(let i = 0; i<users.length; i++){
             if(authId === users[i].Id){
-                let user = users[i]
-                user.Email = formInput.Email
-                users[i] =  user
-                updateUsers(users, "email")
+                let u = users[i]
+                u.Email = formInput.Email
+                users[i] =  u
+                updateUsers(users, u, "email")
             }
         }
     }

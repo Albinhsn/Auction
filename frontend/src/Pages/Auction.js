@@ -33,19 +33,18 @@ export default function Auction({setAuctions, auctions, users, authId}) {
     })
   }, )
   if (Object.keys(auction).length === 0) return <></>
-  console.log(auction)
   switch(auction.AuctionType){
     case "Engelsk":
       return (
-        <EnglishAuction auction={auction} user={user} setAuctions={setAuctions} auctions={auctions} favo={favo} authId={authId} />
+        <EnglishAuction auction={auction} user={user} setAuctions={setAuctions} auctions={auctions} favo={favo} authId={authId} users={users}/>
       )
     case "Holländsk":
       return(
-        <DutchAuction auction={auction} user={user} setAuctions={setAuctions} auctions={auctions} favo={favo} authId={authId} />
+        <DutchAuction auction={auction} user={user} setAuctions={setAuctions} auctions={auctions} favo={favo} authId={authId} users={users}/>
       )
     case "Schweizisk":
       return(
-        <SwissAuction auction={auction} user={user} setAuctions={setAuctions} auctions={auctions} favo={favo} authId={authId} />
+        <SwissAuction auction={auction} user={user} setAuctions={setAuctions} auctions={auctions} favo={favo} authId={authId} users={users}/>
       )
   }
   

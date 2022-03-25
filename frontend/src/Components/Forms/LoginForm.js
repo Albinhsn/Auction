@@ -12,7 +12,6 @@ export default function LoginForm({users, setAuthId, setUsers}) {
         Email: "",
         Password: ""
     })
-    
     const checkLogin = () => {
         let flag = false
         users.map(user =>{

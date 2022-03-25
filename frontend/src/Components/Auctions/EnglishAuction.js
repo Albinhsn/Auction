@@ -5,7 +5,7 @@ import ImageGallery from 'react-image-gallery'
 import { useNavigate } from 'react-router'
 
 
-export default function EnglishAuction({auction, setAuctions, user, auctions, favo, authId}) {
+export default function EnglishAuction({auction, setAuctions, user, auctions, favo, authId, users}) {
     
     
    
@@ -14,6 +14,7 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
     const [userBid, setUserBid] = useState(0)
     const [currentBid, setCurrentBid] = useState(0)
     const [bidHistory, setBidhistory] = useState([])
+    const [seller, setSeller] = useState('')
     const navigate = useNavigate()
     useEffect(() => {
         if(favo && !favorite){
@@ -25,6 +26,13 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                 setBidhistory(auction.BidHistory)
                 setCurrentBid(auction.BidHistory[auction.BidHistory.length - 1].Bid)
             }
+        }
+        if(seller === ''){
+            users.map(u => {
+                if(parseInt(auction.Seller) === parseInt(u.Id)){
+                    setSeller(u.Name)
+                }
+            })
         }
     })
 
@@ -78,7 +86,6 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                 auctions[i].Winner = user.Id
                 auctions[i].StopTime = new Date().toLocaleString("en-US")
                 setAuctions(auctions)
-                console.log(auctions)
                 alert("Grattis!")
                 navigate("/")
                 return
@@ -144,7 +151,7 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                     </div>
                                 </div>
                                 <p>Auktionstyp: {auction.AuctionType}</p>
-
+                                <p>Säljare: {seller}</p>
                                 <div className='row pt-5'>
                                     <p className='fw-bold text-uppercase'>Nuvarande bud</p>
                                     <div className='d-flex align-items-center'>

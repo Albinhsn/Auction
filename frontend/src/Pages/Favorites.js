@@ -7,7 +7,7 @@ export default function Favorites({authId, auctions, users}) {
     useEffect(() => {
         if (users.length <= 0) return <></>
         for (let i = 0; i < users.length; i++) {
-            if (parseInt(authId) === users[i].Id) {
+            if (parseInt(authId) === parseInt(users[i].Id)) {
                 setUser(users[i])
             }
         }
@@ -33,6 +33,7 @@ export default function Favorites({authId, auctions, users}) {
                 </div>
 
                 {auctions.map(auction => {
+                    if(user.Favorites.length === 0)return <></>
                     if (user.Favorites.includes(auction.Id)) {
                         return (
                             <div className='pt-3' key={auction.Id}>

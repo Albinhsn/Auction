@@ -71,7 +71,7 @@ export default function Search({auctions, authId, users}){
                 newLoc = utils.QualitySort([...localAuc])
                 break;
             case "Time":
-                newLoc = utils.DateSortEnd([...localAuc])
+                newLoc = utils.DateSortEnd([...localAuc]).filter(a => a.State != "Slut")
                 break;
                 default:
                     newLoc = localAuc
@@ -87,7 +87,6 @@ export default function Search({auctions, authId, users}){
         for(let i = 0; i<filters.length;i++){
             if(e.target.id === filters[i].Name){
                 filters[i].B = !filters[i].B
-                console.log(filters[i])
                 if(filters[i].B){
                     flag = true
                     

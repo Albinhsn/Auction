@@ -51,7 +51,7 @@ export default function SignupForm({setAuthId, authId, setUsers, users}) {
         })
 
         //Add account to json file
-        setUsers(accountInfo)
+        setUsers([...users, accountInfo])
         console.log(users)
         //Send back to
         setAuthId(accountInfo.Id)

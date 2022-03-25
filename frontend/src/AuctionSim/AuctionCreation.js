@@ -162,16 +162,16 @@ for(i = 1; i<31; i++){
 
     //Make sure winner and seller != 
     if (S != "Pågående"){
-        W = Math.floor(Math.random() * 31)
-        Sell = Math.floor(Math.random() * 31)
+        W = Math.floor(Math.random() * 20)
+        Sell = Math.floor(Math.random() * 20)
         if (W === Sell) {
             Sell = W + 1
-            if (Sell>30){
+            if (Sell>20){
                 Sell = 1
             }
         }
     }else{
-        Sell = Math.floor(Math.random() * 31)
+        Sell = Math.floor(Math.random() * 20)
         W = ""
     }
 

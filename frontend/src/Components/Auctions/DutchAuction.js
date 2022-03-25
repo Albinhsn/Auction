@@ -4,7 +4,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
 
 
-export default function DutchAuction({ auction, setAuctions, user, auctions, favo, authId }) {
+export default function DutchAuction({ auction, setAuctions, user, auctions, favo, authId, users}) {
 
 
 
@@ -13,7 +13,10 @@ export default function DutchAuction({ auction, setAuctions, user, auctions, fav
   const [userBid, setUserBid] = useState(0)
   const [currentBid, setCurrentBid] = useState(0)
   const [bidHistory, setBidhistory] = useState([])
+  const [seller, setSeller] = useState('')
 
+
+  
   useEffect(() => {
     if (favo && !favorite) {
       setFavorite(favo)
@@ -24,6 +27,13 @@ export default function DutchAuction({ auction, setAuctions, user, auctions, fav
         setBidhistory(auction.BidHistory)
         setCurrentBid(auction.BidHistory[auction.BidHistory.length - 1].Bid)
       }
+    }
+    if (seller === '') {
+      users.map(u => {
+        if (parseInt(auction.Seller) === parseInt(u.Id)) {
+          setSeller(u.Name)
+        }
+      })
     }
   })
 
@@ -51,11 +61,6 @@ export default function DutchAuction({ auction, setAuctions, user, auctions, fav
   }
   const madeBid = () => {
     if (!user) return
-    if (currentBid > userBid + 10) {
-      alert("Vänligen mata in över minsta bud")
-      return
-    }
-    setCurrentBid(userBid)
     setBidhistory([...bidHistory, {
       Id: user.Id,
       Bid: userBid,
@@ -71,6 +76,7 @@ export default function DutchAuction({ auction, setAuctions, user, auctions, fav
         auctions[i].BidHistory = auction.BidHistory
         setAuctions(auctions)
         document.querySelector("#bid-input").value = ""
+        alert(`Du har lagt ett bud på ${userBid}`)
         return
       }
     }
@@ -135,7 +141,7 @@ export default function DutchAuction({ auction, setAuctions, user, auctions, fav
             </div>
           </div>
           <p>Auktionstyp: {auction.AuctionType}</p>
-
+          <p>Säljare: {seller}</p>
           <div className='row pt-5'>
             <p className='fw-bold text-uppercase'>Nuvarande bud</p>
             <div className='d-flex align-items-center'>
