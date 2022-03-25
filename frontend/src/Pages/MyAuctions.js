@@ -30,7 +30,7 @@ export default function MyAuctions({authId, auctions, users,}){
                 
                 {auctions.map(auction => {
                    
-                    if(auction.Seller === authId){
+                    if(auction.Seller === authId ||auction.Winner === authId){
                         return(
                             <div className='pt-3' key={auction.Id}>
                                 <Link className='text-decoration-none text-dark' to={`/auction?auctionId=${auction.Id}`}><SearchComponent key={auction.Id} auction={auction} users={users} user={user}/></Link>

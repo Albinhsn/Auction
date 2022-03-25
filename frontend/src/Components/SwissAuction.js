@@ -2,7 +2,7 @@ import { React, useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
-
+import { useNavigate } from 'react-router'
 
 export default function SwissAuction({ auction, setAuctions, user, auctions, favo, authId }) {
 
@@ -10,20 +10,14 @@ export default function SwissAuction({ auction, setAuctions, user, auctions, fav
 
   const [favorite, setFavorite] = useState()
   const [watchlist, setWatchlist] = useState(false)
-  const [userBid, setUserBid] = useState(0)
   const [currentBid, setCurrentBid] = useState(0)
-  const [bidHistory, setBidhistory] = useState([])
-
+  const navigate = useNavigate()
   useEffect(() => {
     if (favo && !favorite) {
       setFavorite(favo)
     }
     if (currentBid === 0 && Object.keys(auction).length > 0) {
-      setCurrentBid(auction.MinimalBid)
-      if (auction.BidHistory.length > 0) {
-        setBidhistory(auction.BidHistory)
-        setCurrentBid(auction.BidHistory[auction.BidHistory.length - 1].Bid)
-      }
+      setCurrentBid(auction.PurchaseNow)
     }
   })
 
@@ -51,26 +45,16 @@ export default function SwissAuction({ auction, setAuctions, user, auctions, fav
   }
   const makePurchase = () => {
     if (!user) return
-    if (currentBid > userBid + 10) {
-      alert("Vänligen mata in över minsta bud")
-      return
-    }
-    setCurrentBid(userBid)
-    setBidhistory([...bidHistory, {
-      Id: user.Id,
-      Bid: userBid,
-      Time: new Date().toString()
-    }])
-    auction.BidHistory = [...bidHistory, {
-      Id: user.Id,
-      Bid: userBid,
-      Time: new Date().toString()
-    }]
+
     for (let i = 0; i < auctions.length; i++) {
       if (auctions[i].Id === auction.Id) {
-        auctions[i].BidHistory = auction.BidHistory
+        auctions[i].State = "Slut"
+        auctions[i].Winner = user.Id
+        auctions[i].StopTime = new Date().toLocaleString("en-US")
         setAuctions(auctions)
-        document.querySelector("#bid-input").value = ""
+        console.log(auctions)
+        alert("Grattis!")
+        navigate("/")
         return
       }
     }
@@ -148,9 +132,6 @@ export default function SwissAuction({ auction, setAuctions, user, auctions, fav
               </button>
             </div>
             <div className='d-flex'>
-              <input type="number" id="bid-input" className="" 
-                onChange={e => setUserBid(parseInt(e.target.value))}
-              />
               <button type="button" className="btn btn-warning ms-3"
                 onClick={() => makePurchase()}
               >

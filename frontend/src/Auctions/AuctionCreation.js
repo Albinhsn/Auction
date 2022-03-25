@@ -172,7 +172,7 @@ for(i = 1; i<31; i++){
         }
     }else{
         Sell = Math.floor(Math.random() * 31)
-        W = undefined
+        W = ""
     }
 
     //Randomize bidhistory
