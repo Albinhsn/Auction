@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchComponent from '../Components/SearchComponent'
+import SearchComponent from '../Components/Auctions/Cards/SearchComponent'
 import {useState, useEffect} from 'react'
 import * as utils from '../Helpers/utils'
 

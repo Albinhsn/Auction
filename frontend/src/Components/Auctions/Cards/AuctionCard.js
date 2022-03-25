@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import * as dates from '../Helpers/dates'
+import * as dates from '../../../Helpers/dates'
 export default function AuctionCard({ auction, price}) {
   const timeRemaining = dates.getTimeRemaining(auction.StopTime)
   return (

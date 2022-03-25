@@ -1,8 +1,8 @@
 
-import ProfileInfo from '../Components/ProfileInfo'
+import ProfileInfo from '../Components/Profile/ProfileInfo'
 import {useState, useEffect, React} from 'react'
 
-import ChangeProfileInfoForm from '../Components/ChangeProfileInfoForm'
+import ChangeProfileInfoForm from '../Components/Forms/ChangeProfileInfoForm'
 export default function Profile({authId, users, setUsers}) {
   
   const [user, setUser] = useState({})

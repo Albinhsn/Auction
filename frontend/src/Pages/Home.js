@@ -1,6 +1,6 @@
 import React from 'react'
-import Jumbo from '../Components/Jumbo'
-import Explore from '../Components/Explore'
+import Jumbo from '../Components/Homepage/Jumbo'
+import Explore from '../Components/Homepage/Explore'
 
 
 export default function Home({auctions}) {

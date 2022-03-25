@@ -6,19 +6,19 @@ import "./App.css"
 import {useState, useEffect} from 'react'
 
 //Pages and Components import
-import Navbar from './Components/Navbar'
+import Navbar from './Components/Homepage/Navbar'
 import Home from "./Pages/Home";
 import Login from './Pages/Login';
 import Search from './Pages/Search';
 import Profile from './Pages/Profile';
 import Auction from './Pages/Auction';
-import Footer from './Components/Footer';
+import Footer from './Components/Homepage/Footer';
 import Signup from './Pages/Signup';
 import MyAuctions from './Pages/MyAuctions';
-import SearchBar from './Components/SearchBar';
+import SearchBar from './Components/Homepage/SearchBar';
 import CreateAuction from './Pages/CreateAuction';
 //Data Import
-import auctionJSON from './Auctions/auctions.json'
+import auctionJSON from './AuctionSim/auctions.json'
 import userJSON from './Users/users.json'
 import Favorites from './Pages/Favorites';
 

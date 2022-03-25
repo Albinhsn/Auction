@@ -1,6 +1,6 @@
 import React from 'react'
-import AuctionCard from './AuctionCard'
-import * as utils from '../Helpers/utils'
+import AuctionCard from '../Auctions/Cards/AuctionCard'
+import * as utils from '../../Helpers/utils'
 
 export default function Explore({auctions, type}) {
     if(auctions === null || auctions.length === 0) return<></>

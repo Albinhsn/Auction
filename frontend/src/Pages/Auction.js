@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import DutchAuction from '../Components/DutchAuction'
-import EnglishAuction from '../Components/EnglishAuction'
-import SwissAuction from '../Components/SwissAuction'
+import DutchAuction from '../Components/Auctions/DutchAuction'
+import EnglishAuction from '../Components/Auctions/EnglishAuction'
+import SwissAuction from '../Components/Auctions/SwissAuction'
 export default function Auction({setAuctions, auctions, users, authId}) {
   
   const [auction, setAuction] = useState({})

@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react'
-import usersJSON from '../Users/users.json'
+import usersJSON from '../../Users/users.json'
 import { useNavigate } from 'react-router'
 export default function SignupForm({setAuthId, authId, setUsers, users}) {
 
