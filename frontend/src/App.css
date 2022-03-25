@@ -1,0 +1,44 @@
+
+    /* Chrome, Safari, Edge, Opera */
+#bid-input::-webkit-outer-spin-button,
+#bid-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+
+ul.profile-list {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+  font-weight: bold !important;
+}
+
+.jumbotron {
+  background-image: url("https://t4.ftcdn.net/jpg/04/67/93/01/360_F_467930159_UcfrOkjhFG436zoT9fSetYccBgpNkokp.jpg");
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  background-size: 100% 150%;
+  resize: both;
+  
+}
+.image-gallery {
+  width: 100%;
+  height: 40vh;
+
+}
+
+.image-gallery-slide img {
+  width: 100%;
+  height: 40vh;
+  max-height: 40vh;
+  object-fit: cover;
+  overflow: hidden;
+  object-position: center center;
+}
+
+.fullscreen .image-gallery-slide img {
+  max-height: 100vh;
+} 
