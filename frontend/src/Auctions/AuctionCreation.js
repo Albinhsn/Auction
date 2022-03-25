@@ -119,12 +119,12 @@ let imgs = {
 }
 
 //Auctionstype
-const auctionType = ["Engelsk", "Holländsk", "SMRA", "Schweizisk"]
+const auctionType = ["Engelsk", "Holländsk", "Schweizisk"]
 
 //Conditions
 const conditions = ["Utmärkt", "Bra", "Dåligt", "Hygglig", "Perfekt"]
 
-
+const tags = ["Systemkamera", "Kompaktkamera", "Mellanformatskamera"]
 
 //https://stackoverflow.com/questions/31378526/generate-random-date-between-two-dates-and-times-in-javascript
 function randomDate(start, end, startHour, endHour) {
@@ -202,7 +202,8 @@ for(i = 1; i<31; i++){
         Seller: Sell,
         Images: imgs[Title],
         Description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. ",
-        AuctionType: auctionType[Math.floor(Math.random() * auctionType.length)]
+        AuctionType: auctionType[Math.floor(Math.random() * auctionType.length) ],
+        Tags: tags[Math.floor(Math.random() * tags.length) - 1]
     }
     objs.push(obj)
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import DutchAuction from '../Components/DutchAuction'
 import EnglishAuction from '../Components/EnglishAuction'
-
+import SwissAuction from '../Components/SwissAuction'
 export default function Auction({setAuctions, auctions, users, authId}) {
   
   const [auction, setAuction] = useState({})
@@ -31,8 +32,21 @@ export default function Auction({setAuctions, auctions, users, authId}) {
       }
     })
   }, )
+  if (Object.keys(auction).length === 0) return <></>
+  console.log(auction)
+  switch(auction.AuctionType){
+    case "Engelsk":
+      return (
+        <EnglishAuction auction={auction} user={user} setAuctions={setAuctions} auctions={auctions} favo={favo} authId={authId} />
+      )
+    case "Holländsk":
+      return(
+        <DutchAuction auction={auction} user={user} setAuctions={setAuctions} auctions={auctions} favo={favo} authId={authId} />
+      )
+    case "Schweizisk":
+      return(
+        <SwissAuction auction={auction} user={user} setAuctions={setAuctions} auctions={auctions} favo={favo} authId={authId} />
+      )
+  }
   
-  return (
-      <EnglishAuction auction={auction} user={user} setAuctions={setAuctions} auctions={auctions} favo={favo}/>
-  )
 }

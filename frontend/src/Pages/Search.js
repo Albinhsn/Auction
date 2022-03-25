@@ -46,9 +46,13 @@ export default function Search({auctions, authId, users}){
             <div className='col-6'>
                     <div className="col-12 row">
                     <div className='col-8'>
-                    <label htmlFor="ongoing" className='ms-3'>DSLR</label>
+                    <label htmlFor="ongoing" className='ms-3'>
+                        Pågående
+                    </label>
                     <input type="checkbox" name="ongoing" className='ms-2'/>
-                    <label htmlFor="ongoing" className='ms-3'>Action Kamera</label>
+                    <label htmlFor="ongoing" className='ms-3'>
+                        Slut
+                    </label>
                     <input type="checkbox" name="sold" className='ms-2'/>
                     </div>
                     <div className='col-4 d-flex justify-content-end'>

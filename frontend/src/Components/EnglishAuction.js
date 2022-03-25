@@ -2,8 +2,9 @@ import {React, useState, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
-import * as dates from '../Helpers/dates'
-export default function EnglishAuction({auction, setAuctions, user, auctions, favo}) {
+
+
+export default function EnglishAuction({auction, setAuctions, user, auctions, favo, authId}) {
     
     
    
@@ -25,14 +26,6 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
             }
         }
     })
-    
-    if (Object.keys(auction).length === 0)return null
-    
-    
-
-   
-
-    
 
     
 
@@ -77,11 +70,15 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
     }
 
     const watchlistChange = () => {
-        setWatchlist(!watchlist)
-        if(watchlist){
+        if(!authId) return
+        if (!watchlist) {
             alert("Du kommer få en mail påminnelse 2 timmar innan auktionens avslut")
         }
+        setWatchlist(!watchlist)
+        
     }
+
+
     return (
         <div className='d-flex align-items-center'>
              
@@ -130,7 +127,7 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                         {new Date(auction.StopTime).toLocaleString("en-US")}
                                     </div>
                                 </div>
-
+                                <p>Auktionstyp: {auction.AuctionType}</p>
 
                                 <div className='row pt-5'>
                                     <p className='fw-bold text-uppercase'>Nuvarande bud</p>
@@ -140,7 +137,7 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                         </p>
                                         <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => favoriteChange()} style={{ color: `${favorite}` }} />
                                         <button className='btn btn-warning ms-3' type="button" onClick={() => watchlistChange()}>
-                                            {watchlist ? "Lägg Till Påminnelse" : "Ta bort påminnelse"}
+                                {watchlist ? "Ta bort påminnelse" : "Lägg Till Påminnelse"}
                                         </button>
                                     </div>
                                     <div className='d-flex'>
@@ -152,25 +149,32 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                         >
                                             Lägg bud
                                         </button>
+                                        
                                     </div>
-                                    <div className="dropdown mt-2">
-                                    <a className="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Bud Historik
-                                    </a>
-                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <ul className='mb-0 ps-0'>
-                                        {bidHistory.map(bid =>{                    
-                                            return(
-                                                <li key={bid.Id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 align-content-center">
-                                                    <p className=''>Bud:{bid.Bid} Tid: {new Date(bid.Time).toLocaleDateString("en-US")}</p>
-                                                    
-                                                </li>
+                                    <div className='d-flex'>
+                                        <div className="dropdown mt-2 pe-3">
+                                            <a className="btn btn-warning dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Bud Historik
+                                            </a>
+                                            <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <ul className='mb-0 ps-0'>
+                                                {bidHistory.map(bid =>{                    
+                                                    return(
+                                                        <li key={bid.Id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 align-content-center">
+                                                            <p className=''>Bud:{bid.Bid} Tid: {new Date(bid.Time).toLocaleDateString("en-US")}</p>
+                                                            
+                                                        </li>
 
-                                            )
-                                        })}
-                                        </ul>
-                                    </div>
-                        
+                                                    )
+                                                })}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        {auction.PurchaseNow > 0 ?
+                                            <button type="button" className='btn btn-warning ms-5 mt-2'>Köp Nu {auction.PurchaseNow}</button>
+                                            :
+                                            <></>
+                                        }
                                     </div>
                                 </div>
 
