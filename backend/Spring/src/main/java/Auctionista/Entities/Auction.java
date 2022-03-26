@@ -25,14 +25,13 @@ public class Auction {
     private int minimumBid;
     private int sellerId;
     private int winnerId;
-    private List<String> images;
+    private String[] images;
     private String description;
     private String auctionType;
-    private List<String> tags;
+    private String[] tags;
 
-    
 
-    public Auction(String id, String name, String state, List<Bid> Bidhistory, String condition, String startTime, String stopTIme, int purchasePrice, int minimumBid, int sellerId, int winnerId, List<String> images, String description, String auctionType, List<String> tags) {
+    public Auction(String id, String name, String state, List<Bid> Bidhistory, String condition, String startTime, String stopTIme, int purchasePrice, int minimumBid, int sellerId, int winnerId, String[] images, String description, String auctionType, String[] tags) {
         this.id = id;
         this.name = name;
         this.state = state;
@@ -138,11 +137,11 @@ public class Auction {
         this.winnerId = winnerId;
     }
 
-    public List<String> getImages() {
+    public String[] getImages() {
         return this.images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(String[] images) {
         this.images = images;
     }
 
@@ -162,11 +161,11 @@ public class Auction {
         this.auctionType = auctionType;
     }
 
-    public List<String> getTags() {
+    public String[] getTags() {
         return this.tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(String[] tags) {
         this.tags = tags;
     }
 
