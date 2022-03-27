@@ -468,7 +468,7 @@ for(let i  = 0; i<100; i++){
     camera.AuctionType = auctionType[Math.floor(Math.random() * auctionType.length)]
     camera.Description = description
     camera.MinimumBid = Math.floor(Math.random() * 10000) + 500 - (Math.floor(Math.random() * 10000) + 500) % 10
-    camera.Seller = Math.floor(Math.random() * 35)
+    camera.Seller = Math.floor(Math.random() * 20)
     
     camera.BidHistory = []
     
@@ -478,9 +478,9 @@ for(let i  = 0; i<100; i++){
     //Create winner
     if(i%2 === 0){
         
-        camera.Winner = Math.floor(Math.random() * 35)
+        camera.Winner = Math.floor(Math.random() * 20)
         while(camera.Winner === camera.Seller){
-            camera.Winner = Math.floor(Math.random() * 35)
+            camera.Winner = Math.floor(Math.random() * 20)
         }
         camera.State = "Slut"
     }else{
@@ -500,8 +500,8 @@ for(let i  = 0; i<100; i++){
 
     for (let j = 0; j < Math.floor(Math.random() * 6); j++) {
         let o = {
-            Id: Math.floor(Math.random() * 35),
-            BidderId: Math.floor(Math.random() * 35),
+            Id: Math.floor(Math.random() * 20),
+            BidderId: Math.floor(Math.random() * 20),
             Bid: camera.MinimumBid + j * 100 + 100,
             Time: new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate(), StartDate.getHours() + j + 1)
         }
