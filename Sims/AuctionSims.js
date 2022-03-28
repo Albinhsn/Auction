@@ -464,12 +464,13 @@ for(let i  = 0; i<100; i++){
     cam = cameras[Math.floor(Math.random() * cameras.length)]
     camera.Name = cam.Name
     camera.Tags = cam.Tags
-    
+    camera.Images = cam.Images
+    camera.Condition = conditions[Math.floor(Math.random() * conditions.length - 1)]
     camera.AuctionType = auctionType[Math.floor(Math.random() * auctionType.length)]
     camera.Description = description
     camera.MinimumBid = Math.floor(Math.random() * 10000) + 500 - (Math.floor(Math.random() * 10000) + 500) % 10
     camera.Seller = Math.floor(Math.random() * 20)
-    
+    camera.PurchasePrice = parseInt(camera.MinimumBid * 1.25)
     camera.BidHistory = []
     
 
@@ -485,6 +486,7 @@ for(let i  = 0; i<100; i++){
         camera.State = "Slut"
     }else{
         camera.State = "Pågående"
+        camera.Winner = -1
     }
     
     if (camera.State === "Pågående") {

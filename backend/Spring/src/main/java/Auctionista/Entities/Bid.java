@@ -1,57 +1,56 @@
 package Auctionista.Entities;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Date;
 
-@Document("bid")
+
 public class Bid {
-    
-    @Id
-    private String id;
 
-    private String userId;
-    private int bidAmount;
-    private String bidTime; 
 
     
+    private int Id;
+    private int BidderId;
+    private int Bid;
+    private Date Time; 
 
-    public Bid(String id, String userId, int bidAmount, String bidTime) {
-        this.id = id;
-        this.userId = userId;
-        this.bidAmount = bidAmount;
-        this.bidTime = bidTime;
+    
+
+    public Bid(int Id, int BidderId, int Bid, Date Time) {
+        this.Id = Id;
+        this.BidderId = BidderId;
+        this.Bid = Bid;
+        this.Time = Time;
     }
 
-    public String getId() {
-        return this.id;
+    public int getId() {
+        return this.Id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
-    public String getUserId() {
-        return this.userId;
+    public int getUserId() {
+        return this.BidderId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserId(int BidderId) {
+        this.BidderId = BidderId;
     }
 
     public int getBidAmount() {
-        return this.bidAmount;
+        return this.Bid;
     }
 
-    public void setBidAmount(int bidAmount) {
-        this.bidAmount = bidAmount;
+    public void setBidAmount(int Bid) {
+        this.Bid = Bid;
     }
 
-    public String getBidTime() {
-        return this.bidTime;
+    public Date getBidTime() {
+        return this.Time;
     }
 
-    public void setBidTime(String bidTime) {
-        this.bidTime = bidTime;
+    public void setBidTime(Date Time) {
+        this.Time = Time;
     }
 
 }

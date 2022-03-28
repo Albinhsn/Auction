@@ -1,172 +1,185 @@
 package Auctionista.Entities;
 
+import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-@Document("auction")
+@Document("auctions")
 public class Auction {
 
 
     @Id
-    private String id;
+    private ObjectId _id;
+
+    private int Id;
+    private String Name;
+    private String State;
+    private List<Bid> BidHistory;
+    private String Condition;
+    private int PurchasePrice;
+    private int MinimumBid;
+    private int Seller;
+    private int Winner;
+    private String[] Images;
+    private String Description;
+    private String AuctionType;
+    private Tags Tags;
+    private Date StartDate;
+    private Date EndDate;
 
 
 
-    private String name;
-    private String state;
-    private List<Bid> Bidhistory;
-    private String condition;
-    private String startTime;
-    private String stopTIme;
-    private int purchasePrice;
-    private int minimumBid;
-    private int sellerId;
-    private int winnerId;
-    private String[] images;
-    private String description;
-    private String auctionType;
-    private String[] tags;
+    public Auction(ObjectId _id, int Id, String Name, String State, List<Bid> BidHistory, String Condition, int PurchasePrice, int MinimumBid, int Seller, int Winner, String[] Images, String Description, String AuctionType, Tags Tags, Date StartDate, Date EndDate) {
+        this._id = _id;
+        this.Id = Id;
+        this.Name = Name;
+        this.State = State;
+        this.BidHistory = BidHistory;
+        this.Condition = Condition;
+        this.PurchasePrice = PurchasePrice;
+        this.MinimumBid = MinimumBid;
+        this.Seller = Seller;
+        this.Winner = Winner;
+        this.Images = Images;
+        this.Description = Description;
+        this.AuctionType = AuctionType;
+        this.Tags = Tags;
+        this.StartDate = StartDate;
+        this.EndDate = EndDate;
+    }
+    
 
-
-    public Auction(String id, String name, String state, List<Bid> Bidhistory, String condition, String startTime, String stopTIme, int purchasePrice, int minimumBid, int sellerId, int winnerId, String[] images, String description, String auctionType, String[] tags) {
-        this.id = id;
-        this.name = name;
-        this.state = state;
-        this.Bidhistory = Bidhistory;
-        this.condition = condition;
-        this.startTime = startTime;
-        this.stopTIme = stopTIme;
-        this.purchasePrice = purchasePrice;
-        this.minimumBid = minimumBid;
-        this.sellerId = sellerId;
-        this.winnerId = winnerId;
-        this.images = images;
-        this.description = description;
-        this.auctionType = auctionType;
-        this.tags = tags;
+    public ObjectId get_id() {
+        return this._id;
     }
 
-    public String getId() {
-        return this.id;
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public int getId() {
+        return this.Id;
+    }
+
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getName() {
-        return this.name;
+        return this.Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getState() {
-        return this.state;
+        return this.State;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setState(String State) {
+        this.State = State;
     }
 
     public List<Bid> getBidhistory() {
-        return this.Bidhistory;
+        return this.BidHistory;
     }
 
-    public void setBidhistory(List<Bid> Bidhistory) {
-        this.Bidhistory = Bidhistory;
+    public void setBidhistory(List<Bid> BidHistory) {
+        this.BidHistory = BidHistory;
     }
 
     public String getCondition() {
-        return this.condition;
+        return this.Condition;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
-    }
-
-    public String getStartTime() {
-        return this.startTime;
-    }
-
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
-
-    public String getStopTIme() {
-        return this.stopTIme;
-    }
-
-    public void setStopTIme(String stopTIme) {
-        this.stopTIme = stopTIme;
+    public void setCondition(String Condition) {
+        this.Condition = Condition;
     }
 
     public int getPurchasePrice() {
-        return this.purchasePrice;
+        return this.PurchasePrice;
     }
 
-    public void setPurchasePrice(int purchasePrice) {
-        this.purchasePrice = purchasePrice;
+    public void setPurchasePrice(int PurchasePrice) {
+        this.PurchasePrice = PurchasePrice;
     }
 
     public int getMinimumBid() {
-        return this.minimumBid;
+        return this.MinimumBid;
     }
 
-    public void setMinimumBid(int minimumBid) {
-        this.minimumBid = minimumBid;
+    public void setMinimumBid(int MinimumBid) {
+        this.MinimumBid = MinimumBid;
     }
 
-    public int getSellerId() {
-        return this.sellerId;
+    public int getSeller() {
+        return this.Seller;
     }
 
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
+    public void setSeller(int Seller) {
+        this.Seller = Seller;
     }
 
-    public int getWinnerId() {
-        return this.winnerId;
+    public int getWinner() {
+        return this.Winner;
     }
 
-    public void setWinnerId(int winnerId) {
-        this.winnerId = winnerId;
+    public void setWinner(int Winner) {
+        this.Winner = Winner;
     }
 
     public String[] getImages() {
-        return this.images;
+        return this.Images;
     }
 
-    public void setImages(String[] images) {
-        this.images = images;
+    public void setImages(String[] Images) {
+        this.Images = Images;
     }
 
     public String getDescription() {
-        return this.description;
+        return this.Description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
     public String getAuctionType() {
-        return this.auctionType;
+        return this.AuctionType;
     }
 
-    public void setAuctionType(String auctionType) {
-        this.auctionType = auctionType;
+    public void setAuctionType(String AuctionType) {
+        this.AuctionType = AuctionType;
     }
 
-    public String[] getTags() {
-        return this.tags;
+    public Tags getTags() {
+        return this.Tags;
     }
 
-    public void setTags(String[] tags) {
-        this.tags = tags;
+    public void setTags(Tags Tags) {
+        this.Tags = Tags;
     }
+
+    public Date getStartDate() {
+        return this.StartDate;
+    }
+
+    public void setStartDate(Date StartDate) {
+        this.StartDate = StartDate;
+    }
+
+    public Date getEndDate() {
+        return this.EndDate;
+    }
+
+    public void setEndDate(Date EndDate) {
+        this.EndDate = EndDate;
+    }
+
 
 }
