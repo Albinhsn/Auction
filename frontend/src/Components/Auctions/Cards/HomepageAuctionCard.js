@@ -29,17 +29,21 @@ export default function AuctionCard({ auction}) {
               M: {timeRemaining.Minutes}
             </p>
           </div>
-            {auction.auctionType === "Schweizisk" 
+            {auction.auctionType === "Schweizisk" || auction.auctionType === "Holländsk"
             ?  
              <></>
             : 
               <p className='mb-0'> Bud : {auction.bidhistory.length > 0 ? <>{auction.bidhistory[auction.bidhistory.length - 1].bidAmount}</> : <>{auction.minimumBid}</>} </p>
             }
-      
-          <p className='mb-0'>
-            Köp nu : {auction.purchasePrice}
-            SEK
-          </p>
+          {auction.auctionType !== "Holländsk" ? 
+            <p className='mb-0'>
+              Köp nu : {auction.purchasePrice}
+              SEK
+            </p>
+          :
+            <></>
+          }
+          
         </div>
       </div>
     </Link>
