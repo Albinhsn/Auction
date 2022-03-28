@@ -7,6 +7,8 @@ import AuctionDataService from '../../Services/auctionService'
 export default function Explore({auctions, type}) {
     
     
+
+
     if(auctions === null || auctions.length === 0) return<></>
     let renderAuctions
     let title = " "
@@ -38,7 +40,7 @@ export default function Explore({auctions, type}) {
     }
     
     
-    fetchCurrentAuctions()
+    
     return (
       <div className='row justify-content-center'>
         <div className='col-6' style={{padding: "0"}}>

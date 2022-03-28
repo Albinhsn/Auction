@@ -21,7 +21,7 @@ public class AuctionController {
     private AuctionService auctionService;
 
 
-    //Change to use body to req by state ("Pågående"/"Slut")
+    //TODO: Change to use body to req by state ("Pågående"/"Slut")
     @CrossOrigin
     @GetMapping("/state")
     public List<Auction> getAllCurrentAuctions(){
@@ -29,7 +29,7 @@ public class AuctionController {
     }
 
     @CrossOrigin
-    @GetMapping("/minimum/asc")
+    @GetMapping("/bid/asc")
     public List<Auction> getAuctionsByBidAscLimited(){
         return auctionService.getAuctionsByBidAscLimited();
     }
