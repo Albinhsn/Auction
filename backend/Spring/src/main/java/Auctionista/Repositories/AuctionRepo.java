@@ -23,14 +23,14 @@ public interface AuctionRepo extends MongoRepository<Auction, String>{
     
 
     @Aggregation(pipeline = {
-        "{'$match': {State: 'Pågående'}}",
+        "{'$match': {State: 'Pågående', AuctionType: {'$ne': 'Holländsk'}}}",
         "{'$sort': {MinimumBid: 1 }}",
         "{'$limit': 5}"
     })
     List<Auction> getAuctionsByBidAscLimited();
 
     @Aggregation(pipeline = {
-            "{'$match': {State: 'Pågående'}}",
+            "{'$match': {State: 'Pågående', AuctionType: {'$ne': 'Schweizisk'}}}",
             "{'$sort': {PurchasePrice: 1 }}",
             "{'$limit': 5}"
     })

@@ -144,7 +144,6 @@ export default function DutchAuction({ auction, setAuctions, user, auctions, fav
           <p>Säljare: {seller}</p>
           <p>Tag: {auction.Tags}</p>
           <div className='row pt-5'>
-            <p className='fw-bold text-uppercase'>Nuvarande bud</p>
             <div className='d-flex align-items-center'>
               
               <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => favoriteChange()} style={{ color: `${favorite}` }} />
