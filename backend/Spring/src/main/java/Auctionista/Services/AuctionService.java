@@ -25,4 +25,15 @@ public class AuctionService {
         return auctionRepo.save(auction);
     }
 
+    public List<Auction> getAuctionsByBidAscLimited(){
+        return auctionRepo.getAuctionsByBidAscLimited();
+    }
+
+    public List<Auction> getAuctionsByPurchaseAscLimited() {
+        return auctionRepo.getAuctionsByPurchaseAscLimited();
+    }
+
+    public List<Auction> getAuctionsByRemainingTimeAscLimited() {
+        return auctionRepo.getAuctionsByRemainingTimeAscLimited();
+    }
 }
