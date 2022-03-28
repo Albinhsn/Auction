@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AuctionCard from '../Auctions/Cards/HomepageAuctionCard'
 import * as utils from '../../Helpers/utils'
+import AuctionDataService from '../../Services/auctionService'
+
 
 export default function Explore({auctions, type}) {
+    
+    
     if(auctions === null || auctions.length === 0) return<></>
     let renderAuctions
     let title = " "
@@ -27,6 +31,14 @@ export default function Explore({auctions, type}) {
             renderAuctions = auctions
             break;
     }
+    const fetchCurrentAuctions = () => {
+        AuctionDataService.getAllCurrent().then(response => {
+            console.log(response)
+        })
+    }
+    
+    
+    fetchCurrentAuctions()
     return (
       <div className='row justify-content-center'>
         <div className='col-6' style={{padding: "0"}}>

@@ -3,6 +3,7 @@ package Auctionista.Controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,6 +20,7 @@ public class AuctionController {
     @Autowired
     private AuctionService auctionService;
 
+    @CrossOrigin
     @GetMapping("/state")
     public List<Auction> getAllCurrentAuctions(){
         return auctionService.getAllCurrentAuctions();
