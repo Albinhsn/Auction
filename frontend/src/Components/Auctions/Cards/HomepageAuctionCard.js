@@ -35,7 +35,7 @@ export default function AuctionCard({ auction}) {
             : 
               <p className='mb-0'> Bud : {auction.bidhistory.length > 0 ? <>{auction.bidhistory[auction.bidhistory.length - 1].bidAmount}</> : <>{auction.minimumBid}</>} </p>
             }
-          {auction.auctionType !== "Holländsk" ? 
+          {auction.auctionType != "Holländsk" ? 
             <p className='mb-0'>
               Köp nu : {auction.purchasePrice}
               SEK
