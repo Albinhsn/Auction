@@ -1,6 +1,6 @@
 import {React, useState, useEffect} from 'react'
 import { useNavigate } from 'react-router'
-export default function SignupForm({setAuthId, authId, setUsers, users}) {
+export default function SignupForm({setAuthId, authId}) {
 
     
     const [accountInfo, setAccountInfo] = useState({
@@ -9,7 +9,7 @@ export default function SignupForm({setAuthId, authId, setUsers, users}) {
         ConfirmEmail: "",
         Password: "",
         ConfirmPassword: "",
-        Id: users.length > 1 ? users[users.length - 1].Id + 1 : 1
+        Id: -1
     })
     
     
@@ -17,45 +17,15 @@ export default function SignupForm({setAuthId, authId, setUsers, users}) {
 
     const createAccount = () => {
         
-        //Check if empty input
-        if (accountInfo.Username === "" || accountInfo.Email === "" || accountInfo.ConfirmEmail === "", accountInfo.Password === "", accountInfo.ConfirmPassword === ""){
-            alert("Ett fält är tomt, var god och mata in all nödvändig information")
-            return
-        }
 
-        //Check if correct email
-        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(accountInfo.Email)){
-            alert("Var god och mata in en korrekt email adress")
-            return
-        }
-
-        //Check if both emails correspond
-        if (accountInfo.Email != accountInfo.ConfirmEmail){
-            alert("Email adresserna stämmer inte överens")
-            return
-        }
         
-        //Check whether username or email already exists
-        let flag = false
-        users.map(user => {
-            if(accountInfo.Username == user.Username) {
-                alert("Användarnamnet är upptaget, var vänlig välj ett nytt")
-                flag = true
-            }
-            if(accountInfo.Email === user.Email){
-                alert("Email adressen är upptagen, var vänlig välj en ny")
-                flag = true
-            }
-        })
-        if(flag) return
-        setUsers([...users, accountInfo])
-        setAuthId(accountInfo.Id)
+        
+
+
+        
+        setAuthId()
     }
-    useEffect(() =>{
-        if(authId){
-            navigate("/")
-        }
-    }, )
+
 
     return (
         

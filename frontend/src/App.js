@@ -44,7 +44,7 @@ function App() {
           <Route path="/search" element={<Search auctions={auctions} users={users} authId={authId}/>}/>
           <Route path="/searchBar" element={<SearchBar/>}/>
           <Route path="/auction" element={<Auction auctions={auctions} users={users} authId={authId} setAuctions={setAuctions}/>}/>
-          <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId} setUsers={setUsers} users={users}/>}/>
+          <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId}/>}/>
           <Route path="/profile/auction" element={<MyAuctions auctions={auctions} authId={authId} users={users}/>}/>
           <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions} authId={authId}/>}/>
           <Route path="/favorites" element={<Favorites auctions={auctions} authId={authId} users={users}/>}/>

@@ -1,6 +1,5 @@
 package Auctionista.Entities;
 
-import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -20,14 +19,7 @@ public class User {
 
 
 
-    public User(ObjectId _id, int Id, String Name, String Email, String Password, int[] Favorites) {
-        this._id = _id;
-        this.Id = Id;
-        this.Name = Name;
-        this.Email = Email;
-        this.Password = Password;
-        this.Favorites = Favorites;
-    }
+    
 
     public ObjectId get_id() {
         return this._id;
