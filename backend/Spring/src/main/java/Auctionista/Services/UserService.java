@@ -17,6 +17,7 @@ public class UserService {
     
 
     public List<User> getAllUsers(){
+        System.out.println("GOT");
         return userRepo.getAllUsers();
     }
 }

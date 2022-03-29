@@ -13,6 +13,7 @@ import Auctionista.Entities.User;
 @Repository
 public interface UserRepo extends MongoRepository<User, String>{
 
-    @Query(value="{Name: 1}")
+    @Query(value="{Id: 1}")
     List<User> getAllUsers();
-    }
+ 
+}

@@ -1,86 +1,81 @@
 package Auctionista.Entities;
+
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 @Document("users")
 public class User {
     
     @Id
     private ObjectId _id;
-    private int id;
+    private int Id;
 
-    private String name;
-    private String email;
-    private String password;
-    private int[] favorites;
-    private List<WatchItem> watchlist;
+    private String Name;
+    private String Email;
+    private String Password;
+    private int[] Favorites;
+    //private List<WatchItem> watchlist;
 
 
-    public User(ObjectId _id, int id, String name, String email, String password, int[] favorites, List<WatchItem> watchlist) {
+
+    public User(ObjectId _id, int Id, String Name, String Email, String Password, int[] Favorites) {
         this._id = _id;
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.favorites = favorites;
-        this.watchlist = watchlist;
+        this.Id = Id;
+        this.Name = Name;
+        this.Email = Email;
+        this.Password = Password;
+        this.Favorites = Favorites;
     }
 
-    public ObjectId get_Id(){
+    public ObjectId get_id() {
         return this._id;
     }
 
-    public void set_Id(ObjectId _id){
+    public void set_id(ObjectId _id) {
         this._id = _id;
     }
 
     public int getId() {
-        return this.id;
+        return this.Id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int Id) {
+        this.Id = Id;
     }
 
     public String getName() {
-        return this.name;
+        return this.Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getEmail() {
-        return this.email;
+        return this.Email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public String getPassword() {
-        return this.password;
+        return this.Password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String Password) {
+        this.Password = Password;
     }
 
     public int[] getFavorites() {
-        return this.favorites;
+        return this.Favorites;
     }
 
-    public void setFavorites(int[] favorites) {
-        this.favorites = favorites;
+    public void setFavorites(int[] Favorites) {
+        this.Favorites = Favorites;
     }
 
-    public List<WatchItem> getWatchlist() {
-        return this.watchlist;
-    }
-
-    public void setWatchlist(List<WatchItem> watchlist) {
-        this.watchlist = watchlist;
-    }
 
 }
