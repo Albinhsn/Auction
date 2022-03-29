@@ -23,5 +23,8 @@ public class UserService {
     }
 
 
+    public User registerUser(){
+        return userRepo.registerUser();
+    }
     
 }

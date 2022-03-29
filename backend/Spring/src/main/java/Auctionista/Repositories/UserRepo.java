@@ -19,5 +19,7 @@ public interface UserRepo extends MongoRepository<User, String>{
     @Query(value="{Email: ?0}")
     User findByEmail(String email);
 
+
+    User registerUser();
 }
 
