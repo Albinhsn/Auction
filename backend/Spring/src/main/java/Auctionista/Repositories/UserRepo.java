@@ -2,7 +2,7 @@ package Auctionista.Repositories;
 
 import java.util.List;
 
-
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 //import org.springframework.data.mongodb.repository.Aggregation;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import Auctionista.Entities.User;
 
 @Repository
-public interface UserRepo extends MongoRepository<User, String>{
+public interface UserRepo extends MongoRepository<User, ObjectId>{
 
     @Query(value="{Id: 1}")
     List<User> getAllUsers();
@@ -20,6 +20,6 @@ public interface UserRepo extends MongoRepository<User, String>{
     User findByEmail(String email);
 
 
-    User registerUser();
+    
 }
 
