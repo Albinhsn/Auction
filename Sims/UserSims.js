@@ -28,11 +28,10 @@ for(i = 0; i<usersnames.length; i++){
     }
     
     let obj = {
-        Id: i+1,
-        Name: usersnames[i],
-        Email: `${usersnames[i]}@gmail.com`,
-        Password: passwords[i],
-        Favorites: favo
+        username: usersnames[i],
+        email: `${usersnames[i]}@gmail.com`,
+        password: passwords[i],
+        favorites: favo
     }
     objs.push(obj)
 

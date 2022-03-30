@@ -1,4 +1,4 @@
-package Auctionista.Annotations.Email;
+package Auctionista.Services;
 
 import Auctionista.Dto.UserDto;
 import Auctionista.Entities.User;
