@@ -24,9 +24,12 @@ public class EmailValidator implements ConstraintValidator<ValidEmail, Object>{
     }
 
     private boolean validateEmail(Object obj) {
+        
         UserDto userDto = (UserDto) obj;
         
         pattern = Pattern.compile(EMAIL_PATTERN);
+        System.out.println(userDto.getEmail() + "\n");
+        System.out.println(userDto.getMatchingEmail() + "\n");
         matcher = pattern.matcher(userDto.getEmail());
         return (matcher.matches() && userDto.getEmail().equals(userDto.getMatchingEmail()));
     }

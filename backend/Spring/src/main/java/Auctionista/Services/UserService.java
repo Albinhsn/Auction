@@ -33,6 +33,8 @@ public class UserService implements IUserService{
             throw new UserAlreadyExistException("There is an account with that email address or username: "
                     + userDto.getEmail());
         }
+
+        
         int[] favo = {};
         List<WatchItem> watchlist = new ArrayList<>();
         User user = new User(

@@ -7,6 +7,9 @@ class userDataService{
         return http.get(`/user/users`);
     }
 
+    postRegistrationForm(formInfo){
+        return http.post("/user/registration",formInfo)
+    }
   
 }
 

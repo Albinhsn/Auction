@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +23,9 @@ public class RegistrationController {
     UserService userService;
 
     
-
+    @CrossOrigin
     @PostMapping("/user/registration")
+    //Don't send back user, instead just status code, if succesfull send another req to get _id from email used in input 
     public User registerUserAccount(
             @RequestBody  @Valid UserDto userDto,
             HttpServletRequest request,
