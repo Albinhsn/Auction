@@ -23,8 +23,9 @@ public class RegistrationController {
     UserService userService;
 
     
-    
+    @CrossOrigin
     @PostMapping("/user/registration")
+    //Don't send back user, instead just status code, if succesfull send another req to get _id from email used in input 
     public User registerUserAccount(
             @RequestBody  @Valid UserDto userDto,
             HttpServletRequest request,

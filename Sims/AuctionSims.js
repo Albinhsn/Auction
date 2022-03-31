@@ -502,10 +502,10 @@ for(let i  = 0; i<100; i++){
 
     for (let j = 0; j < Math.floor(Math.random() * 6); j++) {
         let o = {
-            Id: Math.floor(Math.random() * 20),
-            BidderId: Math.floor(Math.random() * 20),
-            Bid: camera.minimumBid + j * 100 + 100,
-            Time: new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate(), StartDate.getHours() + j + 1)
+            id: Math.floor(Math.random() * 20),
+            bidderId: Math.floor(Math.random() * 20),
+            bid: camera.minimumBid + j * 100 + 100,
+            time: new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate(), StartDate.getHours() + j + 1)
         }
         camera.bidHistory.push(o)
     }

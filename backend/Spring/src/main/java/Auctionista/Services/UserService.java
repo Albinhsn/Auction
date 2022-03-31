@@ -36,6 +36,8 @@ public class UserService implements IUserService{
         if (emailExists(userDto.getEmail())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN , "There is an account with that email address");
         }
+
+        
         int[] favo = {};
         List<WatchItem> watchlist = new ArrayList<>();
         User user = new User(

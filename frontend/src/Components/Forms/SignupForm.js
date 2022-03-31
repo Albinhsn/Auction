@@ -13,17 +13,13 @@ export default function SignupForm({setAuthId, authId}) {
     })
     
     
-    const navigate = useNavigate()
+    
 
     const createAccount = () => {
-        
-
-        userService.postCreateUserForm().then(response => {
+        console.log(accountInfo)
+        userService.postRegistrationForm(accountInfo).then(response => {
             console.log(response)
         })
-        
-
-
         
         setAuthId()
     }
