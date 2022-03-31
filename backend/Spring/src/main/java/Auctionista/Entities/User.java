@@ -10,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
     
     
-
     private ObjectId _id;
 
     private String username;

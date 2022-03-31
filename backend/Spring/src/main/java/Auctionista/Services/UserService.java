@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import Auctionista.Dto.UserDto;
 import Auctionista.Entities.User;
@@ -28,17 +30,18 @@ public class UserService implements IUserService{
 
     @Override
     public User registerNewUserAccount(UserDto userDto) throws UserAlreadyExistException {
-        if (emailExists(userDto.getEmail()) || usernameExists(userDto.getUsername())) {
-            //Instead of throwing exception return smth?
-            throw new UserAlreadyExistException("There is an account with that email address or username: "
-                    + userDto.getEmail());
+        if(usernameExists(userDto.getUsername())){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "There is an account with that username");
+        }
+        if (emailExists(userDto.getEmail())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN , "There is an account with that email address");
         }
         int[] favo = {};
         List<WatchItem> watchlist = new ArrayList<>();
         User user = new User(
+            userDto.getUsername(),    
             userDto.getEmail(), 
             userDto.getPassword(), 
-            userDto.getUsername(),
             favo,
             watchlist
             );

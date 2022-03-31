@@ -1,15 +1,15 @@
 import {React, useState, useEffect} from 'react'
 import { useNavigate } from 'react-router'
+import userService from '../../Services/userService'
 export default function SignupForm({setAuthId, authId}) {
 
     
     const [accountInfo, setAccountInfo] = useState({
-        Username: "",
-        Email: "",
-        ConfirmEmail: "",
-        Password: "",
-        ConfirmPassword: "",
-        Id: -1
+        username: "",
+        email: "",
+        matchingEmail: "",
+        password: "",
+        matchingPassword: "",
     })
     
     
@@ -18,7 +18,9 @@ export default function SignupForm({setAuthId, authId}) {
     const createAccount = () => {
         
 
-        
+        userService.postCreateUserForm().then(response => {
+            console.log(response)
+        })
         
 
 
@@ -39,7 +41,7 @@ export default function SignupForm({setAuthId, authId}) {
                                 Användarnamn
                             </label>
                         <input type="text" className="form-control" 
-                            onChange={e => setAccountInfo({...accountInfo, Username: e.target.value})}/>
+                            onChange={e => setAccountInfo({...accountInfo, username: e.target.value})}/>
                     </div>
 
 
@@ -48,7 +50,7 @@ export default function SignupForm({setAuthId, authId}) {
                             Email address
                             </label>
                         <input type="email" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, Email: e.target.value })}/>
+                            onChange={e => setAccountInfo({ ...accountInfo, email: e.target.value })}/>
                     </div>
                     
                     <div className="mb-3">
@@ -56,7 +58,7 @@ export default function SignupForm({setAuthId, authId}) {
                             Bekräfta Email address
                             </label>
                         <input type="email" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, ConfirmEmail: e.target.value })}
+                            onChange={e => setAccountInfo({ ...accountInfo, matchingEmail: e.target.value })}
                         />
                     </div>
 
@@ -66,7 +68,7 @@ export default function SignupForm({setAuthId, authId}) {
                             Lösenord
                             </label>
                         <input type="password" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, Password: e.target.value })}
+                            onChange={e => setAccountInfo({ ...accountInfo, password: e.target.value })}
                         />
                     </div>
                     
@@ -75,7 +77,7 @@ export default function SignupForm({setAuthId, authId}) {
                             Confirm Lösenord
                             </label>
                         <input type="password" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, ConfirmPassword: e.target.value })}
+                            onChange={e => setAccountInfo({ ...accountInfo, matchingPassword: e.target.value })}
                         />
                     </div>
                 </form>

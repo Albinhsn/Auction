@@ -5,6 +5,9 @@ import java.util.regex.Matcher;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import Auctionista.Dto.UserDto;
 
 public class EmailValidator implements ConstraintValidator<ValidEmail, Object>{
@@ -28,6 +31,12 @@ public class EmailValidator implements ConstraintValidator<ValidEmail, Object>{
         
         pattern = Pattern.compile(EMAIL_PATTERN);
         matcher = pattern.matcher(userDto.getEmail());
-        return (matcher.matches() && userDto.getEmail().equals(userDto.getMatchingEmail()));
+        if(!userDto.getEmail().equals(userDto.getMatchingEmail())){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Emails don't match");
+        }
+        if(!matcher.matches()){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Not a valid email");
+        }
+        return true;
     }
 }

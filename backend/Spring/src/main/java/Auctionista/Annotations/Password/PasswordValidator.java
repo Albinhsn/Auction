@@ -3,6 +3,9 @@ package Auctionista.Annotations.Password;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
 import Auctionista.Dto.UserDto;
 
 public class PasswordValidator implements ConstraintValidator<ValidPassword, Object> {
@@ -16,7 +19,10 @@ public class PasswordValidator implements ConstraintValidator<ValidPassword, Obj
 
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context) {
-        return (validatePassword(obj));
+        if(!validatePassword(obj)){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Passwords doesn't match");
+        }
+        return true;
     }
 
     private boolean validatePassword(Object obj) {
