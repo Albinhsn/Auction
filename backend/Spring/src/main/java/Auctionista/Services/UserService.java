@@ -60,4 +60,12 @@ public class UserService implements IUserService{
         return userRepo.findByUsername(username) != null;
     }
    
+    public String validateLogin(String email, String password){
+        User user = userRepo.validateLogin(email, password);
+        if(user.get_id() == null){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Invalid login");
+        }
+        return user.get_id();
+    }
+
 }
