@@ -27,6 +27,6 @@ public interface UserRepo extends MongoRepository<User, ObjectId>{
         "{'$match': {email: ?0, password: ?1}}",
         "{'$project': {_id: 1}}"
     })
-    User validateLogin(String email, String password);
+    String validateLogin(String email, String password);
 }
 

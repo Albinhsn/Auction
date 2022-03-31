@@ -42,15 +42,17 @@ public class UserService implements IUserService{
         int[] favo = {};
         List<WatchItem> watchlist = new ArrayList<>();
         User user = new User();
-        
-        user.set_id((new ObjectId().toString()));
+        user.set_id(new ObjectId().toString());
         user.setUsername(userDto.getUsername());
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setFavorites(favo);
         user.setWatchlist(watchlist);
-
+            
         return userRepo.save(user);
+    }
+    public String validateLogin(String email, String password){
+        return userRepo.validateLogin(email, password);
     }
 
     public boolean emailExists(String email) {
@@ -61,12 +63,4 @@ public class UserService implements IUserService{
         return userRepo.findByUsername(username) != null;
     }
    
-    public String validateLogin(String email, String password){
-        User user = userRepo.validateLogin(email, password);
-        if(user.get_id() == null){
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Invalid login");
-        }
-        return user.get_id();
-    }
-
 }

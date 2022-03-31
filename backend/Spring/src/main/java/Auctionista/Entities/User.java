@@ -18,6 +18,10 @@ public class User {
     private int[] favorites;
     private List<WatchItem> watchlist;
 
+
+    
+
+
     
 
 

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import Auctionista.Entities.User;
 import Auctionista.Services.UserService;
@@ -31,9 +31,10 @@ public class UserController {
     @CrossOrigin
     @GetMapping("/login")
     public String validateLogin(
-        @RequestBody User user
+        @RequestParam String email,
+        @RequestParam String password
     ){
-        return userService.validateLogin(user.getEmail(), user.getPassword());
+        return userService.validateLogin(email, password);
     }
     
     

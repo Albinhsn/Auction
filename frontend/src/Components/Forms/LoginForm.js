@@ -2,30 +2,28 @@ import {React, useState} from 'react'
 import { Link } from 'react-router-dom'
 import {useNavigate} from 'react-router'
 import {GoogleLogin } from 'react-google-login'
+import userService from '../../Services/userService'
 
 
 export default function LoginForm({users, setAuthId, setUsers}) {
 
 
-    const navigate = useNavigate()
+    const navigation = useNavigate()
     const [loginInfo, setLoginInfo] = useState({
-        Email: "",
-        Password: ""
+        email: "",
+        password: ""
     })
     const checkLogin = () => {
-        let flag = false
-        users.map(user =>{
-            if(user.Email === loginInfo.Email && loginInfo.Password === user.Password){
-                setAuthId(user.Id)
-                navigate("/")
-                flag = true
-            }
+        userService.validateLogin(loginInfo).then(response => {
+            console.log(response)
+            setAuthId(response)
+            navigation('/')
         })
-        if(flag) return
-        alert("Finns ingen användare med vald information")
-        setLoginInfo({
-            Email: "",
-            Password: ""
+        .catch(
+            function(error){
+                if(error.response){
+                    alert(error.response.data.message)
+                }
         })
     } 
 
@@ -39,8 +37,9 @@ export default function LoginForm({users, setAuthId, setUsers}) {
             Name: data.profileObj.givenName,
             Favorites: []
         }])
+        
         setAuthId(data.profileObj.googleId)
-        navigate("/")
+        navigation("/")
     }
     return (
         <div className='d-flex align-items-center justify-content-center' style={{ height: "75vh" }}>
@@ -50,7 +49,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
                         Email address
                         </label>
                     <input type="email" className="form-control" id="exampleInputEmail1"
-                        onChange={e => setLoginInfo({...loginInfo, Email: e.target.value})}
+                        onChange={e => setLoginInfo({...loginInfo, email: e.target.value})}
                     />
                 </div>
                 <div className="mb-3 justify-content-center">
@@ -58,7 +57,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
                         Password
                     </label>
                     <input type="password" className="form-control"
-                            onChange={e => setLoginInfo({ ...loginInfo, Password: e.target.value })}
+                            onChange={e => setLoginInfo({ ...loginInfo, password: e.target.value })}
                     />
                 </div>
                 <div className='justify-content-center'>
