@@ -28,7 +28,7 @@ for(i = 0; i<usersnames.length; i++){
     }
     
     let obj = {
-        name: usersnames[i],
+        username: usersnames[i],
         email: `${usersnames[i]}@gmail.com`,
         password: passwords[i],
         favorites: favo

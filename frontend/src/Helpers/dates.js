@@ -1,5 +1,4 @@
 export const getTimeRemaining = (date) => {
-
     const d = new Date(Date.parse(date))
     let timeRemaining = d - new Date()
     timeRemaining = new Date(timeRemaining)

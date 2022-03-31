@@ -7,6 +7,17 @@ class AuctionDataService{
         return http.get(`/auction/state`);
     }
 
+    getAuctionsByBidAsc(){
+        return http.get("/auction/bid/asc")
+    }
+
+    getAuctionsByTimeAsc(){
+        return http.get("/auction/time/asc")
+    }
+
+    getAuctionsByPurchaseAsc(){
+        return http.get("/auction/purchase/asc")
+    }
 }
 
 

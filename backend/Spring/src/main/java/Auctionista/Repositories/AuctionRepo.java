@@ -5,13 +5,14 @@ import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.stereotype.Repository;
 
 import Auctionista.Entities.Auction;
 
 @Repository
-public interface AuctionRepo extends MongoRepository<Auction, String>{
+public interface AuctionRepo extends MongoRepository<Auction, ObjectId>{
     
     
     
@@ -23,14 +24,18 @@ public interface AuctionRepo extends MongoRepository<Auction, String>{
     
 
     @Aggregation(pipeline = {
-        "{'$match': {State: 'Pågående'}}",
-        "{'$sort': {MinimumBid: 1 }}",
+        "{'$match': {state: 'pågående', auctionType: {$nin: ['Schweizisk', 'Holländsk']}}}",
+        "{'$project': {endDate: 1, name: 1, auctionType: 1, minimumBid: 1, 'bidHistory.bid': 1, images: 1}}",
+        "{'$unwind': {path: '$bidHistory'}}",
+        "{'$addFields': {highestBid: 'bidHistory.bid'}}",
+        "{'$group': {_id:{_id: '$_id', name: '$name', highestBid: {$max: ['$highestBid', '$minimumBid']}}, images: '$images', auctionType: '$auctionType', endDate: '$endDate'}}",
+        "{'$sort': {highestBid: 1 }}",
         "{'$limit': 5}"
     })
     List<Auction> getAuctionsByBidAscLimited();
 
     @Aggregation(pipeline = {
-            "{'$match': {State: 'Pågående'}}",
+            "{'$match': {State: 'Pågående', AuctionType: {'$ne': 'Holländsk'}}}",
             "{'$sort': {PurchasePrice: 1 }}",
             "{'$limit': 5}"
     })

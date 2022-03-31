@@ -1,61 +1,39 @@
 import {React, useState, useEffect} from 'react'
 import { useNavigate } from 'react-router'
-export default function SignupForm({setAuthId, authId, setUsers, users}) {
+import userService from '../../Services/userService'
 
-    
+
+export default function SignupForm({setAuthId, authId}) {
+
+    let navigation = useNavigate()
     const [accountInfo, setAccountInfo] = useState({
-        Username: "",
-        Email: "",
-        ConfirmEmail: "",
-        Password: "",
-        ConfirmPassword: "",
-        Id: users.length > 1 ? users[users.length - 1].Id + 1 : 1
+        username: "",
+        email: "",
+        matchingEmail: "",
+        password: "",
+        matchingPassword: "",
     })
     
     
-    const navigate = useNavigate()
+    
 
     const createAccount = () => {
-        
-        //Check if empty input
-        if (accountInfo.Username === "" || accountInfo.Email === "" || accountInfo.ConfirmEmail === "", accountInfo.Password === "", accountInfo.ConfirmPassword === ""){
-            alert("Ett fält är tomt, var god och mata in all nödvändig information")
-            return
-        }
 
-        //Check if correct email
-        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(accountInfo.Email)){
-            alert("Var god och mata in en korrekt email adress")
-            return
-        }
-
-        //Check if both emails correspond
-        if (accountInfo.Email != accountInfo.ConfirmEmail){
-            alert("Email adresserna stämmer inte överens")
-            return
-        }
+        userService.postRegistrationForm(accountInfo)
+            .then(response => {
+                console.log(response.data._id)
+                setAuthId(response.data._id)
+                navigation('/')
+            })
+            .catch(
+                function(error){
+                    if(error.response){
+                        alert(error.response.data.message)
+                    }
+            })
         
-        //Check whether username or email already exists
-        let flag = false
-        users.map(user => {
-            if(accountInfo.Username == user.Username) {
-                alert("Användarnamnet är upptaget, var vänlig välj ett nytt")
-                flag = true
-            }
-            if(accountInfo.Email === user.Email){
-                alert("Email adressen är upptagen, var vänlig välj en ny")
-                flag = true
-            }
-        })
-        if(flag) return
-        setUsers([...users, accountInfo])
-        setAuthId(accountInfo.Id)
     }
-    useEffect(() =>{
-        if(authId){
-            navigate("/")
-        }
-    }, )
+
 
     return (
         
@@ -69,7 +47,7 @@ export default function SignupForm({setAuthId, authId, setUsers, users}) {
                                 Användarnamn
                             </label>
                         <input type="text" className="form-control" 
-                            onChange={e => setAccountInfo({...accountInfo, Username: e.target.value})}/>
+                            onChange={e => setAccountInfo({...accountInfo, username: e.target.value})}/>
                     </div>
 
 
@@ -78,7 +56,7 @@ export default function SignupForm({setAuthId, authId, setUsers, users}) {
                             Email address
                             </label>
                         <input type="email" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, Email: e.target.value })}/>
+                            onChange={e => setAccountInfo({ ...accountInfo, email: e.target.value })}/>
                     </div>
                     
                     <div className="mb-3">
@@ -86,7 +64,7 @@ export default function SignupForm({setAuthId, authId, setUsers, users}) {
                             Bekräfta Email address
                             </label>
                         <input type="email" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, ConfirmEmail: e.target.value })}
+                            onChange={e => setAccountInfo({ ...accountInfo, matchingEmail: e.target.value })}
                         />
                     </div>
 
@@ -96,7 +74,7 @@ export default function SignupForm({setAuthId, authId, setUsers, users}) {
                             Lösenord
                             </label>
                         <input type="password" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, Password: e.target.value })}
+                            onChange={e => setAccountInfo({ ...accountInfo, password: e.target.value })}
                         />
                     </div>
                     
@@ -105,7 +83,7 @@ export default function SignupForm({setAuthId, authId, setUsers, users}) {
                             Confirm Lösenord
                             </label>
                         <input type="password" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, ConfirmPassword: e.target.value })}
+                            onChange={e => setAccountInfo({ ...accountInfo, matchingPassword: e.target.value })}
                         />
                     </div>
                 </form>

@@ -1,86 +1,120 @@
 package Auctionista.Entities;
+
+
 import java.util.List;
 
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("users")
 public class User {
     
-    @Id
-    private ObjectId _id;
-    private int id;
+    
+    private String _id;
 
-    private String name;
+    private String username;
     private String email;
     private String password;
     private int[] favorites;
     private List<WatchItem> watchlist;
 
 
-    public User(ObjectId _id, int id, String name, String email, String password, int[] favorites, List<WatchItem> watchlist) {
+    public User(String _id, String username, String email, String password, int[] favorites, List<WatchItem> watchlist){
         this._id = _id;
-        this.id = id;
-        this.name = name;
+        this.username = username;
         this.email = email;
         this.password = password;
         this.favorites = favorites;
         this.watchlist = watchlist;
     }
+    
 
-    public ObjectId get_Id(){
-        return this._id;
+
+    
+
+
+    
+
+    /**
+     * @return String return the _id
+     */
+    public String get_id() {
+        return _id;
     }
 
-    public void set_Id(ObjectId _id){
+    /**
+     * @param _id the _id to set
+     */
+    public void set_id(String _id) {
         this._id = _id;
     }
 
-    public int getId() {
-        return this.id;
+    /**
+     * @return String return the username
+     */
+    public String getUsername() {
+        return username;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    /**
+     * @return String return the email
+     */
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
+    /**
+     * @param email the email to set
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * @return String return the password
+     */
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
+    /**
+     * @param password the password to set
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * @return int[] return the favorites
+     */
     public int[] getFavorites() {
-        return this.favorites;
+        return favorites;
     }
 
+    /**
+     * @param favorites the favorites to set
+     */
     public void setFavorites(int[] favorites) {
         this.favorites = favorites;
     }
 
+    /**
+     * @return List<WatchItem> return the watchlist
+     */
     public List<WatchItem> getWatchlist() {
-        return this.watchlist;
+        return watchlist;
     }
 
+    /**
+     * @param watchlist the watchlist to set
+     */
     public void setWatchlist(List<WatchItem> watchlist) {
         this.watchlist = watchlist;
     }
