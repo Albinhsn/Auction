@@ -1,9 +1,11 @@
 import {React, useState, useEffect} from 'react'
 import { useNavigate } from 'react-router'
 import userService from '../../Services/userService'
+
+
 export default function SignupForm({setAuthId, authId}) {
 
-    
+    let navigation = useNavigate()
     const [accountInfo, setAccountInfo] = useState({
         username: "",
         email: "",
@@ -16,12 +18,20 @@ export default function SignupForm({setAuthId, authId}) {
     
 
     const createAccount = () => {
-        console.log(accountInfo)
-        userService.postRegistrationForm(accountInfo).then(response => {
-            console.log(response)
-        })
+
+        userService.postRegistrationForm(accountInfo)
+            .then(response => {
+                console.log(response.data._id)
+                setAuthId(response.data._id)
+                navigation('/')
+            })
+            .catch(
+                function(error){
+                    if(error.response){
+                        alert(error.response.data.message)
+                    }
+            })
         
-        setAuthId()
     }
 
 

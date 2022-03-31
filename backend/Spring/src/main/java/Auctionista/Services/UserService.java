@@ -3,6 +3,7 @@ package Auctionista.Services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,7 @@ public class UserService implements IUserService{
         int[] favo = {};
         List<WatchItem> watchlist = new ArrayList<>();
         User user = new User(
+            new ObjectId().toString(),
             userDto.getUsername(),    
             userDto.getEmail(), 
             userDto.getPassword(), 

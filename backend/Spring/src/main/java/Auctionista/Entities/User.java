@@ -3,14 +3,14 @@ package Auctionista.Entities;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("users")
 public class User {
     
     
-    private ObjectId _id;
+    private String _id;
 
     private String username;
     private String email;
@@ -19,8 +19,8 @@ public class User {
     private List<WatchItem> watchlist;
 
 
-    public User(String username, String email, String password, int[] favorites, List<WatchItem> watchlist){
-        this._id = new ObjectId();
+    public User(String _id, String username, String email, String password, int[] favorites, List<WatchItem> watchlist){
+        this._id = _id;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -36,16 +36,16 @@ public class User {
     
 
     /**
-     * @return ObjectId return the _id
+     * @return String return the _id
      */
-    public ObjectId get_id() {
+    public String get_id() {
         return _id;
     }
 
     /**
      * @param _id the _id to set
      */
-    public void set_id(ObjectId _id) {
+    public void set_id(String _id) {
         this._id = _id;
     }
 
