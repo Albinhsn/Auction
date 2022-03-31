@@ -51,8 +51,14 @@ public class UserService implements IUserService{
             
         return userRepo.save(user);
     }
+    
+    
     public String validateLogin(String email, String password){
-        return userRepo.validateLogin(email, password);
+        String id = userRepo.validateLogin(email, password);
+        if(id == null){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Invalid login");
+        }
+        return id;
     }
 
     public boolean emailExists(String email) {
@@ -61,6 +67,23 @@ public class UserService implements IUserService{
 
     public boolean usernameExists(String username){
         return userRepo.findByUsername(username) != null;
+    }
+
+    public String handleGoogleLogin(User user){
+        User locUser = userRepo.findByEmail(user.getEmail());
+        if(locUser == null){
+            
+            user.set_id(new ObjectId().toString());
+            
+            int[] favo = {};
+            user.setFavorites(favo);
+            List<WatchItem> watchlist= new ArrayList<>();
+            user.setWatchlist(watchlist);
+            userRepo.save(user);
+            return user.get_id();
+        }
+
+        return locUser.get_id();
     }
    
 }

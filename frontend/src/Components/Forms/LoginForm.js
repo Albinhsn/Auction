@@ -31,15 +31,22 @@ export default function LoginForm({users, setAuthId, setUsers}) {
         alert("Failed login")
     }
     const handleLogin = (data) => {
-        setUsers([...users, {
-            Id: data.profileObj.googleId,
-            Email: data.profileObj.email,
-            Name: data.profileObj.givenName,
-            Favorites: []
-        }])
-        
-        setAuthId(data.profileObj.googleId)
-        navigation("/")
+        let user = {       
+            email: data.profileObj.email,
+            username: data.profileObj.givenName,
+        }
+        console.log(user)
+        userService.handleGoogleLogin(user)
+            .then(response =>{
+                console.log(response)
+                 setAuthId(response)
+                navigation("/")
+        })
+            .catch(function(error){
+                console.log(error)
+        })
+
+
     }
     return (
         <div className='d-flex align-items-center justify-content-center' style={{ height: "75vh" }}>

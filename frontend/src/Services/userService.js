@@ -12,10 +12,14 @@ class userDataService{
     }
 
     validateLogin(formInfo){
-        console.log(formInfo)
         return http.get("/user/login", {params: formInfo })
     }
-  
+    
+    handleGoogleLogin(googleInfo){
+        console.log(googleInfo)
+        return http.post("/user/login/google", googleInfo)
+    }
+
 }
 
 
