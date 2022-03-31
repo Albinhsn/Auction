@@ -19,16 +19,6 @@ public class User {
     private List<WatchItem> watchlist;
 
 
-    public User(String _id, String username, String email, String password, int[] favorites, List<WatchItem> watchlist){
-        this._id = _id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.favorites = favorites;
-        this.watchlist = watchlist;
-    }
-    
-
 
     
 

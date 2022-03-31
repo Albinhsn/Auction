@@ -41,14 +41,15 @@ public class UserService implements IUserService{
         
         int[] favo = {};
         List<WatchItem> watchlist = new ArrayList<>();
-        User user = new User(
-            new ObjectId().toString(),
-            userDto.getUsername(),    
-            userDto.getEmail(), 
-            userDto.getPassword(), 
-            favo,
-            watchlist
-            );
+        User user = new User();
+        
+        user.set_id((new ObjectId().toString()));
+        user.setUsername(userDto.getUsername());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setFavorites(favo);
+        user.setWatchlist(watchlist);
+
         return userRepo.save(user);
     }
 
