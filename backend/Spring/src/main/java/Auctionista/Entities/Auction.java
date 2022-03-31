@@ -13,173 +13,161 @@ public class Auction {
 
 
     @Id
-    private ObjectId _id;
+    private String _id;
 
-    private int Id;
-    private String Name;
-    private String State;
-    private List<Bid> BidHistory;
-    private String Condition;
-    private int PurchasePrice;
-    private int MinimumBid;
-    private int Seller;
-    private int Winner;
-    private String[] Images;
-    private String Description;
-    private String AuctionType;
-    private Tags Tags;
-    private Date StartDate;
-    private Date EndDate;
-
+    private String name;
+    private String state;
+    private List<Bid> bidHistory;
+    private String condition;
+    private int purchasePrice;
+    private int minimumBid;
+    private String seller;
+    private String winner;
+    private String[] images;
+    private String description;
+    private String auctionType;
+    private Tags tags;
+    private Date startDate;
+    private Date endDate;
 
 
-    public Auction(ObjectId _id, int Id, String Name, String State, List<Bid> BidHistory, String Condition, int PurchasePrice, int MinimumBid, int Seller, int Winner, String[] Images, String Description, String AuctionType, Tags Tags, Date StartDate, Date EndDate) {
-        this._id = _id;
-        this.Id = Id;
-        this.Name = Name;
-        this.State = State;
-        this.BidHistory = BidHistory;
-        this.Condition = Condition;
-        this.PurchasePrice = PurchasePrice;
-        this.MinimumBid = MinimumBid;
-        this.Seller = Seller;
-        this.Winner = Winner;
-        this.Images = Images;
-        this.Description = Description;
-        this.AuctionType = AuctionType;
-        this.Tags = Tags;
-        this.StartDate = StartDate;
-        this.EndDate = EndDate;
-    }
-    
+    private int highestBid;
 
-    public ObjectId get_id() {
+
+
+
+    public String get_id() {
         return this._id;
     }
 
-    public void set_id(ObjectId _id) {
+    public void set_id(String _id) {
         this._id = _id;
     }
 
-    public int getId() {
-        return this.Id;
-    }
-
-    public void setId(int Id) {
-        this.Id = Id;
-    }
-
     public String getName() {
-        return this.Name;
+        return this.name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getState() {
-        return this.State;
+        return this.state;
     }
 
-    public void setState(String State) {
-        this.State = State;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public List<Bid> getBidhistory() {
-        return this.BidHistory;
+    public List<Bid> getBidHistory() {
+        return this.bidHistory;
     }
 
-    public void setBidhistory(List<Bid> BidHistory) {
-        this.BidHistory = BidHistory;
+    public void setBidHistory(List<Bid> bidHistory) {
+        this.bidHistory = bidHistory;
     }
 
     public String getCondition() {
-        return this.Condition;
+        return this.condition;
     }
 
-    public void setCondition(String Condition) {
-        this.Condition = Condition;
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 
     public int getPurchasePrice() {
-        return this.PurchasePrice;
+        return this.purchasePrice;
     }
 
-    public void setPurchasePrice(int PurchasePrice) {
-        this.PurchasePrice = PurchasePrice;
+    public void setPurchasePrice(int purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
     public int getMinimumBid() {
-        return this.MinimumBid;
+        return this.minimumBid;
     }
 
-    public void setMinimumBid(int MinimumBid) {
-        this.MinimumBid = MinimumBid;
+    public void setMinimumBid(int minimumBid) {
+        this.minimumBid = minimumBid;
     }
 
-    public int getSeller() {
-        return this.Seller;
+    public String getSeller() {
+        return this.seller;
     }
 
-    public void setSeller(int Seller) {
-        this.Seller = Seller;
+    public void setSeller(String seller) {
+        this.seller = seller;
     }
 
-    public int getWinner() {
-        return this.Winner;
+    public String getWinner() {
+        return this.winner;
     }
 
-    public void setWinner(int Winner) {
-        this.Winner = Winner;
+    public void setWinner(String winner) {
+        this.winner = winner;
     }
 
     public String[] getImages() {
-        return this.Images;
+        return this.images;
     }
 
-    public void setImages(String[] Images) {
-        this.Images = Images;
+    public void setImages(String[] images) {
+        this.images = images;
     }
 
     public String getDescription() {
-        return this.Description;
+        return this.description;
     }
 
-    public void setDescription(String Description) {
-        this.Description = Description;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getAuctionType() {
-        return this.AuctionType;
+        return this.auctionType;
     }
 
-    public void setAuctionType(String AuctionType) {
-        this.AuctionType = AuctionType;
+    public void setAuctionType(String auctionType) {
+        this.auctionType = auctionType;
     }
 
     public Tags getTags() {
-        return this.Tags;
+        return this.tags;
     }
 
-    public void setTags(Tags Tags) {
-        this.Tags = Tags;
+    public void setTags(Tags tags) {
+        this.tags = tags;
     }
 
     public Date getStartDate() {
-        return this.StartDate;
+        return this.startDate;
     }
 
-    public void setStartDate(Date StartDate) {
-        this.StartDate = StartDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public Date getEndDate() {
-        return this.EndDate;
+        return this.endDate;
     }
 
-    public void setEndDate(Date EndDate) {
-        this.EndDate = EndDate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
+
+    public int getHighestBid() {
+        return this.highestBid;
+    }
+
+    public void setHighestBid(int highestBid) {
+        this.highestBid = highestBid;
+    }
+
+    
+    
+    
+
 
 
 }

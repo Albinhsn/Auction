@@ -3,111 +3,99 @@ package Auctionista.Entities;
 public class Tags {
     
 
-    private String Brand;
-    private String Type;
-    private String Lens;
-    private String ImageSensorSize;
-    private String Resolution;
-    private String WeatherProof;
-    private String VideoFormat;
-    private String[] MemoryCards;
-    private String[] WirelessConnection;
-    private String AngledScreen;
+    private String brand;
+    private String type;
+    private String lens;
+    private String imageSensorSize;
+    private String resolution;
+    private String weatherProof;
+    private String videoFormat;
+    private String[] memoryCards;
+    private String[] wirelessConnection;
+    private String angledScreen;
 
-
-
-    public Tags(String Brand, String Type, String Lens, String ImageSensorSize, String Resolution, String WeatherProof, String VideoFormat, String[] MemoryCards, String[] WirelessConnection, String AngledScreen) {
-        this.Brand = Brand;
-        this.Type = Type;
-        this.Lens = Lens;
-        this.ImageSensorSize = ImageSensorSize;
-        this.Resolution = Resolution;
-        this.WeatherProof = WeatherProof;
-        this.VideoFormat = VideoFormat;
-        this.MemoryCards = MemoryCards;
-        this.WirelessConnection = WirelessConnection;
-        this.AngledScreen = AngledScreen;
-    }
 
 
     public String getBrand() {
-        return this.Brand;
+        return this.brand;
     }
 
-    public void setBrand(String Brand) {
-        this.Brand = Brand;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getType() {
-        return this.Type;
+        return this.type;
     }
 
-    public void setType(String Type) {
-        this.Type = Type;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getLens() {
-        return this.Lens;
+        return this.lens;
     }
 
-    public void setLens(String Lens) {
-        this.Lens = Lens;
+    public void setLens(String lens) {
+        this.lens = lens;
     }
 
     public String getImageSensorSize() {
-        return this.ImageSensorSize;
+        return this.imageSensorSize;
     }
 
-    public void setImageSensorSize(String ImageSensorSize) {
-        this.ImageSensorSize = ImageSensorSize;
+    public void setImageSensorSize(String imageSensorSize) {
+        this.imageSensorSize = imageSensorSize;
     }
 
     public String getResolution() {
-        return this.Resolution;
+        return this.resolution;
     }
 
-    public void setResolution(String Resolution) {
-        this.Resolution = Resolution;
+    public void setResolution(String resolution) {
+        this.resolution = resolution;
     }
 
     public String getWeatherProof() {
-        return this.WeatherProof;
+        return this.weatherProof;
     }
 
-    public void setWeatherProof(String WeatherProof) {
-        this.WeatherProof = WeatherProof;
+    public void setWeatherProof(String weatherProof) {
+        this.weatherProof = weatherProof;
     }
 
     public String getVideoFormat() {
-        return this.VideoFormat;
+        return this.videoFormat;
     }
 
-    public void setVideoFormat(String VideoFormat) {
-        this.VideoFormat = VideoFormat;
+    public void setVideoFormat(String videoFormat) {
+        this.videoFormat = videoFormat;
     }
 
     public String[] getMemoryCards() {
-        return this.MemoryCards;
+        return this.memoryCards;
     }
 
-    public void setMemoryCards(String[] MemoryCards) {
-        this.MemoryCards = MemoryCards;
+    public void setMemoryCards(String[] memoryCards) {
+        this.memoryCards = memoryCards;
     }
 
     public String[] getWirelessConnection() {
-        return this.WirelessConnection;
+        return this.wirelessConnection;
     }
 
-    public void setWirelessConnection(String[] WirelessConnection) {
-        this.WirelessConnection = WirelessConnection;
+    public void setWirelessConnection(String[] wirelessConnection) {
+        this.wirelessConnection = wirelessConnection;
     }
 
     public String getAngledScreen() {
-        return this.AngledScreen;
+        return this.angledScreen;
     }
 
-    public void setAngledScreen(String AngledScreen) {
-        this.AngledScreen = AngledScreen;
+    public void setAngledScreen(String angledScreen) {
+        this.angledScreen = angledScreen;
     }
+
+   
 
 }

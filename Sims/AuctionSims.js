@@ -1,6 +1,8 @@
+const { ObjectId } = require('mongodb');
+
 let states = ["Slut", "Pågående"]
 let conditions = ["Perfekt", "Bra", "Utmärkt", "Dåligt", "Hyggligt"]
-
+let bidderIds = ["6243e92145479cefb2584fed", "6243e92145479cefb2584fee", "6243e92145479cefb2584fef", "6243e92145479cefb2584ff0", "6243e92145479cefb2584ff1", "6243e92145479cefb2584ff2", "6243e92145479cefb2584ff3", "6243e92145479cefb2584ff4", "6243e92145479cefb2584ff5", "6243e92145479cefb2584ff6", "6243e92145479cefb2584ff7", "6243e92145479cefb2584ff8", "6243e92145479cefb2584ff9", "6243e92145479cefb2584ffa", "6243e92145479cefb2584ffb", "6243e92145479cefb2584ffc", "6243e92145479cefb2584ffd", "6243e92145479cefb2584ffe", "6243e92145479cefb2584fff", "6243e92145479cefb2585000"]
 let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. "
 //Figure out how to write to mongodb
 let cameras = [
@@ -469,8 +471,7 @@ for(let i  = 0; i<100; i++){
     camera.auctionType = auctionType[Math.floor(Math.random() * auctionType.length)]
     camera.description = description
     camera.minimumBid = Math.floor(Math.random() * 10000) + 500 - (Math.floor(Math.random() * 10000) + 500) % 10
-    camera.seller = Math.floor(Math.random() * 20)
-    camera.purchasePrice = parseInt(camera.minimumBid * 1.25)
+    camera.seller = bidderIds[Math.floor(Math.random() * bidderIds.length)]
     camera.bidHistory = []
     
 
@@ -479,9 +480,9 @@ for(let i  = 0; i<100; i++){
     //Create winner
     if(i%2 === 0){
         
-        camera.winner = Math.floor(Math.random() * 20)
+        camera.winner = bidderIds[Math.floor(Math.random() * bidderIds.length)]
         while(camera.winner === camera.seller){
-            camera.winner = Math.floor(Math.random() * 20)
+            camera.winner = bidderIds[Math.floor(Math.random() * bidderIds.length)]
         }
         camera.state = "Slut"
     }else{
@@ -489,6 +490,15 @@ for(let i  = 0; i<100; i++){
         camera.winner = -1
     }
     
+    if((i%3 !== 0 && camera.auctionType === "Engelsk") || camera.auctionType === "Holländsk" || camera.auctionType === "Schweizisk"){
+        camera.purchasePrice = 0 
+    }
+    else{
+        camera.purchasePrice = parseInt(camera.minimumBid * 1.25)
+    }
+    
+
+
     if (camera.state === "Pågående") {
         StartDate = randomDate(new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() - 7), new Date(), 0, 23)
     }
@@ -501,9 +511,13 @@ for(let i  = 0; i<100; i++){
 
 
     for (let j = 0; j < Math.floor(Math.random() * 6); j++) {
+        let bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
+        while(bidderId === camera.seller || bidderId === camera.winner){
+            bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
+        }
         let o = {
-            id: Math.floor(Math.random() * 20),
-            bidderId: Math.floor(Math.random() * 20),
+            id: new ObjectId(),
+            bidderId: bidderId,
             bid: camera.minimumBid + j * 100 + 100,
             time: new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate(), StartDate.getHours() + j + 1)
         }
@@ -512,7 +526,7 @@ for(let i  = 0; i<100; i++){
 
     if(i%2 ===0 ){
         if(camera.bidHistory.length > 0){
-            camera.bidHistory[camera.bidHistory.length - 1].Id = camera.winner
+            camera.bidHistory[camera.bidHistory.length - 1].id = camera.winner
         }
     }
     

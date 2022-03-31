@@ -15,17 +15,20 @@ export default function Home({auctions}) {
 
   useEffect(() => {
     auctionService.getAuctionsByBidAsc().then(response => {
-      setAuctionsByBid(response.data)
       console.log(response.data, "Bid")
+      setAuctionsByBid(response.data)
+
     })
 
     auctionService.getAuctionsByTimeAsc().then(response => {
-      setAuctionsByTime(response.data)
       console.log(response.data, "Time")
+      setAuctionsByTime(response.data)
+      
     })
     auctionService.getAuctionsByPurchaseAsc().then(response => {
-      setAuctionsByPurchase(response.data)
       console.log(response.data, "Purchase")
+      setAuctionsByPurchase(response.data)
+      
     })
 
   }, [])

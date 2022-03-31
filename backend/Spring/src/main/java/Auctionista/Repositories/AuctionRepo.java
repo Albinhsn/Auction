@@ -16,7 +16,7 @@ public interface AuctionRepo extends MongoRepository<Auction, ObjectId>{
     
     
     
-    @Query(value="{State:'Pågående'}")
+    @Query(value="{state:'Pågående'}")
     List<Auction> getAllCurrentAuctions();
 
     @Query(value="{}")
@@ -24,27 +24,32 @@ public interface AuctionRepo extends MongoRepository<Auction, ObjectId>{
     
 
     @Aggregation(pipeline = {
-        "{'$match': {state: 'pågående', auctionType: {$nin: ['Schweizisk', 'Holländsk']}}}",
-        "{'$project': {endDate: 1, name: 1, auctionType: 1, minimumBid: 1, 'bidHistory.bid': 1, images: 1}}",
-        "{'$unwind': {path: '$bidHistory'}}",
-        "{'$addFields': {highestBid: 'bidHistory.bid'}}",
-        "{'$group': {_id:{_id: '$_id', name: '$name', highestBid: {$max: ['$highestBid', '$minimumBid']}}, images: '$images', auctionType: '$auctionType', endDate: '$endDate'}}",
+        "{'$project': {state: 1, name: 1, images: 1, auctionType:1, minimumBid: 1, 'bidHistory.bid': 1, endDate: 1, purchasePrice: 1}}",
+        "{'$addFields': {highestBid: {$max: [{$last: '$bidHistory.bid'}, '$minimumBid']}, images: {$first: '$images'}}}",
+        "{'$project': {state: 1, name: 1, images: 1, auctionType: 1, endDate: 1, highestBid: 1, purchasePrice: 1}}",
+        "{'$match': {state: 'Pågående', minimumBid: {$ne: 0}, auctionType: {'$nin': ['Holländsk', 'Schweizisk']}}}",
         "{'$sort': {highestBid: 1 }}",
         "{'$limit': 5}"
     })
     List<Auction> getAuctionsByBidAscLimited();
 
     @Aggregation(pipeline = {
-            "{'$match': {State: 'Pågående', AuctionType: {'$ne': 'Holländsk'}}}",
-            "{'$sort': {PurchasePrice: 1 }}",
-            "{'$limit': 5}"
+        "{'$project': {state: 1, name: 1, images: 1, auctionType:1, minimumBid: 1, 'bidHistory.bid': 1, endDate: 1, purchasePrice: 1}}",
+        "{'$addFields': {highestBid: {$max: [{$last: '$bidHistory.bid'}, '$minimumBid']}, images: {$first: '$images'}}}",
+        "{'$project': {state: 1, name: 1, images: 1, auctionType: 1, endDate: 1, highestBid: 1, purchasePrice: 1}}",
+        "{'$match': {state: 'Pågående', auctionType: {'$nin': ['Holländsk', 'Schweizisk']}}}",
+        "{'$sort': {purchasePrice: 1 }}",
+        "{'$limit': 5}"
     })
     List<Auction> getAuctionsByPurchaseAscLimited();
 
     @Aggregation(pipeline = {
-            "{'$match': {State: 'Pågående'}}",
-            "{'$sort': {EndDate: 1 }}",
-            "{'$limit': 5}"
+        "{'$project': {state: 1, name: 1, images: 1, auctionType:1, minimumBid: 1, 'bidHistory.bid': 1, endDate: 1, purchasePrice: 1}}",
+        "{'$addFields': {highestBid: {$max: [{$last: '$bidHistory.bid'}, '$minimumBid']}, images: {$first: '$images'}}}",
+        "{'$project': {state: 1, name: 1, images: 1, auctionType: 1, endDate: 1, highestBid: 1, purchasePrice: 1}}",
+        "{'$match': {state: 'Pågående'}}",
+        "{'$sort': {endDate: 1 }}",
+        "{'$limit': 5}"
     })
     List<Auction> getAuctionsByRemainingTimeAscLimited();
 

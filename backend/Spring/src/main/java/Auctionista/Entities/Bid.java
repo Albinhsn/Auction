@@ -7,50 +7,42 @@ public class Bid {
 
 
     
-    private int Id;
-    private int BidderId;
-    private int Bid;
-    private Date Time; 
+    private String id;
+    private String bidderId;
+    private String bid;
+    private Date time; 
 
-    
 
-    public Bid(int Id, int BidderId, int Bid, Date Time) {
-        this.Id = Id;
-        this.BidderId = BidderId;
-        this.Bid = Bid;
-        this.Time = Time;
+    public String getId() {
+        return this.id;
     }
 
-    public int getId() {
-        return this.Id;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setId(int Id) {
-        this.Id = Id;
+    public String getBidderId() {
+        return this.bidderId;
     }
 
-    public int getUserId() {
-        return this.BidderId;
+    public void setBidderId(String bidderId) {
+        this.bidderId = bidderId;
     }
 
-    public void setUserId(int BidderId) {
-        this.BidderId = BidderId;
+    public String getBid() {
+        return this.bid;
     }
 
-    public int getBidAmount() {
-        return this.Bid;
+    public void setBid(String bid) {
+        this.bid = bid;
     }
 
-    public void setBidAmount(int Bid) {
-        this.Bid = Bid;
+    public Date getTime() {
+        return this.time;
     }
 
-    public Date getBidTime() {
-        return this.Time;
-    }
-
-    public void setBidTime(Date Time) {
-        this.Time = Time;
+    public void setTime(Date time) {
+        this.time = time;
     }
 
 }
