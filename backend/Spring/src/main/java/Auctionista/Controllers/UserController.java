@@ -53,7 +53,15 @@ public class UserController {
     public String getUserFromObjectId(
         @RequestParam String _id
     ){
-        
         return userService.getUserFromObjectId(_id);
+    }
+
+    @CrossOrigin
+    @GetMapping("/favorite")
+    public boolean checkFavorite(
+        @RequestParam String userId,
+        @RequestParam String auctionId
+    ){
+        return userService.checkFavorite(userId, auctionId);
     }
 }

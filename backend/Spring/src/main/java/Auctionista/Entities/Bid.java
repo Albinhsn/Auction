@@ -7,18 +7,19 @@ public class Bid {
 
 
     
-    private String id;
+    private String _id;
     private String bidderId;
     private String bid;
     private Date time; 
 
 
-    public String getId() {
-        return this.id;
+    public String get_id() {
+        return this._id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void set_id(String _id) {
+
+        this._id = _id;
     }
 
     public String getBidderId() {

@@ -1,7 +1,7 @@
+import userService from '../Services/userService'
 
 
-
-export const favoriteChange = () => {
+export const favoriteChange = (authId) => {
 
 }
 

@@ -37,7 +37,7 @@ public interface AuctionRepo extends MongoRepository<Auction, ObjectId>{
         "{'$project': {state: 1, name: 1, images: 1, auctionType:1, minimumBid: 1, 'bidHistory.bid': 1, endDate: 1, purchasePrice: 1}}",
         "{'$addFields': {highestBid: {$max: [{$last: '$bidHistory.bid'}, '$minimumBid']}, images: {$first: '$images'}}}",
         "{'$project': {state: 1, name: 1, images: 1, auctionType: 1, endDate: 1, highestBid: 1, purchasePrice: 1}}",
-        "{'$match': {state: 'Pågående', auctionType: {'$nin': ['Holländsk', 'Schweizisk']}}}",
+        "{'$match': {state: 'Pågående', purchasePrice: {$ne: 0},auctionType: {'$ne': 'Schweizisk'}}}",
         "{'$sort': {purchasePrice: 1 }}",
         "{'$limit': 5}"
     })
@@ -59,7 +59,7 @@ public interface AuctionRepo extends MongoRepository<Auction, ObjectId>{
         "{'$lookup': { from: 'users', localField: 'seller', foreignField: '_id', as: 'seller'}}",
         "{'$addFields': { seller:{$first: '$seller.username'}}}",
         "{'$lookup': {from: 'users',localField: 'winner',foreignField: '_id',as: 'winner'}}",
-        "{'$addFields': {winner: {$first: '$winner.username'}}}"
+        "{'$addFields': {winner: {$first: '$winner.username'}, highestBid: {$max: [{$last: '$bidHistory.bid'}, '$minimumBid']}}}",
     })
     Auction getAuctionByObjectId(String _id);
 }

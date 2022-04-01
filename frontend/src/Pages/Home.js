@@ -15,18 +15,15 @@ export default function Home({auctions}) {
 
   useEffect(() => {
     auctionService.getAuctionsByBidAsc().then(response => {
-      console.log(response.data, "Bid")
       setAuctionsByBid(response.data)
 
     })
 
     auctionService.getAuctionsByTimeAsc().then(response => {
-      console.log(response.data, "Time")
       setAuctionsByTime(response.data)
-      
+      console.log(response.data)
     })
     auctionService.getAuctionsByPurchaseAsc().then(response => {
-      console.log(response.data, "Purchase")
       setAuctionsByPurchase(response.data)
       
     })
@@ -38,7 +35,7 @@ export default function Home({auctions}) {
       <Jumbo />
       <Explore auctions={auctionsByPurchase} title={"Cheapest Purchase Now"}/>
       <Explore auctions={auctionsByTime} title={"Ending Soon..."} />
-      <Explore auctions={auctionsByBid} title={"Cheapest Items here"} />
+      <Explore auctions={auctionsByBid} title={"Cheapest Bids here"} />
     </>
   )
 }

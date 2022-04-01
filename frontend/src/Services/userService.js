@@ -25,6 +25,15 @@ class userDataService{
             params: {_id: _id}
         })
     }
+
+    checkFavorite(userId, auctionId){
+        return http.get("/user/favorite", {
+            params:{
+                userId: userId, 
+                auctionId: auctionId
+            }
+        })
+    }
 }
 
 

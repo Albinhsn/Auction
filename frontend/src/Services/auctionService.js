@@ -20,7 +20,6 @@ class AuctionDataService{
     }
 
     getAuctionByObjectId(_id){
-        console.log(_id)
         return http.get("/auction/objectid", {params: 
             {
                 _id: _id

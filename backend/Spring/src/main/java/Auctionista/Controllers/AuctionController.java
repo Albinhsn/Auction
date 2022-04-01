@@ -23,7 +23,6 @@ public class AuctionController {
     private AuctionService auctionService;
 
 
-    //TODO: Change to use body to req by state ("Pågående"/"Slut")
     @CrossOrigin
     @GetMapping("/state")
     public List<Auction> getAllCurrentAuctions(){
@@ -52,7 +51,6 @@ public class AuctionController {
     @GetMapping(value="/objectid")
     public Auction getMethodName(
         @RequestParam String _id) {
-        System.out.println(_id + "\n");
         return auctionService.getAuctionByObjectId(_id);
     }
     

@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.stereotype.Repository;
 
+import Auctionista.Entities.Bid;
 import Auctionista.Entities.User;
 
 @Repository
@@ -36,5 +37,9 @@ public interface UserRepo extends MongoRepository<User, ObjectId>{
     })
     String getUserFromObjectId(String _id);
     
+    @Aggregation(pipeline = {
+        ""
+    })
+    List<String>checkFavorite(String userId, String auctionId);
 }
 

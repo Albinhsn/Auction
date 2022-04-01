@@ -4,7 +4,6 @@ import EnglishAuction from '../Components/Auctions/EnglishAuction'
 import SwissAuction from '../Components/Auctions/SwissAuction'
 import auctionService from '../Services/auctionService'
 import * as imageHelpers from '../Helpers/imageHelpers'
-import userService from '../Services/userService'
 
 export default function Auction({authId}) {
   
@@ -17,14 +16,12 @@ export default function Auction({authId}) {
   
   useEffect(() => {
     if (!auctionId) return <></>
-    console.log(Object.keys(auction).length)
     if(Object.keys(auction).length === 0){
       auctionService.getAuctionByObjectId(auctionId).then(response=> {
-    
+        
         setAuction(response.data)
-        
-        
         setImages(imageHelpers.convertToGallery(response.data.images))       
+      
       })
     }
     
@@ -36,7 +33,6 @@ export default function Auction({authId}) {
     }
 }, )
   
-
 
   if(Object.keys(auction).length === 0) return <></>
   switch(auction.auctionType){

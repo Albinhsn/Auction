@@ -488,7 +488,7 @@ for(let i  = 0; i<100; i++){
     camera.name = cam.name
     camera.tags = cam.tags
     camera.images = cam.images
-    camera.condition = conditions[Math.floor(Math.random() * conditions.length - 1)]
+    camera.condition = conditions[Math.floor(Math.random() * conditions.length)]
     camera.auctionType = auctionType[Math.floor(Math.random() * auctionType.length)]
     camera.description = description
     camera.minimumBid = Math.floor(Math.random() * 10000) + 500 - (Math.floor(Math.random() * 10000) + 500) % 10
@@ -511,13 +511,15 @@ for(let i  = 0; i<100; i++){
         camera.winner = -1
     }
     
-    if((i%3 !== 0 && camera.auctionType === "Engelsk") || camera.auctionType === "Holländsk" || camera.auctionType === "Schweizisk"){
+    if((i%3 !== 0 && camera.auctionType === "Engelsk") || camera.auctionType === "Schweizisk"){
         camera.purchasePrice = 0 
     }
     else{
         camera.purchasePrice = parseInt(camera.minimumBid * 1.25)
     }
-    
+    if(camera.auctionType === "Holländsk"){
+        camera.minimumBid = 0
+    }
 
 
     if (camera.state === "Pågående") {
@@ -537,7 +539,7 @@ for(let i  = 0; i<100; i++){
             bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
         }
         let o = {
-            id: new ObjectId(),
+            _id: new ObjectId(),
             bidderId: bidderId,
             bid: camera.minimumBid + j * 100 + 100,
             time: new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate(), StartDate.getHours() + j + 1)
