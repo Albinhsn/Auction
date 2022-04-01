@@ -5,113 +5,52 @@ import ImageGallery from 'react-image-gallery'
 import { useNavigate } from 'react-router'
 
 
-export default function EnglishAuction({auction, setAuctions, user, auctions, favo, authId, users}) {
+export default function EnglishAuction({auction, authId}) {
     
     
    
-    const [favorite, setFavorite] = useState()
-    const [watchlist, setWatchlist] = useState(false)    
-    const [userBid, setUserBid] = useState(0)
-    const [currentBid, setCurrentBid] = useState(0)
-    const [bidHistory, setBidhistory] = useState([])
-    const [seller, setSeller] = useState('')
+
     const navigate = useNavigate()
-    useEffect(() => {
-        if(favo && !favorite){
-            setFavorite(favo)
-        } 
-        if (currentBid === 0 && Object.keys(auction).length > 0){
-            setCurrentBid(auction.MinimalBid)
-            if(auction.BidHistory.length > 0 ) {
-                setBidhistory(auction.BidHistory)
-                setCurrentBid(auction.BidHistory[auction.BidHistory.length - 1].Bid)
-            }
-        }
-        if(seller === ''){
-            users.map(u => {
-                if(parseInt(auction.Seller) === parseInt(u.Id)){
-                    setSeller(u.Name)
-                }
-            })
-        }
-    })
+
 
     
+    if (!auction) {
+        
+        return <></>
+    }
+
+
+
+    //Handle functions
+
+
 
     const favoriteChange = () => {
-        if(!user) return
-        setFavorite((favorite) => (favorite === "red" ? "black" : "red"))        
-        if(favorite === "black" || !favorite){
-            user.Favorites.push(auction.Id)
-            return
-        }
-        for(let i = 0; i<user.Favorites.length; i++){
-            if (user.Favorites[i] === auction.Id){
-                user.Favorites.splice(i, 1)
-            }
-        }
+
     }
     const madeBid = () => {
-        if(!user) return
-        if(currentBid > userBid + 10){
-            alert("Vänligen mata in över minsta bud")
-            return
-        }
-        setCurrentBid(userBid)
-        setBidhistory([...bidHistory, {
-            Id: user.Id,
-            Bid: userBid,
-            Time: new Date().toString()
-        }])
-        auction.BidHistory = [...bidHistory, {
-            Id: user.Id,
-            Bid: userBid,
-            Time: new Date().toString()
-        }]
-        for(let i = 0; i<auctions.length; i++){
-            if(auctions[i].Id === auction.Id){
-                auctions[i].BidHistory = auction.BidHistory
-                setAuctions(auctions)
-                document.querySelector("#bid-input").value = ""
-                return
-            }
-        }
+
+    }
+
+    const watchlistChange = () => {
+
+    }
+    const handleBid = () => {
+
     }
     const makePurchase = () => {
-        if (!user) return
 
-        for (let i = 0; i < auctions.length; i++) {
-            if (auctions[i].Id === auction.Id) {
-                auctions[i].State = "Slut"
-                auctions[i].Winner = user.Id
-                auctions[i].StopTime = new Date().toLocaleString("en-US")
-                setAuctions(auctions)
-                alert("Grattis!")
-                navigate("/")
-                return
-            }
-        }
     }
-    const watchlistChange = () => {
-        if(!authId) return
-        if (!watchlist) {
-            alert("Du kommer få en mail påminnelse 2 timmar innan auktionens avslut")
-        }
-        setWatchlist(!watchlist)
-        
-    }
-
-
     return (
         <div className='d-flex align-items-center'>
              
 
-                        <div key={auction.Id} className='row justify-content-center'>
+                        <div key={auction._id} className='row justify-content-center'>
                             <div className='col-5 bg-light'>
                                 <div className='row justify-content-center' style={{ height: "50vh" }}>
                                     <div className='col-10'>
                                         <ImageGallery
-                                            items={auction.Images}
+                                            items={auction.images}
                                             showPlayButton={false}
                                             useBrowserFullscreen={false}
                                             originalHeight={"200"}
@@ -124,19 +63,19 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                     </div>
                                     <div className='d-flex align-items-center ms-5 pt-3'>
                                         <h3 className=''>
-                                            {auction.Title}
+                                            {auction.name}
                                         </h3>
                                         <p className='ps-5 mb-0'>
                                             Skick:
                                         </p>
                                         <p className='ps-3 mb-0'>
-                                            {auction.Condition}
+                                            {auction.condition}
                                         </p>
                                     </div>
                                 </div>
 
                                 <p className='pt-4'>
-                                    {auction.Description}
+                                    {auction.description}
                                 </p>
                             </div>
 
@@ -147,26 +86,25 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                         Auktionen avslutas:
                                     </p>
                                     <div className='d-flex'>
-                                        {new Date(auction.StopTime).toLocaleString("en-US")}
+                                        {new Date(auction.endDate).toLocaleString("en-US")}
                                     </div>
                                 </div>
-                                <p>Auktionstyp: {auction.AuctionType}</p>
-                                <p>Säljare: {seller}</p>
-                                <p>Tag: {auction.Tags}</p>
+                                <p>Auktionstyp: {auction.auctionType}</p>
+                                <p>Säljare: {auction.seller}</p>
                                 <div className='row pt-5'>
                                     <p className='fw-bold text-uppercase'>Nuvarande bud</p>
                                     <div className='d-flex align-items-center'>
                                         <p className='text-success fs-1 mb-0'>
-                                            {currentBid}
+                                            {auction.minimumBid}
                                         </p>
-                                        <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => favoriteChange()} style={{ color: `${favorite}` }} />
+                                        <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => favoriteChange()} style={{ color: `black` }} />
                                         <button className='btn btn-warning ms-3' type="button" onClick={() => watchlistChange()}>
-                                {watchlist ? "Ta bort påminnelse" : "Lägg Till Påminnelse"}
+                    
                                         </button>
                                     </div>
                                     <div className='d-flex'>
-                                        <input type="number" id="bid-input" className="" placeholder={`Minsta bud: ${currentBid + 10}`}
-                                            onChange={e => setUserBid(parseInt(e.target.value))}
+                                        <input type="number" id="bid-input" className="" placeholder={`Minsta bud: ${auction.minimumBid + 10}`}
+                                            onChange={e => handleBid()}
                                         />
                                         <button type="button" className="btn btn-warning ms-3"
                                             onClick={() => madeBid()}
@@ -182,9 +120,9 @@ export default function EnglishAuction({auction, setAuctions, user, auctions, fa
                                             </a>
                                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <ul className='mb-0 ps-0'>
-                                                {bidHistory.map(bid =>{                    
+                                                {auction.bidHistory.map(bid =>{                    
                                                     return(
-                                                        <li key={bid.Id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 align-content-center">
+                                                        <li key={bid._id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 align-content-center">
                                                             <p className=''>Bud:{bid.Bid} Tid: {new Date(bid.Time).toLocaleDateString("en-US")}</p>
                                                             
                                                         </li>

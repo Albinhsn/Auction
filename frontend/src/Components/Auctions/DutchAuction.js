@@ -4,41 +4,22 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
 
 
-export default function DutchAuction({ auction, setAuctions, user, auctions, favo, authId, users}) {
+export default function DutchAuction({ auction, authId}) {
 
 
 
-  const [favorite, setFavorite] = useState()
-  const [watchlist, setWatchlist] = useState(false)
-  const [userBid, setUserBid] = useState(0)
-  const [currentBid, setCurrentBid] = useState(0)
-  const [bidHistory, setBidhistory] = useState([])
-  const [seller, setSeller] = useState('')
+  
 
 
   
   useEffect(() => {
-    if (favo && !favorite) {
-      setFavorite(favo)
-    }
-    if (currentBid === 0 && Object.keys(auction).length > 0) {
-      setCurrentBid(auction.MinimalBid)
-      if (auction.BidHistory.length > 0) {
-        setBidhistory(auction.BidHistory)
-        setCurrentBid(auction.BidHistory[auction.BidHistory.length - 1].Bid)
-      }
-    }
-    if (seller === '') {
-      users.map(u => {
-        if (parseInt(auction.Seller) === parseInt(u.Id)) {
-          setSeller(u.Name)
-        }
-      })
-    }
-  })
+    
+  }, [])
 
-
-
+  console.log(auction)
+  if (!auction){
+    return <></>
+  }
 
 
 
@@ -47,47 +28,16 @@ export default function DutchAuction({ auction, setAuctions, user, auctions, fav
 
 
   const favoriteChange = () => {
-    if (!user) return
-    setFavorite((favorite) => (favorite === "red" ? "black" : "red"))
-    if (favorite === "black" || !favorite) {
-      user.Favorites.push(auction.Id)
-      return
-    }
-    for (let i = 0; i < user.Favorites.length; i++) {
-      if (user.Favorites[i] === auction.Id) {
-        user.Favorites.splice(i, 1)
-      }
-    }
+   
   }
   const madeBid = () => {
-    if (!user) return
-    setBidhistory([...bidHistory, {
-      Id: user.Id,
-      Bid: userBid,
-      Time: new Date().toString()
-    }])
-    auction.BidHistory = [...bidHistory, {
-      Id: user.Id,
-      Bid: userBid,
-      Time: new Date().toString()
-    }]
-    for (let i = 0; i < auctions.length; i++) {
-      if (auctions[i].Id === auction.Id) {
-        auctions[i].BidHistory = auction.BidHistory
-        setAuctions(auctions)
-        document.querySelector("#bid-input").value = ""
-        alert(`Du har lagt ett bud på ${userBid}`)
-        return
-      }
-    }
+   
   }
 
   const watchlistChange = () => {
-    if (!authId) return
-    if (!watchlist) {
-      alert("Du kommer få en mail påminnelse 2 timmar innan auktionens avslut")
-    }
-    setWatchlist(!watchlist)
+    
+  }
+  const handleBid = () => {
 
   }
 
@@ -96,12 +46,12 @@ export default function DutchAuction({ auction, setAuctions, user, auctions, fav
     <div className='d-flex align-items-center'>
 
 
-      <div key={auction.Id} className='row justify-content-center'>
+      <div key={auction._id} className='row justify-content-center'>
         <div className='col-5 bg-light'>
           <div className='row justify-content-center' style={{ height: "50vh" }}>
             <div className='col-10'>
               <ImageGallery
-                items={auction.Images}
+                items={auction.images}
                 showPlayButton={false}
                 useBrowserFullscreen={false}
                 originalHeight={"200"}
@@ -114,19 +64,19 @@ export default function DutchAuction({ auction, setAuctions, user, auctions, fav
             </div>
             <div className='d-flex align-items-center ms-5 pt-3'>
               <h3 className=''>
-                {auction.Title}
+                {auction.name}
               </h3>
               <p className='ps-5 mb-0'>
                 Skick:
               </p>
               <p className='ps-3 mb-0'>
-                {auction.Condition}
+                {auction.condition}
               </p>
             </div>
           </div>
 
           <p className='pt-4'>
-            {auction.Description}
+            {auction.description}
           </p>
         </div>
 
@@ -137,23 +87,22 @@ export default function DutchAuction({ auction, setAuctions, user, auctions, fav
               Auktionen avslutas:
             </p>
             <div className='d-flex'>
-              {new Date(auction.StopTime).toLocaleString("en-US")}
+              {new Date(auction.endDate).toLocaleString("en-US")}
             </div>
           </div>
-          <p>Auktionstyp: {auction.AuctionType}</p>
-          <p>Säljare: {seller}</p>
-          <p>Tag: {auction.Tags}</p>
+          <p>Auktionstyp: {auction.auctionType}</p>
+          <p>Säljare: {auction.seller}</p>
           <div className='row pt-5'>
             <div className='d-flex align-items-center'>
               
-              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => favoriteChange()} style={{ color: `${favorite}` }} />
+              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => favoriteChange()} style={{ color: `black` }} />
               <button className='btn btn-warning ms-3' type="button" onClick={() => watchlistChange()}>
-                {watchlist ? "Ta bort påminnelse" : "Lägg Till Påminnelse"}
+                
               </button>
             </div>
             <div className='d-flex mt-2'>
               <input type="number" id="bid-input" className="" 
-                onChange={e => setUserBid(parseInt(e.target.value))}
+                onChange={e => handleBid(parseInt(e.target.value))}
               />
               <button type="button" className="btn btn-warning ms-3"
                 onClick={() => madeBid()}

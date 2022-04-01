@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import Auctionista.Entities.Auction;
 import Auctionista.Services.AuctionService;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -45,4 +47,13 @@ public class AuctionController {
     public List<Auction> getAuctionsByRemainingTimeAscLimited() {
         return auctionService.getAuctionsByRemainingTimeAscLimited();
     }
+
+    @CrossOrigin
+    @GetMapping(value="/objectid")
+    public Auction getMethodName(
+        @RequestParam String _id) {
+        System.out.println(_id + "\n");
+        return auctionService.getAuctionByObjectId(_id);
+    }
+    
 }

@@ -36,4 +36,8 @@ public class AuctionService {
     public List<Auction> getAuctionsByRemainingTimeAscLimited() {
         return auctionRepo.getAuctionsByRemainingTimeAscLimited();
     }
+
+    public Auction getAuctionByObjectId(String _id){
+        return auctionRepo.getAuctionByObjectId(_id);
+    }
 }

@@ -53,4 +53,7 @@ public interface AuctionRepo extends MongoRepository<Auction, ObjectId>{
     })
     List<Auction> getAuctionsByRemainingTimeAscLimited();
 
+
+    @Query(value="{_id: ObjectId(?0)}")
+    Auction getAuctionByObjectId(String _id);
 }
