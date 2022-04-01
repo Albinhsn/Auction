@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
 import { useNavigate } from 'react-router'
-
+import * as auctionHelpers from '../../Helpers/auctionHelpers'
 export default function SwissAuction({ auction, authId}) {
 
 
@@ -26,22 +26,7 @@ export default function SwissAuction({ auction, authId}) {
 
 
 
-  const favoriteChange = () => {
 
-  }
-  const madeBid = () => {
-
-  }
-
-  const watchlistChange = () => {
-
-  }
-  const handleBid = () => {
-
-  }
-  const makePurchase = () => {
-
-  }
 
   return (
     <div className='d-flex align-items-center'>
