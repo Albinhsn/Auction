@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
 import { useNavigate } from 'react-router'
-
+import * as datesHelpers from '../../Helpers/datesHelpers'
 
 export default function EnglishAuction({auction, authId}) {
     
@@ -11,10 +11,10 @@ export default function EnglishAuction({auction, authId}) {
    
 
     const navigate = useNavigate()
-
-
+        
     
-    if (!auction) {
+       
+    if (!auction || !auction.endDate) {
         
         return <></>
     }
@@ -23,8 +23,8 @@ export default function EnglishAuction({auction, authId}) {
 
     //Handle functions
 
-
-
+    let date = datesHelpers.getTimeRemaining(auction.endDate)
+    console.log(date)
     const favoriteChange = () => {
 
     }
@@ -88,6 +88,23 @@ export default function EnglishAuction({auction, authId}) {
                                     <div className='d-flex'>
                                         {new Date(auction.endDate).toLocaleString("en-US")}
                                     </div>
+                                    <div className='d-flex'>
+                                        <p className='mb-0'>
+                                            Y: {date.Year}
+                                        </p>
+                                        <p className='ms-2 mb-0'>
+                                            M: {date.Month}
+                                        </p>
+                                        <p className='ms-2 mb-0'>
+                                            D:{date.Day}
+                                        </p>
+                                        <p className='ms-2 mb-0'>
+                                            H: {date.Hour}
+                                        </p>
+                                        <p className='ms-2 mb-0'>
+                                            M: {date.Minutes}
+                                        </p>
+                                    </div>
                                 </div>
                                 <p>Auktionstyp: {auction.auctionType}</p>
                                 <p>Säljare: {auction.seller}</p>
@@ -121,9 +138,10 @@ export default function EnglishAuction({auction, authId}) {
                                             <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <ul className='mb-0 ps-0'>
                                                 {auction.bidHistory.map(bid =>{                    
+                                                    console.log(bid)
                                                     return(
                                                         <li key={bid._id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 align-content-center">
-                                                            <p className=''>Bud:{bid.Bid} Tid: {new Date(bid.Time).toLocaleDateString("en-US")}</p>
+                                                            <p className=''>Bud:{bid.bid} Tid: {new Date(bid.time).toLocaleDateString("en-US")}</p>
                                                             
                                                         </li>
 

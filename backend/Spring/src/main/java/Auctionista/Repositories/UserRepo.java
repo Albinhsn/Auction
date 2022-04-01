@@ -30,6 +30,11 @@ public interface UserRepo extends MongoRepository<User, ObjectId>{
     String validateLogin(String email, String password);
 
 
+    @Aggregation(pipeline = {
+        "{'$match': {_id: ObjectId('?0')}}",
+        "{'$project': {username: 1, _id:0}}"
+    })
+    String getUserFromObjectId(String _id);
     
 }
 

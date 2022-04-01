@@ -2,9 +2,30 @@ const { ObjectId } = require('mongodb');
 
 let states = ["Slut", "Pågående"]
 let conditions = ["Perfekt", "Bra", "Utmärkt", "Dåligt", "Hyggligt"]
-let bidderIds = ["6243e92145479cefb2584fed", "6243e92145479cefb2584fee", "6243e92145479cefb2584fef", "6243e92145479cefb2584ff0", "6243e92145479cefb2584ff1", "6243e92145479cefb2584ff2", "6243e92145479cefb2584ff3", "6243e92145479cefb2584ff4", "6243e92145479cefb2584ff5", "6243e92145479cefb2584ff6", "6243e92145479cefb2584ff7", "6243e92145479cefb2584ff8", "6243e92145479cefb2584ff9", "6243e92145479cefb2584ffa", "6243e92145479cefb2584ffb", "6243e92145479cefb2584ffc", "6243e92145479cefb2584ffd", "6243e92145479cefb2584ffe", "6243e92145479cefb2584fff", "6243e92145479cefb2585000"]
+let bidderIds = [
+    ObjectId("6246eaaafb49cf2ed543fd5f"),
+    ObjectId("6246eaaafb49cf2ed543fd60"),
+    ObjectId("6246eaaafb49cf2ed543fd61"),
+    ObjectId("6246eaaafb49cf2ed543fd62"),
+    ObjectId("6246eaaafb49cf2ed543fd63"),
+    ObjectId("6246eaaafb49cf2ed543fd64"),
+    ObjectId("6246eaaafb49cf2ed543fd65"),
+    ObjectId("6246eaaafb49cf2ed543fd66"),
+    ObjectId("6246eaaafb49cf2ed543fd67"),
+    ObjectId("6246eaaafb49cf2ed543fd68"),
+    ObjectId("6246eaaafb49cf2ed543fd69"),
+    ObjectId("6246eaaafb49cf2ed543fd6a"),
+    ObjectId("6246eaaafb49cf2ed543fd6b"),
+    ObjectId("6246eaaafb49cf2ed543fd6c"),
+    ObjectId("6246eaaafb49cf2ed543fd6d"),
+    ObjectId("6246eaaafb49cf2ed543fd6e"),
+    ObjectId("6246eaaafb49cf2ed543fd6f"),
+    ObjectId("6246eaaafb49cf2ed543fd70"),
+    ObjectId("6246eaaafb49cf2ed543fd71"),
+    ObjectId("6246eaaafb49cf2ed543fd72")
+]
 let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin iaculis risus sapien, nec ornare massa porta eu. Nam accumsan ligula odio, quis dapibus justo pellentesque non. Ut molestie interdum lectus ac efficitur. Fusce bibendum, urna eu rhoncus rutrum, ex velit interdum velit, eu rutrum sapien leo sed dui. "
-//Figure out how to write to mongodb
+
 let cameras = [
     { 
         name: "Sony A7R III A Body",
@@ -471,7 +492,7 @@ for(let i  = 0; i<100; i++){
     camera.auctionType = auctionType[Math.floor(Math.random() * auctionType.length)]
     camera.description = description
     camera.minimumBid = Math.floor(Math.random() * 10000) + 500 - (Math.floor(Math.random() * 10000) + 500) % 10
-    camera.seller = bidderIds[Math.floor(Math.random() * bidderIds.length)]
+    camera.seller = ObjectId(bidderIds[Math.floor(Math.random() * bidderIds.length)])
     camera.bidHistory = []
     
 
@@ -480,9 +501,9 @@ for(let i  = 0; i<100; i++){
     //Create winner
     if(i%2 === 0){
         
-        camera.winner = bidderIds[Math.floor(Math.random() * bidderIds.length)]
+        camera.winner = ObjectId(bidderIds[Math.floor(Math.random() * bidderIds.length)]) 
         while(camera.winner === camera.seller){
-            camera.winner = bidderIds[Math.floor(Math.random() * bidderIds.length)]
+            camera.winner = ObjectId(bidderIds[Math.floor(Math.random() * bidderIds.length)])
         }
         camera.state = "Slut"
     }else{

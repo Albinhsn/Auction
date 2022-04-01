@@ -2,8 +2,8 @@ import {React, useEffect, useState} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import * as dates from '../../../Helpers/dates'
-import * as favoriteHelper from '../../../Helpers/favorite'
+import * as dates from '../../../Helpers/datesHelpers'
+import * as favoriteHelper from '../../../Helpers/favoriteHelpers'
 
 export default function SearchComponent({auction, users, user,}){
     const [favorite, setFavorite] = useState("black")

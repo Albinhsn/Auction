@@ -85,5 +85,9 @@ public class UserService implements IUserService{
 
         return locUser.get_id();
     }
-   
+    
+    public String getUserFromObjectId(String _id){
+        
+        return userRepo.getUserFromObjectId(_id);
+    }
 }

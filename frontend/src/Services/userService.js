@@ -20,6 +20,11 @@ class userDataService{
         return http.post("/user/login/google", googleInfo)
     }
 
+    getNameFromObjectId(_id){
+        return http.get("/user/id", {
+            params: {_id: _id}
+        })
+    }
 }
 
 

@@ -3,11 +3,13 @@ import DutchAuction from '../Components/Auctions/DutchAuction'
 import EnglishAuction from '../Components/Auctions/EnglishAuction'
 import SwissAuction from '../Components/Auctions/SwissAuction'
 import auctionService from '../Services/auctionService'
+import * as imageHelpers from '../Helpers/imageHelpers'
+import userService from '../Services/userService'
 
 export default function Auction({authId}) {
   
   const [auction, setAuction] = useState({})
-  
+  const [images, setImages] = useState([])
   const auctionId = new URLSearchParams(window.location.search).get('auctionId')
   
 
@@ -15,17 +17,28 @@ export default function Auction({authId}) {
   
   useEffect(() => {
     if (!auctionId) return <></>
-    auctionService.getAuctionByObjectId(auctionId).then(response=> {
-      console.log(response.data)
-      setAuction(response.data)
-      //Handle images format
-      
-      
-    })
+    console.log(Object.keys(auction).length)
+    if(Object.keys(auction).length === 0){
+      auctionService.getAuctionByObjectId(auctionId).then(response=> {
+    
+        setAuction(response.data)
+        
+        
+        setImages(imageHelpers.convertToGallery(response.data.images))       
+      })
+    }
+    
   }, [])
 
+  useEffect(() => {
+    if(images.length>0 && auction.images != images){
+        setAuction({...auction, images: images})
+    }
+}, )
+  
 
-  if (Object.keys(auction).length === 0) return <></>
+
+  if(Object.keys(auction).length === 0) return <></>
   switch(auction.auctionType){
     case "Engelsk":
       return (
@@ -33,11 +46,11 @@ export default function Auction({authId}) {
       )
     case "Holländsk":
       return(
-        <DutchAuction auction={auction} authId={authId} />
+        <DutchAuction auction={auction} authId={authId}/>
       )
     case "Schweizisk":
       return(
-        <SwissAuction auction={auction} authId={authId} />
+        <SwissAuction auction={auction} authId={authId}/>
       )
   }
   

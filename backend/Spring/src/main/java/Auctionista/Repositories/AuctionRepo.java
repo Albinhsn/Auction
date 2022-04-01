@@ -53,7 +53,13 @@ public interface AuctionRepo extends MongoRepository<Auction, ObjectId>{
     })
     List<Auction> getAuctionsByRemainingTimeAscLimited();
 
-
-    @Query(value="{_id: ObjectId(?0)}")
+    
+    @Aggregation(pipeline = {
+        "{'$match': {_id: ?0}}",
+        "{'$lookup': { from: 'users', localField: 'seller', foreignField: '_id', as: 'seller'}}",
+        "{'$addFields': { seller:{$first: '$seller.username'}}}",
+        "{'$lookup': {from: 'users',localField: 'winner',foreignField: '_id',as: 'winner'}}",
+        "{'$addFields': {winner: {$first: '$winner.username'}}}"
+    })
     Auction getAuctionByObjectId(String _id);
 }

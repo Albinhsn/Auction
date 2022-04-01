@@ -2,25 +2,40 @@ import { React, useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import ImageGallery from 'react-image-gallery'
-import { useNavigate } from 'react-router'
-import * as auctionHelpers from '../../Helpers/auctionHelpers'
-export default function SwissAuction({ auction, authId}) {
+import { useNavigate } from 'react-router'  
+import * as datesHelpers from '../../Helpers/datesHelpers'
+
+export default function SwissAuction({ auction, authId, seller}) {
 
 
 
   const navigate = useNavigate()
-
+  
   useEffect(() => {
 
   }, [])
 
-  console.log(auction)
-  if (!auction) {
 
+  if (!auction || !auction.endDate){
     return <></>
   }
+  let date = datesHelpers.getTimeRemaining(auction.endDate)
 
 
+  const favoriteChange = () => {
+
+  } 
+
+  const watchlistChange = () => {
+
+  }
+  const handleBid = () => {
+
+  }
+
+  const makePurchase = () => {
+
+  }
 
 
 
@@ -73,11 +88,28 @@ export default function SwissAuction({ auction, authId}) {
               Auktionen avslutas:
             </p>
             <div className='d-flex'>
+              <p className='mb-0'>
+                  Y: {date.Year}
+              </p>
+              <p className='ms-2 mb-0'>
+                  M: {date.Month}
+              </p>
+              <p className='ms-2 mb-0'>
+                  D:{date.Day}
+              </p>
+              <p className='ms-2 mb-0'>
+                  H: {date.Hour}
+              </p>
+              <p className='ms-2 mb-0'>
+                  M: {date.Minutes}
+              </p>
+            </div>
+            <div className='d-flex'>
               {new Date(auction.endDate).toLocaleString("en-US")}
             </div>
           </div>  
           <p>Auktionstyp: {auction.auctionType}</p>
-          <p>Säljare: {auction.seller}</p>
+          <p>Säljare: {seller}</p>
           <div className='row pt-5'>
             <p className='fw-bold text-uppercase'>Nuvarande pris</p>
             <div className='d-flex align-items-center'>

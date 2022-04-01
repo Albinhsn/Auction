@@ -46,5 +46,14 @@ public class UserController {
         ){
             return userService.handleGoogleLogin(user);
     }
+ 
     
+    @CrossOrigin
+    @GetMapping("/id")
+    public String getUserFromObjectId(
+        @RequestParam String _id
+    ){
+        
+        return userService.getUserFromObjectId(_id);
+    }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchComponent from '../Components/Auctions/Cards/SearchAuctionCard'
 import {useState, useEffect} from 'react'
-import * as utils from '../Helpers/utils'
+import * as utils from '../Helpers/sortingHelpers'
 
 
 
