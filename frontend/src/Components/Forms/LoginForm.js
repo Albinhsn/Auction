@@ -15,8 +15,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
     })
     const checkLogin = () => {
         userService.validateLogin(loginInfo).then(response => {
-            console.log(response)
-            setAuthId(response)
+            setAuthId(response.data)
             navigation('/')
         })
         .catch(

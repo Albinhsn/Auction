@@ -90,7 +90,10 @@ public class UserService implements IUserService{
         return userRepo.getUserFromObjectId(_id);
     }
     public boolean checkFavorite(String userId, String auctionId){
-        List<String> favorites = userRepo.checkFavorite(userId, auctionId);
-        return false;
+        String auction = userRepo.checkFavorite(userId, auctionId);
+        if(auction == null){
+            return false;
+        }
+        return true;
     }
 }

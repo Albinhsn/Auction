@@ -27,6 +27,7 @@ class userDataService{
     }
 
     checkFavorite(userId, auctionId){
+        console.log(userId, auctionId)
         return http.get("/user/favorite", {
             params:{
                 userId: userId, 
