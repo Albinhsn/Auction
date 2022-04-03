@@ -108,4 +108,8 @@ public class UserService implements IUserService{
         User u = userRepo.updateWatchlist(userId, auctionId);
         userRepo.save(u);
     }
+
+    public User getUserFromObjectId(String userId){
+        return userRepo.getUserFromObjectId(userId);
+    }
 }

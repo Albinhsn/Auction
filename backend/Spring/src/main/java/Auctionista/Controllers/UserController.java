@@ -49,7 +49,7 @@ public class UserController {
  
     @CrossOrigin
     @GetMapping("/id")
-    public String getUserFromObjectId(
+    public String getUsernameFromObjectId(
         @RequestParam String _id
     ){
         return userService.getUsernameFromObjectId(_id);
@@ -83,5 +83,13 @@ public class UserController {
     ){
         userService.updateWatchlist(userId, auctionId);
         return true;
+    }
+
+    @CrossOrigin
+    @GetMapping(value="/user")
+    public User getUserFromObjectId(
+        @RequestParam String userId
+    ){
+        return userService.getUserFromObjectId(userId);
     }
 }

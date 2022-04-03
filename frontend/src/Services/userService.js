@@ -42,6 +42,18 @@ class userDataService{
     updateWatchlist(userId, auctionId){
         return http.get("/user/update/watchlist",{ params: { userId: userId, auctionId: auctionId}})
     }
+
+    getUserFromObjectId(userId){
+        return http.get("/user/user", {params: {userId: userId}})
+    }
+
+    changeEmail(email, matchingEmail){
+        return http.get("/user/email", {params: {email: email, matchingEmail: matchingEmail}})
+    }
+    
+    changePassword(password, matchingPassword){
+        return http.get("/user/password", {params: {password: password, matchingPassword: matchingPassword}})
+    }
 }
 
 

@@ -1,39 +1,27 @@
 
 import { React, useState} from 'react'
-export default function ChangeProfileInfoForm({authId, users, setUsers, setUser, user}) {
+import userService from '../../Services/userService'
+export default function ChangeProfileInfoForm({authId, user, setUser}) {
     
 
     
 
     const [formInput, setFormInput] = useState({
-        Email: "",
-        ConfirmEmail: "",
-        Password: "",
-        ConfirmPassword: ""
+        email: "",
+        matchingEmail: "",
+        password: "",
+        matchingPassword: ""
     })
 
-    const savePassword = () => {
-        if (formInput.Password === "" || formInput.ConfirmPassword === "" || formInput.ConfirmPassword != formInput.Password){
-            handleWrongInput()
-            emptyForms("password")
-            return
-        }
-        for(let i = 0; i<users.length; i++){
-            let u = users[i]
-            u.Password = formInput.Password
-            users[i] = u
-            updateUsers(users, u , "password")
-        }
-        
+    const changePassword = () => {
+        userService.changePassword(authId, formInput.password, formInput.matchingPassword).then(response=>{
+            console.log(response)
+        }).catch(function (error) {
+            console.log(error)
+        })
     }
 
-    const updateUsers = (users, u, type) => {
-        setUsers(users)
-        setUser(u)
     
-
-        emptyForms(type)
-    }
 
     const emptyForms = (type) => {
         document.querySelector(`#${type}`).value = ""
@@ -45,20 +33,12 @@ export default function ChangeProfileInfoForm({authId, users, setUsers, setUser,
     }
 
 
-    const saveEmail = () => {
-        if (formInput.Email === "" || formInput.ConfirmEmail === "" || formInput.ConfirmEmail != formInput.Email){
-            handleWrongInput()
-            emptyForms("email")
-            return
-        }
-        for(let i = 0; i<users.length; i++){
-            if(authId === users[i].Id){
-                let u = users[i]
-                u.Email = formInput.Email
-                users[i] =  u
-                updateUsers(users, u, "email")
-            }
-        }
+    const changeEmail = () => {
+        userService.changeEmail(authId, formInput.password, formInput.matchingPassword).then(response => {
+            console.log(response)
+        }).catch(function(error){
+            console.log(error)
+        })
     }
 
     return (
@@ -69,7 +49,7 @@ export default function ChangeProfileInfoForm({authId, users, setUsers, setUser,
                 </label>
                 <div className="col-sm-7">
                     <input type="email" className='form-control' id="email" 
-                        onChange={e => setFormInput({...formInput, Email: e.target.value})}
+                        onChange={e => setFormInput({...formInput, email: e.target.value})}
                     />
                 </div>
             </div>
@@ -79,13 +59,13 @@ export default function ChangeProfileInfoForm({authId, users, setUsers, setUser,
                 </label>
                 <div className="col-sm-7">
                     <input type="email" className="form-control" id="confirm-email" 
-                        onChange={e => setFormInput({ ...formInput, ConfirmEmail: e.target.value })}
+                        onChange={e => setFormInput({ ...formInput, matchingEmail: e.target.value })}
                     />
                 </div>
             </div>
             <div className='mb-3 row'>
                 <div className='d-flex justify-content-center'>
-                    <button type="button" className='btn btn-primary' onClick={() => saveEmail()}>
+                    <button type="button" className='btn btn-primary' onClick={() => changeEmail()}>
                         Byt Email
                     </button>
                 </div>
@@ -97,7 +77,7 @@ export default function ChangeProfileInfoForm({authId, users, setUsers, setUser,
                 </label>
                 <div className="col-sm-7">
                     <input type="password" className='form-control' id="password" 
-                        onChange={e => setFormInput({ ...formInput, Password: e.target.value })}
+                        onChange={e => setFormInput({ ...formInput, password: e.target.value })}
                     />
                 </div>
                 
@@ -108,13 +88,13 @@ export default function ChangeProfileInfoForm({authId, users, setUsers, setUser,
                 </label>
                 <div className="col-sm-7">
                     <input type="password" className="form-control" id="confirm-password" 
-                        onChange={e => setFormInput({ ...formInput, ConfirmPassword: e.target.value })}
+                        onChange={e => setFormInput({ ...formInput, matchingPassword: e.target.value })}
                     />
                 </div>
             </div>
             <hr />
             <div className='d-flex justify-content-center'>
-                <button type="button" className='btn btn-primary' onClick={() => savePassword()}>
+                <button type="button" className='btn btn-primary' onClick={() => changePassword()}>
                     Byt Lösenord
                 </button>
             </div>

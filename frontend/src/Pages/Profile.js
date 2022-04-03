@@ -1,16 +1,19 @@
 import {useState, useEffect, React} from 'react'
 import ChangeProfileInfoForm from '../Components/Forms/ChangeProfileInfoForm'
+import userService from '../Services/userService'
 
-export default function Profile({authId, users, setUsers}) {
+export default function Profile({authId}) {
   
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState()
+
   useEffect(() => {
-    users.map(u => {
-      if(u.Id === authId){
-        setUser(u)
-      }
+    userService.getUserFromObjectId(authId).then(response => {
+      setUser(response.data)
     })
+
   }, [])
+
+  if(!user) return <></>
   return (
     <>
 
@@ -24,17 +27,17 @@ export default function Profile({authId, users, setUsers}) {
                     Användarnamn
                   </p>
                   <p>
-                    {user.Name}
+                    {user.username}
                   </p>
                   <p className='fw-bold'>
                     Email
                   </p>
                   <p>
-                    {user.Email}
+                    {user.email}
                   </p>
                 </div>
 
-                <ChangeProfileInfoForm authId={authId} users={users} setUsers={setUsers} setUser={setUser}/>
+                <ChangeProfileInfoForm authId={authId} users={user} setUser={setUser}/>
               </div>
             </div>
           </div> 
