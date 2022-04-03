@@ -42,6 +42,8 @@ class userDataService{
     updateWatchlist(userId, auctionId){
         return http.get("/user/update/watchlist",{ params: { userId: userId, auctionId: auctionId}})
     }
+
+
 }
 
 

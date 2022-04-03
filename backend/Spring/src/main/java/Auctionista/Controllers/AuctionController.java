@@ -70,4 +70,11 @@ public class AuctionController {
     ){
         return auctionService.makePurchase(userId, auctionId);
     }
+
+    @GetMapping(value="/favorites")
+    public List<Auction> getFavoritesById(
+        @RequestParam String authId
+    ){
+        return auctionService.getFavoritesById(authId);
+    }
 }   

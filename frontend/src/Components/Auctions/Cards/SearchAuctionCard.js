@@ -5,30 +5,20 @@ import { Link } from 'react-router-dom'
 import * as dates from '../../../Helpers/datesHelpers'
 import * as favoriteHelper from '../../../Helpers/favoriteHelpers'
 
-export default function SearchComponent({auction, users, user,}){
-    const [favorite, setFavorite] = useState("black")
+export default function SearchAuctionCard({auction}){
+    const [favorite, setFavorite] = useState()
     const [timeRemaining, setTimeRemaining] = useState(dates.getTimeRemaining(auction.StopTime))
-    let auctionSeller = ""
     useEffect(() => {
-        if(favorite === "black" && user){
-            setFavorite(favoriteHelper.isFavorite(auction, user))
-            console.log("GOT")
-        }
+        
+        
     }, )
 
-    if(!users) return <></>
-    
-    for(let i = 0; i<users.length; i++){
-        if(auction.Seller === users[i].Id){
-            auctionSeller = users[i].Name
-        }
-    }
-    
+    if(!auction) return <></>    
     return(
        
         <div className='border border-dark'>
             <Link to={`/auction?auctionId=${auction.Id}`} className="link-dark d-flex text-decoration-none">    
-                <img src={auction.Images[0].original} placeholder="" style={{height: "15vh", width: "15vh"}}/>
+                <img src={auction.images[0].original} placeholder="" style={{height: "15vh", width: "15vh"}}/>
     
                 <div>
                     <div className='d-flex'>
