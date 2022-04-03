@@ -15,6 +15,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
     })
     const checkLogin = () => {
         userService.validateLogin(loginInfo).then(response => {
+            console.log(response)
             setAuthId(response.data)
             navigation('/')
         })
@@ -38,7 +39,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
         userService.handleGoogleLogin(user)
             .then(response =>{
                 console.log(response)
-                 setAuthId(response)
+                setAuthId(response.data)
                 navigation("/")
         })
             .catch(function(error){

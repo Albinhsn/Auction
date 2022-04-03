@@ -33,7 +33,9 @@ export default function EnglishAuction({auction, authId}) {
                 <div className='col-4 bg-light'>
                     <AuctionCardTimeInfo auction={auction}/>
                     <div className='row pt-2'>
-                        <p className='fw-bold text-uppercase'>Nuvarande bud</p>
+                        <p className='fw-bold text-uppercase'>
+                            Nuvarande bud
+                        </p>
                         <div className='d-flex align-items-center'>
                             <p className='text-success fs-1 mb-0'>
                                 {auction.highestBid}
@@ -82,8 +84,6 @@ export default function EnglishAuction({auction, authId}) {
                             }
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

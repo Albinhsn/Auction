@@ -35,6 +35,13 @@ class userDataService{
             }
         })
     }
+
+    updateFavorite(userId, auctionId){
+        return http.get("/user/update/favorite",{ params: { userId: userId, auctionId: auctionId}})
+    }
+    updateWatchlist(userId, auctionId){
+        return http.get("/user/update/watchlist",{ params: { userId: userId, auctionId: auctionId}})
+    }
 }
 
 

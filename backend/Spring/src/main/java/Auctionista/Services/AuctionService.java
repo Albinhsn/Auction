@@ -38,6 +38,8 @@ public class AuctionService {
     }
 
     public Auction getAuctionByObjectId(String _id){
-        return auctionRepo.getAuctionByObjectId(_id);
+        Auction auc = auctionRepo.getAuctionByObjectId(_id);
+        System.out.println(auc.get_id());
+        return auc;
     }
 }

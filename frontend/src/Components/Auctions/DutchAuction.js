@@ -16,7 +16,6 @@ export default function DutchAuction({ auction, authId}) {
 
   useEffect(() => {
     if(!favorite && authId){
-      console.log(authId, auction._id)
       userService.checkFavorite(authId, auction._id).then(response => {
         if(response.data){
           setFavorite("red")
@@ -26,7 +25,7 @@ export default function DutchAuction({ auction, authId}) {
         }
       }) 
     }
-  }, )
+  }, [])
 
 
 
@@ -50,7 +49,7 @@ export default function DutchAuction({ auction, authId}) {
                 onClick={() => auctionHelpers.favoriteChange(authId, auction._id, favorite, setFavorite)} style={{ color: `${favorite}` }}
               />
               <button className='btn btn-warning ms-3' type="button"
-                onClick={() => auctionHelpers.watchlistChange(watchlist, auction._id)}
+                onClick={() => auctionHelpers.watchlistChange(authId, auction._id, watchlist, setWatchlist)}
               >
                 {watchlist ? "Ta bort påminnelse" : "Lägg till påminnelse"}
               </button>

@@ -9,10 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
-
 import Auctionista.Dto.UserDto;
 import Auctionista.Entities.User;
-import Auctionista.Entities.WatchItem;
 import Auctionista.Errors.UserAlreadyExistException;
 import Auctionista.Repositories.UserRepo;
 
@@ -39,8 +37,9 @@ public class UserService implements IUserService{
         }
 
         
-        int[] favo = {};
-        List<WatchItem> watchlist = new ArrayList<>();
+        
+        List<String> favo = new ArrayList<>();
+        List<String> watchlist = new ArrayList<>();
         User user = new User();
         user.set_id(new ObjectId().toString());
         user.setUsername(userDto.getUsername());
@@ -75,9 +74,9 @@ public class UserService implements IUserService{
             
             user.set_id(new ObjectId().toString());
             
-            int[] favo = {};
+            List<String> favo = new ArrayList<>();
             user.setFavorites(favo);
-            List<WatchItem> watchlist= new ArrayList<>();
+            List<String> watchlist= new ArrayList<>();
             user.setWatchlist(watchlist);
             userRepo.save(user);
             return user.get_id();
@@ -86,14 +85,27 @@ public class UserService implements IUserService{
         return locUser.get_id();
     }
     
-    public String getUserFromObjectId(String _id){
-        return userRepo.getUserFromObjectId(_id);
+    public String getUsernameFromObjectId(String _id){
+        return userRepo.getUsernameFromObjectId(_id);
     }
+
+
     public boolean checkFavorite(String userId, String auctionId){
-        String auction = userRepo.checkFavorite(userId, auctionId);
-        if(auction == null){
-            return false;
+        User user = userRepo.getUserFromObjectId(userId);    
+        
+        if(user.getFavorites().contains(auctionId)){
+            return true;
         }
-        return true;
+        return false;
+    }
+
+    public void updateFavorite(String userId, String auctionId){
+        User u = userRepo.updateFavorite(userId, auctionId);
+
+        userRepo.save(u);
+    }
+    public void updateWatchlist(String userId, String auctionId){
+        User u = userRepo.updateWatchlist(userId, auctionId);
+        userRepo.save(u);
     }
 }

@@ -47,13 +47,12 @@ public class UserController {
             return userService.handleGoogleLogin(user);
     }
  
-    
     @CrossOrigin
     @GetMapping("/id")
     public String getUserFromObjectId(
         @RequestParam String _id
     ){
-        return userService.getUserFromObjectId(_id);
+        return userService.getUsernameFromObjectId(_id);
     }
 
     @CrossOrigin
@@ -63,5 +62,26 @@ public class UserController {
         @RequestParam String auctionId
     ){
         return userService.checkFavorite(userId, auctionId);
+    }
+
+    @CrossOrigin
+    @GetMapping("/update/favorite")
+    public boolean updateFavorite(
+        @RequestParam String userId,
+        @RequestParam String auctionId
+    ){
+        userService.updateFavorite(userId, auctionId);
+        return true;
+    }
+
+
+    @CrossOrigin
+    @GetMapping("/update/watchlist")
+    public boolean updateWatchlist(
+        @RequestParam String userId,
+        @RequestParam String auctionId
+    ){
+        userService.updateWatchlist(userId, auctionId);
+        return true;
     }
 }

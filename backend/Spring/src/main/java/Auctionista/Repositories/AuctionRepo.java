@@ -5,22 +5,21 @@ import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import org.bson.types.ObjectId;
+
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.stereotype.Repository;
 
 import Auctionista.Entities.Auction;
 
 @Repository
-public interface AuctionRepo extends MongoRepository<Auction, ObjectId>{
+public interface AuctionRepo extends MongoRepository<Auction, String>{
     
     
     
     @Query(value="{state:'Pågående'}")
     List<Auction> getAllCurrentAuctions();
 
-    @Query(value="{}")
-    List<Auction> getAuctionsIncluding();
+    
     
 
     @Aggregation(pipeline = {

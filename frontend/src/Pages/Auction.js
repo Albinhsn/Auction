@@ -20,8 +20,9 @@ export default function Auction({authId}) {
       auctionService.getAuctionByObjectId(auctionId).then(response=> {
         
         setAuction(response.data)
+        console.log(response)
         setImages(imageHelpers.convertToGallery(response.data.images))       
-      
+        
       })
     }
     

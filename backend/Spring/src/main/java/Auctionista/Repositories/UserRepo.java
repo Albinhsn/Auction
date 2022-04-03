@@ -35,11 +35,27 @@ public interface UserRepo extends MongoRepository<User, ObjectId>{
         "{'$match': {_id: ObjectId('?0')}}",
         "{'$project': {username: 1, _id:0}}"
     })
-    String getUserFromObjectId(String _id);
+    String getUsernameFromObjectId(String _id);
     
     @Aggregation(pipeline = {
         "{'$match': {_id: ObjectId('?0'), favorites: ObjectId('?1')}}"
     })
-    String checkFavorite(String userId, String auctionId);
-}
+    List<User> checkFavorite(String userId, String auctionId);
+
+    @Query(value="{_id: ?0}")
+    User getUserFromObjectId(String userId);
+
+
+    @Aggregation(pipeline = {
+        "{'$match': {_id: ?0}}",
+        "{'$set': {favorites: {$cond: [{$in: ['?1', '$favorites']},{ $setDifference: ['$favorites', ['?1']]},{ $concatArrays: ['$favorites', ['?1']]}]}}}"
+    })
+    User updateFavorite(String userId, String auctionId);
+
+    @Aggregation(pipeline = {
+        "{'$match': {_id: ?0}}",
+        "{'$set': {watchlist: {$cond: [{$in: ['?1', '$watchlist']},{ $setDifference: ['$watchlist', ['?1']]},{ $concatArrays: ['$watchlist', ['?1']]}]}}}"
+    })
+    User updateWatchlist(String userId, String auctionId);
+}   
 

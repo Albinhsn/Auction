@@ -157,7 +157,8 @@ for(i = 0; i<usersnames.length; i++){
         username: usersnames[i],
         email: `${usersnames[i]}@gmail.com`,
         password: passwords[i],
-        favorites: favo
+        favorites: favo,
+        watchlist: []
     }
     objs.push(obj)
 
