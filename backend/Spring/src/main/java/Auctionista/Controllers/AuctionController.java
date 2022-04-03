@@ -49,9 +49,25 @@ public class AuctionController {
 
     @CrossOrigin
     @GetMapping(value="/objectid")
-    public Auction getMethodName(
+    public Auction getAuctionByObjectId(
         @RequestParam String _id) {
         return auctionService.getAuctionByObjectId(_id);
     }
     
-}
+    @GetMapping(value="/bid")
+    public Auction makeBid(
+        @RequestParam String userId,
+        @RequestParam String auctionId,
+        @RequestParam int bid
+    ){
+        return auctionService.makeBid(bid, userId, auctionId);
+    }
+
+    @GetMapping(value="/purchase")
+    public Auction makePurchase(
+        @RequestParam String userId,
+        @RequestParam String auctionId
+    ){
+        return auctionService.makePurchase(userId, auctionId);
+    }
+}   

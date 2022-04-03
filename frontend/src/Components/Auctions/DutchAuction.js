@@ -7,7 +7,7 @@ import AuctionCardTimeInfo from './CardInfo/AuctionCardTimeInfo'
 import userService from '../../Services/userService'
 
 
-export default function DutchAuction({ auction, authId}) {
+export default function DutchAuction({ auction, authId, setAuction}) {
 
 
   const [watchlist, setWatchlist] = useState()
@@ -56,7 +56,7 @@ export default function DutchAuction({ auction, authId}) {
             </div>
             <div className='d-flex'>
               <button type="button" className="btn btn-warning ms-3"
-                onClick={() => auctionHelpers.makePurchase(auction)}
+                onClick={() => auctionHelpers.makePurchase(authId, auction._id, setAuction)}
               >
                 Köp
               </button>

@@ -40,9 +40,9 @@ export default function EnglishAuction({setAuction, auction, authId}) {
                             <p className='text-success fs-1 mb-0'>
                                 {auction.highestBid}
                             </p>
-                            <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(favorite)} style={{ color: `black` }} />
+                            <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(authId, auction._id, favorite, setFavorite)} style={{ color: `black` }} />
                             <button className='btn btn-warning ms-3' type="button" 
-                                onClick={() => auctionHelpers.watchlistChange(watchlist)}>
+                                onClick={() => auctionHelpers.watchlistChange(authId, auction._id, watchlist, setWatchlist)}>
                                     {watchlist ? "Ta bort påminnelse": "Lägg till påminnelse"}
                             </button>
                         </div>
@@ -51,7 +51,7 @@ export default function EnglishAuction({setAuction, auction, authId}) {
                                 onChange={e => setBid(e.target.value)}
                             />
                             <button type="button" className="btn btn-warning ms-3"
-                                onClick={() => auctionHelpers.handleBid(authId, auction, bid)}>
+                                onClick={() => auctionHelpers.handleBid(authId, auction, bid, setAuction)}>
                                     Lägg bud
                             </button>
                         </div>
@@ -67,8 +67,7 @@ export default function EnglishAuction({setAuction, auction, authId}) {
                                             Start pris: {auction.minimumBid} Tid: {new Date(auction.startDate).toLocaleDateString("en-US")}
                                         </p>
                                     </li>
-                                    {auction.bidHistory.map(bid =>{                                                                        
-                                        
+                                    {auction.bidHistory.map(bid =>{                                                                                                                
                                         return(
                                             <li key={bid._id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 justify-content-center">
                                                 <p className=''>Bud:{bid.bid} Tid: {new Date(bid.time).toLocaleDateString("en-US")}</p>

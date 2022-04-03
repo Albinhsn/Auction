@@ -28,8 +28,6 @@ public class Auction {
     private Tags tags;
     private Date startDate;
     private Date endDate;
-
-
     private int highestBid;
 
 

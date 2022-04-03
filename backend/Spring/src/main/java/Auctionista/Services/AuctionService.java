@@ -1,7 +1,9 @@
 package Auctionista.Services;
 
+import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +41,22 @@ public class AuctionService {
 
     public Auction getAuctionByObjectId(String _id){
         Auction auc = auctionRepo.getAuctionByObjectId(_id);
-        System.out.println(auc.get_id());
         return auc;
+    }
+
+    public Auction makeBid(int bid, String userId, String auctionId){
+        Date date = new Date();
+        String bidId = new ObjectId().toHexString();
+        Auction auction = auctionRepo.makeBid(auctionId, bidId, userId, bid,  date);
+        auctionRepo.save(auction);
+        return auction;
+    }
+
+    public Auction makePurchase(String userId, String auctionId){
+        Date date = new Date();
+        Auction auction = auctionRepo.makePurchase(auctionId, userId, date);
+        auctionRepo.save(auction);
+        return auction;
+
     }
 }

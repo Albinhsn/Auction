@@ -7,10 +7,8 @@ export default function AuctionCardTimeInfo({auction}) {
     const [date, setDate] = useState()
 
     useEffect(() => {
-        if (!date) {
-            setDate(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
-        }
-    })
+        setDate(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
+    }, [])
 
     return (
     <>

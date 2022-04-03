@@ -5,18 +5,14 @@ import { useNavigate } from 'react-router'
 import * as auctionHelpers from '../../Helpers/auctionHelpers'
 import AuctionCardProductInfo from './CardInfo/AuctionCardProductInfo'
 import AuctionCardTimeInfo from './CardInfo/AuctionCardTimeInfo'
-export default function SwissAuction({ auction, authId, seller}) {
+export default function SwissAuction({ auction, authId, setAuction}) {
 
-  //Favorite
-  //Watchlist
-  //Bid
-  //Purchase
-  //If it's "slut" take away time since 
+ 
 
   const [watchlist, setWatchlist] = useState()
   const [favorite, setFavorite] = useState()
   const [bid, setBid] = useState()
-  const navigate = useNavigate()
+
 
   if (!auction || !auction.endDate){
     return <></>
@@ -32,7 +28,7 @@ export default function SwissAuction({ auction, authId, seller}) {
           <AuctionCardTimeInfo auction={auction} />
           <div className='row pt-5'>
             <div className='d-flex align-items-center'>
-              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(favorite)} style={{ color: `black` }} />
+              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(authId, auction._id, favorite, setFavorite)} style={{ color: `black` }} />
               <button className='btn btn-warning ms-3' type="button" onClick={() => auctionHelpers.watchlistChange(watchlist)}>
                 {watchlist ? "Ta bort påminnelse" : "Lägg till påminnelse"}
               </button>
@@ -42,7 +38,7 @@ export default function SwissAuction({ auction, authId, seller}) {
                 onChange={e => setBid(e.target.value)}
               />
               <button type="button" className="btn btn-warning ms-3"
-                onClick={() => auctionHelpers.handleBid(bid)}
+                onClick={() => auctionHelpers.handleBid(authId, auction, bid, setAuction)}
               >
                 Lägg bud
               </button>

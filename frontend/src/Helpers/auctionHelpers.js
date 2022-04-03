@@ -22,7 +22,7 @@ export const watchlistChange = (authId, _id, watchlist, setWatchlist) => {
     setWatchlist(!watchlist)
 }
 
-export const handleBid = (authId, auction, bid) => {
+export const handleBid = (authId, auction, bid, setAuction) => {
     
     if(!authId) return
     
@@ -30,20 +30,21 @@ export const handleBid = (authId, auction, bid) => {
         alert("Vänligen ange korrekt bud")
         return
     }
-
-    //handle bid
     auctionService.makeBid(authId, auction._id, bid).then(response => {
         
-        //force rerender
-        
+    }).then(() => {
+        auctionService.getAuctionByObjectId(auction._id).then(response => {
+            setAuction(response.data)
+        })
     })
-    
-    
 
 }
 
-export const makePurchase = () => {
+export const makePurchase = (authId, auctionId, setAuction) => {
 
+    if(!authId) return
 
-
+    auctionService.makePurchase(authId, auctionId).then(response => {
+        setAuction(response.data)
+    })
 }

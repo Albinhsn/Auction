@@ -63,10 +63,15 @@ public interface AuctionRepo extends MongoRepository<Auction, String>{
     })
     Auction getAuctionByObjectId(String _id);
 
+    @Aggregation(pipeline = {
+        "{'$match': {_id: ObjectId('?0')}}",
+        "{'$set': {bidHistory: { $concatArrays: ['$bidHistory', [{_id: ObjectId('?1'), bidderId: ?2, bid: ?3, time: ?4}]]}}}"
+    })
+    Auction makeBid(String auctionId, String bidId, String userId, int bid, Date date);
 
     @Aggregation(pipeline = {
-        "{'$match': {_id: ?2}}",
-        "{'$set': {bidHistory: { $concatarrays: ['$bidHistory', ['$bidHistory', [{_id: ?3, bidderId: ?1, bid: ?0, time: ?4}]]]}}}"
+        "{'$match': {_id: ObjectId('?0')}}",
+        "{'$set': {winner: ObjectId(?1), state: 'Slut', endDate: ?2}}"
     })
-    Auction makeBid(int bid, String userId, String auctionId, String bidId, Date date);
+    Auction makePurchase(String auctionId, String userId, Date date);
 }

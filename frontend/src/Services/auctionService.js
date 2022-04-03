@@ -30,9 +30,18 @@ class AuctionDataService{
     makeBid(authId, _id, bid){
         return http.get("/auction/bid", {params: 
             {
-                _id: _id,
-                authId: authId,
+                auctionId: _id,
+                userId: authId,
                 bid: bid
+            }
+        })
+    }
+
+    makePurchase(userId, auctionId){
+        return http.get("/auction/purchase", { params:
+            {
+                userId: userId,
+                auctionId: auctionId
             }
         })
     }
