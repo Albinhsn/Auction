@@ -1,5 +1,6 @@
 package Auctionista.Repositories;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -64,7 +65,8 @@ public interface AuctionRepo extends MongoRepository<Auction, String>{
 
 
     @Aggregation(pipeline = {
-        ""
+        "{'$match': {_id: ?2}}",
+        "{'$set': {bidHistory: { $concatarrays: ['$bidHistory', ['$bidHistory', [{_id: ?3, bidderId: ?1, bid: ?0, time: ?4}]]]}}}"
     })
-    Auction makeBid(int bid, String userId, String auctionId);
+    Auction makeBid(int bid, String userId, String auctionId, String bidId, Date date);
 }
