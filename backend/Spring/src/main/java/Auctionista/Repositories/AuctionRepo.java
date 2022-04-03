@@ -61,4 +61,10 @@ public interface AuctionRepo extends MongoRepository<Auction, String>{
         "{'$addFields': {winner: {$first: '$winner.username'}, highestBid: {$max: [{$last: '$bidHistory.bid'}, '$minimumBid']}}}",
     })
     Auction getAuctionByObjectId(String _id);
+
+
+    @Aggregation(pipeline = {
+        ""
+    })
+    Auction makeBid(int bid, String userId, String auctionId);
 }

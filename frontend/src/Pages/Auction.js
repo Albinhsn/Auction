@@ -39,15 +39,15 @@ export default function Auction({authId}) {
   switch(auction.auctionType){
     case "Engelsk":
       return (
-        <EnglishAuction auction={auction} authId={authId} />
+        <EnglishAuction setAuction={setAuction} auction={auction} authId={authId} />
       )
     case "Holländsk":
       return(
-        <DutchAuction auction={auction} authId={authId}/>
+        <DutchAuction setAuction={setAuction}  auction={auction} authId={authId}/>
       )
     case "Schweizisk":
       return(
-        <SwissAuction auction={auction} authId={authId}/>
+        <SwissAuction setAuction={setAuction} auction={auction} authId={authId}/>
       )
   }
   

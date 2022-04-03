@@ -26,6 +26,16 @@ class AuctionDataService{
             } 
         })
     }
+
+    makeBid(authId, _id, bid){
+        return http.get("/auction/bid", {params: 
+            {
+                _id: _id,
+                authId: authId,
+                bid: bid
+            }
+        })
+    }
 }
 
 

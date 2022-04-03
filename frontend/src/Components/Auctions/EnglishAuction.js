@@ -9,7 +9,7 @@ import * as auctionHelpers from '../../Helpers/auctionHelpers'
 import AuctionCardProductInfo from './CardInfo/AuctionCardProductInfo'
 import AuctionCardTimeInfo from './CardInfo/AuctionCardTimeInfo'
 
-export default function EnglishAuction({auction, authId}) {
+export default function EnglishAuction({setAuction, auction, authId}) {
     
     
     const [watchlist, setWatchlist] = useState(false)
@@ -51,7 +51,7 @@ export default function EnglishAuction({auction, authId}) {
                                 onChange={e => setBid(e.target.value)}
                             />
                             <button type="button" className="btn btn-warning ms-3"
-                                onClick={() => auctionHelpers.handleBid(bid)}>
+                                onClick={() => auctionHelpers.handleBid(authId, auction, bid)}>
                                     Lägg bud
                             </button>
                         </div>
@@ -62,10 +62,15 @@ export default function EnglishAuction({auction, authId}) {
                                 </a>
                                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <ul className='mb-0 ps-0'>
+                                    <li key="init-price" className='dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 align-content-center'>
+                                        <p >
+                                            Start pris: {auction.minimumBid} Tid: {new Date(auction.startDate).toLocaleDateString("en-US")}
+                                        </p>
+                                    </li>
                                     {auction.bidHistory.map(bid =>{                                                                        
                                         
                                         return(
-                                            <li key={bid._id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 align-content-center">
+                                            <li key={bid._id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 justify-content-center">
                                                 <p className=''>Bud:{bid.bid} Tid: {new Date(bid.time).toLocaleDateString("en-US")}</p>
                                                 
                                             </li>

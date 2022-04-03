@@ -11,6 +11,4 @@ public class AuctionistaApplication{
 		SpringApplication.run(AuctionistaApplication.class, args);
 	}
 
-
-
 }
