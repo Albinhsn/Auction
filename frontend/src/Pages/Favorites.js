@@ -13,7 +13,7 @@ export default function Favorites({authId}) {
     }, [])
     
 
-    if(!authId) return<></>
+    if(!authId || !auctions) return<></>
 
     return (
         <div className='d-flex justify-content-center'>

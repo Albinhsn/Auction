@@ -78,6 +78,8 @@ public interface AuctionRepo extends MongoRepository<Auction, String>{
 
     @Aggregation(pipeline = {
         "{'$addFields': {userId: ObjectId('?0')}}",
+        "{'$lookup': { from: 'users', localField: 'seller', foreignField: '_id', as: 'seller'}}",
+        "{'$addFields': { seller:{$first: '$seller.username'}}}",
         "{'$lookup': { from: 'users',localField: 'userId',foreignField: '_id',as: 'user'}}",
         "{'$unwind': {path: '$user'}}",
         "{'$addFields': {user: '$user.favorites'}}",
