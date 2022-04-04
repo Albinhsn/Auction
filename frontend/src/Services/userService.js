@@ -8,7 +8,7 @@ class userDataService{
     }
 
     postRegistrationForm(formInfo){
-        return http.post("/user/registration",formInfo)
+        return http.post("/registration/user",formInfo)
     }
 
     validateLogin(formInfo){
@@ -47,12 +47,27 @@ class userDataService{
         return http.get("/user/user", {params: {userId: userId}})
     }
 
-    changeEmail(email, matchingEmail){
-        return http.get("/user/email", {params: {email: email, matchingEmail: matchingEmail}})
+    changeEmail(userId, email, matchingEmail){
+        console.log(email)
+        console.log(matchingEmail)
+        return http.get("/registration/email", {
+            params: 
+                {
+                    userId: userId, 
+                    email: email, 
+                    matchingEmail: matchingEmail
+                }
+        })
     }
     
-    changePassword(password, matchingPassword){
-        return http.get("/user/password", {params: {password: password, matchingPassword: matchingPassword}})
+    changePassword(userId, password, matchingPassword){
+        return http.get("/registration/password", {
+            params: {
+                userId: userId,
+                password: password, 
+                matchingPassword: matchingPassword                
+            }
+        })
     }
 }
 

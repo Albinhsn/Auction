@@ -37,7 +37,7 @@ export default function Profile({authId}) {
                   </p>
                 </div>
 
-                <ChangeProfileInfoForm authId={authId} users={user} setUser={setUser}/>
+                <ChangeProfileInfoForm authId={authId} user={user} setUser={setUser}/>
               </div>
             </div>
           </div> 

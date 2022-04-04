@@ -17,28 +17,31 @@ export default function ChangeProfileInfoForm({authId, user, setUser}) {
         userService.changePassword(authId, formInput.password, formInput.matchingPassword).then(response=>{
             console.log(response)
         }).catch(function (error) {
-            console.log(error)
+            if(error.response){
+                alert(error.response.data.message)
+            }
+            
         })
+        emptyForms("password")
     }
 
     
 
     const emptyForms = (type) => {
         document.querySelector(`#${type}`).value = ""
-        document.querySelector(`#confirm-${type}`).value = ""
+        document.querySelector(`#matching-${type}`).value = ""
     }
-    const handleWrongInput = (type) => {
-        alert("Tom/Fel inmatning")
-        
-    }
-
 
     const changeEmail = () => {
-        userService.changeEmail(authId, formInput.password, formInput.matchingPassword).then(response => {
-            console.log(response)
+        userService.changeEmail(authId, formInput.email, formInput.matchingEmail).then(response => {
+            setUser({...user, email: formInput.email})
+            console.log(user)
         }).catch(function(error){
-            console.log(error)
+            if(error.response){
+                alert(error.response.data.message)
+            }
         })
+        emptyForms("email")
     }
 
     return (
@@ -58,7 +61,7 @@ export default function ChangeProfileInfoForm({authId, user, setUser}) {
                     Bekräfta Email
                 </label>
                 <div className="col-sm-7">
-                    <input type="email" className="form-control" id="confirm-email" 
+                    <input type="email" className="form-control" id="matching-email" 
                         onChange={e => setFormInput({ ...formInput, matchingEmail: e.target.value })}
                     />
                 </div>
@@ -87,7 +90,7 @@ export default function ChangeProfileInfoForm({authId, user, setUser}) {
                     Bekräfta Lösenord
                 </label>
                 <div className="col-sm-7">
-                    <input type="password" className="form-control" id="confirm-password" 
+                    <input type="password" className="form-control" id="matching-password" 
                         onChange={e => setFormInput({ ...formInput, matchingPassword: e.target.value })}
                     />
                 </div>

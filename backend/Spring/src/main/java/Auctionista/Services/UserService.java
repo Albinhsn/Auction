@@ -2,6 +2,8 @@ package Auctionista.Services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,6 +115,44 @@ public class UserService implements IUserService{
         return userRepo.getUserFromObjectId(userId);
     }
 
-
     
+    public User changeEmail(String userId, String email, String matchingEmail){
+
+        validateEmail(email, matchingEmail);
+        if(emailExists(email)){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Ett konto finns redan med den angivna email adressen");
+        }
+        
+        User user = userRepo.getUserFromObjectId(userId);
+        user.setEmail(email);
+        return userRepo.save(user);
+
+    }
+
+    public void validateEmail(String email, String matchingEmail){
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-+]+(.[_A-Za-z0-9-]+)*@"
+        + "[A-Za-z0-9-]+(.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        if(!email.equals(matchingEmail)){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Emails don't match");
+        }
+        if(!matcher.matches()){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Not a valid email");
+        }
+        
+    }
+    
+    public User changePassword(String userId, String password, String matchingPassword){
+        validatePassword(password, matchingPassword);
+        User user = userRepo.getUserFromObjectId(userId);
+        user.setPassword(password);
+        return userRepo.save(user);
+    }
+
+    public void validatePassword(String password, String matchingPassword){
+        if(!password.equals(matchingPassword)){
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Passwords doesn't match");
+        }
+    }
 }
