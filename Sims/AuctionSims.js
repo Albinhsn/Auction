@@ -33,7 +33,7 @@ let cameras = [
             { 
                 brand : "Sony", 
                 type: "Systemkamera", 
-                Lens: "Sony E", 
+                lens: "Sony E", 
                 imageSensorSize: "24x36", 
                 resolution: "42.4", 
                 weatherProof: "Nej", 
@@ -53,7 +53,7 @@ let cameras = [
         {
             brand: "Canon",
             type: "Systemkamera",
-            Lens: "Canon RF",
+            lens: "Canon RF",
             imageSensorSize: "24x36",
             resolution: "20.1",
             weatherProof: "Ja",
@@ -73,7 +73,7 @@ let cameras = [
         { 
             brand: "Sony",
             type: "Systemkamera",
-            Lens: "Sony E",
+            lens: "Sony E",
             imageSensorSize: "APS-C",
             resolution: "24.2",
             videoFormat: "4k 30fps",
@@ -92,7 +92,7 @@ let cameras = [
         {
             brand: "Canon",
             type: "Systemkamera",
-            Lens: "Canon EOS M",
+            lens: "Canon EOS M",
             imageSensorSize: "APS-C",
             resolution: "24.1",
             weatherProof: "Nej",
@@ -112,7 +112,7 @@ let cameras = [
         tags: {
             brand: "Canon",
             type: "Systemkamera",
-            Lens: "Canon RF",
+            lens: "Canon RF",
             imageSensorSize: "24x36",
             resolution: "30.3",
             weatherProof: "Ja",
@@ -131,7 +131,7 @@ let cameras = [
         tags: {
             brand: "Sony",
             type: "Systemkamera",
-            Lens: "Sony E",
+            lens: "Sony E",
             imageSensorSize: "24x36",
             resolution: "24.2",
             weatherProof: "Ja",
@@ -150,7 +150,7 @@ let cameras = [
         tags: {
             brand: "Canon",
             type: "Systemkamera",
-            Lens: "Canon EF",
+            lens: "Canon EF",
             imageSensorSize: "APS-C",
             resolution: "32.5",
             weatherProof: "Ja",
@@ -169,7 +169,7 @@ let cameras = [
         tags: {
             brand: "Fujifilm",
             type: "Systemkamera",
-            Lens: "Fuji X",
+            lens: "Fuji X",
             imageSensorSize: "24x36",
             resolution: "26",
             weatherProof: "Ja",
@@ -188,7 +188,7 @@ let cameras = [
         tags: {
             brand: "Canon",
             type: "Systemkamera",
-            Lens: "Canon RF",
+            lens: "Canon RF",
             imageSensorSize: "24x36",
             resolution: "45",
             weatherProof: "Ja",
@@ -207,7 +207,7 @@ let cameras = [
         tags: {
             brand: "Nikon",
             type: "Systemkamera",
-            Lens: "Nikon Z",
+            lens: "Nikon Z",
             imageSensorSize: "24x36",
             resolution: "24.5",
             weatherProof: "Ja",
@@ -431,7 +431,7 @@ let cameras = [
             {
                 brand: "Fujifilm",
                 type: "Mellanformatskamera",
-                Lens: "Fuji GF",
+                lens: "Fuji GF",
                 imageSensorSize: "43.8x32.9",
                 resolution: "102",
                 weatherProof: "Ja",

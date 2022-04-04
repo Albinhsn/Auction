@@ -94,5 +94,15 @@ public interface AuctionRepo extends MongoRepository<Auction, String>{
         "{'$match': {seller: ObjectId('?0')}}"
     })
     List<Auction> getUserAuctions(String userId);
+
+
+    @Aggregation(pipeline = {
+       "{'$match': {$or: [{name: {$regex: /?0/, $options: 'i'}},{'tags.brand': {$regex: /?0/, $options: 'i'}},{'tags.type': {$regex: /?0/, $options: 'i'}},{'tags.lens': {$regex: /?0/, $options: 'i'}},{description: {$regex: /?0/, $options: 'i'}}]}}",
+       "{'$lookup': { from: 'users', localField: 'seller', foreignField: '_id', as: 'seller'}}",
+       "{'$addFields': { seller:{$first: '$seller.username'}}}"
+    }
+    )
+    List<Auction> getAuctionsBySearch(String search);
+
 }
 

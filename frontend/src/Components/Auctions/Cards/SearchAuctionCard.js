@@ -10,13 +10,18 @@ export default function SearchAuctionCard({auction, authId}){
     const [favorite, setFavorite] = useState()
     const [timeRemaining, setTimeRemaining] = useState(dates.getTimeRemaining(auction.endDate))
     useEffect(() => {
-        userService.checkFavorite(authId, auction._id).then(response => {
-            if(response.data){
-                setFavorite("red")
-            }else{
-                setFavorite("black")
-            }
-        })
+        if(authId){
+            userService.checkFavorite(authId, auction._id).then(response => {
+                if(response.data){
+                    setFavorite("red")
+                }else{
+                    setFavorite("black")
+                }
+            })
+        }{
+            setFavorite("black")
+        }
+        
         
     }, [])
     if(!auction) return <></>    
@@ -34,7 +39,7 @@ export default function SearchAuctionCard({auction, authId}){
                     </div>
                     <div className='d-flex'>
                         <p className='pt-1'>
-                            {auction.state} -
+                            Status: {auction.state} -
                         </p>
         
                         <p className='ps-2 pt-1'>
