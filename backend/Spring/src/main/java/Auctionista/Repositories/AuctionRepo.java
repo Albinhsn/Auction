@@ -89,4 +89,10 @@ public interface AuctionRepo extends MongoRepository<Auction, String>{
         "{'$project': {  name: 1,tags: 1,images: 1,condition: 1,auctionType: 1,description: 1,minimumBid: 1,seller: 1,bidHistory: 1,state: 1,winner: 1,purchasePrice: 1,startDate : 1,endDate: 1}}}"
     })
     List<Auction> getFavoritesById(String authId);
+
+    @Aggregation(pipeline = {
+        "{'$match': {seller: ObjectId('?0')}}"
+    })
+    List<Auction> getUserAuctions(String userId);
 }
+

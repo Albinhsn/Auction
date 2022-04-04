@@ -31,8 +31,16 @@ export default function Favorites({authId}) {
                 </div>
                     {auctions.map(auction => {
                         return (
-                            <div className='pt-3' key={auction.Id}>
-                                <Link className='text-decoration-none text-dark' to={`/auction?auctionId=${auction.Id}`}><SearchAuctionCard  key={auction._id} auction={auction}/></Link>
+                            <div className='pt-3' key={`div-${auction.Id}`}>
+                                <Link 
+                                    className='text-decoration-none text-dark' 
+                                    to={`/auction?auctionId=${auction.Id}`}>
+                                        <SearchAuctionCard  
+                                            key={auction._id} 
+                                            auction={auction} 
+                                            authId={authId}
+                                        />
+                                    </Link>
                             </div>
                         )
                     })

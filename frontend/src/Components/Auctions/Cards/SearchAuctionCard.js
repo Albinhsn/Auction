@@ -4,15 +4,21 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import * as dates from '../../../Helpers/datesHelpers'
 import * as auctionHelpers from '../../../Helpers/auctionHelpers'
+import userService from '../../../Services/userService'
 
-export default function SearchAuctionCard({auction}){
-    const [favorite, setFavorite] = useState("red")
+export default function SearchAuctionCard({auction, authId}){
+    const [favorite, setFavorite] = useState()
     const [timeRemaining, setTimeRemaining] = useState(dates.getTimeRemaining(auction.endDate))
     useEffect(() => {
-        
+        userService.checkFavorite(authId, auction._id).then(response => {
+            if(response.data){
+                setFavorite("red")
+            }else{
+                setFavorite("black")
+            }
+        })
         
     }, [])
-    console.log(auction)
     if(!auction) return <></>    
     return(
        

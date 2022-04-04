@@ -48,6 +48,15 @@ class AuctionDataService{
     getFavoritesById(authId){
         return http.get("/auction/favorites", {params: {authId: authId}})
     }
+
+    getUserAuctions(authId){
+        return http.get("/auction/user", {
+            params:
+            {
+                userId: authId
+            }
+        })
+    }
 }
 
 

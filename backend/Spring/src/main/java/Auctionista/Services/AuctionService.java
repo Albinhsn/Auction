@@ -63,4 +63,8 @@ public class AuctionService {
     public List<Auction> getFavoritesById(String authId){
         return auctionRepo.getFavoritesById(authId);
     }
+
+    public List<Auction> getUserAuctions(String userId){
+        return auctionRepo.getUserAuctions(userId);
+    }
 }
