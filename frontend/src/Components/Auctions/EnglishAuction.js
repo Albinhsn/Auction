@@ -1,9 +1,12 @@
 import {React, useState, useEffect} from 'react'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 import { useNavigate } from 'react-router'
-import * as datesHelpers from '../../Helpers/datesHelpers'
+
+import userService from '../../Services/userService'
+
 import * as auctionHelpers from '../../Helpers/auctionHelpers'
 
 import AuctionCardProductInfo from './CardInfo/AuctionCardProductInfo'
@@ -15,8 +18,22 @@ export default function EnglishAuction({setAuction, auction, authId}) {
     const [watchlist, setWatchlist] = useState(false)
     const [favorite, setFavorite] = useState()
     const [bid, setBid] = useState(0)
-    const navigate = useNavigate()
-        
+    
+    
+
+
+    useEffect(() => {
+        if(!favorite && authId){
+        userService.checkFavorite(authId, auction._id).then(response => {
+            if(response.data){
+            setFavorite("red")
+            }
+            else{
+            setFavorite("black")
+            }
+        }) 
+        }
+    }, [])
    
        
     if (!auction || !auction.endDate ) {
@@ -40,7 +57,7 @@ export default function EnglishAuction({setAuction, auction, authId}) {
                             <p className='text-success fs-1 mb-0'>
                                 {auction.highestBid}
                             </p>
-                            <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(authId, auction._id, favorite, setFavorite)} style={{ color: `black` }} />
+                            <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(authId, auction._id, favorite, setFavorite)} style={{ color: `${favorite}` }} />
                             <button className='btn btn-warning ms-3' type="button" 
                                 onClick={() => auctionHelpers.watchlistChange(authId, auction._id, watchlist, setWatchlist)}>
                                     {watchlist ? "Ta bort påminnelse": "Lägg till påminnelse"}
