@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Auctionista.Entities.Auction;
 import Auctionista.Entities.User;
 import Auctionista.Services.UserService;
 import org.springframework.web.bind.annotation.RestController;

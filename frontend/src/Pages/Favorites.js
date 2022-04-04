@@ -1,21 +1,19 @@
 import {React, useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
-import SearchComponent from '../Components/Auctions/Cards/SearchAuctionCard'
-export default function Favorites({authId, auctions, users}) {
-    const [user, setUser] = useState('')
+import SearchAuctionCard from '../Components/Auctions/Cards/SearchAuctionCard'
+import auctionService from '../Services/auctionService'
+export default function Favorites({authId}) {
+    
+    const [auctions, setAuctions] = useState()
     
     useEffect(() => {
-        if (users.length <= 0) return <></>
-        for (let i = 0; i < users.length; i++) {
-            if (parseInt(authId) === parseInt(users[i].Id)) {
-                setUser(users[i])
-            }
-        }
-    }, )
-
+        auctionService.getFavoritesById(authId).then(response => {
+            setAuctions(response.data)
+        })
+    }, [])
     
 
-    if(user === '') return<></>
+    if(!authId || !auctions) return<></>
 
     return (
         <div className='d-flex justify-content-center'>
@@ -31,19 +29,17 @@ export default function Favorites({authId, auctions, users}) {
                     </label>
                     <input type="checkbox" name="sold" className='ms-2' />
                 </div>
-
-                {auctions.map(auction => {
-                    if(user.Favorites.length === 0)return <></>
-                    if (user.Favorites.includes(auction.Id)) {
+                    {auctions.map(auction => {
                         return (
                             <div className='pt-3' key={auction.Id}>
-                                <Link className='text-decoration-none text-dark' to={`/auction?auctionId=${auction.Id}`}><SearchComponent key={auction.Id} auction={auction} users={users} user={user}/></Link>
+                                <Link className='text-decoration-none text-dark' to={`/auction?auctionId=${auction.Id}`}><SearchAuctionCard  key={auction._id} auction={auction}/></Link>
                             </div>
                         )
+                    })
                     }
-                })}
-
             </div>
         </div>
     )
 }
+
+

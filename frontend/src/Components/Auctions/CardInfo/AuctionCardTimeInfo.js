@@ -4,11 +4,7 @@ import * as datesHelpers from '../../../Helpers/datesHelpers'
 
 export default function AuctionCardTimeInfo({auction}) {
     
-    const [date, setDate] = useState()
-
-    useEffect(() => {
-        setDate(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
-    }, [])
+    const [date, setDate] = useState(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
 
     return (
     <>
