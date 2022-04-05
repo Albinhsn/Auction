@@ -1,50 +1,42 @@
 
+//filter = {
+//  tag: "",
+//  vars: [val1, val2, ...]    
+//}
 
-export const filterByState = (auctions, sort, value) => {
-
-}
-
-export const filterByBrand = (auctions, sort, value) => {
-
-}
-
-export const filterByType = (auctions, sort, value) => {
-
-}
-
-export const filterByLens = (auctions, sort, value) => {
-
-}
-
-export const filterByMemory = (auctions, sort, value) => {
-
-}
-
-export const filterBySensor = (auctions, sort, value) => {
-
-}
-
-export const filterByResolution = (auctions, sort, value) => {
-
-}
-
-export const filterByWeather = (auctions, sort, value) => {
-
-}
-
-export const filterByConnection = (auctions, sort, value) => {
-
-}
-
-export const filterByScreenAngle = (auctions, sort, value) => {
+export const filterAuctions = (auctions, currentFilters) => {
     
+    if(currentFilters.length === 0) return auctions
 
-    return sort(auctions, sort)
+    currentFilters.map(filter => {
+        switch(filter.tag){
+            case "state":
+                
+                break;
+            case "brand":
+                break; 
+            case "type":
+                break; 
+            case "lens":
+                break;
+            case "resolution":
+                break; 
+            case "weatherProof":
+                break; 
+            case "imageSensorSize":
+                break; 
+            case "angledScreen":
+                break; 
+        }
+    })
 }
 
-export const sort = (auctions, sort) => {
-
+export const handleFilterChange = (currentFilters, setCurrentFilters, tag, val) => {
+    let locFilters = [...currentFilters]
+    locFilters.map(filter => {
+        
+    })
+    
+    setCurrentFilters(locFilters)
 }
-
-
 

@@ -1,104 +1,99 @@
-import {React, useState} from 'react'
+import {React, useEffect, useState} from 'react'
 
 import * as filterHelpers from '../../Helpers/filterHelpers'
 import * as sortingHelpers from '../../Helpers/sortingHelpers'
 
+import SearchFilterTag from './SearchFilterTag'
 
-export default function SearchFilters({setLocalAuc, localAuc, auctions}){
+export default function SearchFilters({setLocalAuc, auctions}){
 
-    const [sort, setSort] = useState()
+    const [sort, setSort] = useState('')
+    const [currentFilters, setCurrentFilters] = useState([])
+    useEffect(() => {
+            let filteredAuc = filterHelpers.filterAuctions(auctions, currentFilters)
+            //Sort list
+            switch(sort){
+                case 'PriceAsc':
+                    break;
+                case 'Quality':
+                    break;
+                case 'Time':
+                    break;
+                default: 
+                    break;
+            }
+            setLocalAuc(filteredAuc)
+    }, [])
 
+    const filters = [
+        ["Pågående", "Slut"],
+        ["Nikon", "Sony", "Canon", "Fujifilm", "Panasonic", "Olympus"],
+        ["Systemkamera", "Mellanformatskamera", "Kompaktkamera"],
+        ["Canon EOS M", "Fuji X", "Nikon Z", "Sony E", "Canon RF", "Fuji GF", "Canon EF"],
+        ["12", "16", "17", "20", "20.1", "20.3", "20.5", "24.1", "24.2", "24.5", "26", "26.1", "30.3", "32.5", "42.4", "45", "102", ],
+        ["Ja", "Nej"],
+        ["1'", "2.3'" ,"High Sens MOS", "APS-C", "43.8x32.9", "24x36"],
+        ["Fast skärm", "Fällbar med selfieläge", "Fällbar", "Full router- & fällbar"]
 
+    ]
+    const titles = [
+        "Status",
+        "Märke",
+        "Typ av kamera",
+        "Lens",
+        "Upplösning",
+        "Vädertålig",
+        "Bildsensorstorlek",
+        "Skärmvinkel",
+
+    ]
     
 
     return (
         <div className="col-12 row flex-column">
             <div className='col-8 ms-3'>
-            <div className='col-4 ms-4'>
-                <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Sortering
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                
-                <li><a className="dropdown-item" 
-                    onClick={() => {
-                        setLocalAuc(sortingHelpers.PurchasePriceSort([...auctions]));
-                        setSort("PriceAsc");
-                    }}
-                    >
-                        Price Asc
-                </a></li>
-
-                    <li><a className="dropdown-item" 
-                        onClick={() => 
-                            {
-                                setLocalAuc(sortingHelpers.QualitySort([...auctions]));
-                                setSort("Quality");
-                            }}
-                        >
-                            Quality
-                </a></li>
-                
+                <div className='col-4 ms-4'>
+                    <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sortering
+                    </a>
+                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    
                     <li><a className="dropdown-item" 
                         onClick={() => {
-                            setLocalAuc(sortingHelpers.DateSortEnd([...auctions]));
-                            setSort("Time");
-                            }}
+                            setLocalAuc(sortingHelpers.PurchasePriceSort([...auctions]));
+                            setSort("PriceAsc");
+                        }}
                         >
-                            Time
-                </a></li>
-                </ul>
-            </div>
-                <div className=''>
-                    <p className='mb-0'>
-                        Status: 
-                    </p>                    
-                    <label for="pågående" className='search-label'>
-                        Pågående
-                    </label>
-                    <input type="checkbox" id="pågående" className='ms-2' />
-                    <br/>
-                    <label className='search-label'>
-                        Slut
-                    </label>
-                    <input type="checkbox" id="Slut" className='ms-2'/>
+                            Price Asc
+                    </a></li>
+
+                        <li><a className="dropdown-item" 
+                            onClick={() => 
+                                {
+                                    setLocalAuc(sortingHelpers.QualitySort([...auctions]));
+                                    setSort("Quality");
+                                }}
+                            >
+                                Quality
+                    </a></li>
+                    
+                        <li><a className="dropdown-item" 
+                            onClick={() => {
+                                setLocalAuc(sortingHelpers.DateSortEnd([...auctions]));
+                                setSort("Time");
+                                }}
+                            >
+                                Time
+                    </a></li>
+                    </ul>
                 </div>
-                <hr/>
-                <p className='mb-0'>
-                    Brand:
-                </p>
-                <label htmlFor="ongoing" className='search-label'>
-                    Nikon
-                </label>
-                <input type="checkbox" id="Nikon" name="Nikon" className='ms-2'/>
-                <br/>
-                <label htmlFor="ongoing" className='search-label'>
-                    Sony
-                </label>
-                <input type="checkbox" id="Sony" name="Sony" className='ms-2'/>
-                <br/>
-                <label htmlFor="ongoing" className='search-label'>
-                    Canon
-                </label>
-                <input type="checkbox" id="Canon" name="Canon" className='ms-2'/>
-                <hr/>
-                <p className='mb-0'>
-                    Typ av kamera:
-                </p>
-                <label htmlFor="ongoing" className='search-label'>
-                    Systemkamera
-                </label>
-                <input type="checkbox" id="Systemkamera" name="Systemkamera" className='ms-2' />
-                <br/>
-                <label htmlFor="ongoing" className='search-label'>
-                    Mellanformatskamera
-                </label>
-                <input type="checkbox" id="Mellanformatskamera" name="Mellanformatskamera" className='ms-2'/>
-                <br/>
-                <label htmlFor="ongoing" className='search-label'>
-                    Kompaktkamera
-                </label>
-                <input type="checkbox" id="Kompaktkamera" name="Kompaktkamera" className='ms-2' />
+                {filters.map((filter,i) => {
+                    return(
+                        <SearchFilterTag arr={filter} title={titles[i]} key={titles[i]}/>
+                    )
+                })}
+                            
+                
             </div>
             
         </div>

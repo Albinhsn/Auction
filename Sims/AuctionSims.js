@@ -60,7 +60,7 @@ let cameras = [
             videoFormat: "4k 30fps",
             memoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
             wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fullt roter-& fällbar"
+            angledScreen: "Fullt roter- & fällbar"
         },
         images:[
             "https://www.rajalaproshop.se/media/catalog/product/cache/f1ec723725bd5bfc9f8ed8a7baf802be/c/a/canon-eos-r6.jpg",
@@ -79,7 +79,7 @@ let cameras = [
             videoFormat: "4k 30fps",
             memoryCards: ["SD", "SDHC", "SDXC"],
             wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fullt roter-& fällbar"
+            angledScreen: "Fullt roter- & fällbar"
         },
         images:[
             "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650.jpg",

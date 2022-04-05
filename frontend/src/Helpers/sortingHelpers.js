@@ -5,17 +5,6 @@ export const DateSortEnd = (auctions) => {
     )
  }
 
-  
- 
- export const PriceSort = (auctions) => {
-        return auctions.sort((a, b) => {
-            const priceA = a.bidHistory.length > 0 ? a.bidHistory[a.bidHistory.length - 1].bid : a.minimumBid
-            const priceB = b.bidHistory.length > 0 ? b.bidHistory[b.bidHistory.length - 1].Bid : b.minimumBid
-            
-            return priceA - priceB
-        })
- }
-
 export const PurchasePriceSort = (auctions) => {
     const temp = auctions.filter(a => a.purchasePrice !== 0)
     return temp.sort((a,b) => {
@@ -39,25 +28,9 @@ const qualities = {
     })
  }
 
- export const TypeFilter = (auctions, id) => {
-    
-        return auctions.filter(a => a.name.includes(id))
-           
-        
-}
-export const TagFilter = (auctions, tag) => {
-    return auctions.filter(a => a.tags.includes(tag))   
-}
-export const StateFilter = (auctions, state) => {
-    return auctions.filter(a => a.state === state)
-}
 
 export const OngoingFilter = (auctions) => {
-    const temp  = auctions.filter(a => a.state !== "Slut")
-        return temp.sort((a, b) => {
-            if(a.type.length == 0) return -1
-        }
-    )
+    return auctions.filter(a => a.state !== "Slut")
 }
 
 
