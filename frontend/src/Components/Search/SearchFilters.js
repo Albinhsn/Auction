@@ -10,8 +10,9 @@ export default function SearchFilters({setLocalAuc, auctions}){
     const [sort, setSort] = useState('')
     const [currentFilters, setCurrentFilters] = useState([])
     useEffect(() => {
-            let filteredAuc = filterHelpers.filterAuctions(auctions, currentFilters)
+            
             //Sort list
+            
             switch(sort){
                 case 'PriceAsc':
                     break;
@@ -22,8 +23,8 @@ export default function SearchFilters({setLocalAuc, auctions}){
                 default: 
                     break;
             }
-            setLocalAuc(filteredAuc)
-    }, [])
+            filterHelpers.filterAuctions(auctions, setLocalAuc, currentFilters)
+        }, [currentFilters])
 
     const filters = [
         ["Pågående", "Slut"],
@@ -33,8 +34,9 @@ export default function SearchFilters({setLocalAuc, auctions}){
         ["12", "16", "17", "20", "20.1", "20.3", "20.5", "24.1", "24.2", "24.5", "26", "26.1", "30.3", "32.5", "42.4", "45", "102", ],
         ["Ja", "Nej"],
         ["1'", "2.3'" ,"High Sens MOS", "APS-C", "43.8x32.9", "24x36"],
-        ["Fast skärm", "Fällbar med selfieläge", "Fällbar", "Full router- & fällbar"]
-
+        ["Fast skärm", "Fällbar med selfieläge", "Fällbar", "Full router- & fällbar"],
+        ["SD", "SDHC", "SDXC", "CFexpress type B", "XQD", "UHS-II"],
+        ["Bluetooth", "Wi-Fi", "NFC", "GPS"]
     ]
     const titles = [
         "Status",
@@ -45,7 +47,8 @@ export default function SearchFilters({setLocalAuc, auctions}){
         "Vädertålig",
         "Bildsensorstorlek",
         "Skärmvinkel",
-
+        "Minneskort",
+        "Trådlös Uppkoppling"
     ]
     
 
@@ -89,7 +92,7 @@ export default function SearchFilters({setLocalAuc, auctions}){
                 </div>
                 {filters.map((filter,i) => {
                     return(
-                        <SearchFilterTag arr={filter} title={titles[i]} key={titles[i]}/>
+                        <SearchFilterTag currentFilters={currentFilters} setCurrentFilters={setCurrentFilters} arr={filter} title={titles[i]} key={titles[i]}/>
                     )
                 })}
                             

@@ -1,7 +1,7 @@
 import {React} from 'react'
+import * as filterHelpers from '../../Helpers/filterHelpers'
 
-
-export default function SearchFilterTag({arr, title}){
+export default function SearchFilterTag({currentFilters, setCurrentFilters, arr, title}){
     return(
         <div key={title}>
             <p className='mb-0'>
@@ -18,6 +18,8 @@ export default function SearchFilterTag({arr, title}){
                             id={ele}
                             name={ele}
                             className="ms-2"
+                            onClick={
+                                () => filterHelpers.handleFilterChange(currentFilters, setCurrentFilters, title, ele)}
                         />
                         <br/>       
                     </div>

@@ -14,15 +14,16 @@ export default function Search({authId}){
         auctionService.getAuctionsBySearch(search).then(response => {
             setAuctions(response.data)
             setLocalAuc(response.data.filter(auc => auc.state !== "Slut"))
-        })
+        
+        })        
     },[])
-   
+
     if(!auctions || !localAuc) return <></>
 
     return (
         <div className='d-flex justify-content-center pt-3'>
             <div className='col-2'>
-                <SearchFilters auctions={auctions} setLocalAuc={setLocalAuc}/>
+                <SearchFilters auctions={auctions} setLocalAuc={setLocalAuc} localAuc={localAuc}/>
             </div>
             <div className='col-6'>
                     
