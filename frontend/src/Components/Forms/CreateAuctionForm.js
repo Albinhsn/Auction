@@ -7,50 +7,32 @@ import axios from 'axios'
 import { useNavigate } from 'react-router';
 
 
-export default function CreateAuctionForm({setAuctions, auctions, authId}) {
+export default function CreateAuctionForm({authId}) {
+    let [auctionInfo, setAuctionInfo] = useState({
+        name: "",
+        minimumBid: 0,
+        purchasePrice: 0,
+        condition: "",
+        auctionType: "",
+        description: "",
+        images: [],
+        bidHistory: [],
+        startDate: new Date(),
+        endDate: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()+7),
+        seller: authId,
+        state: "Pågående",
+        tags: {}     
+    })
+
     const [currentIndex, setCurrentIndex] = useState(0)
     const myRef = useRef(null);
     const navigate = useNavigate()
+
     let currentDate = new Date()
-    let [auctionInfo, setAuctionInfo] = useState({
-        Id: auctions.length + 1,
-        Title: "",
-        MinimalBid: 0,
-        PurchaseNow: 0,
-        Condition: "",
-        AuctionType: "",
-        Description: "",
-        Images: [],
-        BidHistory: [],
-        StartTime: new Date(),
-        StopTime: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()+7),
-        Seller: authId,
-        State: "Pågående"
-        
-    })
-
+    
+    
     const createAuction = () => {
-        if (auctionInfo.Title === "" || auctionInfo.MinimalBid === 0 || auctionInfo.Condition === "" || auctionInfo.AuctionType === "" || auctionInfo.Description === "" || auctionInfo.Images === []){
-            alert("Var vänlig fyll i alla fält")
-            return
-        }
-
-
-        if (auctionInfo.MinimalBid >= auctionInfo.PurchaseNow && auctionInfo.PurchaseNow != 0){
-            alert("Var vänlig ange godtyckligt köp nu pris")
-            return
-        }
-        let imgs = []
-        auctionInfo.Images.map(image => {
-            imgs.push({
-                original: image.original, 
-                thumbnail: ""
-            })
-        })
-        auctionInfo.Images = imgs
-        setAuctions([...auctions, auctionInfo])
-        navigate("/")
-        alert("Auktionen har lagts till")
+        
     }
 
 
@@ -74,28 +56,7 @@ export default function CreateAuctionForm({setAuctions, auctions, authId}) {
     }
     const addImage = async e => {
         
-        const formData = new FormData()
-        formData.append(
-            'file',
-            e.target.files[0]
-        )
-        try {
-            const res = await axios.post('/upload', formData, {
-                baseURL: "http://localhost:5000",
-                headers: {
-                    'Content-type': 'multipart/form-data',
-                },
-                
-            })
-            const { fileName, filePath } = res.data
-            const img = {
-                original: `http://127.0.0.1:8887/${fileName}`,
-                thumbnail: ""
-            }
-            setAuctionInfo({ ...auctionInfo, Images: [...auctionInfo.Images, img] })
-        } catch (error) {
-            console.log(error)
-        }    
+       
     }
     
     const changeSlide = (index) => {
@@ -130,18 +91,18 @@ export default function CreateAuctionForm({setAuctions, auctions, authId}) {
                     <div className='col-6'>
                         <div className='d-flex flex-column'>
                             <input type="text" placeholder="Titel" style={{ width: "20vw" }} className='align-self-center' 
-                                onChange={e => setAuctionInfo({...auctionInfo, Title: e.target.value})}
+                                onChange={e => setAuctionInfo({...auctionInfo, name: e.target.value})}
                             />
                             <input type="number" placeholder="Minimumbud" className='mt-2 align-self-center' id="bid-input" style={{ width: "20vw" }} 
-                                onChange={e => setAuctionInfo({ ...auctionInfo, MinimalBid: parseInt(e.target.value)})}
+                                onChange={e => setAuctionInfo({ ...auctionInfo, minimumBid: parseInt(e.target.value)})}
                             />
                             <input type="number" placeholder="Köpa direkt (ej obligatorisk)" className='mt-2 align-self-center ' id="bid-input" style={{ width: "20vw" }} 
-                                onChange={e => setAuctionInfo({ ...auctionInfo, PurchaseNow: parseInt(e.target.value) })}
+                                onChange={e => setAuctionInfo({ ...auctionInfo, purchasePrice: parseInt(e.target.value) })}
                             />
                         </div>
                         <div className='input-group pt-2'>
                             <select name="condition" id="condition" className='form-select'
-                                onChange={e => setAuctionInfo({...auctionInfo, Condition: e.target.value })}
+                                onChange={e => setAuctionInfo({...auctionInfo, condition: e.target.value })}
                             >
                                 <option value="">
                                     Välj Skick
@@ -156,7 +117,7 @@ export default function CreateAuctionForm({setAuctions, auctions, authId}) {
                                     Bra
                                 </option>
                                 <option value="Hyggligt">
-                                    Hygglig
+                                    Hyggligt
                                 </option>
                                 <option value="Dåligt">
                                     Dåligt
@@ -166,7 +127,7 @@ export default function CreateAuctionForm({setAuctions, auctions, authId}) {
 
                         <div className='input-group pt-2'>
                             <select name="auctionType" id="auctionType" className='form-select'
-                                onChange={e => setAuctionInfo({ ...auctionInfo, AuctionType: e.target.value })}
+                                onChange={e => setAuctionInfo({ ...auctionInfo, auctionType: e.target.value })}
                             >
                                 <option value="">
                                     Välj typ av Auktion
@@ -184,7 +145,7 @@ export default function CreateAuctionForm({setAuctions, auctions, authId}) {
                         </div>
                         <div className='d-flex flex-column'>
                             <TextAreaAutoSize maxRows={5} minRows={5} placeholder="Beskrivning" className='mt-2' id="bid-input" style={{ resize: "none" }} 
-                                onChange={e => setAuctionInfo({ ...auctionInfo, Description: e.target.value })}
+                                onChange={e => setAuctionInfo({ ...auctionInfo, description: e.target.value })}
                             />
                             <button type="button" className='btn btn-primary align-self-center mt-2' style={{ width: "40%" }}
                                 onClick={() => createAuction()}>

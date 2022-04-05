@@ -2,8 +2,8 @@ import React from 'react'
 
 import CreateAuctionForm from '../Components/Forms/CreateAuctionForm';
 
-export default function CreateAuction({setAuctions, auctions, authId}) {
+export default function CreateAuction({authId}) {
     return (
-        <CreateAuctionForm auctions={auctions} setAuctions={setAuctions} authId={authId}/>
+        <CreateAuctionForm authId={authId}/>
   )
 }
