@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router';
 
 
 export default function CreateAuctionForm({authId}) {
+
+    let currentDate = new Date()
+
     let [auctionInfo, setAuctionInfo] = useState({
         name: "",
         minimumBid: 0,
@@ -25,10 +28,12 @@ export default function CreateAuctionForm({authId}) {
     })
 
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [currentTag, setCurrentTag] = useState()
+    const [tags, setTags] = useState()
     const myRef = useRef(null);
     const navigate = useNavigate()
 
-    let currentDate = new Date()
+
     
     
     const createAuction = () => {
@@ -37,20 +42,20 @@ export default function CreateAuctionForm({authId}) {
 
 
     const removeImage = () => {    
-            if (! auctionInfo.Images) return
-            if(auctionInfo.Images.length > 1){
+            if (! auctionInfo.images) return
+            if(auctionInfo.images.length > 1){
                 if (currentIndex <= 1) {
-                    auctionInfo.Images.splice(currentIndex, 1)
-                    myRef.current.slideToIndex(auctionInfo.Images.length - 1)
+                    auctionInfo.images.splice(currentIndex, 1)
+                    myRef.current.slideToIndex(auctionInfo.images.length - 1)
                    
                 }
                 else {                   
-                    auctionInfo.Images.splice(currentIndex, 1)                    
+                    auctionInfo.images.splice(currentIndex, 1)                    
                     myRef.current.slideToIndex(currentIndex) 
                 }
                 return
             }
-            setAuctionInfo({...auctionInfo, Images: []})
+            setAuctionInfo({...auctionInfo, images: []})
             setCurrentIndex(1)    
     
     }
@@ -70,7 +75,7 @@ export default function CreateAuctionForm({authId}) {
                     <div className='col-4'>
                         <div className='position-relative'>
                             <ImageGallery
-                                items={auctionInfo.Images}
+                                items={auctionInfo.images}
                                 showPlayButton={false}
                                 useBrowserFullscreen={false}
                                 originalHeight={"200"}
@@ -147,6 +152,42 @@ export default function CreateAuctionForm({authId}) {
                             <TextAreaAutoSize maxRows={5} minRows={5} placeholder="Beskrivning" className='mt-2' id="bid-input" style={{ resize: "none" }} 
                                 onChange={e => setAuctionInfo({ ...auctionInfo, description: e.target.value })}
                             />
+                            <div className='input-group pt-2'>
+                                <select name="tags" id="tags" className='form-select'
+                                    onChange={e => setCurrentTag(e.target.value)}
+                                >
+                                    <option value="">
+                                        Välj tag
+                                    </option>
+                                    <option value="brand">
+                                        Märke
+                                    </option>
+                                    <option value="type">
+                                        Typ av kamera
+                                    </option>
+                                    <option value="imageSensorSize">
+                                        Bildsensorstorlek
+                                    </option>
+                                    <option value="resolution">
+                                        Upplösning
+                                    </option>
+                                    <option value="weatherProof">
+                                        Vädertålig
+                                    </option>
+                                    <option value="memoryCards">
+                                        Minneskort
+                                    </option>
+                                    <option value="wirelessConnection">
+                                        Uppkoppling
+                                    </option>
+                                    <option value="angledScreen">
+                                        Skärm vinkel
+                                    </option>
+                                </select>
+
+                                <input type="text" />
+                                <button type="button" className='btn btn-primary'>Lägg till tag</button>
+                            </div>
                             <button type="button" className='btn btn-primary align-self-center mt-2' style={{ width: "40%" }}
                                 onClick={() => createAuction()}>
                                     Skapa auktion
