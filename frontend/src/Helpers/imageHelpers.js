@@ -1,13 +1,9 @@
-export const convertToGallery= (images) => {
-    let arr = []
-    images.map(image => {
-        let i = {
-            original: image,
-            thumbnail: ''
-        }
-        arr.push(i)
-    })
-    return arr
+export const convertToGallery= (image) => {
+    let obj = {
+        original: image,
+        thumbnail: ""
+    }    
+    return obj
 }
 
 export const convertFromGallery = () => {

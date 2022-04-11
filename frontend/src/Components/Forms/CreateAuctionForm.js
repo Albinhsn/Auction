@@ -5,7 +5,7 @@ import TextAreaAutoSize from 'react-textarea-autosize'
 import {useState, useRef ,React} from 'react'
 import imageService  from '../../Services/imageService';
 import { useNavigate } from 'react-router';
-
+import * as imageHelpers from '../../Helpers/imageHelpers'
 
 export default function CreateAuctionForm({authId}) {
 
@@ -60,10 +60,12 @@ export default function CreateAuctionForm({authId}) {
     
     }
     const addImage = async e => {
-        imageService.uploadImage().then(response => {
-            console.log(response)
+        imageService.uploadImage(e.target.files[0]).then(response => {
+            let image = imageHelpers.convertToGallery(`http://localhost:8000/images/image/${response.data}`)
+            setAuctionInfo({...auctionInfo, images: [... auctionInfo.images, image]})
+            
         })
-       
+        
     }
     
     const changeSlide = (index) => {

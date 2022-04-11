@@ -18,6 +18,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsOperations;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import Auctionista.Entities.ImageFile;
 
@@ -35,18 +36,17 @@ public class ImageService {
     @Autowired
     private GridFsOperations gridFsOperations;
     
-    public ImageFile upImageFile(File file) throws IOException{
-        InputStream inputStream = new FileInputStream(file);
+    public String uploadImage(MultipartFile file) throws IOException{
         
-        
-        
-        
-        DBObject metaData = new BasicDBObject();
-        metaData.put("user", "me");
+        DBObject metadata = new BasicDBObject();
+        metadata.put("fileSize", file.getSize());
+        gridFsTemplate.store(file.getInputStream(), file.getOriginalFilename(), file.getContentType(), metadata).toString();
+        return file.getOriginalFilename();
+    }
 
-        String _id = gridFsTemplate.store(inputStream, "logo.png", "image/png", metaData).toString();
-        GridFSFile gridFSFile = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(_id)));
+    public ImageFile getImageByName(String fileName) throws IOException{
         
+        GridFSFile gridFSFile = gridFsTemplate.findOne(new Query(Criteria.where("filename").is(fileName)));
         ImageFile imageFile = new ImageFile();
         
         if (gridFSFile != null && gridFSFile.getMetadata() != null) {
@@ -56,11 +56,10 @@ public class ImageService {
 
             imageFile.setFile(IOUtils.toByteArray(gridFsOperations.getResource(gridFSFile).getInputStream()));
         }
-
         return imageFile;
     }
+    public boolean deleteImage(){
 
-    public ImageFile getImage(){
-        return null;
+        return true;
     }
 }
