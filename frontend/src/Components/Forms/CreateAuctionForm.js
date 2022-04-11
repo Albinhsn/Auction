@@ -3,7 +3,7 @@ import ImageGallery from 'react-image-gallery'
 import "react-image-gallery/styles/css/image-gallery.css";
 import TextAreaAutoSize from 'react-textarea-autosize'
 import {useState, useRef ,React} from 'react'
-import axios from 'axios'
+import imageService  from '../../Services/imageService';
 import { useNavigate } from 'react-router';
 
 
@@ -60,7 +60,9 @@ export default function CreateAuctionForm({authId}) {
     
     }
     const addImage = async e => {
-        
+        imageService.uploadImage().then(response => {
+            console.log(response)
+        })
        
     }
     
