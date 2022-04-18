@@ -57,6 +57,14 @@ class AuctionDataService{
             }
         })
     }
+
+    getAuctionsBySearch(search){
+        return http.get("/auction/search",{
+            params:{
+                search: search
+            }
+        })
+    }
 }
 
 

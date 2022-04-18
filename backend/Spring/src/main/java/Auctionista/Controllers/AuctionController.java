@@ -86,4 +86,11 @@ public class AuctionController {
     ){
         return auctionService.getUserAuctions(userId);
     }
+
+    @GetMapping(value="/search")
+    public List<Auction> getAuctionsBySearch(
+        @RequestParam String search
+    ){
+        return auctionService.getAuctionsBySearch(search);
+    }
 }   

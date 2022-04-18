@@ -1,5 +1,6 @@
 package Auctionista.Services;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -66,5 +67,11 @@ public class AuctionService {
 
     public List<Auction> getUserAuctions(String userId){
         return auctionRepo.getUserAuctions(userId);
+    }
+
+    public List<Auction> getAuctionsBySearch(String search){
+        return auctionRepo.getAuctionsBySearch(search);
+
+        
     }
 }
