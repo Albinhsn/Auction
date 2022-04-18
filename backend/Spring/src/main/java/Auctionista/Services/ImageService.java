@@ -1,10 +1,6 @@
 package Auctionista.Services;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
@@ -41,6 +37,7 @@ public class ImageService {
         DBObject metadata = new BasicDBObject();
         metadata.put("fileSize", file.getSize());
         gridFsTemplate.store(file.getInputStream(), file.getOriginalFilename(), file.getContentType(), metadata).toString();
+        
         return file.getOriginalFilename();
     }
 
@@ -50,10 +47,9 @@ public class ImageService {
         ImageFile imageFile = new ImageFile();
         
         if (gridFSFile != null && gridFSFile.getMetadata() != null) {
+
             imageFile.setFilename(gridFSFile.getFilename());
-
             imageFile.setFileType(gridFSFile.getMetadata().get("_contentType").toString());
-
             imageFile.setFile(IOUtils.toByteArray(gridFsOperations.getResource(gridFSFile).getInputStream()));
         }
         return imageFile;
