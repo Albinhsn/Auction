@@ -1,6 +1,6 @@
 package Auctionista.Services;
 
-
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -30,6 +30,7 @@ public class AuctionService {
     }
 
     public List<Auction> getAuctionsByBidAscLimited(){
+        
         return auctionRepo.getAuctionsByBidAscLimited();
     }
 
@@ -75,6 +76,37 @@ public class AuctionService {
     }
 
     public String postAuction(AuctionDto auctionDto){
-        return "";
+        Auction auc = createAuctionFromDto(auctionDto);
+        return auctionRepo.save(auc).get_id();
     }
+
+    public Auction createAuctionFromDto(AuctionDto auctionDto){
+        Auction auc = new Auction();
+        auc.setName(auctionDto.getName());
+        auc.setAuctionType(auctionDto.getAuctionType());
+        auc.setBidHistory(auctionDto.getBidHistory());
+        auc.setCondition(auctionDto.getCondition());
+        auc.setDescription(auctionDto.getDescription());
+        auc.setEndDate(auctionDto.getEndDate());
+        auc.setStartDate(auctionDto.getStartDate());
+        auc.setImages(auctionDto.getImages());
+        auc.setMinimumBid(auctionDto.getMinimumBid());
+        auc.setPurchasePrice(auctionDto.getPurchasePrice());
+        auc.setSeller(auctionDto.getSeller());
+        auc.setState(auctionDto.getState());
+        auc.setTags(auctionDto.getTags());
+        auc.setWinner(auctionDto.getWinner());   
+        
+        //Reformat images
+        List<String> images = Arrays.asList(auctionDto.getImages());
+        for(int i = 0; i<images.size(); i++){
+            images.set(i, images.get(i).replace("http://localhost:8000/images/image/", ""));
+        }
+        auc.setImages(images.toArray(new String[0]));
+        
+        return auc;
+        
+    }
+
+    
 }

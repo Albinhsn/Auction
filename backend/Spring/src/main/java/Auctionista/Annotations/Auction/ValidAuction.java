@@ -14,7 +14,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = AuctionValidator.class)
 @Documented
 public @interface ValidAuction {
-    String message() default "Invalid Username";
+    String message() default "Invalid Auction";
 
     Class<?>[] groups() default {};
 

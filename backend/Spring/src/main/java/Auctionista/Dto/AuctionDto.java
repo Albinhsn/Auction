@@ -14,7 +14,7 @@ public class AuctionDto {
     
     private String name;
     private Tags tags;
-    private List<String> images;
+    private String[] images;
     private String condition;
     private String auctionType;
     private String description;
@@ -29,35 +29,33 @@ public class AuctionDto {
 
 
 
-    
+
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-
     public Tags getTags() {
-        return tags;
+        return this.tags;
     }
-
 
     public void setTags(Tags tags) {
         this.tags = tags;
     }
 
-    public List<String> getImages() {
-        return images;
+    public String[] getImages() {
+        return this.images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(String[] images) {
         this.images = images;
     }
 
     public String getCondition() {
-        return condition;
+        return this.condition;
     }
 
     public void setCondition(String condition) {
@@ -65,7 +63,7 @@ public class AuctionDto {
     }
 
     public String getAuctionType() {
-        return auctionType;
+        return this.auctionType;
     }
 
     public void setAuctionType(String auctionType) {
@@ -73,7 +71,7 @@ public class AuctionDto {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -81,7 +79,7 @@ public class AuctionDto {
     }
 
     public int getMinimumBid() {
-        return minimumBid;
+        return this.minimumBid;
     }
 
     public void setMinimumBid(int minimumBid) {
@@ -89,7 +87,7 @@ public class AuctionDto {
     }
 
     public String getSeller() {
-        return seller;
+        return this.seller;
     }
 
     public void setSeller(String seller) {
@@ -97,7 +95,7 @@ public class AuctionDto {
     }
 
     public List<Bid> getBidHistory() {
-        return bidHistory;
+        return this.bidHistory;
     }
 
     public void setBidHistory(List<Bid> bidHistory) {
@@ -105,7 +103,7 @@ public class AuctionDto {
     }
 
     public String getState() {
-        return state;
+        return this.state;
     }
 
     public void setState(String state) {
@@ -113,7 +111,7 @@ public class AuctionDto {
     }
 
     public String getWinner() {
-        return winner;
+        return this.winner;
     }
 
     public void setWinner(String winner) {
@@ -121,7 +119,7 @@ public class AuctionDto {
     }
 
     public int getPurchasePrice() {
-        return purchasePrice;
+        return this.purchasePrice;
     }
 
     public void setPurchasePrice(int purchasePrice) {
@@ -129,7 +127,7 @@ public class AuctionDto {
     }
 
     public Date getStartDate() {
-        return startDate;
+        return this.startDate;
     }
 
     public void setStartDate(Date startDate) {
@@ -137,11 +135,13 @@ public class AuctionDto {
     }
 
     public Date getEndDate() {
-        return endDate;
+        return this.endDate;
     }
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+    
 
 }

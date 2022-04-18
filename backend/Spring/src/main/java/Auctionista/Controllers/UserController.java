@@ -31,7 +31,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @CrossOrigin
+
     @GetMapping("/login")
     public String validateLogin(
         @RequestParam String email,
