@@ -20,6 +20,7 @@ import Auctionista.Entities.ImageFile;
 
 
 import org.apache.commons.io.IOUtils;
+import org.bson.types.ObjectId;
 
 
 @Service
@@ -36,14 +37,17 @@ public class ImageService {
         
         DBObject metadata = new BasicDBObject();
         metadata.put("fileSize", file.getSize());
-        gridFsTemplate.store(file.getInputStream(), file.getOriginalFilename(), file.getContentType(), metadata).toString();
-        
-        return file.getOriginalFilename();
+        String s = gridFsTemplate.store(file.getInputStream(), file.getOriginalFilename(), file.getContentType(), metadata).toString();
+        System.out.println(s);
+        return s;
     }
 
-    public ImageFile getImageByName(String fileName) throws IOException{
-        
-        GridFSFile gridFSFile = gridFsTemplate.findOne(new Query(Criteria.where("filename").is(fileName)));
+    public ImageFile getImageById(String _id) throws IOException{
+        ObjectId ObjectId = new ObjectId(_id);
+        System.out.println(ObjectId);
+        Query q = new Query(Criteria.where("_id").is(ObjectId));
+        System.out.print(q.toString());
+        GridFSFile gridFSFile = gridFsTemplate.findOne(q);
         ImageFile imageFile = new ImageFile();
         
         if (gridFSFile != null && gridFSFile.getMetadata() != null) {

@@ -43,8 +43,8 @@ let cameras = [
                 angledScreen: "Fällbar"
             },
         images: [
-            "https://www.cyberphoto.se/storage/8FB97B44030D5B7EDB86B9F98E0F36BC1219B65974CFD129717E50F9027FB446/dc398a8943e14f35b043c3d55890304a/jpg/media/7fc7d2daeafd4cdba579e9d3f8afa031/a7rmk3a_1.jpg",
-            "https://obj.fotosidan.se/obj/docpart/bb/bb795d75ef3d885f55803c61dd990e56.jpg"
+            ObjectId("625d58268cdfe43a88040e59"),
+            ObjectId("625d5905a116036a983f6b21")
         ]
     },
     {
@@ -63,8 +63,8 @@ let cameras = [
             angledScreen: "Fullt roter-& fällbar"
         },
         images:[
-            "https://www.rajalaproshop.se/media/catalog/product/cache/f1ec723725bd5bfc9f8ed8a7baf802be/c/a/canon-eos-r6.jpg",
-            "https://2.img-dpreview.com/files/p/E~TC4x3S590x0~articles/1548544834/body/Canon-EOS-R6-lead-01.jpeg"
+            ObjectId('625d598839d4f06f9a7e59d8'),
+            ObjectId('625d5a243b6a3878b1da9fc0')
         ]
     },
     {
@@ -82,8 +82,8 @@ let cameras = [
             angledScreen: "Fullt roter-& fällbar"
         },
         images:[
-            "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650.jpg",
-            "https://www.scandinavianphoto.se/globalassets/1052379_zv-e10-selp1650_right.jpg"
+            ObjectId('625d5a6ee245c365b07af0a8'),
+            ObjectId('625d5b7b54ce7f62ae79b3fc')
         ]
     },
     {
@@ -102,8 +102,8 @@ let cameras = [
             angledScreen: "Fällbar med selfieläge"
         },
         images: [
-            "https://www.cyberphoto.se/storage/8FA18A3F6B94244E855A5784D944F8C3FA6B1F64EC20D576521F5826BDF77977/180439043e24497c851b5848e75bdb33/jpg/media/663a8e9043f1444b9245011a952bc422/eosm50mk2_body_black.jpg",
-            "https://obj.fotosidan.se/obj/docpart/5b/5b6f7e9ccb6a4876c5d19c5eeb16f13f.jpg"
+            ObjectId('625d5b9854ce7f62ae79b3fe'),
+            ObjectId('625d5baa54ce7f62ae79b401')
         ]
         
     },
@@ -122,8 +122,8 @@ let cameras = [
             angledScreen: "Fullt roter- & fällbar"
         },
         images: [
-            "https://www.scandinavianphoto.se/globalassets/1050927.jpg",
-            "https://www.ljudochbild.se/wp-content/uploads/2018/12/Canon_EOS_R_24_105mm_46605-scaled.jpg"
+            ObjectId('625d5bb754ce7f62ae79b403'),
+            ObjectId('625d5bc454ce7f62ae79b405')
         ]
     },
     {
@@ -141,8 +141,8 @@ let cameras = [
             angledScreen: "Fällbar"
         },
         images: [
-            "https://www.gofoto.se/pub_images/large/0168008069-sony-a7-iii-svart-28-703-5-5-6-c.jpg",
-            "https://www.fotokungen.com/pub_images/original/A7III2870.jpg"
+            ObjectId('625d5bd954ce7f62ae79b409'),
+            ObjectId('625d5be754ce7f62ae79b40b')
         ]
     },
     {
@@ -160,8 +160,8 @@ let cameras = [
             angledScreen: "Fullt roter- & fällbar"
         },
         images: [
-            "https://cdn.pocket-lint.com/r/s/1200x/assets/images/149041-cameras-review-review-canon-eos-90d-review-image1-y948ezej2c.jpg",
-            "https://www.ljudochbild.se/wp-content/uploads/2019/12/Canon_EOS_90D_65337-1261x946.jpg"
+            ObjectId('625d5bf754ce7f62ae79b40d'),
+            ObjectId('625d5c0454ce7f62ae79b40f')
         ]
     },
     {
@@ -179,8 +179,8 @@ let cameras = [
             angledScreen: "Fällbar"
         },
         images:[
-            "https://cdn.pocket-lint.com/r/s/970x/assets/images/145646-cameras-review-review-fujifilm-x-t3-review-image1-bktd4euk5c.jpg",
-            "https://www.cyberphoto.se/storage/9DB08CAE09BF5B05B8A80691B5EE1CB0408BA1106A42034104A39911B2A41193/a4ee0b458dda493680ddb13c8e7f76a5/jpg/media/c7cfbb14bcff4c65b0398b7704ce2bd0/x-t3svart-product_1.jpg"
+            ObjectId('625d5c1454ce7f62ae79b411'),
+            ObjectId('625d5c2254ce7f62ae79b413')
         ]
     },
     {
@@ -198,8 +198,8 @@ let cameras = [
             angledScreen: "Fullt roter- & fällbar"
         },
         images: [
-            "https://cdn.pocket-lint.com/r/s/970x/assets/images/158670-cameras-review-canon-eos-r5-review-image3-ftrvqcyoeb.jpg",
-            "https://www.rajalaproshop.se/media/catalog/product/cache/f1ec723725bd5bfc9f8ed8a7baf802be/a/d/ad2ae541dc432b1526181ac7e671c2daf805c251_Canon_EOS_R5_C.jpg"
+            ObjectId('625d5c3354ce7f62ae79b415'),
+            ObjectId('625d5c3e54ce7f62ae79b417')
         ]
     },
     {
@@ -217,8 +217,8 @@ let cameras = [
             angledScreen: "Fällbar"
         },
         images: [
-            "https://cdn.pocket-lint.com/r/s/1200x/assets/images/155043-cameras-review-nikon-z6-ii-review-image1-ldwjiktq5v.jpg",
-            "https://www.dpreview.com/files/p/articles/5602333549/Nikon_Z6_II_Z7_II_hands-on-018.jpeg"
+            ObjectId('625d5c4b54ce7f62ae79b419'),
+            ObjectId('625d5c5654ce7f62ae79b41b')
         ]
     },
     {
@@ -234,8 +234,8 @@ let cameras = [
             angledScreen: "Fast skärm"
         },
         images:[
-            "https://www.pricerunner.se/product/1200x630/1893297363/Canon-IXUS-185.jpg",
-            "https://www.cyberphoto.se/storage/8A62AA3AA8E4E716AA1D7EC8C25319F94B76A27E714C574C13333EEED99D74AC/754b96c443804e19ab1cd3af5f0c6bef/jpg/media/ef399b032eba40cb90af8d75e25d8115/ixus185black-product_4.jpg"
+            ObjectId('625d5c6254ce7f62ae79b420'),
+            ObjectId('625d5c6f54ce7f62ae79b422')
         ]
     },
     {
@@ -252,8 +252,8 @@ let cameras = [
             angledScreen: "Fast skärm"
         },
         images: [
-            "https://www.scandinavianphoto.se/globalassets/1029070.jpg",
-            "https://www.fotokungen.com/pub_images/large/TZ200svartback.jpg"
+            ObjectId('625d5c7c54ce7f62ae79b424'),
+            ObjectId('625d5c8854ce7f62ae79b426')
         ]
     },
     {
@@ -270,8 +270,8 @@ let cameras = [
             angledScreen: "Fullt roter- & fällbar"
         },
         images: [
-            "https://www.cyberphoto.se/storage/F499F36B2D0319225B7C3F86530C1B3F5E294C8878F5672D7A0E095E7FE0A77C/0a11109d3304422ab1bce4a4078e72b0/jpg/media/5358ba005c504e5bb906f11ecd5b7815/cpp950_frontside.jpg",
-            "https://www.ljudochbild.se/wp-content/uploads/2020/02/Nikon-Coolpix-P950-bak-scaled-1.jpg"
+            ObjectId('625d5c9454ce7f62ae79b428'),
+            ObjectId('625d5c9f54ce7f62ae79b42c')
         ]   
     },
     {
@@ -289,8 +289,8 @@ let cameras = [
             angledScreen: "Fast skärm"
         },
         images: [
-            "https://4.img-dpreview.com/files/p/E~TS590x0~articles/3838154327/beauty/Panasonic_LX100_Beauty-05.jpeg",
-            "https://cdn.pocket-lint.com/r/s/1200x/assets/images/145441-cameras-review-review-panasonic-lumix-lx100-mark-2-main-image2-footccx7zl.jpg"
+            ObjectId('625d5cab54ce7f62ae79b42f'),
+            ObjectId('625d5cb454ce7f62ae79b431')
         ]   
     },
     {
@@ -308,8 +308,8 @@ let cameras = [
             angledScreen: "Fullt roter- & fällbar"
         },
         images: [
-            "https://www.lifewire.com/thmb/OoDVn9OvqzQVRGIuz6OoOosGsz4=/1500x1500/filters:no_upscale()/03LW493676-HeroSquare-9fba311f70044a4a9794392ef8e441b9.jpg",
-            "https://4.img-dpreview.com/files/p/E~TS590x0~articles/0991735089/Product-shots/NikonP1000-beauty02.jpeg"
+            ObjectId('625d5cbf54ce7f62ae79b433'),
+            ObjectId('625d5cca54ce7f62ae79b435')
         ]
     },
     {
@@ -327,8 +327,8 @@ let cameras = [
             angledScreen: "Fast skärm"
         },
         images: [
-            "https://www.scandinavianphoto.se/globalassets/tough_tg-6_red__product_010.jpg",
-            "https://www.gofoto.se/pub_images/large/0168007056-olympus-tough-tg-6-rod-c.jpg"
+            ObjectId('625d5cd554ce7f62ae79b437'),
+            ObjectId('625d5ce254ce7f62ae79b439')
         ]
     },
     {
@@ -346,8 +346,8 @@ let cameras = [
             angledScreen: "Fällbar"
         },
         images: [
-            "https://cdn.pocket-lint.com/r/s/970x/assets/images/151739-cameras-review-fujifilm-x100v-review-image1-m6ezeivnuw.jpg",
-            "https://www.gofoto.se/pub_images/original/0168007448-x100v-silver-f.jpg"
+            ObjectId('625d5ced54ce7f62ae79b43b'),
+            ObjectId('625d5cfd54ce7f62ae79b43d')   
         ]
     },
     {
@@ -365,8 +365,8 @@ let cameras = [
             angledScreen: "Fällbar med selfieläge"
         },
         images: [
-            "https://cdn.pocket-lint.com/r/s/1200x/assets/images/148530-cameras-review-hands-on-canon-powershot-g7-x-iii-image1-3o1l7m8dxy.jpg",
-            "https://www.scandinavianphoto.se/globalassets/1044981.jpg"
+            ObjectId('625d5d2d54ce7f62ae79b43f'),
+            ObjectId('625d5d3854ce7f62ae79b441')
         ]
     },
     {
@@ -384,8 +384,8 @@ let cameras = [
             angledScreen: "Fullt roter- & fällbar"
         },
         images: [
-            "https://www.proshop.se/images/915x900/2681592_3ef7db964064.jpg",
-            "https://www.cyberphoto.se/storage/F93987D2D31CA64E08598BDF0DABF511933662186D0BDC927A413D0BFCB0C251/e1a6db5c45ca4edc9fb01ee153a4eacb/jpg/media/5e75ceebfda54db6ab85e7522e44dd62/pssx70_525_2.jpg"
+            ObjectId('625d5d4454ce7f62ae79b444'),
+            ObjectId('625d5d5154ce7f62ae79b446')
         ]
     },
     {
@@ -402,8 +402,8 @@ let cameras = [
             angledScreen: "Fast skärm"
         },
         images: [
-            "https://shop.mediapoolen.se/images/products/0611214.jpg",
-            "https://www.scandinavianphoto.se/globalassets/1031523.jpg"
+            ObjectId('625d5d5e54ce7f62ae79b448'),
+            ObjectId('625d5d6854ce7f62ae79b44a')
         ]
     },
     {
@@ -421,8 +421,8 @@ let cameras = [
             angledScreen: "Fällbar med selfieläge"
         },
         images: [
-            "https://www.scandinavianphoto.se/globalassets/1012376.jpg",
-            "https://i.pcmag.com/imagery/reviews/05xiv7xw8z8KDyDr42qQvIf-24.fit_scale.size_760x427.v1569476773.jpg"
+            ObjectId('625d5d7354ce7f62ae79b44c'),
+            ObjectId('625d5d7d54ce7f62ae79b44e')
         ]
     },
     {
@@ -441,8 +441,8 @@ let cameras = [
                 angledScreen: "Fällbar"
             },
         images: [
-            "https://1.img-dpreview.com/files/p/E~TS940x788~articles/8398600454/Fujifilm-GFX-100S-lead-01.jpeg",
-            "https://www.scandinavianphoto.se/globalassets/1050570.jpg?ref=D5107085A0&w=960&h=960&mode=max"
+            ObjectId('625d5d9054ce7f62ae79b450'),
+            ObjectId('625d5d9c54ce7f62ae79b452')
         ]   
     }
 ]

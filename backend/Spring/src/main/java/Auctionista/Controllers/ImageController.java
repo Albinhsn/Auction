@@ -25,10 +25,10 @@ public class ImageController {
     @Autowired
     private ImageService imageService;
 
-    @GetMapping("/image/{fileName}")
-    public ResponseEntity<ByteArrayResource> getImage(@PathVariable String fileName) throws IOException{
+    @GetMapping("/image/{fileId}")
+    public ResponseEntity<ByteArrayResource> getImage(@PathVariable String fileId) throws IOException{
         
-        ImageFile imageFile = imageService.getImageByName(fileName);
+        ImageFile imageFile = imageService.getImageById(fileId);
         return ResponseEntity.ok()
         .contentType(MediaType.parseMediaType(imageFile.getFileType()))
         .body(new ByteArrayResource(imageFile.getFile())); 

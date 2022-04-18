@@ -21,7 +21,16 @@ export default function Auction({authId}) {
         
         setAuction(response.data)
         console.log(response)
-        setImages(imageHelpers.convertToGallery(response.data.images))       
+        let images = []
+        response.data.images.map(image => {
+          images.push(  
+            imageHelpers.convertToGallery(
+              imageHelpers.convertToUrl(image)
+            )
+          )
+        })
+
+        setImages(images)       
         
       })
     }

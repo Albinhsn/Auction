@@ -2,11 +2,11 @@ import {React, useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import TimeRemaining from '../../Time/TimeRemaining'
 import * as datesHelpers from '../../../Helpers/datesHelpers'
-
+import * as imageHelpers from '../../../Helpers/imageHelpers'
 export default function HomepageAuctionCard({ auction}) {
   
   const [date, setDate] = useState()
-
+  console.log(auction.images)
   useEffect(() => {
     if (!date) {
       setDate(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
@@ -18,7 +18,7 @@ export default function HomepageAuctionCard({ auction}) {
       
       <div className='card text-secondary justify-content-center bg-light mb-5 mx-3' style={{height: "25vh", width: "19vh"}}>
         {auction.name}
-        <img className="card-img-bot img-fluid" style={{height: "12vh"}} src={auction.images} alt={auction.name}/>
+        <img className="card-img-bot img-fluid" style={{height: "12vh"}} src={imageHelpers.convertToUrl(auction.images)} alt={auction.name}/>
         <div>
           <TimeRemaining 
             date={date}

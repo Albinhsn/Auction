@@ -61,6 +61,7 @@ export default function CreateAuctionForm({authId}) {
     }
     const addImage = async e => {
         imageService.uploadImage(e.target.files[0]).then(response => {
+            console.log(response)
             let image = imageHelpers.convertToGallery(`http://localhost:8000/images/image/${response.data}`)
             setAuctionInfo({...auctionInfo, images: [... auctionInfo.images, image]})
             
