@@ -37,16 +37,13 @@ public class ImageService {
         
         DBObject metadata = new BasicDBObject();
         metadata.put("fileSize", file.getSize());
-        String s = gridFsTemplate.store(file.getInputStream(), file.getOriginalFilename(), file.getContentType(), metadata).toString();
-        System.out.println(s);
-        return s;
+        return gridFsTemplate.store(file.getInputStream(), file.getOriginalFilename(), file.getContentType(), metadata).toString();
+        
     }
 
     public ImageFile getImageById(String _id) throws IOException{
-        ObjectId ObjectId = new ObjectId(_id);
-        System.out.println(ObjectId);
-        Query q = new Query(Criteria.where("_id").is(ObjectId));
-        System.out.print(q.toString());
+        
+        Query q = new Query(Criteria.where("_id").is(new ObjectId(_id)));
         GridFSFile gridFSFile = gridFsTemplate.findOne(q);
         ImageFile imageFile = new ImageFile();
         

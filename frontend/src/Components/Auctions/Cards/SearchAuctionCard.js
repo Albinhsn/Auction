@@ -4,6 +4,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import * as dates from '../../../Helpers/datesHelpers'
 import * as auctionHelpers from '../../../Helpers/auctionHelpers'
+import * as imageHelpers from '../../../Helpers/imageHelpers'
 import userService from '../../../Services/userService'
 
 export default function SearchAuctionCard({auction, authId}){
@@ -29,7 +30,7 @@ export default function SearchAuctionCard({auction, authId}){
        
         <div className='border border-dark'>
             <Link to={`/auction?auctionId=${auction._id}`} className="link-dark d-flex text-decoration-none">    
-                <img src={`http://localhost:8000/images/image/${auction.images[0]}`} placeholder="" style={{height: "15vh", width: "15vh"}}/>
+                <img src={imageHelpers.convertToUrl(auction.images[0])} placeholder="" style={{height: "15vh", width: "15vh"}}/>
     
                 <div>
                     <div className='d-flex'>
