@@ -1,9 +1,3 @@
-
-//filter = {
-//  tag: "",
-//  vars: [val1, val2, ...]    
-//}
-
 export const filterAuctions = (auctions, setLocalAuc, currentFilters) => {
            
     if(currentFilters.length === 0){ 
@@ -39,7 +33,9 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters) => {
                     }
                     break; 
                 case "Lens":
+                    
                     for (let j = i; j>=0; j--){
+                        console.log(localAuc[j])
                         if(!filter.val.includes(localAuc[j].tags.lens)){
                             localAuc.splice(j, 1, )
                         }
@@ -116,7 +112,8 @@ export const handleFilterChange = (currentFilters, setCurrentFilters, tag, val) 
     let flag = false
     locFilters.map(filter => {
         if(filter.tag === tag){
-            if(!document.querySelector(`#${val}`).checked){
+            
+            if(!document.getElementById(`${val.replace(/\s/g, "")}`).checked){
                 filter.val.splice(filter.val.indexOf(val),1, )
                 if(filter.val.length === 0){
                     locFilters.splice(locFilters.indexOf(filter), 1, )
@@ -133,6 +130,7 @@ export const handleFilterChange = (currentFilters, setCurrentFilters, tag, val) 
             val: [val]
         })
     }
+    console.log(locFilters)
     setCurrentFilters(locFilters)
     
 }

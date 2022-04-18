@@ -9,13 +9,13 @@ export default function SearchFilterTag({currentFilters, setCurrentFilters, arr,
             </p>
             {arr.map(ele => {
                 return(
-                    <div key={ele}>                        
+                    <div key={ele.replace(/\s/g, "")}>                        
                         <label className='search-label'>
                             {ele}
                         </label>
                         <input 
                             type="checkbox" 
-                            id={ele}
+                            id={ele.replace(/\s/g, "")}
                             name={ele}
                             className="ms-2"
                             onClick={
