@@ -1,6 +1,6 @@
 package Auctionista.Services;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import Auctionista.Dto.AuctionDto;
 import Auctionista.Entities.Auction;
 import Auctionista.Repositories.AuctionRepo;
 
@@ -71,7 +72,9 @@ public class AuctionService {
 
     public List<Auction> getAuctionsBySearch(String search){
         return auctionRepo.getAuctionsBySearch(search);
+    }
 
-        
+    public String postAuction(AuctionDto auctionDto){
+        return "";
     }
 }

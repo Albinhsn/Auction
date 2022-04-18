@@ -6,7 +6,6 @@ import * as imageHelpers from '../../../Helpers/imageHelpers'
 export default function HomepageAuctionCard({ auction}) {
   
   const [date, setDate] = useState()
-  console.log(auction.images)
   useEffect(() => {
     if (!date) {
       setDate(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))

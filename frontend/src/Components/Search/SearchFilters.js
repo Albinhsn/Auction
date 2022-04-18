@@ -10,9 +10,6 @@ export default function SearchFilters({setLocalAuc, auctions}){
     const [sort, setSort] = useState('')
     const [currentFilters, setCurrentFilters] = useState([])
     useEffect(() => {
-            
-            //Sort list
-            
             switch(sort){
                 case 'PriceAsc':
                     break;

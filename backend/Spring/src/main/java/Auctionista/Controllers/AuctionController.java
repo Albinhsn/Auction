@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Auctionista.Dto.AuctionDto;
 import Auctionista.Entities.Auction;
 
 import Auctionista.Services.AuctionService;
@@ -92,5 +95,27 @@ public class AuctionController {
         @RequestParam String search
     ){
         return auctionService.getAuctionsBySearch(search);
+    }
+
+    @PostMapping(value="/create")
+    public String postAuction(
+        @RequestBody AuctionDto auctionDto
+    ){
+        System.out.println("Name: " + auctionDto.getName());
+        System.out.println("Condition: " + auctionDto.getCondition());
+        System.out.println("Description: " + auctionDto.getDescription());
+        System.out.println("MinimumBid: " + auctionDto.getMinimumBid());
+        System.out.println("PurchasePrice: " + auctionDto.getPurchasePrice());
+        System.out.println("Seller: " + auctionDto.getSeller());
+        System.out.println("State: " + auctionDto.getState());
+        System.out.println("Winner: " + auctionDto.getWinner());
+        System.out.println("BidHistory: " + auctionDto.getBidHistory());
+        System.out.println(auctionDto.getImages());
+        System.out.println("AuctionType: " + auctionDto.getAuctionType());
+        System.out.println("StartDate: " + auctionDto.getStartDate());
+        System.out.println("EndDate" + auctionDto.getEndDate());
+        System.out.println("Tags: " + auctionDto.getTags());
+
+        return auctionService.postAuction(auctionDto);
     }
 }   

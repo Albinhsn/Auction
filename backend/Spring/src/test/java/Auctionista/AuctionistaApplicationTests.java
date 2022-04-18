@@ -8,6 +8,8 @@ class AuctionistaApplicationTests {
 
 	@Test
 	void contextLoads() {
+	
+	
 	}
 
 }

@@ -65,6 +65,10 @@ class AuctionDataService{
             }
         })
     }
+
+    postAuction(auctioninfo){
+        return http.post("/auction/create", auctioninfo)
+    }
 }
 
 

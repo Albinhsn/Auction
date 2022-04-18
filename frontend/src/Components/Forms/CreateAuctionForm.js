@@ -6,6 +6,7 @@ import {useState, useRef ,React} from 'react'
 import imageService  from '../../Services/imageService';
 import { useNavigate } from 'react-router';
 import * as imageHelpers from '../../Helpers/imageHelpers'
+import auctionService from '../../Services/auctionService';
 
 export default function CreateAuctionForm({authId}) {
 
@@ -24,20 +25,29 @@ export default function CreateAuctionForm({authId}) {
         endDate: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()+7),
         seller: authId,
         state: "Pågående",
-        tags: {}     
+        tags: {}
     })
 
     const [currentIndex, setCurrentIndex] = useState(0)
-    const [currentTag, setCurrentTag] = useState()
-    const [tags, setTags] = useState()
+    const [tags, setTags] = useState([])
     const myRef = useRef(null);
-    const navigate = useNavigate()
 
 
     
     
     const createAuction = () => {
         
+
+        //Mapping tags
+        tags.map(tag => {
+            auctionInfo.tags[tag.key] = tag.value
+        })
+        auctionInfo.images = imageHelpers.convertFromGallery(auctionInfo.images)
+        console.log(auctionInfo)
+        //Post auction
+        auctionService.postAuction(auctionInfo).then(response => {
+            console.log(response)
+        })
     }
 
 
@@ -73,6 +83,32 @@ export default function CreateAuctionForm({authId}) {
         setCurrentIndex(index)
     }
     
+    const addTag = () => {
+        var e = document.querySelector("#tags")
+        for(let i = 0; i<tags.length; i++){
+            if (e.options[e.selectedIndex].text === tags[i].name){
+                alert("Taggen finns redan, ta bort den för att lägga till en ny")
+                return
+            }
+        }
+        console.log(document.querySelector("#tags").value)
+        setTags([...tags, {
+            name: e.options[e.selectedIndex].text,
+            value: document.querySelector("#tag-value").value,
+            key: document.querySelector("#tags").value
+        }])
+        
+    }
+
+    const removeTag = (e) => {
+        for (let i = 0; i < tags.length; i++) {
+            if (e.target.value === tags[i].name) {
+                setTags(tags.filter(item => item.name !== e.target.value))
+                delete auctionInfo.tags[tags[i].key]
+                return
+            }
+        }
+    }
     return (
         <div className='row d-flex justify-content-center' style={{ width: "100vw" }}>
             <div className='col-8 bg-light'>
@@ -102,12 +138,6 @@ export default function CreateAuctionForm({authId}) {
                         <div className='d-flex flex-column'>
                             <input type="text" placeholder="Titel" style={{ width: "20vw" }} className='align-self-center' 
                                 onChange={e => setAuctionInfo({...auctionInfo, name: e.target.value})}
-                            />
-                            <input type="number" placeholder="Minimumbud" className='mt-2 align-self-center' id="bid-input" style={{ width: "20vw" }} 
-                                onChange={e => setAuctionInfo({ ...auctionInfo, minimumBid: parseInt(e.target.value)})}
-                            />
-                            <input type="number" placeholder="Köpa direkt (ej obligatorisk)" className='mt-2 align-self-center ' id="bid-input" style={{ width: "20vw" }} 
-                                onChange={e => setAuctionInfo({ ...auctionInfo, purchasePrice: parseInt(e.target.value) })}
                             />
                         </div>
                         <div className='input-group pt-2'>
@@ -154,13 +184,19 @@ export default function CreateAuctionForm({authId}) {
                             </select>
                         </div>
                         <div className='d-flex flex-column'>
+                            <input type="number" placeholder="Minimumbud" className='mt-2 align-self-center' id="bid-input" style={{ width: "20vw" }}
+                                onChange={e => setAuctionInfo({ ...auctionInfo, minimumBid: parseInt(e.target.value) })}
+                            />
+                            <input type="number" placeholder="Köpa direkt" className='mt-2 align-self-center ' id="bid-input" style={{ width: "20vw" }}
+                                onChange={e => setAuctionInfo({ ...auctionInfo, purchasePrice: parseInt(e.target.value) })}
+                            />
+                        </div>
+                        <div className='d-flex flex-column'>
                             <TextAreaAutoSize maxRows={5} minRows={5} placeholder="Beskrivning" className='mt-2' id="bid-input" style={{ resize: "none" }} 
                                 onChange={e => setAuctionInfo({ ...auctionInfo, description: e.target.value })}
                             />
                             <div className='input-group pt-2'>
-                                <select name="tags" id="tags" className='form-select'
-                                    onChange={e => setCurrentTag(e.target.value)}
-                                >
+                                <select name="tags" id="tags" className='form-select'>
                                     <option value="">
                                         Välj tag
                                     </option>
@@ -190,9 +226,23 @@ export default function CreateAuctionForm({authId}) {
                                     </option>
                                 </select>
 
-                                <input type="text" />
-                                <button type="button" className='btn btn-primary'>Lägg till tag</button>
+                                <input type="text" id="tag-value"/>
+                                <button type="button" className='btn btn-primary' onClick={() => addTag()}>Lägg till tag</button>
                             </div>
+                                <div>
+                                    <li className='list-group'>
+                                        {tags.map(tag => {
+                                            return(
+                                                <ul className='list-item d-flex' key={tag.name}>
+                                                    <p className='mb-0 align-self-center'>
+                                                        {tag.name}: {tag.value}
+                                                    </p>
+                                                    <button type="button" className='btn btn-secondary border ms-3' value={tag.name} onClick={e => removeTag(e)}>X</button>
+                                                </ul>
+                                            )
+                                        })}
+                                    </li>
+                                </div>
                             <button type="button" className='btn btn-primary align-self-center mt-2' style={{ width: "40%" }}
                                 onClick={() => createAuction()}>
                                     Skapa auktion

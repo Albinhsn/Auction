@@ -6,8 +6,12 @@ export const convertToGallery= (image) => {
     return obj
 }
 
-export const convertFromGallery = () => {
-
+export const convertFromGallery = (images) => {
+    let I = []
+    images.map(image => {
+        I.push(image.original)
+    }) 
+    return I
 }
 
 export const convertToUrl = (id) => {
