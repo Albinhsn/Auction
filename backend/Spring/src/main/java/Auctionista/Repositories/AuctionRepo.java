@@ -91,7 +91,9 @@ public interface AuctionRepo extends MongoRepository<Auction, String>{
     List<Auction> getFavoritesById(String authId);
 
     @Aggregation(pipeline = {
-        "{'$match': {seller: ObjectId('?0')}}"
+        "{'$match': {seller: ObjectId('?0')}}",
+        "{'$lookup': { from: 'users', localField: 'seller', foreignField: '_id', as: 'seller'}}",
+        "{'$addFields': { seller:{$first: '$seller.username'}}}"
     })
     List<Auction> getUserAuctions(String userId);
 

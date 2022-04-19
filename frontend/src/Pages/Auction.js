@@ -20,7 +20,6 @@ export default function Auction({authId}) {
       auctionService.getAuctionByObjectId(auctionId).then(response=> {
         
         setAuction(response.data)
-        console.log(response)
         let images = []
         response.data.images.map(image => {
           images.push(  

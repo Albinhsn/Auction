@@ -31,7 +31,7 @@ export const handleBid = (authId, auction, bid, setAuction) => {
         return
     }
     auctionService.makeBid(authId, auction._id, bid).then(response => {
-        
+        console.log(response)
     }).then(() => {
         auctionService.getAuctionByObjectId(auction._id).then(response => {
             setAuction(response.data)
@@ -46,5 +46,6 @@ export const makePurchase = (authId, auctionId, setAuction) => {
 
     auctionService.makePurchase(authId, auctionId).then(response => {
         setAuction(response.data)
+        console.log(response.data)
     })
 }

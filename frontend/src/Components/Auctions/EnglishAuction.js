@@ -97,7 +97,7 @@ export default function EnglishAuction({setAuction, auction, authId}) {
                             </div>
                             {auction.purchasePrice > 0 ?
                                 <button type="button" className='btn btn-warning ms-5 mt-2'
-                                    onClick={() => auctionHelpers.makePurchase()}>                                                
+                                    onClick={() => auctionHelpers.makePurchase(authId, auction._id, setAuction)}>                                                
                                         Köp Nu {auction.purchasePrice}
                                 </button>
                                 :
