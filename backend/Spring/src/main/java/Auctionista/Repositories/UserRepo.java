@@ -57,5 +57,10 @@ public interface UserRepo extends MongoRepository<User, ObjectId>{
         "{'$set': {watchlist: {$cond: [{$in: ['?1', '$watchlist']},{ $setDifference: ['$watchlist', ['?1']]},{ $concatArrays: ['$watchlist', ['?1']]}]}}}"
     })
     User updateWatchlist(String userId, String auctionId);
+
+    @Aggregation(pipeline = {
+        "{'$match': {email: ?0}}"
+    })
+    User getUserFromEmail(String email);
 }   
 

@@ -1,9 +1,7 @@
 package Auctionista.Controllers;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,12 +23,6 @@ public class UserController {
     private UserService userService;
 
 
-    @CrossOrigin
-    @GetMapping("/users")
-    public List<User> getAllUsers(){
-        return userService.getAllUsers();
-    }
-
 
     @GetMapping("/login")
     public String validateLogin(
@@ -40,7 +32,6 @@ public class UserController {
         return userService.validateLogin(email, password);
     }
     
-    @CrossOrigin
     @PostMapping("/login/google")
     public String handleGoogleLogin(
         @RequestBody User user
@@ -48,7 +39,6 @@ public class UserController {
             return userService.handleGoogleLogin(user);
     }
  
-    @CrossOrigin
     @GetMapping("/id")
     public String getUsernameFromObjectId(
         @RequestParam String _id
@@ -56,7 +46,6 @@ public class UserController {
         return userService.getUsernameFromObjectId(_id);
     }
 
-    @CrossOrigin
     @GetMapping("/favorite")
     public boolean checkFavorite(
         @RequestParam String userId,
@@ -65,7 +54,6 @@ public class UserController {
         return userService.checkFavorite(userId, auctionId);
     }
 
-    @CrossOrigin
     @GetMapping("/update/favorite")
     public boolean updateFavorite(
         @RequestParam String userId,
@@ -75,8 +63,6 @@ public class UserController {
         return true;
     }
 
-
-    @CrossOrigin
     @GetMapping("/update/watchlist")
     public boolean updateWatchlist(
         @RequestParam String userId,
@@ -86,7 +72,6 @@ public class UserController {
         return true;
     }
 
-    @CrossOrigin
     @GetMapping(value="/user")
     public User getUserFromObjectId(
         @RequestParam String userId

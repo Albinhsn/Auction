@@ -23,11 +23,7 @@ public class UserService implements IUserService{
 
     @Autowired
     private UserRepo userRepo;
-    
 
-    public List<User> getAllUsers(){
-        return userRepo.getAllUsers();
-    }
 
     @Override
     public User registerNewUserAccount(UserDto userDto) throws UserAlreadyExistException {
@@ -74,14 +70,13 @@ public class UserService implements IUserService{
         User locUser = userRepo.findByEmail(user.getEmail());
         if(locUser == null){
             
-            user.set_id(new ObjectId().toString());
-            
             List<String> favo = new ArrayList<>();
             user.setFavorites(favo);
+
             List<String> watchlist= new ArrayList<>();
             user.setWatchlist(watchlist);
-            userRepo.save(user);
-            return user.get_id();
+
+            return userRepo.save(user).get_id();
         }
 
         return locUser.get_id();
@@ -115,7 +110,11 @@ public class UserService implements IUserService{
         return userRepo.getUserFromObjectId(userId);
     }
 
-    
+    public User getUserFromEmail(String email){
+        return userRepo.getUserFromEmail(email);
+    }
+
+
     public User changeEmail(String userId, String email, String matchingEmail){
 
         validateEmail(email, matchingEmail);
