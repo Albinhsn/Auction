@@ -35,6 +35,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
             username: data.profileObj.givenName,
         }
         console.log(user)
+        console.log(data)
         userService.handleGoogleLogin(user)
             .then(response =>{
                 console.log(response)
