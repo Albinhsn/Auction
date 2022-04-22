@@ -1,5 +1,6 @@
 package Auctionista.Utils;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +14,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
-public class JwtUtil {
+public class JwtUtil implements Serializable{
     
     //TODO donkey C:
     private String SECRET_KEY = "secret";
@@ -53,6 +54,7 @@ public class JwtUtil {
             .setSubject(subject)
             .setIssuedAt(new Date(System.currentTimeMillis()))
             .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+            .setIssuer("http://localhost:8000/auth/realms/auctionista")
             .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
             .compact();
     }

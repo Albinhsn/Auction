@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import Auctionista.Dto.UserDto;
 import Auctionista.Entities.User;
-import Auctionista.Errors.UserAlreadyExistException;
 import Auctionista.Repositories.UserRepo;
 
 
@@ -26,7 +25,7 @@ public class UserService implements IUserService{
 
 
     @Override
-    public User registerNewUserAccount(UserDto userDto) throws UserAlreadyExistException {
+    public User registerNewUserAccount(UserDto userDto) {
         if(usernameExists(userDto.getUsername())){
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "There is an account with that username");
         }

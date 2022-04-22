@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import Auctionista.Dto.UserDto;
 import Auctionista.Entities.User;
-import Auctionista.Errors.UserAlreadyExistException;
+
 import Auctionista.Services.UserService;
 
 @RestController
@@ -30,16 +30,11 @@ public class RegistrationController {
     @PostMapping("/registration/user")
     //Don't send back user, instead just status code, if succesfull send another req to get _id from email used in input 
     public User registerUserAccount(
-            @RequestBody  @Valid UserDto userDto,
-            HttpServletRequest request,
-            Errors errors) {
-        try {
-            return userService.registerNewUserAccount(userDto);
-
-        } catch (UserAlreadyExistException uaeEx) {
-            System.out.println("uaeEx thrown");
-            return null;
-        }
+        @RequestBody  @Valid UserDto userDto,
+        HttpServletRequest request,
+        Errors errors) 
+    {
+        return userService.registerNewUserAccount(userDto);
     }
 
     @GetMapping("/registration/email")

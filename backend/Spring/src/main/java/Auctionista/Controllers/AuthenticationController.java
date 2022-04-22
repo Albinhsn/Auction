@@ -10,12 +10,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import Auctionista.Dto.AuthenticateUserDto;
 import Auctionista.Utils.JwtUtil;
+import io.jsonwebtoken.Claims;
 
 @RestController
 @RequestMapping("/auth")
@@ -44,6 +44,10 @@ public class AuthenticationController {
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticateUserDto.getEmail());
         final String jwt = jwtUtil.generateToken(userDetails);
+        Claims claim = jwtUtil.extractAllClaims(jwt);
+        System.out.println(claim.getIssuer());
+        
+        
         return jwt;  
     }
 }
