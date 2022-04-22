@@ -15,5 +15,5 @@ public interface AuthenticationRepo extends MongoRepository<User, String>{
         "{'$match': {email: ?0}}",
         "{'$project': {_id: 0, email: 1, password: 1}}"
     })
-    AuthenticateUserDto validateUser(String email);
+    AuthenticateUserDto findUserByEmail(String email);
 }

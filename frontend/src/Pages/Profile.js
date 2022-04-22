@@ -2,12 +2,12 @@ import {useState, useEffect, React} from 'react'
 import ChangeProfileInfoForm from '../Components/Forms/ChangeProfileInfoForm'
 import userService from '../Services/userService'
 
-export default function Profile({authId}) {
+export default function Profile({token}) {
   
   const [user, setUser] = useState()
 
   useEffect(() => {
-    userService.getUserFromObjectId(authId).then(response => {
+    userService.getUserFromObjectId(token).then(response => {
       setUser(response.data)
     })
 
@@ -37,7 +37,7 @@ export default function Profile({authId}) {
                   </p>
                 </div>
 
-                <ChangeProfileInfoForm authId={authId} user={user} setUser={setUser}/>
+                <ChangeProfileInfoForm token={token} user={user} setUser={setUser}/>
               </div>
             </div>
           </div> 

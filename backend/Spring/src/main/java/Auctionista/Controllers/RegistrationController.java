@@ -41,17 +41,19 @@ public class RegistrationController {
     public User changeEmail(
         @RequestParam String email,
         @RequestParam String matchingEmail,
-        @RequestParam String userId
+        @RequestParam String token
     ){
+        String userId = "";
         return userService.changeEmail(userId, email, matchingEmail);
     }
 
     @GetMapping("/registration/password")
     public void changePassword(
-        @RequestParam String userId,
+        @RequestParam String token,
         @RequestParam String password,
         @RequestParam String matchingPassword
     ){   
+        String userId = "";
         userService.changePassword(userId, password, matchingPassword);
     }
 

@@ -12,7 +12,10 @@ class userDataService{
     }
 
     validateLogin(formInfo){
-        return http.get("/user/login", {params: formInfo })
+        const token = http.post("/auth/authenticate", formInfo)
+        
+        localStorage.setItem("access_token", token)
+        return token
     }
     
     handleGoogleLogin(googleInfo){
@@ -26,43 +29,43 @@ class userDataService{
         })
     }
 
-    checkFavorite(userId, auctionId){
+    checkFavorite(token, auctionId){
         return http.get("/user/favorite", {
             params:{
-                userId: userId, 
+                token: token, 
                 auctionId: auctionId
             }
         })
     }
 
-    updateFavorite(userId, auctionId){
-        return http.get("/user/update/favorite",{ params: { userId: userId, auctionId: auctionId}})
+    updateFavorite(token, auctionId){
+        return http.get("/user/update/favorite",{ params: { token: token, auctionId: auctionId}})
     }
-    updateWatchlist(userId, auctionId){
-        return http.get("/user/update/watchlist",{ params: { userId: userId, auctionId: auctionId}})
+    updateWatchlist(token, auctionId){
+        return http.get("/user/update/watchlist",{ params: { token: token, auctionId: auctionId}})
     }
 
     getUserFromObjectId(userId){
         return http.get("/user/user", {params: {userId: userId}})
     }
 
-    changeEmail(userId, email, matchingEmail){
+    changeEmail(token, email, matchingEmail){
         console.log(email)
         console.log(matchingEmail)
         return http.get("/registration/email", {
             params: 
                 {
-                    userId: userId, 
+                    token: token, 
                     email: email, 
                     matchingEmail: matchingEmail
                 }
         })
     }
     
-    changePassword(userId, password, matchingPassword){
+    changePassword(token, password, matchingPassword){
         return http.get("/registration/password", {
             params: {
-                userId: userId,
+                token: token,
                 password: password, 
                 matchingPassword: matchingPassword                
             }

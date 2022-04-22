@@ -7,7 +7,7 @@ import AuctionCardTimeInfo from './CardInfo/AuctionCardTimeInfo'
 import userService from '../../Services/userService'
 
 
-export default function DutchAuction({ auction, authId, setAuction}) {
+export default function DutchAuction({ auction, token, setAuction}) {
 
 
   const [watchlist, setWatchlist] = useState()
@@ -15,8 +15,8 @@ export default function DutchAuction({ auction, authId, setAuction}) {
 
 
   useEffect(() => {
-    if(!favorite && authId){
-      userService.checkFavorite(authId, auction._id).then(response => {
+    if(!favorite && token){
+      userService.checkFavorite(token, auction._id).then(response => {
         if(response.data){
           setFavorite("red")
         }
@@ -46,17 +46,17 @@ export default function DutchAuction({ auction, authId, setAuction}) {
                 {auction.purchasePrice}
               </p>
               <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1"
-                onClick={() => auctionHelpers.favoriteChange(authId, auction._id, favorite, setFavorite)} style={{ color: `${favorite}` }}
+                onClick={() => auctionHelpers.favoriteChange(token, auction._id, favorite, setFavorite)} style={{ color: `${favorite}` }}
               />
               <button className='btn btn-warning ms-3' type="button"
-                onClick={() => auctionHelpers.watchlistChange(authId, auction._id, watchlist, setWatchlist)}
+                onClick={() => auctionHelpers.watchlistChange(token, auction._id, watchlist, setWatchlist)}
               >
                 {watchlist ? "Ta bort påminnelse" : "Lägg till påminnelse"}
               </button>
             </div>
             <div className='d-flex'>
               <button type="button" className="btn btn-warning ms-3"
-                onClick={() => auctionHelpers.makePurchase(authId, auction._id, setAuction)}
+                onClick={() => auctionHelpers.makePurchase(token, auction._id, setAuction)}
               >
                 Köp
               </button>

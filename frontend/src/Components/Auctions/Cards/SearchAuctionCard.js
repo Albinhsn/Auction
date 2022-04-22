@@ -7,12 +7,12 @@ import * as auctionHelpers from '../../../Helpers/auctionHelpers'
 import * as imageHelpers from '../../../Helpers/imageHelpers'
 import userService from '../../../Services/userService'
 
-export default function SearchAuctionCard({auction, authId}){
+export default function SearchAuctionCard({auction, token}){
     const [favorite, setFavorite] = useState()
     const [timeRemaining, setTimeRemaining] = useState(dates.getTimeRemaining(auction.endDate))
     useEffect(() => {
-        if(authId){
-            userService.checkFavorite(authId, auction._id).then(response => {
+        if(token){
+            userService.checkFavorite(token, auction._id).then(response => {
                 if(response.data){
                     setFavorite("red")
                 }else{

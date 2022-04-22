@@ -1,7 +1,7 @@
 
 import { React, useState} from 'react'
 import userService from '../../Services/userService'
-export default function ChangeProfileInfoForm({authId, user, setUser}) {
+export default function ChangeProfileInfoForm({token, user, setUser}) {
     
 
     
@@ -14,7 +14,7 @@ export default function ChangeProfileInfoForm({authId, user, setUser}) {
     })
 
     const changePassword = () => {
-        userService.changePassword(authId, formInput.password, formInput.matchingPassword).then(response=>{
+        userService.changePassword(token, formInput.password, formInput.matchingPassword).then(response=>{
             console.log(response)
         }).catch(function (error) {
             if(error.response){
@@ -33,7 +33,7 @@ export default function ChangeProfileInfoForm({authId, user, setUser}) {
     }
 
     const changeEmail = () => {
-        userService.changeEmail(authId, formInput.email, formInput.matchingEmail).then(response => {
+        userService.changeEmail(token, formInput.email, formInput.matchingEmail).then(response => {
             setUser({...user, email: formInput.email})
             console.log(user)
         }).catch(function(error){

@@ -12,7 +12,7 @@ import * as auctionHelpers from '../../Helpers/auctionHelpers'
 import AuctionCardProductInfo from './CardInfo/AuctionCardProductInfo'
 import AuctionCardTimeInfo from './CardInfo/AuctionCardTimeInfo'
 
-export default function EnglishAuction({setAuction, auction, authId}) {
+export default function EnglishAuction({setAuction, auction, token}) {
     
     
     const [watchlist, setWatchlist] = useState(false)
@@ -23,8 +23,8 @@ export default function EnglishAuction({setAuction, auction, authId}) {
 
 
     useEffect(() => {
-        if(!favorite && authId){
-        userService.checkFavorite(authId, auction._id).then(response => {
+        if(!favorite && token){
+        userService.checkFavorite(token, auction._id).then(response => {
             if(response.data){
             setFavorite("red")
             }
@@ -57,9 +57,9 @@ export default function EnglishAuction({setAuction, auction, authId}) {
                             <p className='text-success fs-1 mb-0'>
                                 {auction.highestBid}
                             </p>
-                            <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(authId, auction._id, favorite, setFavorite)} style={{ color: `${favorite}` }} />
+                            <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction._id, favorite, setFavorite)} style={{ color: `${favorite}` }} />
                             <button className='btn btn-warning ms-3' type="button" 
-                                onClick={() => auctionHelpers.watchlistChange(authId, auction._id, watchlist, setWatchlist)}>
+                                onClick={() => auctionHelpers.watchlistChange(token, auction._id, watchlist, setWatchlist)}>
                                     {watchlist ? "Ta bort påminnelse": "Lägg till påminnelse"}
                             </button>
                         </div>
@@ -68,7 +68,7 @@ export default function EnglishAuction({setAuction, auction, authId}) {
                                 onChange={e => setBid(e.target.value)}
                             />
                             <button type="button" className="btn btn-warning ms-3"
-                                onClick={() => auctionHelpers.handleBid(authId, auction, bid, setAuction)}>
+                                onClick={() => auctionHelpers.handleBid(token, auction, bid, setAuction)}>
                                     Lägg bud
                             </button>
                         </div>
@@ -97,7 +97,7 @@ export default function EnglishAuction({setAuction, auction, authId}) {
                             </div>
                             {auction.purchasePrice > 0 ?
                                 <button type="button" className='btn btn-warning ms-5 mt-2'
-                                    onClick={() => auctionHelpers.makePurchase(authId, auction._id, setAuction)}>                                                
+                                    onClick={() => auctionHelpers.makePurchase(token, auction._id, setAuction)}>                                                
                                         Köp Nu {auction.purchasePrice}
                                 </button>
                                 :

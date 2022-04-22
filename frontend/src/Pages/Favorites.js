@@ -2,18 +2,25 @@ import {React, useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import SearchAuctionCard from '../Components/Auctions/Cards/SearchAuctionCard'
 import auctionService from '../Services/auctionService'
-export default function Favorites({authId}) {
+export default function Favorites({token}) {
     
     const [auctions, setAuctions] = useState()
     
     useEffect(() => {
-        auctionService.getFavoritesById(authId).then(response => {
-            setAuctions(response.data)
-        })
+        if(token && !auctions){
+            
+            auctionService.getFavoritesById(token).then(response => {
+                setAuctions(response.data)
+            }).catch(function(error){
+                if(error.response){
+                    alert(error.response.data.message)
+                }
+            })
+        }
     }, [])
     
 
-    if(!authId || !auctions) return<></>
+    if(!token || !auctions) return<></>
 
     return (
         <div className='d-flex justify-content-center'>
@@ -38,7 +45,7 @@ export default function Favorites({authId}) {
                                         <SearchAuctionCard  
                                             key={auction._id} 
                                             auction={auction} 
-                                            authId={authId}
+                                            token={token}
                                         />
                                     </Link>
                             </div>

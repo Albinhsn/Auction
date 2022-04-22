@@ -27,33 +27,44 @@ class AuctionDataService{
         })
     }
 
-    makeBid(authId, _id, bid){
+    makeBid(token, _id, bid){
         return http.get("/auction/bid", {params: 
             {
                 auctionId: _id,
-                userId: authId,
+                token: token,
                 bid: bid
             }
         })
     }
 
-    makePurchase(userId, auctionId){
+    makePurchase(token, auctionId){
         return http.get("/auction/purchase", { params:
             {
-                userId: userId,
+                token: token,
                 auctionId: auctionId
             }
+        }, {
+            headers: 
+                {
+                    Authorization: `Bearer ${token}`
+                }
         })
     }
-    getFavoritesById(authId){
-        return http.get("/auction/favorites", {params: {authId: authId}})
+    getFavoritesById(token){
+        return http.get("/auction/favorites", {params: {token: token}}
+        ,{
+            headers: 
+                {
+                    Authorization: `Bearer ${token}`
+                }
+        })
     }
 
-    getUserAuctions(authId){
+    getUserAuctions(token){
         return http.get("/auction/user", {
             params:
             {
-                userId: authId
+                token: token
             }
         })
     }

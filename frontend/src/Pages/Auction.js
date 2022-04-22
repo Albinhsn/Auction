@@ -5,7 +5,7 @@ import SwissAuction from '../Components/Auctions/SwissAuction'
 import auctionService from '../Services/auctionService'
 import * as imageHelpers from '../Helpers/imageHelpers'
 
-export default function Auction({authId}) {
+export default function Auction({token}) {
   
   const [auction, setAuction] = useState({})
   const [images, setImages] = useState([])
@@ -47,15 +47,15 @@ export default function Auction({authId}) {
   switch(auction.auctionType){
     case "Engelsk":
       return (
-        <EnglishAuction setAuction={setAuction} auction={auction} authId={authId} />
+        <EnglishAuction setAuction={setAuction} auction={auction} token={token} />
       )
     case "Holländsk":
       return(
-        <DutchAuction setAuction={setAuction}  auction={auction} authId={authId}/>
+        <DutchAuction setAuction={setAuction}  auction={auction} token={token}/>
       )
     case "Schweizisk":
       return(
-        <SwissAuction setAuction={setAuction} auction={auction} authId={authId}/>
+        <SwissAuction setAuction={setAuction} auction={auction} token={token}/>
       )
   }
   

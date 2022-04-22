@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import Auctionista.Dto.AuthenticateUserDto;
+import Auctionista.Utils.JwtUtil;
 
 @RestController
 @RequestMapping("/auth")
@@ -25,12 +26,17 @@ public class AuthenticationController {
 
     @Autowired
     private UserDetailsService userDetailsService;
+    
+    @Autowired
+    private JwtUtil jwUtil;
 
 
     @PostMapping("/authenticate")
     public String authenticateUser(
         @RequestBody AuthenticateUserDto authenticateUserDto
     ){
+        
+        
         try {
             authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authenticateUserDto.getEmail(), authenticateUserDto.getPassword())
@@ -38,9 +44,10 @@ public class AuthenticationController {
         } catch (BadCredentialsException e) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Kontot med inmatad information finns inte");
         }
+
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticateUserDto.getEmail());
-  
+        final String token = jwUtil.generateToken(userDetails);
         
-        return null;
+        return token;
     }
 }

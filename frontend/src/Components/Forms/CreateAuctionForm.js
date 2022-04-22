@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 import * as imageHelpers from '../../Helpers/imageHelpers'
 import auctionService from '../../Services/auctionService';
 
-export default function CreateAuctionForm({authId}) {
+export default function CreateAuctionForm({token}) {
 
     let currentDate = new Date()
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ export default function CreateAuctionForm({authId}) {
         bidHistory: [],
         startDate: new Date(),
         endDate: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()+7),
-        seller: authId,
+        seller: token,
         state: "Pågående",
         tags: {}
     })

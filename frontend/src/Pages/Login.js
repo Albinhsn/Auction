@@ -1,8 +1,8 @@
 import React from 'react'
 import LoginForm from '../Components/Forms/LoginForm'
 
-export default function Login({setAuthId, users, setUsers}) {
+export default function Login({setToken}) {
   return (
-    <LoginForm setAuthId={setAuthId} users={users} setUsers={setUsers}/>
+    <LoginForm setToken={setToken}/>
   )
 }

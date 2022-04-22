@@ -5,7 +5,7 @@ import auctionService from '../Services/auctionService'
 import SearchAuctionCard from '../Components/Auctions/Cards/SearchAuctionCard'
 
 
-export default function Search({authId}){
+export default function Search({token}){
     
     const [auctions, setAuctions] = useState()
     const [localAuc, setLocalAuc] = useState()
@@ -29,7 +29,7 @@ export default function Search({authId}){
                     
                 {localAuc.map(auction => {
                     return (
-                        <SearchAuctionCard key={auction._id} auction={auction} authId={authId}/>
+                        <SearchAuctionCard key={auction._id} auction={auction} token={token}/>
                     )
                 })}
             </div>

@@ -5,7 +5,7 @@ import {GoogleLogin } from 'react-google-login'
 import userService from '../../Services/userService'
 
 
-export default function LoginForm({users, setAuthId, setUsers}) {
+export default function LoginForm({setToken}) {
 
 
     const navigation = useNavigate()
@@ -14,9 +14,13 @@ export default function LoginForm({users, setAuthId, setUsers}) {
         password: ""
     })
     const checkLogin = () => {
+        
         userService.validateLogin(loginInfo).then(response => {            
-            setAuthId(response.data)
+                
+            setToken(response.data)
+            console.log("GOT")
             navigation('/')
+            
         })
         .catch(
             function(error){
@@ -39,7 +43,7 @@ export default function LoginForm({users, setAuthId, setUsers}) {
         userService.handleGoogleLogin(user)
             .then(response =>{
                 console.log(response)
-                setAuthId(response.data)
+                setToken(response.data)
                 navigation("/")
         })
             .catch(function(error){

@@ -15,7 +15,6 @@ import Auction from './Pages/Auction';
 import Footer from './Components/Homepage/Footer';
 import Signup from './Pages/Signup';
 import MyAuctions from './Pages/MyAuctions';
-import SearchBar from './Components/Homepage/SearchBar';
 import CreateAuction from './Pages/CreateAuction';
 
 import Favorites from './Pages/Favorites';
@@ -23,24 +22,36 @@ import Favorites from './Pages/Favorites';
 
 function App() {
 
-  const [authId, setAuthId] = useState('')
+  const [token, setToken] = useState('')
   const [auctions, setAuctions] = useState([])
   
+  useEffect(() => {
+    if(!token){
+      try {
+        localStorage.getItem("access_token").then(tok => {
+          setToken(tok)
+        })
+        
+      } catch (error) {
+        
+      }
+    }
+  }, )
   
   return (
     <BrowserRouter>
       <div className="d-flex flex-column" style={{height: "100vh"}}>
-        <Navbar authId={authId} setAuthId={setAuthId}/>
+        <Navbar token={token} setToken={setToken}/>
         <Routes>
           <Route index element={<Home auctions={auctions}/>} />
-          <Route path="/profile" element={<Profile authId={authId} />}/>
-          <Route path="/login" element={<Login setAuthId={setAuthId}/>}/>
-          <Route path="/search" element={<Search auctions={auctions} authId={authId}/>}/>
-          <Route path="/auction" element={<Auction auctions={auctions} authId={authId} setAuctions={setAuctions}/>}/>
-          <Route path="/signup" element={<Signup setAuthId={setAuthId} authId={authId}/>}/>
-          <Route path="/profile/auction" element={<MyAuctions auctions={auctions} authId={authId}/>}/>
-          <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions} authId={authId}/>}/>
-          <Route path="/favorites" element={<Favorites auctions={auctions} authId={authId}/>}/>
+          <Route path="/profile" element={<Profile token={token} />}/>
+          <Route path="/login" element={<Login setToken={setToken}/>}/>
+          <Route path="/search" element={<Search auctions={auctions} token={token}/>}/>
+          <Route path="/auction" element={<Auction auctions={auctions} token={token} setAuctions={setAuctions}/>}/>
+          <Route path="/signup" element={<Signup setToken={setToken} token={token}/>}/>
+          <Route path="/profile/auction" element={<MyAuctions auctions={auctions} token={token}/>}/>
+          <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions} token={token}/>}/>
+          <Route path="/favorites" element={<Favorites auctions={auctions} token={token}/>}/>
         </Routes>
         <Footer/>
       </div>

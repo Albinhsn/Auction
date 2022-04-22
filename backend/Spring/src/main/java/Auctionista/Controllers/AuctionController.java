@@ -17,6 +17,8 @@ import Auctionista.Dto.AuctionDto;
 import Auctionista.Entities.Auction;
 
 import Auctionista.Services.AuctionService;
+import Auctionista.Services.UserService;
+import Auctionista.Utils.JwtUtil;
 
 
 
@@ -29,8 +31,12 @@ public class AuctionController {
     @Autowired
     private AuctionService auctionService;
 
+    @Autowired
+    private JwtUtil jwtUtil;
 
-    
+    @Autowired 
+    private UserService userService;
+
     @GetMapping("/state")
     public List<Auction> getAllCurrentAuctions(){
         return auctionService.getAllCurrentAuctions();
@@ -63,32 +69,39 @@ public class AuctionController {
     
     @GetMapping(value="/bid")
     public Auction makeBid(
-        @RequestParam String userId,
+        @RequestParam String token,
         @RequestParam String auctionId,
         @RequestParam int bid
     ){
+        String userId = "";
         return auctionService.makeBid(bid, userId, auctionId);
     }
 
     @GetMapping(value="/purchase")
     public Auction makePurchase(
-        @RequestParam String userId,
+        @RequestParam String token,
         @RequestParam String auctionId
     ){
+        String userId = "";
         return auctionService.makePurchase(userId, auctionId);
     }
 
     @GetMapping(value="/favorites")
     public List<Auction> getFavoritesById(
-        @RequestParam String authId
+        @RequestParam String token
     ){
-        return auctionService.getFavoritesById(authId);
+        System.out.println(token);
+        String email = jwtUtil.getUsernameFromToken(token);
+        System.out.println(email);
+        String userId = userService.getObjectIdFromEmail(email);
+        return auctionService.getFavoritesById(userId);
     }
 
     @GetMapping(value="/user")
     public List<Auction> getUserAuctions(
-        @RequestParam String userId
+        @RequestParam String token
     ){
+        String userId = "";
         return auctionService.getUserAuctions(userId);
     }
 

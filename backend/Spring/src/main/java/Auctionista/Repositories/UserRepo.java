@@ -62,5 +62,11 @@ public interface UserRepo extends MongoRepository<User, ObjectId>{
         "{'$match': {email: ?0}}"
     })
     User getUserFromEmail(String email);
+
+    @Aggregation(pipeline = {
+        "{'$match': {email: ?0}}",
+        "{'$project': {_id: 1}}"
+    })
+    String getObjectIdFromEmail(String username); 
 }   
 

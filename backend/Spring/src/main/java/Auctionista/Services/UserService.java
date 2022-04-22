@@ -153,4 +153,7 @@ public class UserService implements IUserService{
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Passwords doesn't match");
         }
     }
+    public String getObjectIdFromEmail(String email){
+        return userRepo.getObjectIdFromEmail(email);
+    }
 }

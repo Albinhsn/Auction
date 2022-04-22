@@ -6,12 +6,12 @@ import SearchAuctionCard from '../Components/Auctions/Cards/SearchAuctionCard'
 
 import auctionService from '../Services/auctionService'
 
-export default function MyAuctions({authId}){
+export default function MyAuctions({token}){
     
     const [auctions, setAuctions] = useState([])
 
     useEffect(() => {
-        auctionService.getUserAuctions(authId).then(response => {
+        auctionService.getUserAuctions(token).then(response => {
             setAuctions(response.data)
         })
 
@@ -23,7 +23,7 @@ export default function MyAuctions({authId}){
                 {auctions.map(auction => 
                     {                    
                         return(
-                                <Link className='text-decoration-none text-dark pt-3' to={`/auction?auctionId=${auction._id}`}><SearchAuctionCard key={auction._id} auction={auction} authId={authId}/></Link>
+                                <Link className='text-decoration-none text-dark pt-3' to={`/auction?auctionId=${auction._id}`}><SearchAuctionCard key={auction._id} auction={auction} token={token}/></Link>
                         )
                     }
                 )}

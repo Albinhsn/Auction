@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router'
 import userService from '../../Services/userService'
 
 
-export default function SignupForm({setAuthId, authId}) {
+export default function SignupForm({setAuthId, token}) {
 
     let navigation = useNavigate()
     const [accountInfo, setAccountInfo] = useState({
