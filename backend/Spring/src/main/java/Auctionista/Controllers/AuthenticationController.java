@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import Auctionista.Dto.AuthenticateUserDto;
-import Auctionista.Utils.JwtUtil;
-import io.jsonwebtoken.Claims;
 
 @RestController
 @RequestMapping("/auth")
@@ -28,8 +26,6 @@ public class AuthenticationController {
     @Autowired
     private UserDetailsService userDetailsService;
 
-    @Autowired
-    private JwtUtil jwtUtil;
 
     @PostMapping("/authenticate")
     public String authenticateUser(
@@ -43,11 +39,8 @@ public class AuthenticationController {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Kontot med inmatad information finns inte");
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticateUserDto.getEmail());
-        final String jwt = jwtUtil.generateToken(userDetails);
-        Claims claim = jwtUtil.extractAllClaims(jwt);
-        System.out.println(claim.getIssuer());
+  
         
-        
-        return jwt;  
+        return null;
     }
 }
