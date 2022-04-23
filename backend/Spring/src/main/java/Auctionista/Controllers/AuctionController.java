@@ -32,10 +32,11 @@ public class AuctionController {
     private AuctionService auctionService;
 
     @Autowired
+    private UserService userService;
+    
+    @Autowired
     private JwtUtil jwtUtil;
 
-    @Autowired 
-    private UserService userService;
 
     @GetMapping("/state")
     public List<Auction> getAllCurrentAuctions(){
@@ -73,7 +74,10 @@ public class AuctionController {
         @RequestParam String auctionId,
         @RequestParam int bid
     ){
-        String userId = "";
+        
+    
+        String email = jwtUtil.getUsernameFromToken(token);
+        String userId = userService.getObjectIdFromEmail(email);
         return auctionService.makeBid(bid, userId, auctionId);
     }
 
@@ -82,7 +86,8 @@ public class AuctionController {
         @RequestParam String token,
         @RequestParam String auctionId
     ){
-        String userId = "";
+        String email = jwtUtil.getUsernameFromToken(token);
+        String userId = userService.getObjectIdFromEmail(email);
         return auctionService.makePurchase(userId, auctionId);
     }
 
@@ -90,9 +95,8 @@ public class AuctionController {
     public List<Auction> getFavoritesById(
         @RequestParam String token
     ){
-        System.out.println(token);
+        
         String email = jwtUtil.getUsernameFromToken(token);
-        System.out.println(email);
         String userId = userService.getObjectIdFromEmail(email);
         return auctionService.getFavoritesById(userId);
     }
@@ -101,7 +105,8 @@ public class AuctionController {
     public List<Auction> getUserAuctions(
         @RequestParam String token
     ){
-        String userId = "";
+        String email = jwtUtil.getUsernameFromToken(token);
+        String userId = userService.getObjectIdFromEmail(email);
         return auctionService.getUserAuctions(userId);
     }
 

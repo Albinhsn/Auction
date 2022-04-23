@@ -30,6 +30,7 @@ public class AuthenticationController {
     @Autowired
     private JwtUtil jwUtil;
 
+    
 
     @PostMapping("/authenticate")
     public String authenticateUser(

@@ -65,7 +65,8 @@ public class UserController {
         @RequestParam String token,
         @RequestParam String auctionId
     ){
-        String userId = "";
+        String email = jwtUtil.getUsernameFromToken(token);
+        String userId = userService.getObjectIdFromEmail(email);
         userService.updateFavorite(userId, auctionId);
         return true;
     }
@@ -75,7 +76,8 @@ public class UserController {
         @RequestParam String token,
         @RequestParam String auctionId
     ){
-        String userId = "";
+        String email = jwtUtil.getUsernameFromToken(token);
+        String userId = userService.getObjectIdFromEmail(email);
         userService.updateWatchlist(userId, auctionId);
         return true;
     }

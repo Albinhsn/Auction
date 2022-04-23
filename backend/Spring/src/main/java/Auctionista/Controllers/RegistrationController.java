@@ -18,6 +18,7 @@ import Auctionista.Dto.UserDto;
 import Auctionista.Entities.User;
 
 import Auctionista.Services.UserService;
+import Auctionista.Utils.JwtUtil;
 
 @RestController
 public class RegistrationController {
@@ -25,6 +26,8 @@ public class RegistrationController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    JwtUtil jwtUtil;
     
     @CrossOrigin
     @PostMapping("/registration/user")
@@ -43,7 +46,8 @@ public class RegistrationController {
         @RequestParam String matchingEmail,
         @RequestParam String token
     ){
-        String userId = "";
+        String oldEmail = jwtUtil.getUsernameFromToken(token);
+        String userId = userService.getObjectIdFromEmail(oldEmail);
         return userService.changeEmail(userId, email, matchingEmail);
     }
 
@@ -53,7 +57,8 @@ public class RegistrationController {
         @RequestParam String password,
         @RequestParam String matchingPassword
     ){   
-        String userId = "";
+        String email = jwtUtil.getUsernameFromToken(token);
+        String userId = userService.getObjectIdFromEmail(email);
         userService.changePassword(userId, password, matchingPassword);
     }
 

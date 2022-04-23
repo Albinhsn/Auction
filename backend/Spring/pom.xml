@@ -65,6 +65,10 @@
 		
 	</dependencies>
 
+	<authentication-manager>
+    	<authentication-provider ref="authProvider" />
+	</authentication-manager>
+
 	<build>
 		<plugins>
 			<plugin>

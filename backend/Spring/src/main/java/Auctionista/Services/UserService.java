@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -23,6 +24,8 @@ public class UserService implements IUserService{
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public User registerNewUserAccount(UserDto userDto) {
@@ -41,10 +44,10 @@ public class UserService implements IUserService{
         user.set_id(new ObjectId().toString());
         user.setUsername(userDto.getUsername());
         user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
+        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setFavorites(favo);
         user.setWatchlist(watchlist);
-            
+        System.out.println();
         return userRepo.save(user);
     }
     

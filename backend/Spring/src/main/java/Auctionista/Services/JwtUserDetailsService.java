@@ -23,7 +23,6 @@ public class JwtUserDetailsService implements UserDetailsService {
         
         AuthenticateUserDto authUser = authRepo.findUserByEmail(username);
         User user = new User(authUser.getEmail(), authUser.getPassword(), new ArrayList<>());
-        System.out.println(user.getUsername() + user.getPassword());
         return user;
     }
     
