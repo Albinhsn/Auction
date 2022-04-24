@@ -2,10 +2,11 @@ import {React, useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import SearchAuctionCard from '../Components/Auctions/Cards/SearchAuctionCard'
 import auctionService from '../Services/auctionService'
+import { useNavigate } from 'react-router'
 export default function Favorites({token}) {
     
     const [auctions, setAuctions] = useState()
-    
+    const navigate = useNavigate()
     useEffect(() => {
         if(token && !auctions){
             
@@ -17,11 +18,12 @@ export default function Favorites({token}) {
                 }
             })
         }
+        if(!token){
+            navigate("/login")
+        }
     }, [])
     
-
-    if(!token || !auctions) return<></>
-
+    if(!auctions) return<></>
     return (
         <div className='d-flex justify-content-center'>
             <div className='col-6'>

@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Searchbar from './SearchBar'
+
 
 export default function Navbar({token, setToken}) {
   
@@ -15,7 +15,11 @@ export default function Navbar({token, setToken}) {
     <div className="col-5 mx-3">
       <Link to={"/"} className="nav-link navbar-brand">Auctionista</Link>
       </div>
-      <Searchbar className="container"/>
+          <p className='mb-0 fs-4'>
+            <Link to={"/search?search="} className="text-dark text-decoration-none">
+              Auktioner
+            </Link>
+          </p>
         <ul className="container navbar-nav justify-content-end">
           <li><Link to={"/favorites"} className="nav-link">Favoriter</Link></li>
           <li><Link to={"/profile/auction"} className="nav-link">Mina Auktioner</Link></li>
@@ -29,7 +33,11 @@ export default function Navbar({token, setToken}) {
         <div className="col-5 mx-3">
           <Link to={"/"} className="nav-link navbar-brand">Auctionista</Link>
           </div>
-          <Searchbar className="container"/>
+          <p className='mb-0 fs-4'>
+            <Link to={"/search?search="} className="text-dark text-decoration-none">
+              Auktioner
+            </Link>
+          </p>
             <ul className="container navbar-nav justify-content-end">
               <li className="nav-item"><Link to={"/Login"} className="nav-link">Login</Link></li>
             </ul>

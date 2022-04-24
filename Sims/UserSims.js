@@ -1,3 +1,5 @@
+const  {hash} = require('bcrypt');
+
 const usersnames = ["Albin", "Jesper", "Adrian", "Aiden", "Russel", "Charlie", "Shaun", "Jenna", "Hugh", "Alvin", "Leroy", "George", "Lex", "Lee", "Alicia", "Isabelle", "Ellie", "Joe", "Samuel", "Gustav"]
 let passwords = ["dump","support","listen","drain","deprivation","draw","chemistry","convert","wedding","experiment","quarrel","bounce","scream","reform","due","series","lunch","range","ice", "horn"]
 let objs = []
@@ -143,26 +145,42 @@ async function connect(docs) {
         await client.close();
     }
 }
-
-
-
-for(i = 0; i<usersnames.length; i++){
-    let favo = []
-    for (let i = 0; i < Math.floor(Math.random() * 10); i++) {
-        favo.push(auctions[Math.floor(Math.random() * auctions.length)])
+const hashPasswords = async () => {
+    for(let j = 0; j<passwords.length; j++){
+        passwords[j] = await hash(passwords[j], 10)
     }
-    
-    let obj = {
-        _id: _id[i],
-        username: usersnames[i],
-        email: `${usersnames[i]}@gmail.com`,
-        password: passwords[i],
-        favorites: favo,
-        watchlist: []
-    }
-    objs.push(obj)
-
 }
 
-connect(objs)
+
+
+
+    
+hashPasswords().then(() => {
+
+    for(i = 0; i<usersnames.length; i++){
+        let favo = []
+        for (let i = 0; i < Math.floor(Math.random() * 10); i++) {
+            favo.push(auctions[Math.floor(Math.random() * auctions.length)])
+        }
+
+
+        let obj = {
+            _id: _id[i],
+            username: usersnames[i],
+            email: `${usersnames[i]}@gmail.com`,
+            password: passwords[i],
+            favorites: favo,
+            watchlist: []
+        }
+        
+        objs.push(obj)    
+    }
+    connect(objs)
+
+})
+
+
+
+
+
 

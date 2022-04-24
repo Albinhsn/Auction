@@ -5,16 +5,19 @@ import { Link } from 'react-router-dom'
 import SearchAuctionCard from '../Components/Auctions/Cards/SearchAuctionCard'
 
 import auctionService from '../Services/auctionService'
-
+import { useNavigate } from 'react-router'
 export default function MyAuctions({token}){
     
     const [auctions, setAuctions] = useState([])
-
+    const navigate = useNavigate()
     useEffect(() => {
+        if(!token){
+            navigate("/login")
+            return <></>
+        }
         auctionService.getUserAuctions(token).then(response => {
             setAuctions(response.data)
-        })
-
+        })        
     }, [])
     if(!auctions) return <></>
     return (

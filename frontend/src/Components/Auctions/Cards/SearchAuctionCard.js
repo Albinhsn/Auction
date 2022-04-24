@@ -64,10 +64,15 @@ export default function SearchAuctionCard({auction, token}){
                         </div>
                         :
                         <></>}
+                    {auction.state === "Pågående" ? 
                     <p className=''>
                         Bud: {auction.bidHistory.length > 0 ? auction.bidHistory[auction.bidHistory.length - 1].bid : auction.minimumBid} SEK {auction.purchasePrice > 0 ? <>- Köp nu: {auction.purchasePrice} SEK</> : ""} 
                     </p> 
-                
+                    :
+                    <p>
+                        Slutpris: {auction.purchasePrice} SEK
+                    </p>
+                    }
                     <div className='d-flex'>
                         <p className=''>
                             Skick: {auction.condition}

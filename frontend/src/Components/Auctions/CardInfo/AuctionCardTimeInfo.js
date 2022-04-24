@@ -9,16 +9,26 @@ export default function AuctionCardTimeInfo({auction}) {
     return (
     <>
         <div className='pt-5'>
-            <p className='text-uppercase fw-bold' style={{}}>
-                Auktionen avslutas:
-            </p>
+            {auction.state === "Pågående" ? 
+                <p className='text-uppercase fw-bold' style={{}}>
+                    Auktionen avslutas:
+                </p>
+            :
+                <p className='text-uppercase fw-bold'>
+                    Auktionen avlustades: 
+                </p>
+            }
             <div className='d-flex'>
                 {new Date(auction.endDate).toLocaleString("en-US")}
             </div>
-            <TimeRemaining 
-                
-                date={date} 
-            />
+            {auction.state === "Slut" ? 
+                    <></>
+                :
+                    <TimeRemaining                         
+                        date={date} 
+                    />
+            }
+            
         </div>
         <p>
             Auktionstyp: {auction.auctionType}
@@ -26,6 +36,11 @@ export default function AuctionCardTimeInfo({auction}) {
         <p>
             Säljare: {auction.seller}
         </p>
+        {auction.winner ? 
+                <p>Köpare: {auction.winner}</p> 
+            :
+                <></>    
+    }
     </>
   )
 }

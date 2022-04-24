@@ -64,7 +64,7 @@ export default function SearchFilters({setLocalAuc, auctions}){
                             setSort("PriceAsc");
                         }}
                         >
-                            Price Asc
+                            Lägsta pris
                     </a></li>
 
                         <li><a className="dropdown-item" 
@@ -74,7 +74,7 @@ export default function SearchFilters({setLocalAuc, auctions}){
                                     setSort("Quality");
                                 }}
                             >
-                                Quality
+                                Högsta kvalité
                     </a></li>
                     
                         <li><a className="dropdown-item" 
@@ -83,7 +83,7 @@ export default function SearchFilters({setLocalAuc, auctions}){
                                 setSort("Time");
                                 }}
                             >
-                                Time
+                                Lägst tid kvar
                     </a></li>
                     </ul>
                 </div>

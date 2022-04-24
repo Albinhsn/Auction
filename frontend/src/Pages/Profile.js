@@ -1,12 +1,17 @@
 import {useState, useEffect, React} from 'react'
+import { useNavigate } from 'react-router'
 import ChangeProfileInfoForm from '../Components/Forms/ChangeProfileInfoForm'
 import userService from '../Services/userService'
 
 export default function Profile({token}) {
   
   const [user, setUser] = useState()
-
+  const navigate = useNavigate
   useEffect(() => {
+    if(!token){
+      navigate("/login")
+      return <></>
+    }
     userService.getUserFromObjectId(token).then(response => {
       setUser(response.data)
     })

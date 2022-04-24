@@ -634,24 +634,27 @@ for(let i  = 0; i<100; i++){
     camera.endDate = new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate() + 8);
     
 
-
-    for (let j = 0; j < Math.floor(Math.random() * 6); j++) {
-        let bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
-        while(bidderId === camera.seller || bidderId === camera.winner){
-            bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
+    if(camera.auctionType === "Engelsk"){
+        for(let j = 0; j < Math.floor(Math.random() * 6); j++) {
+            let bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
+            while(bidderId === camera.seller || bidderId === camera.winner){
+                bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
+            }
+            let o = {
+                _id: new ObjectId(),
+                bidderId: bidderId,
+                bid: camera.minimumBid + j * 100 + 100,
+                time: new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate(), StartDate.getHours() + j + 1)
+            }
+            camera.bidHistory.push(o)
         }
-        let o = {
-            _id: new ObjectId(),
-            bidderId: bidderId,
-            bid: camera.minimumBid + j * 100 + 100,
-            time: new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate(), StartDate.getHours() + j + 1)
-        }
-        camera.bidHistory.push(o)
     }
+    
 
     if(i%2 ===0 ){
         if(camera.bidHistory.length > 0){
             camera.bidHistory[camera.bidHistory.length - 1].id = camera.winner
+            camera.purchasePrice = camera.bidHistory[camera.bidHistory.length - 1].bid
         }
     }
     

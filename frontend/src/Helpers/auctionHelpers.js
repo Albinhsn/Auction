@@ -5,10 +5,7 @@ export const favoriteChange = (token, _id, favorite, setFavorite) => {
     if(!token) return
 
 
-    favorite === "black" ? 
-        setFavorite("red")       
-        : 
-        setFavorite("black")
+    setFavorite(!favorite)
     userService.updateFavorite(token, _id)
 }
 

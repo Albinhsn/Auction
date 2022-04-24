@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DutchAuction from '../Components/Auctions/DutchAuction'
 import EnglishAuction from '../Components/Auctions/EnglishAuction'
 import SwissAuction from '../Components/Auctions/SwissAuction'
+import FinishedAuction from '../Components/Auctions/FinishedAuction'
 import auctionService from '../Services/auctionService'
 import * as imageHelpers from '../Helpers/imageHelpers'
 
@@ -44,6 +45,10 @@ export default function Auction({token}) {
   
 
   if(Object.keys(auction).length === 0) return <></>
+  
+  if(auction.state === "Slut"){
+    return <FinishedAuction setAuction={setAuction} auction={auction} token={token}/>
+  }
   switch(auction.auctionType){
     case "Engelsk":
       return (
