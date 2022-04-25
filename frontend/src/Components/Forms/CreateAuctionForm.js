@@ -31,7 +31,10 @@ export default function CreateAuctionForm({token}) {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [tags, setTags] = useState([])
     const myRef = useRef(null);
-
+    
+    if(!token){
+        navigate("/")
+    }
 
     
     
@@ -48,10 +51,12 @@ export default function CreateAuctionForm({token}) {
             }
             
         })
+        
         auctionInfo.images = imageHelpers.convertFromGallery(auctionInfo.images)
         //Post auction
-        auctionService.postAuction(auctionInfo).then(response => {
-            navigate(`/auction?auctionId=${response.data._id}`)
+        auctionService.postAuction(auctionInfo, token).then(response => {
+            console.log(response)
+            navigate(`/auction?auctionId=${response.data}`)
         }).catch(
             function(error){
                 if(error.response){

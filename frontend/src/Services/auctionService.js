@@ -63,9 +63,11 @@ class AuctionDataService{
         })
     }
 
-    postAuction(auctioninfo){
-        return http.post("/auction/create", auctioninfo)
-    }
+    postAuction(auctioninfo, token){
+        return http.post("/auction/create",
+            auctioninfo, 
+            {headers: { Authorization: `Bearer ${token}` }}
+    )}
 }
 
 

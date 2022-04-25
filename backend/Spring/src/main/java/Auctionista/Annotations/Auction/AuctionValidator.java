@@ -2,6 +2,7 @@ package Auctionista.Annotations.Auction;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -75,10 +76,13 @@ public class AuctionValidator implements ConstraintValidator<ValidAuction, Objec
     }
 
     public boolean validatePurchasePrice(int purchasePrice, String auctionType, int minimumBid){
-        if(purchasePrice > 0 && (!auctionType.equals("Engelsk") || !auctionType.equals("Holländsk"))){
+        
+        if(purchasePrice > 0 && (!auctionType.equals("Engelsk") && !auctionType.equals("Holländsk"))){
+            
             return false;
         }
         if(purchasePrice < 0 || minimumBid>purchasePrice){
+            
             return false;
         }
         return true;
@@ -86,14 +90,14 @@ public class AuctionValidator implements ConstraintValidator<ValidAuction, Objec
 
     public boolean validateTags(Tags tags){
         if(
-            tags.getBrand().equals("") ||
-            tags.getType().equals("") ||
-            tags.getLens().equals("") ||
-            tags.getResolution().equals("") ||
-            tags.getImageSensorSize().equals("") ||
-            tags.getWeatherProof().equals("") ||
-            tags.getVideoFormat().equals("") || 
-            tags.getAngledScreen().equals("") ||
+            !getTagFromTags(tags, Tags::getBrand) ||
+            !getTagFromTags(tags, Tags::getType) ||
+            !getTagFromTags(tags, Tags::getLens) ||
+            !getTagFromTags(tags, Tags::getResolution) ||
+            !getTagFromTags(tags, Tags::getImageSensorSize) ||
+            !getTagFromTags(tags, Tags::getWeatherProof) ||
+            !getTagFromTags(tags, Tags::getVideoFormat) ||
+            !getTagFromTags(tags, Tags::getAngledScreen) ||            
             !validateStringArray(tags.getMemoryCards()) ||
             !validateStringArray(tags.getWirelessConnection())
         )
@@ -103,18 +107,41 @@ public class AuctionValidator implements ConstraintValidator<ValidAuction, Objec
         return true;
     }
 
-    public boolean validateStringArray(String[] arr){
-        List<String> memorycards = Arrays.asList(arr);
-        flag = false;
-        memorycards.forEach(memorycard -> {
-            if(memorycard.equals("")){
-                flag = true;
-            }
-        });
-        if(flag){
-            return false;
+
+    public <T> boolean getTagFromTags(Tags tags, Function<Tags, T> tagResolver){
+        
+        try {
+            
+            if(tagResolver.apply(tags).equals("")){
+                return false;
+            };
+            return true;
+        } catch (NullPointerException e) {
+            //TODO: handle exception
+            
+            return true;
         }
-        return true;
+        
+    }
+
+    public boolean validateStringArray(String[] arr){
+        try {
+            List<String> memorycards = Arrays.asList(arr);
+            flag = false;
+            memorycards.forEach(memorycard -> {
+                if (memorycard.equals("")) {
+                    flag = true;
+                }
+            });
+            if (flag) {
+                return false;
+            }
+            return true;
+        } catch (NullPointerException e) {
+            
+            return true;
+        }
+      
     }
 
     public boolean validateString(String str){
