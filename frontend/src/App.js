@@ -22,19 +22,17 @@ import Favorites from './Pages/Favorites';
 
 function App() {
 
-  const [token, setToken] = useState('')
+  const [token, setToken] = useState()
   const [auctions, setAuctions] = useState([])
   
-  const getToken = async () => {
-    
-    
-  }
+  
 
   useEffect(() => {
+    
     if(!token){
       try {
-        setToken(localStorage.getItem("access_token"))
-        
+        setToken(JSON.parse(localStorage.getItem("access_token")))
+        console.log("GOT")
         
       } catch (error) {
         console.log(error)

@@ -121,6 +121,9 @@ public class AuctionController {
     public String postAuction(
         @RequestBody @Valid AuctionDto auctionDto
     ){
+        String email = jwtUtil.getUsernameFromToken(auctionDto.getSeller());
+        String userId = userService.getObjectIdFromEmail(email);
+        auctionDto.setSeller(userId);
         return auctionService.postAuction(auctionDto);
     }
 }   

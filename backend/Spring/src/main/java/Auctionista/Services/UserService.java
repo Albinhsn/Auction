@@ -19,7 +19,7 @@ import Auctionista.Repositories.UserRepo;
 
 @Service
 @Transactional
-public class UserService implements IUserService{
+public class UserService {
 
     @Autowired
     private UserRepo userRepo;
@@ -27,8 +27,8 @@ public class UserService implements IUserService{
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Override
-    public User registerNewUserAccount(UserDto userDto) {
+    
+    public void registerNewUserAccount(UserDto userDto) {
         if(usernameExists(userDto.getUsername())){
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "There is an account with that username");
         }
@@ -47,8 +47,8 @@ public class UserService implements IUserService{
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setFavorites(favo);
         user.setWatchlist(watchlist);
-        System.out.println();
-        return userRepo.save(user);
+        
+        userRepo.save(user);
     }
     
     

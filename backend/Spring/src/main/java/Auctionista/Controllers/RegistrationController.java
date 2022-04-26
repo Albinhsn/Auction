@@ -29,15 +29,15 @@ public class RegistrationController {
     @Autowired
     JwtUtil jwtUtil;
     
-    @CrossOrigin
+    
     @PostMapping("/registration/user")
     //Don't send back user, instead just status code, if succesfull send another req to get _id from email used in input 
-    public User registerUserAccount(
+    public void registerUserAccount(
         @RequestBody  @Valid UserDto userDto,
         HttpServletRequest request,
         Errors errors) 
     {
-        return userService.registerNewUserAccount(userDto);
+        userService.registerNewUserAccount(userDto);
     }
 
     @GetMapping("/registration/email")

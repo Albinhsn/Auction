@@ -21,9 +21,8 @@ export default function SignupForm({setAuthId, token}) {
 
         userService.postRegistrationForm(accountInfo)
             .then(response => {
-                console.log(response.data._id)
-                setAuthId(response.data._id)
-                navigation('/')
+                alert("Kontot skapades, var vänligen logga in")
+                navigation('/login')
             })
             .catch(
                 function(error){
