@@ -10,9 +10,25 @@ import userService from '../../Services/userService'
 
 export default function FinishedAuction({auction, favorite, setFavorite, token}){
 
+    useEffect(() => {
+      if (!favorite && token) {
+        userService.checkFavorite(token, auction._id).then(response => {
+          if (response.data) {
+            setFavorite("red")
+          }
+          else {
+            setFavorite("black")
+          }
+        })
+      }
+    }, [])
+
+
     if(auction.winner === null){
         auction.winner = "Ingen köpare"
     }
+
+
     return (
         <div className='d-flex align-items-center'>
       <div key={auction._id} className='row justify-content-center'>

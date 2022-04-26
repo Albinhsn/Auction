@@ -25,15 +25,19 @@ function App() {
   const [token, setToken] = useState('')
   const [auctions, setAuctions] = useState([])
   
+  const getToken = async () => {
+    
+    
+  }
+
   useEffect(() => {
     if(!token){
       try {
-        localStorage.getItem("access_token").then(tok => {
-          setToken(tok)
-        })
+        setToken(localStorage.getItem("access_token"))
+        
         
       } catch (error) {
-        
+        console.log(error)
       }
     }
   }, )

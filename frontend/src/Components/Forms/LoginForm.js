@@ -16,11 +16,8 @@ export default function LoginForm({setToken}) {
     const checkLogin = () => {
         
         userService.validateLogin(loginInfo).then(response => {            
-                
-            setToken(response.data)
-            console.log("GOT")
+            localStorage.setItem("access_token", JSON.stringify(response.data))
             navigation('/')
-            
         })
         .catch(
             function(error){
