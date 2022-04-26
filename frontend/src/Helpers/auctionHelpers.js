@@ -2,6 +2,7 @@ import auctionService from '../Services/auctionService'
 import userService from '../Services/userService'
 
 export const favoriteChange = (token, _id, favorite, setFavorite) => {
+    console.log(_id, favorite)
     if(!token) return
 
 

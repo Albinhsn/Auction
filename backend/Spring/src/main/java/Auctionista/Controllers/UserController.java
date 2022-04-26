@@ -84,9 +84,10 @@ public class UserController {
 
     @GetMapping(value="/user")
     public User getUserFromObjectId(
-        @RequestParam String userId
+        @RequestParam String token
     ){
-        
+        String email = jwtUtil.getUsernameFromToken(token);
+        String userId = userService.getObjectIdFromEmail(email);
         return userService.getUserFromObjectId(userId);
     }
 }

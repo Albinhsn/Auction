@@ -53,8 +53,8 @@ class userDataService{
             )
     }
 
-    getUserFromObjectId(userId){
-        return http.get("/user/user", {params: {userId: userId}})
+    getUserFromObjectId(token){
+        return http.get("/user/user", {params: {token: token}})
     }
 
     changeEmail(token, email, matchingEmail){

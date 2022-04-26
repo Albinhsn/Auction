@@ -6,14 +6,15 @@ import userService from '../Services/userService'
 export default function Profile({token}) {
   
   const [user, setUser] = useState()
-  const navigate = useNavigate
+  const navigate = useNavigate()
+  console.log(token)
   useEffect(() => {
     if(!token){
       navigate("/login")
-      return <></>
     }
     userService.getUserFromObjectId(token).then(response => {
       setUser(response.data)
+      console.log(response)
     })
 
   }, [])

@@ -57,7 +57,7 @@ export default function EnglishAuction({setAuction, auction, token}) {
                             <p className='text-success fs-1 mb-0'>
                                 {auction.highestBid}
                             </p>
-                            <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction._id, favorite, setFavorite)} style={{ color: `${favorite}` }} />
+                            <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction._id, favorite, setFavorite)} style={{ color: favorite ? "red" : "black" }} />
                             <button className='btn btn-warning ms-3' type="button" 
                                 onClick={() => auctionHelpers.watchlistChange(token, auction._id, watchlist, setWatchlist)}>
                                     {watchlist ? "Ta bort påminnelse": "Lägg till påminnelse"}
