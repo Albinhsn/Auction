@@ -81,7 +81,7 @@ public class AuctionValidator implements ConstraintValidator<ValidAuction, Objec
             
             return false;
         }
-        if(purchasePrice < 0 || minimumBid>purchasePrice){
+        if(purchasePrice < 0 || minimumBid >= purchasePrice ){
             
             return false;
         }
@@ -108,10 +108,8 @@ public class AuctionValidator implements ConstraintValidator<ValidAuction, Objec
     }
 
 
-    public <T> boolean getTagFromTags(Tags tags, Function<Tags, T> tagResolver){
-        
-        try {
-            
+    public <T> boolean getTagFromTags(Tags tags, Function<Tags, T> tagResolver){        
+        try {            
             if(tagResolver.apply(tags).equals("")){
                 return false;
             };

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -123,7 +124,7 @@ public class AuctionController {
     ){
         String email = jwtUtil.getUsernameFromToken(auctionDto.getSeller());
         String userId = userService.getObjectIdFromEmail(email);
-        auctionDto.setSeller(userId);
+        auctionDto.setSeller(userId);        
         return auctionService.postAuction(auctionDto);
     }
 }   

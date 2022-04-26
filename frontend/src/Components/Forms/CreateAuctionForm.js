@@ -50,7 +50,7 @@ export default function CreateAuctionForm({token}) {
                 auctionInfo.tags[tag.key] = [...auctionInfo.tags[tag.key], tag.value]
             }
             
-        })
+        }) 
         
         auctionInfo.images = imageHelpers.convertFromGallery(auctionInfo.images)
         //Post auction
@@ -61,6 +61,11 @@ export default function CreateAuctionForm({token}) {
             function(error){
                 if(error.response){
                     alert(error.response.data.message)
+                    let imgs = []
+                    auctionInfo.images.forEach(image => {
+                        imgs.push(imageHelpers.convertToGallery(image))
+                    })
+                    auctionInfo.images = imgs
                     auctionInfo.tags = {}
                 }
         })
