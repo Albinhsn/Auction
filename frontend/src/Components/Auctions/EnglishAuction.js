@@ -42,7 +42,7 @@ export default function EnglishAuction({setAuction, auction, token}) {
     }
        
     
-    
+    console.log(bid)
     return (
         <div className='d-flex align-items-center'>             
             <div key={auction._id} className='row justify-content-center'>

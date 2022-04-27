@@ -23,11 +23,18 @@ export const watchlistChange = (token, _id, watchlist, setWatchlist) => {
 export const handleBid = (token, auction, bid, setAuction) => {
     
     if(!token) return
-    
-    if(parseInt(auction.bidHistory[auction.bidHistory.length - 1].bid) + 10 > bid){
-        alert("Vänligen ange korrekt bud")
-        return
+    if(auction.bidHistory.length > 0){
+        if (parseInt(auction.bidHistory[auction.bidHistory.length - 1].bid) + 10 > bid) {
+            alert("Vänligen ange korrekt bud")
+            return
+        }
+    }else{
+        if (auction.minimumBid + 10 > bid) {
+            alert("Vänligen ange korrekt bud")
+            return
+        }
     }
+    
     auctionService.makeBid(token, auction._id, bid).then(response => {
         console.log(response)
     }).then(() => {

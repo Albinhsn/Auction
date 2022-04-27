@@ -147,7 +147,7 @@ public class UserService {
     public User changePassword(String userId, String password, String matchingPassword){
         validatePassword(password, matchingPassword);
         User user = userRepo.getUserFromObjectId(userId);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
         return userRepo.save(user);
     }
 
