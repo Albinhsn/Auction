@@ -32,8 +32,6 @@ function App() {
     if(!token){
       try {
         setToken(JSON.parse(localStorage.getItem("access_token")))
-        console.log("GOT")
-        
       } catch (error) {
         console.log(error)
       }

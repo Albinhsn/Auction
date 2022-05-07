@@ -1,13 +1,16 @@
 import auctionService from '../Services/auctionService'
 import userService from '../Services/userService'
 
-export const favoriteChange = (token, _id, favorite, setFavorite) => {
-    console.log(_id, favorite)
+export const favoriteChange = (token, _id, setFavorite) => {
+    
     if(!token) return
 
 
-    setFavorite(!favorite)
-    userService.updateFavorite(token, _id)
+    
+    userService.updateFavorite(token, _id).then(response => {
+        console.log(response.data)
+        setFavorite(response.data)
+    })
 }
 
 

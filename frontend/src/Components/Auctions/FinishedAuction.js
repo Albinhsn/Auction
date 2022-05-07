@@ -9,19 +9,19 @@ import userService from '../../Services/userService'
 
 
 export default function FinishedAuction({auction, favorite, setFavorite, token}){
-
+    
     useEffect(() => {
       if (!favorite && token) {
         userService.checkFavorite(token, auction._id).then(response => {
           if (response.data) {
-            setFavorite("red")
+            setFavorite(true)
           }
           else {
-            setFavorite("black")
+            setFavorite(false)
           }
         })
       }
-    }, [])
+    }, )
 
 
     if(auction.winner === null){
@@ -39,7 +39,7 @@ export default function FinishedAuction({auction, favorite, setFavorite, token})
             <p className='fw-bold'>Såld för: {auction.purchasePrice} SEK</p>
             <div className='d-flex align-items-center'>
               <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1"
-                onClick={() => auctionHelpers.favoriteChange(token, auction._id, favorite, setFavorite)} style={{ color: favorite ? "red" : "black"}}
+                onClick={() => auctionHelpers.favoriteChange(token, auction._id, setFavorite)} style={{ color: favorite ? "red" : "black"}}
               />
             </div>
           </div>

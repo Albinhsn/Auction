@@ -6,71 +6,65 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters) => {
         let localAuc = [...auctions]
 
         currentFilters.map(filter => {
-            let i = localAuc.length - 1
+            
             
             switch(filter.tag){
                 case "Status":
-                     
-                    for (let j = i; j>=0; j--){
-                        if(!filter.val.includes(localAuc[j].state)){
-                            localAuc.splice(j, 1, )
-                        }
-                    }
+                    
+                    localAuc = localAuc.filter(auc => filter.val.includes(auc.state) === true) 
+                    
                     break;
                 case "Märke":
+                    localAuc = localAuc.filter(auc => filter.val.includes(auc.brand) === true)
                     
-                    for (let j = i; j>=0; j--){
-                        if(!filter.val.includes(localAuc[j].tags.brand)){
-                            localAuc.splice(j, 1, )
-                        }
-                    }
                     break; 
                 case "Typ av kamera":
-                    for (let j = i; j>=0; j--){
-                        if(!filter.val.includes(localAuc[j].tags.type)){
-                            localAuc.splice(j, 1, )
-                        }
-                    }
+                    localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.type) === true)
+                    
                     break; 
                 case "Lens":
-                    
-                    for (let j = i; j>=0; j--){
-                        console.log(localAuc[j])
-                        if(!filter.val.includes(localAuc[j].tags.lens)){
-                            localAuc.splice(j, 1, )
-                        }
-                    }
+                    localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.lens) === true)
+                    // for (let j = i; j>=0; j--){
+                    //     console.log(localAuc[j])
+                    //     if(!filter.val.includes(localAuc[j].tags.lens)){
+                    //         localAuc.splice(j, 1, )
+                    //     }
+                    // }
                     break;
                 case "Upplösning":
-                    for (let j = i; j>=0; j--){
-                        if(!filter.val.includes(localAuc[j].tags.resolution)){
-                            localAuc.splice(j, 1, )
-                        }
-                    }
+                    localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.resolution) === true)    
+                    // for (let j = i; j>=0; j--){
+                    //     if(!filter.val.includes(localAuc[j].tags.resolution)){
+                    //         localAuc.splice(j, 1, )
+                    //     }
+                    // }
                     break; 
                 case "Vädertålig":
-                    for (let j = i; j>=0; j--){
-                        if(!filter.val.includes(localAuc[j].tags.weatherProof)){
-                            localAuc.splice(j, 1, )
-                        }
-                    }
+                    localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.weatherProof) === true)
+                    // for (let j = i; j>=0; j--){
+                    //     if(!filter.val.includes(localAuc[j].tags.weatherProof)){
+                    //         localAuc.splice(j, 1, )
+                    //     }
+                    // }
                     break; 
                 case "Bildsensorstorlek":
-                    for (let j = i; j>=0; j--){
-                        if(!filter.val.includes(localAuc[j].tags.imageSensorSize)){
-                            localAuc.splice(j, 1, )
-                        }
-                    }
+                    localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.imageSensorSize) === true)
+                    // for (let j = i; j>=0; j--){
+                    //     if(!filter.val.includes(localAuc[j].tags.imageSensorSize)){
+                    //         localAuc.splice(j, 1, )
+                    //     }
+                    // }
                     break; 
                 case "Skärmvinkel":
-                    for (let j = i; j>=0; j--){
-                        if(!filter.val.includes(localAuc[j].tags.angledScreen)){
-                            localAuc.splice(j, 1, )
-                        }
-                    }
+                    localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.angledScreen) === true)
+                    // for (let j = i; j>=0; j--){
+                    //     if(!filter.val.includes(localAuc[j].tags.angledScreen)){
+                    //         localAuc.splice(j, 1, )
+                    //     }
+                    // }
                     break; 
                 case "Minneskort":
-                    
+                    let i = localAuc.length - 1
                     for(let j = i; j>=0; j--){
                         let flag = false
                         if(localAuc[j].tags.memoryCards !== null){
@@ -86,6 +80,7 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters) => {
                     }
                     break;
                 case "Trådlös Uppkoppling":
+                    i = localAuc.length - 1
                     for(let j = i; j>=0; j--){
                         let flag = false
                         if(localAuc[j].tags.wirelessConnection !== null){    

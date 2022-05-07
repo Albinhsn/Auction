@@ -52,13 +52,7 @@ export default function DutchAuction({ auction, token, setAuction}) {
                 {watchlist ? "Ta bort påminnelse" : "Lägg till påminnelse"}
               </button>
             </div>
-            <div className='d-flex'>
-              <button type="button" className="btn btn-warning ms-3"
-                onClick={() => auctionHelpers.makePurchase(token, auction._id, setAuction)}
-              >
-                Köp
-              </button>
-            </div>
+           
           </div>
         </div>
       </div>

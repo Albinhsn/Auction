@@ -28,6 +28,7 @@ class userDataService{
     }
 
     checkFavorite(token, auctionId){
+        
         return http.get("/user/favorite", 
         {
             params:{ token: token, auctionId: auctionId },

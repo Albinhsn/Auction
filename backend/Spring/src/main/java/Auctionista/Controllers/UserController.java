@@ -56,7 +56,6 @@ public class UserController {
         
         String username = jwtUtil.getUsernameFromToken(token);
         String userId = userService.getObjectIdFromEmail(username);
-        System.out.println(userId);
         return userService.checkFavorite(userId, auctionId);
     }
 
@@ -68,7 +67,7 @@ public class UserController {
         String email = jwtUtil.getUsernameFromToken(token);
         String userId = userService.getObjectIdFromEmail(email);
         userService.updateFavorite(userId, auctionId);
-        return true;
+        return userService.checkFavorite(userId, auctionId);
     }
 
     @GetMapping("/update/watchlist")

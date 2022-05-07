@@ -1,18 +1,42 @@
-import React, { useEffect, useState } from 'react'
-import DutchAuction from '../Components/Auctions/DutchAuction'
-import EnglishAuction from '../Components/Auctions/EnglishAuction'
-import SwissAuction from '../Components/Auctions/SwissAuction'
+import {React, useEffect, useState } from 'react'
 import FinishedAuction from '../Components/Auctions/FinishedAuction'
 import auctionService from '../Services/auctionService'
 import * as imageHelpers from '../Helpers/imageHelpers'
+import EnglishAuctionCardInfo from '../Components/Auctions/CardInfo/EnglishAuctionCardInfo'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import * as auctionHelpers from "../Helpers/auctionHelpers"
+import userService from '../Services/userService'
+import AuctionCardProductInfo from "../Components/Auctions/CardInfo/AuctionCardProductInfo"
+import AuctionCardTimeInfo from "../Components/Auctions/CardInfo/AuctionCardTimeInfo"
+import DutchAuctionCardInfo from '../Components/Auctions/CardInfo/DutchAuctionCardInfo'
+import SwissAuctionCardInfo from '../Components/Auctions/CardInfo/SwissAuctionCardInfo'
+
 
 export default function Auction({token}) {
   
   const [auction, setAuction] = useState({})
   const [images, setImages] = useState([])
+  const [watchlist, setWatchlist] = useState(false)
+  const [favorite, setFavorite] = useState()
   const auctionId = new URLSearchParams(window.location.search).get('auctionId')
   
-
+  const renderAuctiontype = () => {
+    switch(auction.auctionType){
+      case "Engelsk":
+        return (
+          <EnglishAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
+        )
+      case "Holländsk":
+        return (
+          <DutchAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
+        )
+      case "Schweizisk":
+        return(
+          <SwissAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
+        )
+    }
+  }
   
   
   useEffect(() => {
@@ -31,15 +55,29 @@ export default function Auction({token}) {
         })
 
         setImages(images)       
-        
+       
       })
     }
     
   }, [])
 
+
   useEffect(() => {
     if(images.length>0 && auction.images != images){
         setAuction({...auction, images: images})
+    }
+    if(favorite === undefined && token && auction._id){
+        
+        userService.checkFavorite(token, auction._id).then(resp => {
+          
+          
+          if (resp.data === true) {
+            setFavorite(true)
+          }
+          else {
+            setFavorite(false)
+          }
+        })
     }
 }, )
   
@@ -47,21 +85,49 @@ export default function Auction({token}) {
   if(Object.keys(auction).length === 0) return <></>
   
   if(auction.state === "Slut"){
-    return <FinishedAuction setAuction={setAuction} auction={auction} token={token}/>
+    
+    return <FinishedAuction setAuction={setAuction} auction={auction} token={token} favorite={favorite} setFavorite={setFavorite}/>
   }
-  switch(auction.auctionType){
-    case "Engelsk":
-      return (
-        <EnglishAuction setAuction={setAuction} auction={auction} token={token} />
-      )
-    case "Holländsk":
-      return(
-        <DutchAuction setAuction={setAuction}  auction={auction} token={token}/>
-      )
-    case "Schweizisk":
-      return(
-        <SwissAuction setAuction={setAuction} auction={auction} token={token}/>
-      )
-  }
+  return(
+    <div className='d-flex align-items-center'>
+      <div key={auction._id} className='row justify-content-center'>
+        <AuctionCardProductInfo auction={auction} />
+        <div className='col-4 bg-light'>
+          <AuctionCardTimeInfo auction={auction} />
+          <div className='row pt-2'>
+            <p className='fw-bold text-uppercase'>
+              Nuvarande bud
+            </p>
+            <div className='d-flex align-items-center'>
+              <p className='text-success fs-1 mb-0'>
+                {auction.highestBid}
+              </p>
+              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction._id, setFavorite)} style={{ color: favorite ? "red" : "black" }} />
+              <button className='btn btn-warning ms-3' type="button"
+                onClick={() => auctionHelpers.watchlistChange(token, auction._id, watchlist, setWatchlist)}>
+                {watchlist ? "Ta bort påminnelse" : "Lägg till påminnelse"}
+              </button>
+            </div>
+            
+            {renderAuctiontype()}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+  // switch(auction.auctionType){
+  //   case "Engelsk":
+  //     return (
+  //       <EnglishAuction setAuction={setAuction} auction={auction} token={token} />
+  //     )
+  //   case "Holländsk":
+  //     return(
+  //       <DutchAuction setAuction={setAuction}  auction={auction} token={token}/>
+  //     )
+  //   case "Schweizisk":
+  //     return(
+  //       <SwissAuction setAuction={setAuction} auction={auction} token={token}/>
+  //     )
+  // }
   
 }
