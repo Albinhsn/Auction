@@ -69,7 +69,7 @@ mongodb.MongoClient.connect(uri, function (error, client) {
                 on('finish', function () {
                     console.log('done!');
                 });
-
+        console.log(i)
     }
-    process.exit(0)
+    
 })
