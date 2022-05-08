@@ -13,14 +13,22 @@ export const favoriteChange = (token, _id, setFavorite) => {
     })
 }
 
+export const keepMePostedChange = (token, _id, keepMePosted, setKeepMePosed) => {
+    if (!token) return
 
+    //userService.updateKeepMePosted(token, _id).then(() => {
+        setKeepMePosed(!keepMePosted)
+    //})
+}
 
-export const watchlistChange = (token, _id, watchlist, setWatchlist) => {
+export const reminderChange = (token, _id, reminder, setReminder) => {
 
     if(!token) return
 
-    userService.updateWatchlist(token, _id)
-    setWatchlist(!watchlist)
+    userService.updateWatclist(token, _id).then(() => {
+        setReminder(!reminder)
+    })
+    
 }
 
 export const handleBid = (token, auction, bid, setAuction) => {

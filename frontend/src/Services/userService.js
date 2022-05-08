@@ -71,6 +71,15 @@ class userDataService{
             headers: { Authorization: `Bearer ${token}` }
         })
     }
+
+    updateKeepMePosted(token, auctionId){
+        return http.get("/user/update/keepmeposted",
+            {
+                params: { token: token, auctionId: auctionId },
+                headers: { Authorization: `Bearer ${token}` }
+            }
+        )
+    }
 }
 
 

@@ -68,6 +68,14 @@ class AuctionDataService{
             auctioninfo, 
             {headers: { Authorization: `Bearer ${token}` }}
     )}
+
+    getWatchlistById(token){
+        return http.get("/auction/watchlist",{
+                params: { token: token },
+                headers: { Authorization: `Bearer ${token}` }
+            }
+        )
+    }
 }
 
 

@@ -7,7 +7,7 @@ export default function Profile({token}) {
   
   const [user, setUser] = useState()
   const navigate = useNavigate()
-  console.log(token)
+  
   useEffect(() => {
     if(!token){
       navigate("/login")

@@ -22,6 +22,7 @@ export default function Navbar({token, setToken}) {
           </p>
         <ul className="container navbar-nav justify-content-end">
           <li><Link to={"/favorites"} className="nav-link">Favoriter</Link></li>
+          <li><Link to={"/profile/watchlist"} className="nav-link">Watchlist</Link></li>
           <li><Link to={"/profile/auction"} className="nav-link">Mina Auktioner</Link></li>
           <li><Link to={"/create/auction"} className="nav-link">Skapa Auktion</Link></li>
           <li className="nav-item"><Link to={"/profile"} className="nav-link">Profile</Link></li>

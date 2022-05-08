@@ -101,6 +101,15 @@ public class AuctionController {
         return auctionService.getFavoritesById(userId);
     }
 
+    @GetMapping(value = "/watchlist")
+    public List<Auction> getWatchlistById(
+            @RequestParam String token) {
+
+        String email = jwtUtil.getUsernameFromToken(token);
+        String userId = userService.getObjectIdFromEmail(email);
+        return auctionService.getWatchlistById(userId);
+    }
+
     @GetMapping(value="/user")
     public List<Auction> getUserAuctions(
         @RequestParam String token

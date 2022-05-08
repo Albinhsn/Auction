@@ -17,8 +17,11 @@ export default function Auction({token}) {
   
   const [auction, setAuction] = useState({})
   const [images, setImages] = useState([])
-  const [watchlist, setWatchlist] = useState(false)
+  const [reminder, setReminder] = useState(false)
+  const [keepMePosted, setKeepMePosed] = useState(false)
   const [favorite, setFavorite] = useState()
+
+  
   const auctionId = new URLSearchParams(window.location.search).get('auctionId')
   
   const renderAuctiontype = () => {
@@ -104,8 +107,13 @@ export default function Auction({token}) {
               </p>
               <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction._id, setFavorite)} style={{ color: favorite ? "red" : "black" }} />
               <button className='btn btn-warning ms-3' type="button"
-                onClick={() => auctionHelpers.watchlistChange(token, auction._id, watchlist, setWatchlist)}>
-                {watchlist ? "Ta bort påminnelse" : "Lägg till påminnelse"}
+                onClick={() => auctionHelpers.reminderChange(token, auction._id, reminder, setReminder)}>
+                {reminder ? "Ta bort påminnelse" : "Lägg till påminnelse"}
+              </button>
+              <button className='btn btn-warning ms-3' type="button"
+                onClick={() => auctionHelpers.keepMePostedChange(token, auction._id, keepMePosted, setKeepMePosed)}
+                >    
+                {keepMePosted ? "Ta bort uppdateringar" : "Håll mig uppdaterad"}
               </button>
             </div>
             
@@ -115,19 +123,6 @@ export default function Auction({token}) {
       </div>
     </div>
   )
-  // switch(auction.auctionType){
-  //   case "Engelsk":
-  //     return (
-  //       <EnglishAuction setAuction={setAuction} auction={auction} token={token} />
-  //     )
-  //   case "Holländsk":
-  //     return(
-  //       <DutchAuction setAuction={setAuction}  auction={auction} token={token}/>
-  //     )
-  //   case "Schweizisk":
-  //     return(
-  //       <SwissAuction setAuction={setAuction} auction={auction} token={token}/>
-  //     )
-  // }
+
   
 }

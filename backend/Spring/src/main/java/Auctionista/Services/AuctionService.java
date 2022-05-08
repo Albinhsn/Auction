@@ -111,5 +111,9 @@ public class AuctionService {
         
     }
 
+    public List<Auction> getWatchlistById(String userId){
+        System.out.println(userId);
+        return auctionRepo.getWatchlistById(userId);
+    }
     
 }

@@ -3,7 +3,7 @@ import Jumbo from '../Components/Homepage/Jumbo'
 import Explore from '../Components/Homepage/Explore'
 import {useState, useEffect} from 'react'
 import auctionService from '../Services/auctionService'
-export default function Home({auctions}) {
+export default function Home() {
   
   
   const [auctionsByBid, setAuctionsByBid] = useState([]) 

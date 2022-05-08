@@ -18,14 +18,13 @@ import MyAuctions from './Pages/MyAuctions';
 import CreateAuction from './Pages/CreateAuction';
 
 import Favorites from './Pages/Favorites';
+import Watchlist from './Pages/Watchlist';
 
 
 function App() {
 
   const [token, setToken] = useState()
-  const [auctions, setAuctions] = useState([])
-  
-  
+
 
   useEffect(() => {
     
@@ -43,15 +42,17 @@ function App() {
       <div className="d-flex flex-column" style={{height: "100vh"}}>
         <Navbar token={token} setToken={setToken}/>
         <Routes>
-          <Route index element={<Home auctions={auctions}/>} />
+          <Route index element={<Home />} />
           <Route path="/profile" element={<Profile token={token} />}/>
           <Route path="/login" element={<Login setToken={setToken}/>}/>
-          <Route path="/search" element={<Search auctions={auctions} token={token}/>}/>
-          <Route path="/auction" element={<Auction auctions={auctions} token={token} setAuctions={setAuctions}/>}/>
+          <Route path="/search" element={<Search  token={token}/>}/>
+          <Route path="/auction" element={<Auction  token={token} />}/>
           <Route path="/signup" element={<Signup setToken={setToken} token={token}/>}/>
-          <Route path="/profile/auction" element={<MyAuctions auctions={auctions} token={token}/>}/>
-          <Route path="/create/auction" element={<CreateAuction auctions={auctions} setAuctions={setAuctions} token={token}/>}/>
-          <Route path="/favorites" element={<Favorites auctions={auctions} token={token}/>}/>
+          <Route path="/profile/auction" element={<MyAuctions  token={token}/>}/>
+          <Route path="/profile/watchlist" element={<Watchlist  token={token} />} />
+          <Route path="/create/auction" element={<CreateAuction   token={token}/>}/>
+          <Route path="/favorites" element={<Favorites  token={token}/>}/>
+
         </Routes>
         <Footer/>
       </div>

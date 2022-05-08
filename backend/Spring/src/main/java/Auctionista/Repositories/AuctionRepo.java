@@ -106,5 +106,18 @@ public interface AuctionRepo extends MongoRepository<Auction, String>{
     )
     List<Auction> getAuctionsBySearch(String search);
 
+    @Aggregation(pipeline = {
+            "{'$addFields': {userId: ObjectId('?0')}}",
+            "{'$lookup': { from: 'users', localField: 'seller', foreignField: '_id', as: 'seller'}}",
+            "{'$addFields': { seller:{$first: '$seller.username'}}}",
+            "{'$lookup': { from: 'users',localField: 'userId',foreignField: '_id',as: 'user'}}",
+            "{'$unwind': {path: '$user'}}",
+            "{'$addFields': {user: '$user.watchlist'}}",
+            "{'$unwind': {path: '$user'}}",
+            "{'$addFields': {user: {$toObjectId: '$user'}}}",
+            "{'$match': {$expr: {$eq: ['$_id', '$user']}}}",
+            "{'$project': {  name: 1,tags: 1,images: 1,condition: 1,auctionType: 1,description: 1,minimumBid: 1,seller: 1,bidHistory: 1,state: 1,winner: 1,purchasePrice: 1,startDate : 1,endDate: 1}}}"
+    })
+    List<Auction> getWatchlistById(String userId);
 }
 
