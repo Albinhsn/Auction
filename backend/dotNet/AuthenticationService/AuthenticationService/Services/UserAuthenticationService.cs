@@ -10,15 +10,17 @@ namespace AuthenticationService.Services
         {
             _jwtHelpers = jwtHelpers;
         }
-        public string AuthenticateUser(AuthenticateUserRequest req)
+        public async Task<string> AuthenticateUser(AuthenticateUserRequest Req)
         {
-            string jwt = _jwtHelpers.generateToken();
-            return null;
+            string jwt = await _jwtHelpers.generateToken(Req);
+            return jwt;
         }
 
-        public string AuthenticateJWT(String token)
+        public bool AuthenticateJWT(String token)
         {
-            return "";
+            return  _jwtHelpers.validateToken(token);  
+           
+            
         }
 
         

@@ -23,8 +23,10 @@ namespace AuthenticationService.Helpers
 
         public async Task<string?> generateToken(AuthenticateUserRequest Req)
         {
-           
+            Console.WriteLine(Req.getUsername());
+            Console.WriteLine(Req.getPassword());
             User user = await _userCollection.Find(x => x.Username == Req.getUsername() && x.Password == Req.getPassword()).FirstOrDefaultAsync();
+            
             if (user == null)
             {
                 return null;
@@ -41,8 +43,8 @@ namespace AuthenticationService.Helpers
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             JwtSecurityToken token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
-            
-            return token.ToString();
+            Console.WriteLine(tokenHandler.WriteToken(token));
+            return tokenHandler.WriteToken(token);
         }
 
         public bool validateToken(string Token)

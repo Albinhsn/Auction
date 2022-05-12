@@ -11,30 +11,32 @@ namespace AuthenticationService.Controllers
     {
         private UserAuthenticationService _userAuthenticationService;
 
-        public UserAuthenticationController(UserAuthenticationService userAuthenticationService)
-        {
+        public UserAuthenticationController(UserAuthenticationService userAuthenticationService) =>        
             _userAuthenticationService = userAuthenticationService;
-        }
+        
 
         [HttpPost("AuthenticateUser")]
-        public IActionResult AuthenticateUser(AuthenticateUserRequest req)
+        public async Task<IActionResult?> AuthenticateUser(AuthenticateUserRequest req)
         {
-            var response = _userAuthenticationService.AuthenticateUser(req);
+            var response = await _userAuthenticationService.AuthenticateUser(req);
 
             if(response == null)
             {
                 return BadRequest(new {message = "Username or password is incorrect"});
             }
-
+            Console.WriteLine(response);   
             return Ok(response);
         }
 
         [HttpPost("AuthenticateToken")]
-        public IActionResult AuthenticateJWT(String token)
+        public IActionResult AuthenticateJWT()
         {
-            var response = _userAuthenticationService.AuthenticateJWT(token);
+            string token = Request.Headers["Authorization"];
+            token = token.Split().Last();
+            Console.WriteLine(token);   
+            bool response = _userAuthenticationService.AuthenticateJWT(token);
 
-            if(response == null)
+            if(response == false)
             {
                 return BadRequest(new { message = "Invalid token" });
             }
