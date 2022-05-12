@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "B6lxjn5xkP02a6UY2NBNPpSl74/8CPrFAwZqJnkvTWw=",
+  "Source": "ImageMicroservice",
+  "BasePath": "_content/ImageMicroservice",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
