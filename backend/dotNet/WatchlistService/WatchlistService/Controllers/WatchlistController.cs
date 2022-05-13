@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
+using MongoDB.Driver;
 using WatchlistService.Models;
 using WatchlistService.Services;
 
@@ -12,23 +13,32 @@ namespace WatchlistService.Controllers
     {
         private readonly WatchListService _watchlistService;
 
-        public WatchlistController(WatchListService watchlistService) =>
-            _watchlistService = watchlistService;
-        
-
-        [HttpGet()]
-        public  async Task<ActionResult<Watchlist>> GetAll()
+        public WatchlistController(WatchListService watchlistService)
         {
-            ObjectId oid = new ObjectId("62794312c796ac04fc9967c7");
-            Console.WriteLine(oid.ToString());
-            var watchlist = await _watchlistService.getAsync(oid);
-
-            if(watchlist == null)
-            {
-                return NotFound();
-            }
-            return watchlist;
+            
+            _watchlistService = watchlistService;
         }
+        
+        [HttpPost]
+        public ObjectId CreateWatchlist([FromQuery] WatchlistPostModel watchlist)
+        {            
+            return _watchlistService.SaveWatchlist(watchlist);            
+        }
+        
+        [HttpGet]
+        public Watchlist GetWatchlist([FromQuery] string userId, [FromQuery] string auctionId)
+        {
+            
+            return _watchlistService.GetWatchlist(new ObjectId(userId), new ObjectId(auctionId)).Result;
+        }
+
+        [HttpDelete]
+        public DeleteResult DeleteWatchlist([FromQuery] string userId, [FromQuery] string auctionId)
+        {
+            return _watchlistService.DeleteWatchlist(new ObjectId(userId), new ObjectId(auctionId)).Result;
+            
+        }  
+
 
     }
 }

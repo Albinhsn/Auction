@@ -6,9 +6,10 @@ namespace WatchlistService.Models
     {
 
         public ObjectId Id { get; set; }
-        public string? type { get; set; }
-        public ObjectId userId { get; set; }
+        public string? Type { get; set; }
+        public ObjectId UserId { get; set; }
 
+        public ObjectId AuctionId { get; set; }
 
     }
 }
