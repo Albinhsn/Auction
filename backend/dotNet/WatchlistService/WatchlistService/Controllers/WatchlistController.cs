@@ -15,21 +15,28 @@ namespace WatchlistService.Controllers
 
         public WatchlistController(WatchListService watchlistService)
         {
-            
+
             _watchlistService = watchlistService;
         }
-        
+
         [HttpPost]
         public ObjectId CreateWatchlist([FromQuery] WatchlistPostModel watchlist)
-        {            
-            return _watchlistService.SaveWatchlist(watchlist);            
+        {
+            return _watchlistService.SaveWatchlist(watchlist);
         }
-        
+
         [HttpGet]
         public Watchlist GetWatchlist([FromQuery] string userId, [FromQuery] string auctionId)
         {
-            
+
             return _watchlistService.GetWatchlist(new ObjectId(userId), new ObjectId(auctionId)).Result;
+        }
+
+
+        [HttpPut]
+        public Watchlist UpdateWatchlist([FromQuery] string userId, [FromQuery] string auctionId, [FromQuery] string type)
+        {
+            return _watchlistService.UpdateWatchlist(new ObjectId(userId), new ObjectId(auctionId), type).Result;
         }
 
         [HttpDelete]

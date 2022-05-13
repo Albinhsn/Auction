@@ -39,6 +39,21 @@ namespace WatchlistService.Services
             
         }
 
+        public async Task<Watchlist> UpdateWatchlist(ObjectId userId, ObjectId auctionId, string type)
+        {
+            var watchlist = await _watchlistCollection.FindOneAndUpdateAsync(
+                Builders<Watchlist>.Filter.Where(x => x.UserId == userId && x.AuctionId == auctionId),
+                Builders<Watchlist>.Update
+                    .Set(x => x.Type, type),
+                options: new FindOneAndUpdateOptions<Watchlist>
+                {
+                    ReturnDocument = ReturnDocument.After
+                }
+                ).ConfigureAwait(false);
+
+            return watchlist;
+        }
+
         public async Task<DeleteResult> DeleteWatchlist(ObjectId userId, ObjectId auctionId)
         {
             try

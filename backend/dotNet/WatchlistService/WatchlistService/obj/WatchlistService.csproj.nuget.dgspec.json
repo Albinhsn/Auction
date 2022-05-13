@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "B:\\Program\\Programmering\\AuctionDotNet\\backend\\dotNet\\WatchlistService\\WatchlistService\\WatchlistService.csproj": {}
+    "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\WatchlistService\\WatchlistService\\WatchlistService.csproj": {}
   },
   "projects": {
-    "B:\\Program\\Programmering\\AuctionDotNet\\backend\\dotNet\\WatchlistService\\WatchlistService\\WatchlistService.csproj": {
+    "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\WatchlistService\\WatchlistService\\WatchlistService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "B:\\Program\\Programmering\\AuctionDotNet\\backend\\dotNet\\WatchlistService\\WatchlistService\\WatchlistService.csproj",
+        "projectUniqueName": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\WatchlistService\\WatchlistService\\WatchlistService.csproj",
         "projectName": "WatchlistService",
-        "projectPath": "B:\\Program\\Programmering\\AuctionDotNet\\backend\\dotNet\\WatchlistService\\WatchlistService\\WatchlistService.csproj",
+        "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\WatchlistService\\WatchlistService\\WatchlistService.csproj",
         "packagesPath": "C:\\Users\\hart9\\.nuget\\packages\\",
-        "outputPath": "B:\\Program\\Programmering\\AuctionDotNet\\backend\\dotNet\\WatchlistService\\WatchlistService\\obj\\",
+        "outputPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\WatchlistService\\WatchlistService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hart9\\AppData\\Roaming\\NuGet\\NuGet.Config",
