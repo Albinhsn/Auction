@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "iDtv0oT00Y6nTYi0r8l28k97Fpo0O6MnhDO7kMgzbjQ=",
+  "Source": "BidMicroService",
+  "BasePath": "_content/BidMicroService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
