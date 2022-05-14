@@ -7,24 +7,24 @@ namespace AuctionMicroService.Services
     public class AuctionService
     {
 
-        private readonly IMongoCollection<Auction> _auctionCollecion;
+        private readonly IMongoCollection<Auction> _auctionCollection;
 
         public AuctionService()
         {
             MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Auctions");
 
-            _auctionCollecion = db.GetCollection<Auction>("Auctions");
+            _auctionCollection = db.GetCollection<Auction>("Auctions");
         }
 
         public async Task<List<Auction>> GetAll()
         {
-            return await _auctionCollecion.Find(_  => true).ToListAsync();
+            return await _auctionCollection.Find(_  => true).ToListAsync();
         }
 
         public async Task<Auction> GetAuction(ObjectId id)
         {
-            return await _auctionCollecion.Find(x => x.Id == id).FirstOrDefaultAsync();
+            return await _auctionCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
         }
 
         public Auction CreateAuction(AuctionPostModel auc)
@@ -45,31 +45,29 @@ namespace AuctionMicroService.Services
             newAuc.Winner = null;
 
             
-            _auctionCollecion.InsertOne(newAuc);
+            _auctionCollection.InsertOne(newAuc);
 
             return newAuc;
         }
 
-        public async Task<Auction> UpdateAuction(Auction auc)
+        public async Task<Auction> UpdateAuction(Auction auc, string Id)
         {
-            var auction = await _auctionCollecion.FindOneAndUpdateAsync(
-                Builders<Auction>.Filter.Where(x => x.Id == auc.Id),
-                Builders<Auction>.Update
-                    .Set(x => x, auc),
-                options: new FindOneAndUpdateOptions<Auction>
-                {
-                    ReturnDocument = ReturnDocument.After
-                }
-                ).ConfigureAwait(false);
+            auc.Id = new ObjectId(Id);
+            var filter = Builders<Auction>.Filter.Where(x => x.Id == auc.Id);
+            var options = new FindOneAndReplaceOptions<Auction>
+            {
+                ReturnDocument = ReturnDocument.After
+            };
 
-            return auction;
+            var result = await _auctionCollection.FindOneAndReplaceAsync<Auction>(x => x.Id == auc.Id, auc, options);                      
+            return auc;
         }
 
         public async Task<bool> DeleteAuction(ObjectId id)
         {
             try
             {
-                await _auctionCollecion.DeleteOneAsync(x => x.Id == id);
+                await _auctionCollection.DeleteOneAsync(x => x.Id == id);
                 return true;
             }
             catch
@@ -80,7 +78,7 @@ namespace AuctionMicroService.Services
 
         public List<Auction> GetAuctionsSortedLimited(string sort, int direction, int limitedBy)
         {           
-            List<Auction> results = _auctionCollecion.Aggregate()
+            List<Auction> results = _auctionCollection.Aggregate()
                 .Sort(new BsonDocument
                     {
                         { sort, direction}

@@ -41,9 +41,9 @@ namespace AuctionMicroService.Controllers
         }
 
         [HttpPut]
-        public async Task<Auction> UpdateAuction([FromQuery] Auction auc)
+        public async Task<Auction> UpdateAuction( Auction auc, string Id)
         {
-            return await _auctionService.UpdateAuction(auc);
+            return await _auctionService.UpdateAuction(auc, Id);
         }
 
         [HttpGet("/api/auction/[controller]/sorted/limited")]
