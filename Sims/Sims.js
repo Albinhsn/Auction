@@ -664,14 +664,14 @@ async function doEverything(){
         cam = cameras[Math.floor(Math.random() * cameras.length)]
         camera._id = auctionIds[i]
         camera.Name = cam.name
-        camera.Tags = cam.tags
+        //camera.Tags = cam.tags
         camera.Images = cam.images
         camera.Condition = conditions[Math.floor(Math.random() * conditions.length)]
         camera.AuctionType = auctionType[Math.floor(Math.random() * auctionType.length)]
         camera.Description = description
         camera.MinimumBid = Math.floor(Math.random() * 10000) + 500 - (Math.floor(Math.random() * 10000) + 500) % 10
         camera.Seller = ObjectId(bidderIds[Math.floor(Math.random() * bidderIds.length)])
-        camera.BidHistory = []
+        //camera.BidHistory = []
 
 
 
@@ -710,29 +710,29 @@ async function doEverything(){
         camera.EndDate = new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate() + 8);
 
 
-        if (camera.AuctionType === "Engelsk") {
-            for (let j = 0; j < Math.floor(Math.random() * 6); j++) {
-                let bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
-                while (bidderId === camera.Seller || bidderId === camera.Winner) {
-                    bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
-                }
-                let o = {
-                    _id: new ObjectId(),
-                    bidderId: bidderId,
-                    bid: camera.MinimumBid + j * 100 + 100,
-                    time: new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate(), StartDate.getHours() + j + 1)
-                }
-                camera.BidHistory.push(o)
-            }
-        }
+        // if (camera.AuctionType === "Engelsk") {
+        //     for (let j = 0; j < Math.floor(Math.random() * 6); j++) {
+        //         let bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
+        //         while (bidderId === camera.Seller || bidderId === camera.Winner) {
+        //             bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
+        //         }
+        //         let o = {
+        //             _id: new ObjectId(),
+        //             bidderId: bidderId,
+        //             bid: camera.MinimumBid + j * 100 + 100,
+        //             time: new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate(), StartDate.getHours() + j + 1)
+        //         }
+        //         camera.BidHistory.push(o)
+        //     }
+        // }
 
 
-        if (i % 2 === 0) {
-            if (camera.BidHistory.length > 0) {
-                camera.BidHistory[camera.BidHistory.length - 1].id = camera.Winner
-                camera.PurchasePrice = camera.BidHistory[camera.BidHistory.length - 1].bid
-            }
-        }
+        // if (i % 2 === 0) {
+        //     if (camera.BidHistory.length > 0) {
+        //         camera.BidHistory[camera.BidHistory.length - 1].id = camera.Winner
+        //         camera.PurchasePrice = camera.BidHistory[camera.BidHistory.length - 1].bid
+        //     }
+        // }
 
         C.push(camera)
     }
@@ -752,7 +752,7 @@ async function doEverything(){
             passwords[j] = await hash(passwords[j], 10)
         }
     }
-    let objs = []
+    let authObjs = []
     hashPasswords().then(() => {
 
         for (i = 0; i < usersnames.length; i++) {
@@ -762,7 +762,7 @@ async function doEverything(){
             }
 
 
-            let obj = {
+            let authObj = {
                 _id: bidderIds[i],
                 // Username: usersnames[i],
                 Email: `${usersnames[i]}@gmail.com`,
@@ -771,12 +771,12 @@ async function doEverything(){
                 // watchlist: []
             }
 
-            objs.push(obj)
+            authObjs.push(authObj)
         }
         
-        const database = client.db("Authentication")
-        const auctions = database.collection("Users")
-        const result = auctions.insertMany(objs)
+        const authDatabase = client.db("Authentication")
+        const authCollection = authDatabase.collection("Users")
+        const result = authCollection.insertMany(authObjs)
     })
 
     //User sims
@@ -797,7 +797,7 @@ async function doEverything(){
                 Email: `${usersnames[i]}@gmail.com`,
                 Password: passwords[i],
                 Favorites: favo,
-                Watchlist: []
+                //Watchlist: []
             }
 
             objs.push(obj)
