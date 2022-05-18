@@ -597,7 +597,7 @@ const auctionType = ["Engelsk", "Holländsk", "Schweizisk"]
 const uri = "mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 const client = new MongoClient(uri)
-let dbs = ["Users", "Images", "Authentication", "Auctions", "Bids"]
+let dbs = ["Users", "Images", "Authentication", "Auctions", "Bids", "Email"]
 async function doEverything(){
     mongodb.MongoClient.connect(uri, function (error, client) {
     assert.ifError(error);
@@ -753,6 +753,7 @@ async function doEverything(){
         }
     }
     let authObjs = []
+    let emailObjs = []
     hashPasswords().then(() => {
 
         for (i = 0; i < usersnames.length; i++) {
@@ -770,10 +771,17 @@ async function doEverything(){
                 // Favorites: favo,
                 // watchlist: []
             }
-
+            let emailObj = {
+                _id: bidderIds[i],
+                Email: `${usersnames[i]}@gmail.com`
+            }
+            emailObjs.push(emailObj)
             authObjs.push(authObj)
         }
         
+        const emailDatabase = client.db("Email");
+        const emailCollection = emailDatabase.collection("Users")
+        const emailResult = emailCollection.insertMany(emailObjs)
         const authDatabase = client.db("Authentication")
         const authCollection = authDatabase.collection("Users")
         const result = authCollection.insertMany(authObjs)
@@ -806,5 +814,9 @@ async function doEverything(){
         const auctions = database.collection("Users")
         const result = auctions.insertMany(objs)
 
-})})}
+
+    
+})}
+    
+)}
 doEverything()
