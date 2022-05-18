@@ -54,7 +54,7 @@ mongodb.MongoClient.connect(uri, function (error, client) {
     assert.ifError(error);
 
   
-    const db = client.db("Auctionista")
+    const db = client.db("Images")
     var bucket = new GridFSBucket(db)
     for (let i = 0; i < files.length; i++) {
         fs.createReadStream(dir + "/" + files[i])

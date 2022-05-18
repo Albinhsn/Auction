@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\AuthenticationService",
+    "\\AuthenticationService\\AuthenticationService"
   ],
+  "SelectedNode": "\\AuthenticationService\\AuthenticationService.sln",
   "PreviewInSolutionExplorer": false
 }

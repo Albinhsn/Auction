@@ -135,8 +135,8 @@ async function connect(docs) {
     try {
         
         await client.connect();
-        const database = client.db("Auctionista")
-        const auctions = database.collection("users")
+        const database = client.db("Authentication")
+        const auctions = database.collection("Users")
         const result = await auctions.insertMany(docs)
 
         console.log("inserted docs\n")
@@ -166,11 +166,11 @@ hashPasswords().then(() => {
 
         let obj = {
             _id: _id[i],
-            username: usersnames[i],
-            email: `${usersnames[i]}@gmail.com`,
-            password: passwords[i],
-            favorites: favo,
-            watchlist: []
+            // Username: usersnames[i],
+            Email: `${usersnames[i]}@gmail.com`,
+            Password: passwords[i],
+            // Favorites: favo,
+            // watchlist: []
         }
         
         objs.push(obj)    

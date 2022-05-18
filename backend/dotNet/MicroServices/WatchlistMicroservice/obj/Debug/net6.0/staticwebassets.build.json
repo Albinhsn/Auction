@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ZNJDUMaVp6Hom/rf/EYYAxyWiL3Hi4tmnbtKsNTYgwQ=",
+  "Source": "WatchlistMicroservice",
+  "BasePath": "_content/WatchlistMicroservice",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

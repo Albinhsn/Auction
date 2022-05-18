@@ -1,5 +1,4 @@
-const { ObjectId } = require('mongodb');
-
+const { MongoClient, GridFSBucket, ObjectId } = require('mongodb')
 let states = ["Slut", "Pågående"]
 let conditions = ["Perfekt", "Bra", "Utmärkt", "Dåligt", "Hyggligt"]
 let bidderIds = [
@@ -559,7 +558,7 @@ function randomDate(start, end, startHour, endHour) {
 //Auctionstype
 const auctionType = ["Engelsk", "Holländsk", "Schweizisk"]
 
-var MongoClient = require('mongodb').MongoClient
+
 const uri = "mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 const client = new MongoClient(uri)
@@ -567,8 +566,8 @@ const client = new MongoClient(uri)
 async function connect(docs){
     try {
         await client.connect();
-        const database = client.db("Auctionista")
-        const auctions = database.collection("auctions")
+        const database = client.db("Bids")
+        const auctions = database.collection("Bids")
         const result = await auctions.insertMany(docs)
 
         console.log("inserted docs\n")
