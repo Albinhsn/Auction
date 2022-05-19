@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<AuctionService>();
 builder.Services.AddSingleton<MessageProducer>();
+builder.Services.AddSingleton<HighestBidFromListOfIdsProducer>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

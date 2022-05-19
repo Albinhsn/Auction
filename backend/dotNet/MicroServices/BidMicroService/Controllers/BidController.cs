@@ -15,6 +15,8 @@ namespace BidMicroService.Controllers
             _bidService = bidService;
         }
 
+        
+
         [HttpGet("/api/bid/[controller]/auction")]
         public List<Bid> GetAllBidsByAuction(string Id)
         {
@@ -26,7 +28,7 @@ namespace BidMicroService.Controllers
             return _bidService.CreateBid(bid);
         }
         [HttpGet("/api/bid/[controller]/highest")]
-        public BsonDocument GetHighestBidOnAuction(string Id)
+        public HighestBid GetHighestBidOnAuction(string Id)
         {
             return _bidService.GetHighestBidOnAuction(Id).Result;
         }

@@ -11,11 +11,13 @@ namespace AuctionMicroService.Services
     {
 
         private readonly IMongoCollection<Auction> _auctionCollection;
-        private readonly MessageProducer _messageSender;
+        private readonly MessageProducer _messageProducer;
+        private readonly HighestBidFromListOfIdsProducer _highestBidFromListOfIdsProducer;
 
-        public AuctionService(MessageProducer messageSender)
+        public AuctionService(MessageProducer messageProducer, HighestBidFromListOfIdsProducer highestBidFromListOfIdsProducer)
         {
-            _messageSender = messageSender; 
+            _messageProducer = messageProducer; 
+            _highestBidFromListOfIdsProducer = highestBidFromListOfIdsProducer; 
             MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Auctions");
 
@@ -27,21 +29,58 @@ namespace AuctionMicroService.Services
             Auction auction = await _auctionCollection.Find(x => x.Id == auctionId).FirstOrDefaultAsync();
             auction.Winner = new ObjectId(userId).ToString();
             UpdateAuction(auction, auctionId);
-            _messageSender.MadePurchase(auction);
+            _messageProducer.MadePurchase(auction);
+        }
+
+        public async void AuctionEnded(string Id)
+        {
+
+        }
+
+        public async Task<List<Auction>> GetUserAuctions(string Id)
+        {
+            List<string> Ids = new List<string>();
+            List<Auction> userAuctions = await _auctionCollection.Find(x => x.Seller == Id).ToListAsync();
+            foreach (Auction auction in userAuctions)
+            {
+                Ids.Add(auction.Id);
+            }
+            
+            List<HighestBid> highestBids = _highestBidFromListOfIdsProducer.GetHighestBidFromListOfIds(Ids);
+            for(var i = 0; i<userAuctions.Count; i++)
+            {
+                HighestBid highestBid = highestBids.Find(x => x.AuctionId == userAuctions[i].Id);
+                if (highestBid != null)
+                {
+                    userAuctions[i].HighestBid = highestBid.Amount;
+                }
+            }
+
+            return userAuctions;
         }
 
 
         public async Task<List<Auction>> GetAll()
         {
-            _messageSender.GetAllAuctionBids();
-            return await _auctionCollection.Find(_  => true).ToListAsync();
+            List<HighestBid> highestBids = _messageProducer.GetAllAuctionBids();                        
+            List<Auction> auctions = await _auctionCollection.Find(_  => true).ToListAsync();            
+            for(var i = 0; i<auctions.Count; i++)
+            {                                    
+                HighestBid highestBid = highestBids.Find(x => x.AuctionId == auctions[i].Id);
+                
+                if(highestBid != null)
+                {                    
+                    auctions[i].HighestBid = highestBid.Amount;            
+                }
+            }
+            return auctions;
         }
 
         public async Task<Auction> GetAuction(ObjectId id)
         {
             
             Auction auc = await _auctionCollection.Find(x => x.Id == id.ToString()).FirstOrDefaultAsync();
-            List<Bid> bids = _messageSender.GetAuctionBids(id.ToString());
+            List<Bid> bids = _messageProducer.GetAuctionBids(id.ToString());
             Console.WriteLine(JsonSerializer.Serialize<List<Bid>>(bids));
             auc.Bids = bids;
             return auc;

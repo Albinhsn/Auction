@@ -9,7 +9,12 @@
   <ItemGroup>
     <PackageReference Include="MailKit" Version="3.2.0" />
     <PackageReference Include="MimeKit" Version="3.2.0" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BidMicroService\BidMicroService.csproj" />
   </ItemGroup>
 
 </Project>

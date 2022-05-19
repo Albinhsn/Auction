@@ -86,7 +86,7 @@ namespace AuctionMicroService.RabbitMQ
 
             allAuctionHighestBidProps = _getAllAuctionHighestBidChannel.CreateBasicProperties();
             var allAuctionHighestBidCorrelationId = Guid.NewGuid().ToString();
-            allAuctionHighestBidProps.CorrelationId = correlationId;
+            allAuctionHighestBidProps.CorrelationId = allAuctionHighestBidCorrelationId;
             allAuctionHighestBidProps.ReplyTo = replyAllAuctionHighestBidQueueName;
 
             allAuctionHighestBidConsumer.Received += (model, ea) =>
@@ -94,13 +94,10 @@ namespace AuctionMicroService.RabbitMQ
                 var body = ea.Body.ToArray();
                 var response = Encoding.UTF8.GetString(body);
                 Console.WriteLine("received back again");
-                Console.WriteLine(ea.BasicProperties.CorrelationId);
-                Console.WriteLine(allAuctionHighestBidCorrelationId);
-                Console.WriteLine(ea.BasicProperties.CorrelationId == allAuctionHighestBidCorrelationId);
                 if (ea.BasicProperties.CorrelationId == allAuctionHighestBidCorrelationId)
                 {
                     allAuctionHighestBidRespQueue.Add(response);
-                    Console.WriteLine("GOT");
+                    
                     
                 }
 
@@ -137,9 +134,14 @@ namespace AuctionMicroService.RabbitMQ
                 basicProperties: allAuctionHighestBidProps,
                 body: messageBytes
                 );            
-            string s = respQueue.Take();
+            string s = allAuctionHighestBidRespQueue.Take();
+            
+            if (s == null)
+            {
+                return null;
+            }
             Console.WriteLine(s);
-            return null;
+            return JsonSerializer.Deserialize<List<HighestBid>>(s);
         }
 
         public List<Bid> GetAuctionBids(string message)

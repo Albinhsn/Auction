@@ -7,12 +7,10 @@ namespace BidMicroService.Models
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string UserId { get; set; }
         public int Amount { get; set; }
 
-        public HighestBid(string i, int a)
-        {
-            Id = i;
-            Amount = a;
-        }
+     
     }
 }

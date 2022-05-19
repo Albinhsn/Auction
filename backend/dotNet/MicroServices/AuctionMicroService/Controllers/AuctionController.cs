@@ -22,6 +22,12 @@ namespace AuctionMicroService.Controllers
         {
             return _auctionService.GetAll().Result;
         }
+        [HttpGet("/api/[controller]/user/auctions")]
+        public List<Auction> GetUserAuctions(string Id)
+        {
+            return _auctionService.GetUserAuctions(Id).Result;
+        }
+
 
 
         [HttpPost]

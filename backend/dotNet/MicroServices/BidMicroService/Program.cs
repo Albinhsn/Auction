@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<BidService>();
 MessageReceiver messageReceiver = new MessageReceiver(new BidService());
+HigestBidFromListOfIdsReceiver higestBidFromListOfIdsReceiver = new HigestBidFromListOfIdsReceiver(new BidService());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

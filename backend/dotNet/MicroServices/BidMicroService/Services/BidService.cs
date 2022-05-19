@@ -30,16 +30,39 @@ namespace BidMicroService.Controllers
             List<HighestBid> highestBids = new List<HighestBid>();  
             foreach(var result in results)
             {
-                highestBids.Add(new HighestBid(result.Id, result.Amount));
-            } 
-            
-
-            
+                HighestBid highestBid = new();
+                highestBid.UserId = result.Id;
+                highestBid.Amount = result.Amount;
+                highestBids.Add(highestBid);
+            }                         
             return highestBids;
           
             
         }
-
+        public async Task<List<HighestBid>> GetHighestBidFromListOfIds(List<string>Ids)
+        {
+            Console.WriteLine(Ids);
+            var results = await _bidCollection.Aggregate()
+                .Match(Builders<Bid>.Filter.In(b => b.AuctionId, Ids)              
+                ).Group(x => x.AuctionId,
+                    y => new {
+                        Id = y.Key,
+                        Amount = y.Max(a => (int)a.Amount),                        
+                    })
+                .ToListAsync();
+            
+            List<HighestBid> highestBids = new List<HighestBid>();
+            
+            foreach (var result in results)
+            {
+                HighestBid highestBid = new();
+                highestBid.UserId = result.Id;
+                highestBid.Amount = result.Amount;
+                highestBids.Add(highestBid);
+                
+            }
+            return highestBids;
+        }
         
 
         public List<Bid> GetAllBidsByAuction(string Id)
@@ -64,31 +87,35 @@ namespace BidMicroService.Controllers
             return GetAllBidsByAuction(bid.AuctionId); 
         }
 
-        public async Task<BsonDocument> GetHighestBidOnAuction(string Id)
+        public async Task<HighestBid> GetHighestBidOnAuction(string Id)
         {
-            ObjectId aucId = new ObjectId(Id);
-            List<BsonDocument> result = await _bidCollection.Aggregate()
-                .Match(new BsonDocument
-                    {
-                        { "AuctionId", aucId}
-                    }).Sort(new BsonDocument
+            
+            var results = await _bidCollection.Aggregate()
+                .Match(Builders<Bid>.Filter.Eq(b => b.AuctionId, Id))
+                .Sort(new BsonDocument
                     {
                         {"Amount", -1}
                     }).Limit(1).Project(
-                    new BsonDocument
-                    {
-                        {"_id", 0},
-                        {"HighestBid", 1}
-                    }
+                        Builders<Bid>.Projection
+                            .Include(b => b.UserId)
+                            .Include(b => b.Amount)
+                            .Exclude(b => b.Id) 
                 ).ToListAsync();
-            try
+            HighestBid bid = new();
+            Console.WriteLine(results.Count);
+            foreach(var result in results)
             {
-                return result[0];
-            }catch (Exception ex)
-            {
-                return null;
-            }
 
+                bid.UserId = result["UserId"].ToString();
+                bid.Amount = int.Parse(result["Amount"].ToString());
+            }
+            if(bid != null)
+            {
+                Console.WriteLine(bid.UserId);
+                Console.WriteLine(bid.Amount);
+            }
+            
+            return bid;
         }
 
         
