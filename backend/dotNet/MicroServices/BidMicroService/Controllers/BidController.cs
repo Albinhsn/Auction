@@ -1,5 +1,6 @@
 ﻿using BidMicroService.Models;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 
 namespace BidMicroService.Controllers
 {
@@ -25,9 +26,9 @@ namespace BidMicroService.Controllers
             return _bidService.CreateBid(bid);
         }
         [HttpGet("/api/bid/[controller]/highest")]
-        public Bid GetHighestBidOnAuction(string Id)
+        public BsonDocument GetHighestBidOnAuction(string Id)
         {
-            return _bidService.GetHighestBidOnAuction(Id);
+            return _bidService.GetHighestBidOnAuction(Id).Result;
         }
     }
 }

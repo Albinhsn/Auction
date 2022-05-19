@@ -4,6 +4,7 @@ namespace AuthenticationService.Models
 {
     public class User
     {
+
         public ObjectId Id;
         public string Email;
         public string Password;

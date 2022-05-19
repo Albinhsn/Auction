@@ -1,7 +1,9 @@
 ﻿using AuctionMicroService.Models;
 using AuctionMicroService.RabbitMQ;
+using BidMicroService.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Text.Json;
 
 namespace AuctionMicroService.Services
 {
@@ -11,8 +13,9 @@ namespace AuctionMicroService.Services
         private readonly IMongoCollection<Auction> _auctionCollection;
         private readonly MessageProducer _messageSender;
 
-        public AuctionService()
+        public AuctionService(MessageProducer messageSender)
         {
+            _messageSender = messageSender; 
             MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Auctions");
 
@@ -21,8 +24,8 @@ namespace AuctionMicroService.Services
 
         public async void MadePurchase(string userId, string auctionId)
         {
-            Auction auction = await _auctionCollection.Find(x => x.Id == new ObjectId(auctionId)).FirstOrDefaultAsync();
-            auction.Winner = new ObjectId(userId);
+            Auction auction = await _auctionCollection.Find(x => x.Id == auctionId).FirstOrDefaultAsync();
+            auction.Winner = new ObjectId(userId).ToString();
             UpdateAuction(auction, auctionId);
             _messageSender.MadePurchase(auction);
         }
@@ -30,19 +33,26 @@ namespace AuctionMicroService.Services
 
         public async Task<List<Auction>> GetAll()
         {
+            _messageSender.GetAllAuctionBids();
             return await _auctionCollection.Find(_  => true).ToListAsync();
         }
 
         public async Task<Auction> GetAuction(ObjectId id)
         {
-            return await _auctionCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            
+            Auction auc = await _auctionCollection.Find(x => x.Id == id.ToString()).FirstOrDefaultAsync();
+            List<Bid> bids = _messageSender.GetAuctionBids(id.ToString());
+            Console.WriteLine(JsonSerializer.Serialize<List<Bid>>(bids));
+            auc.Bids = bids;
+            return auc;
         }
+
 
         public Auction CreateAuction(AuctionPostModel auc)
         {
             //TODO Check valid Auction
             Auction newAuc = new();
-            newAuc.Id = new ObjectId();
+            newAuc.Id = new ObjectId().ToString();
             newAuc.AuctionType = auc.AuctionType;
             newAuc.Condition = auc.Condition;
             newAuc.Description = auc.Description;
@@ -51,7 +61,7 @@ namespace AuctionMicroService.Services
             newAuc.Name = auc.Name;                        
             newAuc.StartDate = DateTime.Now;            
             newAuc.State = "Pågående";
-            newAuc.Seller = auc.Seller;
+            newAuc.Seller = auc.Seller.ToString();
             newAuc.PurchasePrice = auc.PurchasePrice;            
             newAuc.Winner = null;
 
@@ -63,7 +73,7 @@ namespace AuctionMicroService.Services
 
         public async Task<Auction> UpdateAuction(Auction auc, string Id)
         {
-            auc.Id = new ObjectId(Id);
+            auc.Id = new ObjectId(Id).ToString();
             var filter = Builders<Auction>.Filter.Where(x => x.Id == auc.Id);
             var options = new FindOneAndReplaceOptions<Auction>
             {
@@ -78,7 +88,7 @@ namespace AuctionMicroService.Services
         {
             try
             {
-                await _auctionCollection.DeleteOneAsync(x => x.Id == id);
+                await _auctionCollection.DeleteOneAsync(x => x.Id == id.ToString());
                 return true;
             }
             catch

@@ -686,7 +686,7 @@ async function doEverything(){
             camera.State = "Slut"
         } else {
             camera.State = "Pågående"
-            camera.Winner = -1
+            camera.Winner = null
         }
 
         if ((i % 3 !== 0 && camera.AuctionType === "Engelsk") || camera.AuctionType === "Schweizisk") {

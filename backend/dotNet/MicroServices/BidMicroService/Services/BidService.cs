@@ -1,6 +1,7 @@
 ﻿using BidMicroService.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System.Text.Json;
 
 namespace BidMicroService.Controllers
 {
@@ -16,47 +17,70 @@ namespace BidMicroService.Controllers
             _bidCollection = db.GetCollection<Bid>("Bids");
         }
 
-        //public List<Bid> GetAllBidsByObjectId(string Id)
-        //{
+        public async Task<List<HighestBid>> GetAllAuctionsHighestBid()
+        {
+            var results = await _bidCollection.Aggregate()
+                .Group(
+                    x => x.AuctionId,
+                    y => new {
+                        Id = y.Key,
+                        Amount = y.Max(a => (int)a.Amount) 
+                    }                                                                  
+                ).ToListAsync();
+            List<HighestBid> highestBids = new List<HighestBid>();  
+            foreach(var result in results)
+            {
+                highestBids.Add(new HighestBid(result.Id, result.Amount));
+            } 
             
-        //}
+
+            
+            return highestBids;
+          
+            
+        }
+
+        
 
         public List<Bid> GetAllBidsByAuction(string Id)
         {
             ObjectId aucId = new ObjectId(Id);
-            List<Bid> results = _bidCollection.Aggregate()
-                .Match(new BsonDocument
-                    {
-                        { "AuctionId", aucId}
-                    }
-                ).ToList();
+            Console.WriteLine(aucId);
+            List<Bid> results = _bidCollection.Find(x => x.AuctionId == aucId.ToString()).ToList();
+            
+            
             return results;
         }
 
         public List<Bid>CreateBid(BidPostModel bid)
         {
             Bid b = new Bid();
-            b.AuctionId = new ObjectId(bid.AuctionId);
-            b.UserId = new ObjectId(bid.UserId);
-            b.Id = new ObjectId();
+            b.AuctionId = new ObjectId(bid.AuctionId).ToString();
+            b.UserId = new ObjectId(bid.UserId).ToString();
+            b.Id = new ObjectId().ToString();
             b.Amount = bid.Amount;
             //Returns all current bids on auction
             _bidCollection.InsertOneAsync(b).Wait();
             return GetAllBidsByAuction(bid.AuctionId); 
         }
 
-        public Bid GetHighestBidOnAuction(string Id)
+        public async Task<BsonDocument> GetHighestBidOnAuction(string Id)
         {
             ObjectId aucId = new ObjectId(Id);
-            List<Bid> result = _bidCollection.Aggregate()
+            List<BsonDocument> result = await _bidCollection.Aggregate()
                 .Match(new BsonDocument
                     {
                         { "AuctionId", aucId}
                     }).Sort(new BsonDocument
                     {
                         {"Amount", -1}
-                    }).Limit(1).ToList();
-                ;
+                    }).Limit(1).Project(
+                    new BsonDocument
+                    {
+                        {"_id", 0},
+                        {"HighestBid", 1}
+                    }
+                ).ToListAsync();
             try
             {
                 return result[0];
@@ -67,5 +91,7 @@ namespace BidMicroService.Controllers
 
         }
 
+        
+ 
     }
 }

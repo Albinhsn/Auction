@@ -41,3 +41,4 @@ B:\Program\Programmering\Github\Auction\backend\dotNet\MicroServices\BidMicroSer
 B:\Program\Programmering\Github\Auction\backend\dotNet\MicroServices\BidMicroService\obj\Debug\net6.0\BidMicroService.pdb
 B:\Program\Programmering\Github\Auction\backend\dotNet\MicroServices\BidMicroService\obj\Debug\net6.0\BidMicroService.genruntimeconfig.cache
 B:\Program\Programmering\Github\Auction\backend\dotNet\MicroServices\BidMicroService\obj\Debug\net6.0\ref\BidMicroService.dll
+B:\Program\Programmering\Github\Auction\backend\dotNet\MicroServices\BidMicroService\bin\Debug\net6.0\RabbitMQ.Client.dll

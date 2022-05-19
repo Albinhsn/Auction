@@ -1,6 +1,7 @@
 ﻿using AuctionMicroService.Models;
 using AuctionMicroService.Services;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 
 namespace AuctionMicroService.Controllers
 {
@@ -14,9 +15,7 @@ namespace AuctionMicroService.Controllers
         public AuctionController(AuctionService auctionService)
         {
             _auctionService = auctionService;
-        }
-
-
+        }        
 
         [HttpGet]
         public List<Auction> GetAll()
@@ -39,8 +38,14 @@ namespace AuctionMicroService.Controllers
 
             return Ok("Created Auction");
         }
+        [HttpGet("/api/[controller]/single/auction")]
+        public async Task<Auction> getAuction(string id)
+        {
+            return await _auctionService.GetAuction(new ObjectId(id));
+        }
 
-        [HttpPut]
+
+        [HttpPut("/api/[controller]/update")]
         public async Task<Auction> UpdateAuction( Auction auc, string Id)
         {
             return await _auctionService.UpdateAuction(auc, Id);
@@ -53,7 +58,7 @@ namespace AuctionMicroService.Controllers
             return _auctionService.GetAuctionsSortedLimited(sort, direction, limitedBy);
         }
 
-        [HttpPut]
+        [HttpPut("/api/[controller]/purchase")]
         public void MadePurchase(string userId, string auctionId)
         {
             _auctionService.MadePurchase(userId, auctionId);
