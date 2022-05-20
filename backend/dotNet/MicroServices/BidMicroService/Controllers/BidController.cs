@@ -17,20 +17,20 @@ namespace BidMicroService.Controllers
 
         
 
-        //[HttpGet("/api/bid/[controller]/whyudothis")]
-        //public List<Bid> GetAllBidsByAuction(string Id)
-        //{
-        //    return _bidService.GetAllBidsByAuction(Id);
-        //}
-        //[HttpPost]
-        //public List<Bid> CreateBid(BidPostModel bid)
-        //{
-        //    return _bidService.CreateBid(bid);
-        //}
-        //[HttpGet("/api/bid/[controller]/highest")]
-        //public HighestBid GetHighestBidOnAuction(string Id)
-        //{
-        //    return _bidService.GetHighestBidOnAuction(Id).Result;
-        //}
+        [HttpGet("/api/bid/[controller]/")]
+        public List<Bid> GetAllBidsByAuction(string Id)
+        {
+            return _bidService.GetAllBidsByAuction(Id);
+        }
+        [HttpPost]
+        public List<Bid> CreateBid(BidPostModel bid)
+        {
+            return _bidService.CreateBid(bid);
+        }
+        [HttpGet("/api/bid/[controller]/highest")]
+        public HighestBid GetHighestBidOnAuction(string Id)
+        {
+            return _bidService.GetHighestBidOnAuction(Id).Result;
+        }
     }
 }

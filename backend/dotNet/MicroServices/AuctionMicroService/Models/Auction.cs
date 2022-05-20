@@ -32,5 +32,7 @@ namespace AuctionMicroService.Models
         public DateTime EndDate { get; set; }
 
         public List<Bid> Bids{ get; set; }
+        public int Weight { get; set; }
+        public int Volume { get; set; }
     }
 }

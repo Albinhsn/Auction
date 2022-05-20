@@ -22,10 +22,10 @@ namespace AuctionMicroService.RabbitMQ
 
             }
         }
-        public void sendAuctionCreatedMessage(Auction auction)
+        public void sendAuctionCreatedMessage(PostageAuction auction)
         {
 
-            string message = JsonSerializer.Serialize<Auction>(auction);
+            string message = JsonSerializer.Serialize<PostageAuction>(auction);
             var body = Encoding.UTF8.GetBytes(message);
             Console.WriteLine("Sent in User");
             _channel.BasicPublish(

@@ -67,12 +67,12 @@ namespace AuctionMicroService.RabbitMQ
         {            
            
             HighestBid highestBid = getHighestBidFromAuction(Id);                        
-            EmailService.Auction auc = new EmailService.Auction();
+            EmailAuction auc = new EmailAuction();
             Auction auction = _auctionService.GetAuction(Id).Result;
             auc.AuctionName = auction.Name;
             auc.Price = highestBid.Amount;
             auc.UserId = highestBid.UserId;
-            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<EmailService.Auction>(auc));
+            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<EmailAuction>(auc));
             _channel.BasicPublish(
                 exchange: "",
                 routingKey: "auctionEndedEmail",

@@ -13,7 +13,7 @@ namespace PostageMicroService.RabbitMQ
         PostageService _postageService;
         public AuctionCreatedReceiver(PostageService postageService)
         {
-
+            _postageService = postageService;
             var factory = new ConnectionFactory() { HostName = "localhost" };
             var connection = factory.CreateConnection();
             _channel = connection.CreateModel();
@@ -50,8 +50,8 @@ namespace PostageMicroService.RabbitMQ
 
         public void auctionCreated(string message)
         {
-            //CreatedAuction auc = JsonSerializer.Deserialize<CreatedAuction>(message);
-            //_postageService.CreatePostage(auc.AuctionId, auc.Weight, auc.Volume);
+            CreatedAuction auc = JsonSerializer.Deserialize<CreatedAuction>(message);
+            _postageService.CreatePostage(auc.Id, auc.Weight, auc.Volume);
         }
     }
 }

@@ -17,15 +17,18 @@ namespace AuctionMicroService.Services
         private readonly AuctionEndedProducer _auctionEndedProducer;
         private readonly AuctionPurchasedProducer _auctionPurchasedProducer;        
         private readonly HighestBidFromListOfIdsProducer _highestBidFromListOfIdsProducer;
+        private readonly AuctionCreatedProducer _auctionCreatedProducer;
 
-        public AuctionService(GetAuctionBidsProducer messageProducer, HighestBidFromListOfIdsProducer highestBidFromListOfIdsProducer)
+        public AuctionService(GetAuctionBidsProducer messageProducer, HighestBidFromListOfIdsProducer highestBidFromListOfIdsProducer, AuctionCreatedProducer auctionCreatedProducer)
         {
-            _messageProducer = messageProducer; 
-            _highestBidFromListOfIdsProducer = highestBidFromListOfIdsProducer; 
+            _messageProducer = messageProducer;
+            _highestBidFromListOfIdsProducer = highestBidFromListOfIdsProducer;
+            _auctionCreatedProducer = auctionCreatedProducer;
             MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Auctions");
 
             _auctionCollection = db.GetCollection<Auction>("Auctions");
+            
         }
 
         public async void MadePurchase(string userId, string auctionId)
@@ -91,11 +94,14 @@ namespace AuctionMicroService.Services
         }
 
 
-        public Auction CreateAuction(AuctionPostModel auc)
+        public Auction CreateAuction(AuctionPostModel auc, int volume, int weight)
         {
             //TODO Check valid Auction
-            Auction newAuc = new();
-            newAuc.Id = new ObjectId().ToString();
+            Auction newAuc = new();            
+            ObjectId s = new ObjectId("6286a84ba99e020ab15b645e");
+            Console.WriteLine(s.ToString());
+            newAuc.Id = s.ToString();
+            Console.WriteLine(newAuc.Id);
             newAuc.AuctionType = auc.AuctionType;
             newAuc.Condition = auc.Condition;
             newAuc.Description = auc.Description;
@@ -107,9 +113,12 @@ namespace AuctionMicroService.Services
             newAuc.Seller = auc.Seller.ToString();
             newAuc.PurchasePrice = auc.PurchasePrice;            
             newAuc.Winner = null;
-
+            PostageAuction postAuc = new();
+            postAuc.Id = newAuc.Id;
+            postAuc.Volume = volume;
+            postAuc.Weight = weight;
+            _auctionCreatedProducer.sendAuctionCreatedMessage(postAuc);
             
-            _auctionCollection.InsertOne(newAuc);
 
             return newAuc;
         }

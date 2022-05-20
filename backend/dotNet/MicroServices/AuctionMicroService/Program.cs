@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<AuctionService>();
 builder.Services.AddSingleton<GetAuctionBidsProducer>();
 builder.Services.AddSingleton<HighestBidFromListOfIdsProducer>();
+builder.Services.AddSingleton<AuctionCreatedProducer>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

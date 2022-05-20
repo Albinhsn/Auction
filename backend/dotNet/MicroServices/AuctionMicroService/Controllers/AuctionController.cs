@@ -32,16 +32,11 @@ namespace AuctionMicroService.Controllers
 
 
         [HttpPost("/test")]
-        public IActionResult PostAuction([FromBody] AuctionPostModel auc)
+        public IActionResult PostAuction([FromBody] AuctionPostModel auc, [FromQuery] int weight, [FromQuery] int volume)
         {
-            try
-            {
                 //AuctionHelpers.ValidateAuction c:
-                _auctionService.CreateAuction(auc);
-            } catch (Exception ex)
-            {
-                return BadRequest("Something went wrong");
-            }
+                _auctionService.CreateAuction(auc, weight, volume);
+            
 
             return Ok("Created Auction");
         }

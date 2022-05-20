@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace AuctionMicroService.Models
 {
@@ -10,7 +11,8 @@ namespace AuctionMicroService.Models
         public string? Description { get; set; }
         public int MinimumBid { get; set; }
         public int PurchasePrice { get; set; }
-        public ObjectId Seller { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Seller { get; set; }
         
     }
 }
