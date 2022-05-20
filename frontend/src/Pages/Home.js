@@ -15,20 +15,20 @@ export default function Home() {
 
   useEffect(() => {
 
-    auctionService.getAuctionsSortedLimited("highestBid", -1, 5).then(response => {
+    auctionService.getAuctionByHighestBidAsc().then(response => {      
       
       setAuctionsByBid(response.data)
+      console.log(response)
     })
 
-    auctionService.getAuctionsSortedLimited("endDate", -1, 5).then(response => {
-      
+    auctionService.getAuctionsByPurchasePriceAsc().then(response => {      
       setAuctionsByTime(response.data)
+      console.log(response)
     })
     
-    auctionService.getAuctionsSortedLimited("purchasePrice", 1, 5).then(response => {
-      
-      
+    auctionService.getAuctionsByTimeRemainingAsc().then(response => {          
       setAuctionsByPurchase(response.data)
+      console.log(response)
     })
 
   }, [])
@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <>
       <Jumbo />
-      <Explore auctions={auctionsByPurchase} title={"Most Expensive"}/>
+      <Explore auctions={auctionsByPurchase} title={"Cheapest PurchasePrice"}/>
       <Explore auctions={auctionsByTime} title={"Ending Soon..."} />
       <Explore auctions={auctionsByBid} title={"Cheapest Bids here"} />
     </>

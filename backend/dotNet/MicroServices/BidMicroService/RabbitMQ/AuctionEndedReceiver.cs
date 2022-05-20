@@ -22,7 +22,7 @@ namespace BidMicroService.RabbitMQ
                 _channel.QueueDeclare(
                     queue: "auctionEndedBids",
                     durable: false,
-                    autoDelete: true,
+                    autoDelete: false,
                     arguments: null,
                     exclusive: false
                     );

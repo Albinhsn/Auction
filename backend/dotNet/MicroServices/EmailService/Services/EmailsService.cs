@@ -28,6 +28,10 @@ namespace EmailService
         {
             _collection.InsertOne(user);
         }
+        public void UpdateUser(User user)
+        {
+            _collection.ReplaceOneAsync(x => x.Id == user.Id, user);
+        }
         public async void sendWonAuctionEmail(Auction auction)
         {
             User user = await _collection.Find(x => x.Id == auction.UserId).FirstOrDefaultAsync();

@@ -821,7 +821,7 @@ async function doEverything(){
 
             let obj = {
                 _id: bidderIds[i],
-                Username: usersnames[i],
+                Name: usersnames[i],
                 Email: `${usersnames[i]}@gmail.com`,
                 Password: passwords[i],
                 Favorites: favo,

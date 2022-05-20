@@ -30,10 +30,9 @@ namespace AuctionMicroService.Controllers
             return _auctionService.GetUserAuctions(Id).Result;
         }
         [HttpGet("/api/[controller]/user/favorites")]
-        public List<Auction> GetUserFavorites(string Id)
+        public List<Auction> GetUserFavorites(string token)
         {
-            //return _auctionService.GetUserFavorites();
-            return null;
+            return _auctionService.GetFavorites(token).Result;                        
         }
 
 
@@ -58,12 +57,27 @@ namespace AuctionMicroService.Controllers
         {
             return await _auctionService.UpdateAuction(auc, Id);
         }
+        [HttpGet("/api/auction/[controller]/sorted/purchasePrice")]
+        public List<Auction> GetAuctionByPurchasePriceAsc()
+        {
+            return _auctionService.GetCheapestPurchasePrice().Result;
+        }
+        [HttpGet("/api/auction/[controller]/sorted/endDate")]
+        public List<Auction> GetAuctionsByEnddate()
+        {
+            return _auctionService.GetShortestTimeRemaining().Result;
+        }
+        [HttpGet("/api/auction/[controller]/sorted/highestBid")]
+        public List<Auction> GetAuctionsByHighestBidAsc()
+        {
+            return _auctionService.GetCheapestBids().Result;
+        }
 
         [HttpGet("/api/auction/[controller]/sorted/limited")]
         public List<Auction> GetAuctionsSortedLimited([FromQuery] string sort, [FromQuery] int direction, [FromQuery] int limitedBy)
         {
             
-            return _auctionService.GetAuctionsSortedLimited(sort, direction, limitedBy);
+            return _auctionService.GetAuctionsSortedLimited(sort, direction, limitedBy).Result;
         }
 
         [HttpPut("/api/[controller]/purchase")]

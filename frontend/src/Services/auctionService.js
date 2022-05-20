@@ -26,11 +26,14 @@ class AuctionDataService{
     }
 
     getAuctionByObjectId(_id){
-        return http.get("/auction/objectid", {params: 
-            {
-                _id: _id
-            } 
-        })
+        return this.auctionMicroService.get("/api/Auction/single/auction", {params: {
+            Id: _id
+        }})
+        // return http.get("/auction/objectid", {params: 
+        //     {
+        //         _id: _id
+        //     } 
+        // })
     }
 
     makeBid(token, _id, bid){
@@ -81,8 +84,14 @@ class AuctionDataService{
             }
         })
     }
-    getFavoriteAuctionsById(id){
-        return this.auctionMicroService.get("")
+    getAuctionsByTimeRemainingAsc(){
+        return this.auctionMicroService.get("/api/auction/auction/sorted/endDate")
+    }
+    getAuctionsByPurchasePriceAsc(){
+        return this.auctionMicroService.get("/api/auction/auction/sorted/purchasePrice")
+    }
+    getAuctionByHighestBidAsc(){        
+        return this.auctionMicroService.get("/api/auction/auction/sorted/highestBid")
     }
 
     getUserAuctions(id){

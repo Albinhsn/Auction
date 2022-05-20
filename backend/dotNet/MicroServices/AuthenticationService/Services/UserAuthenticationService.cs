@@ -33,7 +33,7 @@ namespace AuthenticationService.Services
             return jwt;
         }
 
-        public bool AuthenticateJWT(String token)
+        public string AuthenticateJWT(String token)
         {
             return  validateToken(token);  
            
@@ -52,10 +52,9 @@ namespace AuthenticationService.Services
         }
         public async Task<string?> generateToken(AuthenticateUserRequest Req)
         {
-            Console.WriteLine(Req.getUsername());
-            Console.WriteLine(Req.getPassword());
             
-            User user = await _userCollection.Find(x => x.Email == Req.getUsername() && x.Password == Req.getPassword()).FirstOrDefaultAsync();
+            
+            User user = await _userCollection.Find(x => x.Email == Req.Email && x.Password == Req.Password).FirstOrDefaultAsync();
 
             if (user == null)
             {
@@ -67,7 +66,8 @@ namespace AuthenticationService.Services
             {
                 Subject = new ClaimsIdentity(new[] {
                     new Claim("Email", user.Email.ToString()),
-                    new Claim("Password", user.Password.ToString())
+                    new Claim("Password", user.Password.ToString()),
+                    new Claim("_id", user.Id)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -77,7 +77,7 @@ namespace AuthenticationService.Services
             return tokenHandler.WriteToken(token);
         }
 
-        public bool validateToken(string Token)
+        public string validateToken(string Token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_env.Secret);
@@ -93,11 +93,12 @@ namespace AuthenticationService.Services
                 }, out SecurityToken validatedToken);
 
                 var jwt = (JwtSecurityToken)validatedToken;
-                return true;
+                Console.WriteLine(jwt.Claims.First(claim => claim.Type == "Email"));
+                return jwt.Claims.First(claim => claim.Type == "_id").Value;
             }
             catch
             {
-                return false;
+                return null;
             }
         }
         public async void UpdateUser(User user)

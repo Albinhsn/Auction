@@ -15,8 +15,7 @@ export default function MyAuctions({token}){
             navigate("/login")
             return <></>
         }
-        auctionService.getUserAuctions("6246eaaafb49cf2ed543fd5f").then(response => {
-            console.log(response.data)
+        auctionService.getUserAuctions("6246eaaafb49cf2ed543fd5f").then(response => {            
             setAuctions(response.data)
         })        
     }, [])

@@ -11,21 +11,55 @@ namespace UserMicroservice.Services
         private readonly IMongoCollection<User> _userCollection;
         private readonly AccountDeletedProducer _messageDeletedProducer;
         private readonly AccountCreationProducer _messageCreationProducer;
-        private readonly AccountInfoChangedProducer _messageInfoChangedProducer;
+        private readonly AccountUpdatedProducer _messageInfoChangedProducer;
+        private readonly GetIdFromTokenProducer _getUserIdFromTokenProducer;
         public UserService()
         {
+            _getUserIdFromTokenProducer = new ();
+            
             MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Users");
             _messageDeletedProducer = new AccountDeletedProducer();
             _messageCreationProducer = new AccountCreationProducer();   
+            _messageInfoChangedProducer = new AccountUpdatedProducer();
             _userCollection = db.GetCollection<User>("Users");
         }
 
-        public async Task<User> GetUser(string Id)
+        public async Task<User> GetUser(string token)
         {
+            string Id = _getUserIdFromTokenProducer.GetIdFromToken(token);
+            Console.WriteLine(Id);
             return await _userCollection.Find(x => x.Id == Id).FirstOrDefaultAsync();
         }
 
+        public async Task<User> UpdatePassword(string token, string password, string matchingpassword)
+        {
+            string Id = _getUserIdFromTokenProducer.GetIdFromToken(token);
+            var filter = Builders<User>.Filter.Where(x => x.Id == Id);
+            var options = new FindOneAndReplaceOptions<User>
+            {
+                ReturnDocument = ReturnDocument.After
+            };
+            User user = await _userCollection.Find(x => x.Id == Id).FirstOrDefaultAsync();
+            user.Password = password;
+            _messageInfoChangedProducer.sendAccountUpdatedMessage(user);
+            return await _userCollection.FindOneAndReplaceAsync<User>(x => x.Id == Id, user, options);            
+        }
+        public async Task<User> UpdateEmail(string token, string email, string matchingEmail)
+        {
+            
+            string Id = _getUserIdFromTokenProducer.GetIdFromToken(token);
+            var filter = Builders<User>.Filter.Where(x => x.Id == Id);
+            var options = new FindOneAndReplaceOptions<User>
+            {
+                ReturnDocument = ReturnDocument.After
+            };
+            User user = await _userCollection.Find(x => x.Id == Id).FirstOrDefaultAsync();
+            user.Email = email;
+            user = await _userCollection.FindOneAndReplaceAsync<User>(x => x.Id == Id, user, options);
+            _messageInfoChangedProducer.sendAccountUpdatedMessage(user);
+            return user;
+        }
         public  User CreateUser(UserPostModel user)
         {
             try
@@ -44,6 +78,29 @@ namespace UserMicroservice.Services
                 return null;
             }                     
         }
+
+        public async Task<List<string>> GetFavorites(string Id)
+        {
+            User user = await _userCollection.Find(x => x.Id == Id).FirstOrDefaultAsync();
+            Console.WriteLine(user.Favorites);
+            return user.Favorites;
+        }
+
+        public async Task<bool> IsFavorite(string auctionId, string token)
+        {
+            string id = _getUserIdFromTokenProducer.GetIdFromToken(token);
+            User user = await _userCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            List<string> favorites = user.Favorites;
+            if (favorites.Contains(auctionId))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public async Task<bool> UpdateUser(User user, string Id)
         {                       
             var filter = Builders<User>.Filter.Where(x => x.Id == Id);

@@ -11,7 +11,7 @@ class authService {
 
     validateLogin = (username, password) => {
         return this.authMicroService.post("/api/UserAuthentication/AuthenticateUser",{
-            Username: username,
+            Email: username,
             Password: password
         })
     }

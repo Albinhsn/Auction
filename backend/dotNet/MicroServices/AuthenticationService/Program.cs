@@ -27,7 +27,8 @@ builder.Services.AddCors(options =>
 });
 AccountUpdatedReceiver _messageReceiver = new(new UserAuthenticationService());
 AccountCreatedReceiver _messageCreatedReceiver = new(new UserAuthenticationService());  
-AccountDeletedReceiver _messageDeletedReceiver = new(new UserAuthenticationService());  
+AccountDeletedReceiver _messageDeletedReceiver = new(new UserAuthenticationService());
+new GetIdFromTokenReceiver(new UserAuthenticationService());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

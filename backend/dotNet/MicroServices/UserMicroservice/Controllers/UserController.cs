@@ -27,27 +27,39 @@ namespace UserMicroservice.Controllers
         }
 
         [HttpGet]
-        public User GetUser(string Id)
+        public User GetUser(string token)
         {
-            return _userService.GetUser(Id).Result;
+            Console.WriteLine(token);
+            return _userService.GetUser(token).Result;
         }
 
-        [HttpPut]
-        public bool UpdateUser([FromBody] User user, string Id)
-        {
-            
-            return _userService.UpdateUser(user, Id).Result;
+        [HttpPut("/api/[controller]/password")]
+        public User UpdatePassword(string token, string password, string matchingPassword)
+        {            
+            return _userService.UpdatePassword(token, password, matchingPassword).Result;
         }
+        [HttpPut("/api/[controller]/email")]
+        public User UpdateEmail(string token, string email, string matchingEmail)
+        {
+            return _userService.UpdateEmail(token, email, matchingEmail).Result;
+        }
+
+        
 
         [HttpDelete]
         public void  DeleteUser(string Id)
         {
             _userService.DeleteUser(Id);
         }
-        [HttpGet("/api/user/[controller]/name")]
+        [HttpGet("/api/[controller]/name")]
         public string GetUserName(string Id)
         {
             return _userService.GetUserName(Id).Result;
+        }
+        [HttpGet("/api/[controller]/favorite")]
+        public bool IsFavorite(string auctionId, string token)
+        {
+            return _userService.IsFavorite(auctionId, token).Result;
         }
     }
 }

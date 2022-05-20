@@ -14,6 +14,7 @@ GetAllAuctionHighestBidReceiver messageHighestBidReceiver = new GetAllAuctionHig
 HigestBidFromListOfIdsReceiver higestBidFromListOfIdsReceiver = new HigestBidFromListOfIdsReceiver(new BidService());
 AuctionEndedReceiver messageEndedReceiver = new AuctionEndedReceiver(new BidService()); 
 GetAuctionBidsReceiver messageAuctionBidsReceiver = new GetAuctionBidsReceiver(new BidService());
+new GetLowestHighestBidLimitedReceiver(new BidService());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

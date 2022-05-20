@@ -22,8 +22,8 @@ builder.Configuration.GetSection("EmailConfiguration").Bind(myOptions);
 new AccountCreatedReceiver(new EmailsService(myOptions));
 new AccountDeletedReceiver(new EmailsService(myOptions));
 new AuctionEndedReceiver(new EmailsService(myOptions));
-new MadePurchaseReceiver(new EmailsService(myOptions)); 
-
+new MadePurchaseReceiver(new EmailsService(myOptions));
+new AccountUpdatedReceiver(new EmailsService(myOptions));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

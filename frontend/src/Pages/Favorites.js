@@ -7,11 +7,13 @@ export default function Favorites({token}) {
     
     const [auctions, setAuctions] = useState()
     const navigate = useNavigate()
+    
     useEffect(() => {
         if(token && !auctions){
-            
-            auctionService.getFavoritesById(token).then(response => {
+                  
+            auctionService.getUserFavorites(token).then(response => {
                 setAuctions(response.data)
+                
             }).catch(function(error){
                 if(error.response){
                     alert(error.response.data.message)

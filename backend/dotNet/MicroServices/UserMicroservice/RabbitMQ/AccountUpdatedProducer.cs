@@ -5,32 +5,34 @@ using UserMicroservice.Models;
 
 namespace UserMicroservice.RabbitMQ
 {
-    public class AccountInfoChangedProducer
+    public class AccountUpdatedProducer
     {
         IModel _channel;
-        public AccountInfoChangedProducer()
+        public AccountUpdatedProducer()
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
             var connection = factory.CreateConnection();
 
             _channel = connection.CreateModel();
             {
-                _channel.QueueDeclare(
-                   queue: "accountUpdated",
-                   durable: false,
-                   autoDelete: true,
-                   arguments: null,
-                   exclusive: false
+                _channel.ExchangeDeclare(
+                   exchange: "accountUpdated",
+                   type: ExchangeType.Fanout                                                         
                    );
             }
         }
         public void sendAccountUpdatedMessage(User user)
-        {            
-            string message = JsonSerializer.Serialize<User>(user);
+        {
+            AuthUser a = new();
+            a.Id = user.Id;
+            a.Email = user.Email;
+            a.Password = user.Password;
+            string message = JsonSerializer.Serialize(a);
+            
             var body = Encoding.UTF8.GetBytes(message);
             _channel.BasicPublish(
-                         exchange: "",
-                         routingKey: "accountUpdated",
+                         exchange: "accountUpdated",
+                         routingKey: "",
                          basicProperties: null,
                          body: body
                      );

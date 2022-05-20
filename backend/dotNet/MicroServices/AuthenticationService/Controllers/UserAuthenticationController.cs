@@ -35,9 +35,9 @@ namespace AuthenticationService.Controllers
             string token = Request.Headers["Authorization"];
             token = token.Split().Last();
             Console.WriteLine(token);   
-            bool response = _userAuthenticationService.AuthenticateJWT(token);
+            string response = _userAuthenticationService.AuthenticateJWT(token);
 
-            if(response == false)
+            if(response == null)
             {
                 return BadRequest(new { message = "Invalid token" });
             }

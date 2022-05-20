@@ -2,19 +2,20 @@ import {useState, useEffect, React} from 'react'
 import { useNavigate } from 'react-router'
 import ChangeProfileInfoForm from '../Components/Forms/ChangeProfileInfoForm'
 import userService from '../Services/userService'
-
+import ProfileInfo from '../Components/Profile/ProfileInfo'
 export default function Profile({token}) {
   
   const [user, setUser] = useState()
   const navigate = useNavigate()
-  
+  console.log(user)
   useEffect(() => {
     if(!token){
       navigate("/login")
     }
-    userService.getUserFromObjectId(token).then(response => {
+    userService.getUserFromToken(token).then(response => {
+      console.log(response.data)
       setUser(response.data)
-      console.log(response)
+      
     })
 
   }, [])
@@ -29,18 +30,7 @@ export default function Profile({token}) {
             <div className='col-8 bg-light'>              
               <div className='row mt-5'>
                 <div className='col-5 bg-light'>
-                  <p className='fw-bold'>
-                    Användarnamn
-                  </p>
-                  <p>
-                    {user.username}
-                  </p>
-                  <p className='fw-bold'>
-                    Email
-                  </p>
-                  <p>
-                    {user.email}
-                  </p>
+                  <ProfileInfo user={user}/>
                 </div>
 
                 <ChangeProfileInfoForm token={token} user={user} setUser={setUser}/>

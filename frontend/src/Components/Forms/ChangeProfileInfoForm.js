@@ -14,6 +14,7 @@ export default function ChangeProfileInfoForm({token, user, setUser}) {
     })
 
     const changePassword = () => {
+        console.log("GOT")
         userService.changePassword(token, formInput.password, formInput.matchingPassword).then(response=>{
             console.log(response)
         }).catch(function (error) {
@@ -33,11 +34,13 @@ export default function ChangeProfileInfoForm({token, user, setUser}) {
     }
 
     const changeEmail = () => {
+        console.log(formInput.email, formInput.matchingEmail, token)
         userService.changeEmail(token, formInput.email, formInput.matchingEmail).then(response => {
-            setUser({...user, email: formInput.email})
-            console.log(user)
+            setUser(response.data)            
+            console.log(response.data)
         }).catch(function(error){
             if(error.response){
+                console.log(error.response)
                 alert(error.response.data.message)
             }
         })

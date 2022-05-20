@@ -12,18 +12,26 @@ namespace AuctionMicroService.Services
     {
 
         private readonly IMongoCollection<Auction> _auctionCollection;
-        private readonly GetAuctionBidsProducer _messageProducer;
+        private readonly GetAuctionBidsProducer _getAuctionBidsProducer;
         private readonly AllAuctionHighestBidProducer _allAuctionHighestBidProducer;
         private readonly AuctionEndedProducer _auctionEndedProducer;
         private readonly AuctionPurchasedProducer _auctionPurchasedProducer;        
         private readonly HighestBidFromListOfIdsProducer _highestBidFromListOfIdsProducer;
         private readonly AuctionCreatedProducer _auctionCreatedProducer;
-
-        public AuctionService(GetAuctionBidsProducer messageProducer, HighestBidFromListOfIdsProducer highestBidFromListOfIdsProducer, AuctionCreatedProducer auctionCreatedProducer)
+        private readonly GetIdFromTokenProducer _getIdFromTokenProducer;
+        private readonly GetFavoritesFromUserProducer _getFavoritesFromUserProducer;
+        private readonly GetLowestHighestBidFromListOfIds _getLowestHighestBidFromListOfIdsProducer;
+        public AuctionService()
         {
-            _messageProducer = messageProducer;
-            _highestBidFromListOfIdsProducer = highestBidFromListOfIdsProducer;
-            _auctionCreatedProducer = auctionCreatedProducer;
+            _getAuctionBidsProducer = new();
+            _getAuctionBidsProducer = new();
+            _allAuctionHighestBidProducer = new();            
+            _getFavoritesFromUserProducer = new();
+            _getIdFromTokenProducer = new();            
+            _highestBidFromListOfIdsProducer = new();
+            _auctionCreatedProducer = new();
+            _getLowestHighestBidFromListOfIdsProducer = new();
+
             MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Auctions");
 
@@ -51,8 +59,7 @@ namespace AuctionMicroService.Services
             foreach (Auction auction in userAuctions)
             {
                 Ids.Add(auction.Id);
-            }
-            
+            }            
             List<HighestBid> highestBids = _highestBidFromListOfIdsProducer.GetHighestBidFromListOfIds(Ids);
             for(var i = 0; i<userAuctions.Count; i++)
             {
@@ -82,15 +89,20 @@ namespace AuctionMicroService.Services
             }
             return auctions;
         }
-        public async Task<List<Auction>> GetFavorites(string Id)
+        public async Task<List<Auction>> GetFavorites(string token)
         {
-            return null;
+            string id = _getIdFromTokenProducer.GetIdFromToken(token);
+            Console.WriteLine(id);
+            List<string> favorites = _getFavoritesFromUserProducer.GetFavoritesFromUser(id);
+            Console.WriteLine(favorites);
+            return await _auctionCollection.Find(x => favorites.Contains(x.Id)).ToListAsync();
+            
         }
         public async Task<Auction> GetAuction(string id)
         {
             
             Auction auc = await _auctionCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-            List<Bid> bids = _messageProducer.GetAuctionBids(id.ToString());
+            List<Bid> bids = _getAuctionBidsProducer.GetAuctionBids(id.ToString());
             Console.WriteLine(JsonSerializer.Serialize<List<Bid>>(bids));
             auc.Bids = bids;
             return auc;
@@ -148,16 +160,73 @@ namespace AuctionMicroService.Services
                 return false;
             }
         }
+        public async Task<List<Auction>> GetCheapestPurchasePrice()
+        {
+            List<Auction> results = await _auctionCollection.Aggregate()
+                .Match(x => x.State != "slut" && x.PurchasePrice > 0)
+                .Sort("{purchasePrice: 1}")
+                .Limit(5)
+                .ToListAsync();
+            return results;
+        }
 
-        public List<Auction> GetAuctionsSortedLimited(string sort, int direction, int limitedBy)
+        public async Task<List<Auction>> GetCheapestBids()
+        {
+            List<Auction> auctions = await _auctionCollection.Aggregate()
+                .Match(x => x.State != "Slut" && x.MinimumBid > 0).ToListAsync();
+            List<string> Ids = new List<string>();
+            foreach (var au in auctions)
+            {
+                Ids.Add(au.Id);
+            }
+            List<HighestBid> highestBids = _getLowestHighestBidFromListOfIdsProducer.GetLowestHighestBidsLimited(Ids);
+
+
+            List<Auction> miniAuctions = new List<Auction>();
+            for (var i = 0; i < auctions.Count; i++)
+            {
+                HighestBid highestBid = highestBids.Find(x => x.Id == auctions[i].Id);
+                
+                if (highestBid != null )
+                {
+                    if(highestBid.Amount > 0)
+                    {
+                        auctions[i].HighestBid = highestBid.Amount;
+                        miniAuctions.Add(auctions[i]);
+                    }                    
+                }               
+            }
+            List<Auction> results = miniAuctions.OrderBy(x => x.HighestBid).ToList();
+            if(results.Count > 5)
+            {
+                return results.Take(5).ToList();
+            }
+            return results;            
+        }
+
+        public async Task<List<Auction>> GetShortestTimeRemaining()
+        {
+            List<Auction> auctions = await _auctionCollection.Aggregate()
+                .Match(x => x.State != "Slut")
+                .Sort("{EndDate: 1}")
+                .Limit(5)
+                .ToListAsync();
+            foreach(var auc in auctions)
+            {
+                Console.WriteLine(auc.EndDate);
+            }
+            return auctions;
+        }
+        public async Task<List<Auction>> GetAuctionsSortedLimited(string sort, int direction, int limitedBy)
         {           
-            List<Auction> results = _auctionCollection.Aggregate()
+            List<Auction> results = await _auctionCollection.Aggregate()
+                .Match(x => x.State != "Slut")
                 .Sort(new BsonDocument
                     {
                         { sort, direction}
                     }
                 )
-                .Limit(limitedBy).ToList();
+                .Limit(limitedBy).ToListAsync();
             return results;
         }
     }

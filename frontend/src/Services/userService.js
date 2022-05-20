@@ -27,18 +27,28 @@ class userDataService{
     }
 
     getNameFromObjectId(_id){
-        return http.get("/user/id", {
-            params: {_id: _id}
+        // return http.get("/user/id", {
+        //     params: {_id: _id}
+        // })
+        return this.userMicroService.get("/api/user/name", {
+            params:{
+                Id: _id
+            }
         })
     }
 
     checkFavorite(token, auctionId){
-        
-        return http.get("/user/favorite", 
-        {
-            params:{ token: token, auctionId: auctionId },
-            headers: { Authorization: `Bearer ${token}` }
-        })
+        return this.userMicroService.get("/api/user/favorite", {
+            params: {
+                token: token,
+                auctionId: auctionId
+            }
+        }) 
+        // return http.get("/user/favorite", 
+        // {
+        //     params:{ token: token, auctionId: auctionId },
+        //     headers: { Authorization: `Bearer ${token}` }
+        // })
     }
 
     updateFavorite(token, auctionId){
@@ -64,17 +74,35 @@ class userDataService{
     }
 
     changeEmail(token, email, matchingEmail){
-        return http.get("/registration/email", {
-            params: { token: token, email: email, matchingEmail: matchingEmail },
-            headers: { Authorization: `Bearer ${token}` }
-        })
+        
+        return this.userMicroService.put("/api/user/email", null,
+        {
+            params:
+            {            
+                token: token,
+                email: email,
+                matchingEmail: matchingEmail            
+            }
+        }
+    )
+        // return http.get("/registration/email", {
+        //     params: { token: token, email: email, matchingEmail: matchingEmail },
+        //     headers: { Authorization: `Bearer ${token}` }
+        // })
     }
     
     changePassword(token, password, matchingPassword){
-        return http.get("/registration/password", {
-            params: {token: token, password: password, matchingPassword: matchingPassword},
-            headers: { Authorization: `Bearer ${token}` }
+        return this.userMicroService.put("/api/user/password",null, {
+            params:{
+                token: token,
+                password: password,
+                matchingPassword: matchingPassword
+            }
         })
+        // return http.get("/registration/password", {
+        //     params: {token: token, password: password, matchingPassword: matchingPassword},
+        //     headers: { Authorization: `Bearer ${token}` }
+        // })
     }
 
     updateKeepMePosted(token, auctionId){
@@ -87,6 +115,13 @@ class userDataService{
     }
     getUserFromObjectId(id){
         return this.userMicroService.get("/api/user/user")
+    }
+    getUserFromToken(token){
+        return this.userMicroService.get("/api/user/User", {
+            params: {
+                token: token
+            }
+        })
     }
 }
 

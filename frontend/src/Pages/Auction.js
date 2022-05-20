@@ -46,7 +46,7 @@ export default function Auction({token}) {
     if (!auctionId) return <></>
     if(Object.keys(auction).length === 0){
       auctionService.getAuctionByObjectId(auctionId).then(response=> {
-        
+        console.log(response)
         setAuction(response.data)
         let images = []
         response.data.images.map(image => {

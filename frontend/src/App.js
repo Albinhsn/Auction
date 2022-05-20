@@ -1,3 +1,11 @@
+// 7151 - Postage
+// 7266 - Bid
+// 7057 - Email
+// 7279 - User
+// 7157 - Watchlist
+// 7292 - Auth
+// 7141 - Image
+// 7086 - Auction
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -25,12 +33,13 @@ function App() {
 
   const [token, setToken] = useState()
 
-
+  // console.log(token)
   useEffect(() => {
     
     if(!token){
       try {
         setToken(JSON.parse(localStorage.getItem("access_token")))
+        
       } catch (error) {
         console.log(error)
       }

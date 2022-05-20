@@ -39,6 +39,29 @@ namespace BidMicroService.Controllers
           
             
         }
+
+        public async Task<List<HighestBid>> GetLowestHighestBidFromListOfIds(List<string>Ids)
+        {
+            var results = await _bidCollection.Aggregate()
+                .Match(Builders<Bid>.Filter.In(b => b.AuctionId, Ids)
+                ).Group(x => x.AuctionId,
+                    y => new {
+                        Id = y.Key,
+                        Amount = y.Min(a => (int)a.Amount),
+                    })
+                .ToListAsync();
+            List<HighestBid> highestBids = new List<HighestBid>();
+
+            foreach (var result in results)
+            {
+                HighestBid highestBid = new();                
+                highestBid.Id = result.Id;
+                highestBid.Amount = result.Amount;
+                highestBids.Add(highestBid);
+
+            }
+            return highestBids;
+        }
         public async Task<List<HighestBid>> GetHighestBidFromListOfIds(List<string>Ids)
         {
             Console.WriteLine(Ids);

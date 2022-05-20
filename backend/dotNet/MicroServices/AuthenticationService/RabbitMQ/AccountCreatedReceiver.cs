@@ -50,8 +50,8 @@ namespace AuthenticationService.RabbitMQ
         {
             Console.WriteLine(message);
 
-            UserStringId? result = JsonSerializer.Deserialize<UserStringId>(message);
-            User user = new(result.Id, result.Email, result.Password);
+            User user = JsonSerializer.Deserialize<User>(message);
+            
             try
             {
 

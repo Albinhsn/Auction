@@ -10,9 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<AuctionService>();
-builder.Services.AddSingleton<GetAuctionBidsProducer>();
-builder.Services.AddSingleton<HighestBidFromListOfIdsProducer>();
-builder.Services.AddSingleton<AuctionCreatedProducer>();
+builder.Services.AddSingleton<AuctionEndedProducer>();
+builder.Services.AddSingleton<AuctionPurchasedProducer>();
+new AuctionPurchasedProducer(new AuctionService());
+new AuctionEndedProducer(new AuctionService());
+
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
