@@ -9,9 +9,9 @@ namespace EmailService.RabbitMQ
     public class AuctionEndedReceiver
     {
 
-        EmailService _emailService;
+        EmailsService _emailService;
         IModel _channel;
-        public AuctionEndedReceiver(EmailService emailService)
+        public AuctionEndedReceiver(EmailsService emailService)
         {
             _emailService = emailService;
             var factory = new ConnectionFactory() { HostName = "localhost" };
@@ -19,7 +19,7 @@ namespace EmailService.RabbitMQ
             _channel = connection.CreateModel();
             {
                 _channel.QueueDeclare(
-                    queue: "accountEndedBids",
+                    queue: "accountEndedEmail",
                     durable: false,
                     autoDelete: true,
                     arguments: null,
@@ -34,7 +34,7 @@ namespace EmailService.RabbitMQ
 
                 };
                 _channel.BasicConsume(
-                    queue: "auctionEndedBids",
+                    queue: "auctionEndedEmail",
                     autoAck: true,
                     consumer: consumer
                     );
@@ -43,7 +43,9 @@ namespace EmailService.RabbitMQ
         }
         public void auctionEnded(string message)
         {
-            HighestBid bid = JsonSerializer.Deserialize<HighestBid>(message);
+            Auction bid = JsonSerializer.Deserialize<Auction>(message);
+            _emailService.sendWonAuctionEmail(bid);
+            
         }
     }
 }

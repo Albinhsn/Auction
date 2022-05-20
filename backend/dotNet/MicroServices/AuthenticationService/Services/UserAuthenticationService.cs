@@ -47,7 +47,7 @@ namespace AuthenticationService.Services
         
         public void DeleteUser(string Id)
         {
-            _userCollection.DeleteOne(x => x.Id == new ObjectId(Id));
+            _userCollection.DeleteOne(x => x.Id == Id);
         }
         public async Task<string?> generateToken(AuthenticateUserRequest Req)
         {

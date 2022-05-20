@@ -29,7 +29,7 @@ namespace UserMicroservice.Controllers
         [HttpGet]
         public User GetUser(string Id)
         {
-            return _userService.GetUser(new ObjectId(Id)).Result;
+            return _userService.GetUser(Id).Result;
         }
 
         [HttpPut]
@@ -40,15 +40,14 @@ namespace UserMicroservice.Controllers
         }
 
         [HttpDelete]
-        public bool  DeleteUser(string Id)
+        public void  DeleteUser(string Id)
         {
-
-            return _userService.DeleteUser(new ObjectId(Id));
+            _userService.DeleteUser(Id);
         }
         [HttpGet("/api/user/[controller]/name")]
         public string GetUserName(string Id)
         {
-            return _userService.GetUserName(new ObjectId(Id)).Result;
+            return _userService.GetUserName(Id).Result;
         }
     }
 }

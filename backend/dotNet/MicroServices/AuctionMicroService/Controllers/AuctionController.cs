@@ -47,7 +47,7 @@ namespace AuctionMicroService.Controllers
         [HttpGet("/api/[controller]/single/auction")]
         public async Task<Auction> getAuction(string id)
         {
-            return await _auctionService.GetAuction(new ObjectId(id));
+            return await _auctionService.GetAuction(id);
         }
 
 

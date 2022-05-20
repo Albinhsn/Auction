@@ -20,7 +20,7 @@ namespace BidMicroService.RabbitMQ
             _channel = connection.CreateModel();
             {
                 _channel.QueueDeclare(
-                    queue: "accountEndedBids",
+                    queue: "auctionEndedBids",
                     durable: false,
                     autoDelete: true,
                     arguments: null,
@@ -43,8 +43,8 @@ namespace BidMicroService.RabbitMQ
             }
             _channelEmail = connection.CreateModel();
             {
-                _channel.QueueDeclare(
-                    queue: "auctionEndedBids",
+                _channelEmail.QueueDeclare(
+                    queue: "auctionEndedEmail",
                     durable: false,
                     autoDelete: false,
                     arguments: null,

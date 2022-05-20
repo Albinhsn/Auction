@@ -1,3 +1,4 @@
+using ImageMicroservice.RabbitMQ;
 using ImageMicroservice.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ImageService>();
 var app = builder.Build();
-
+new AuctionDeletedReceiver();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

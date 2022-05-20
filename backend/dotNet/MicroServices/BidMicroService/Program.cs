@@ -10,8 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<BidService>();
-MessageReceiver messageReceiver = new MessageReceiver(new BidService());
+GetAllAuctionHighestBidReceiver messageHighestBidReceiver = new GetAllAuctionHighestBidReceiver(new BidService());
 HigestBidFromListOfIdsReceiver higestBidFromListOfIdsReceiver = new HigestBidFromListOfIdsReceiver(new BidService());
+AuctionEndedReceiver messageEndedReceiver = new AuctionEndedReceiver(new BidService()); 
+GetAuctionBidsReceiver messageAuctionBidsReceiver = new GetAuctionBidsReceiver(new BidService());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

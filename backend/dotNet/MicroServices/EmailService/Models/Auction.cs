@@ -1,11 +1,16 @@
-﻿namespace EmailService
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace EmailService
 {
     public class Auction
     {
+        
         public string AuctionName { get; set; }
-        public string Email { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string UserId { get; set; }
         public int Price { get; set; }
-        public string UserName { get; set; }
+        
 
         
     }

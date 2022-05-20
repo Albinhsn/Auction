@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<AuctionService>();
-builder.Services.AddSingleton<MessageProducer>();
+builder.Services.AddSingleton<GetAuctionBidsProducer>();
 builder.Services.AddSingleton<HighestBidFromListOfIdsProducer>();
 var app = builder.Build();
 

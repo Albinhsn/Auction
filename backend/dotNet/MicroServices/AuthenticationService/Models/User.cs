@@ -1,15 +1,16 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace AuthenticationService.Models
 {
     public class User
     {
-
-        public ObjectId Id;
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id;
         public string Email;
         public string Password;
 
-        public User(ObjectId i, string e, string p)
+        public User(string i, string e, string p)
         {
             Id = i;
             Email = e;

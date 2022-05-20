@@ -10,12 +10,12 @@ namespace EmailService.Controllers
     public class EmailController : ControllerBase
     {
 
-        private readonly EmailService _emailService;
+        private readonly EmailsService _emailService;
 
-        public EmailController(EmailService emailService) =>
+        public EmailController(EmailsService emailService) =>
             _emailService = emailService;
 
-        [HttpPost]
+        [HttpPost("/api/[controller]/won")]
         public void WonAuction(Auction auction)
         {
             
@@ -23,33 +23,33 @@ namespace EmailService.Controllers
             
         }
 
-        [HttpPost]
+        [HttpPost("/api/[controller]/bid")]
         public void MadeBid(Auction auction)
         {
             _emailService.sendMadeBidEmail(auction);
 
         }
 
-        [HttpPost]
+        [HttpPost("/api/[controller]/purchase")]
         public void MadePurchase(Auction auction)
         {
             _emailService.sendPurchaseMadeEmail(auction);
 
         }
 
-        [HttpPost]
+        [HttpPost("/api/[controller]/watchlist/bid")]
         public void WatchlistBidMade(Auction auction)
         {
             _emailService.sendWatchlistBidMadeEmail(auction);
 
         }
-        [HttpPost]
+        [HttpPost("/api/[controller]/watchlist/time")]
         public void WatchlistTimeRemaining(Auction auction)
         {
             _emailService.sendWatchlistTimeRemainingMadeEmail(auction);
 
         }
-        [HttpPost]
+        [HttpPost("/api/[controller]/sold")]
         public void SoldAuction(Auction auction)
         {
             _emailService.sendSoldAuctionEmail(auction);
