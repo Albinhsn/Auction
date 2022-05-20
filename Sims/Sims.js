@@ -656,6 +656,8 @@ async function doEverything(){
     let auctions = database.collection("Bids")
     let result = auctions.insertMany(bids)
 
+
+
     //Auction sims
     let C = []
     //50 current 50 sold
@@ -741,6 +743,24 @@ async function doEverything(){
     database = client.db("Auctions")
     auctions = database.collection("Auctions")
     result = auctions.insertMany(C)
+
+    let postages = []
+    let postagePrices = [39, 79, 129]
+    for(let i = 0; i<100; i++){
+        
+        let postage = {
+            AuctionId: auctionIds[i],
+            Postage:   postagePrices[Math.floor(Math.random() * postagePrices.length)] 
+        }
+        postages.push(postage)
+    }
+
+    postageDatabse = client.db("Postage")
+    postageCollection = postageDatabse.collection("Auctions")
+    result = postageCollection.insertMany(postages)
+
+
+
 
     //Auth sims
     const { hash } = require('bcrypt');

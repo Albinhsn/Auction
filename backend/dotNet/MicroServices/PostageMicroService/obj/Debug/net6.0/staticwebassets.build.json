@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "XLKre/aVowATnjPwzUxdjaV4VPbAfJ3tTPb6nDxvPQs=",
+  "Source": "PostageMicroService",
+  "BasePath": "_content/PostageMicroService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
