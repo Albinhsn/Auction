@@ -97,11 +97,8 @@ namespace AuctionMicroService.Services
         public Auction CreateAuction(AuctionPostModel auc, int volume, int weight)
         {
             //TODO Check valid Auction
-            Auction newAuc = new();            
-            ObjectId s = new ObjectId("6286a84ba99e020ab15b645e");
-            Console.WriteLine(s.ToString());
-            newAuc.Id = s.ToString();
-            Console.WriteLine(newAuc.Id);
+            Auction newAuc = new();                        
+            newAuc.Id = ObjectId.GenerateNewId().ToString();            
             newAuc.AuctionType = auc.AuctionType;
             newAuc.Condition = auc.Condition;
             newAuc.Description = auc.Description;
