@@ -1,9 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\AuthenticationService",
-    "\\AuthenticationService\\AuthenticationService"
+    "\\MicroServices",
+    "\\MicroServices\\AuctionMicroService",
+    "\\MicroServices\\AuctionMicroService\\Models",
+    "\\MicroServices\\EmailService",
+    "\\MicroServices\\EmailService\\Controllers",
+    "\\MicroServices\\EmailService\\Models",
+    "\\MicroServices\\PostageMicroService",
+    "\\MicroServices\\PostageMicroService\\Controllers",
+    "\\MicroServices\\PostageMicroService\\Models"
   ],
-  "SelectedNode": "\\AuthenticationService\\AuthenticationService.sln",
+  "SelectedNode": "\\MicroServices\\AuctionMicroService\\Controllers\\AuctionController.cs",
   "PreviewInSolutionExplorer": false
 }
