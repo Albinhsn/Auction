@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj": {
-                "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj"
+              "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj": {
+                "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj"
               }
             }
           }
@@ -75,21 +75,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj": {
+    "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj",
+        "projectUniqueName": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj",
         "projectName": "BidMicroService",
-        "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj",
-        "packagesPath": "C:\\Users\\hart9\\.nuget\\packages\\",
-        "outputPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\obj\\",
+        "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj",
+        "packagesPath": "C:\\Users\\jeppe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hart9\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jeppe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -150,17 +150,17 @@
         }
       }
     },
-    "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj": {
+    "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj",
+        "projectUniqueName": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj",
         "projectName": "EmailService",
-        "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj",
-        "packagesPath": "C:\\Users\\hart9\\.nuget\\packages\\",
-        "outputPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\obj\\",
+        "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj",
+        "packagesPath": "C:\\Users\\jeppe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hart9\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jeppe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -174,11 +174,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj": {
-                "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj"
+              "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj": {
+                "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj"
               },
-              "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj": {
-                "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj"
+              "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj": {
+                "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj"
               }
             }
           }
@@ -228,21 +228,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj": {
+    "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj",
+        "projectUniqueName": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj",
         "projectName": "UserMicroservice",
-        "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj",
-        "packagesPath": "C:\\Users\\hart9\\.nuget\\packages\\",
-        "outputPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\obj\\",
+        "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj",
+        "packagesPath": "C:\\Users\\jeppe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hart9\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jeppe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -307,7 +307,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

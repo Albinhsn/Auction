@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "gj2ioNTd8DO8LvHAJve7DUf9SQMsyBmdSEzSFj8ehMk=",
+  "Hash": "s0od7bT8Rlhvogz0eZ7xv6FGbDf2IBe2ZlEBYRch8Jo=",
   "Source": "AuctionMicroService",
   "BasePath": "_content/AuctionMicroService",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj",
+      "Identity": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj",
       "Version": 2,
       "Source": "BidMicroService",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
@@ -18,7 +18,7 @@
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
     },
     {
-      "Identity": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj",
+      "Identity": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj",
       "Version": 2,
       "Source": "EmailService",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
@@ -29,7 +29,7 @@
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
     },
     {
-      "Identity": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj",
+      "Identity": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj",
       "Version": 2,
       "Source": "UserMicroservice",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",

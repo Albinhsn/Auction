@@ -1624,8 +1624,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj": {
-              "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj"
+            "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj": {
+              "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\EmailService\\EmailService.csproj"
             }
           }
         }

@@ -1,3 +1,4 @@
+using PostageMicroService.RabbitMQ;
 using PostageMicroService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<PostageService>();
-
+new AuctionCreatedReceiver(new PostageService());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

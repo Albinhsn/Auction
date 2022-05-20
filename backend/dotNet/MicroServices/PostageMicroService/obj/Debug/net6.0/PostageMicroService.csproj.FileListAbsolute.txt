@@ -41,3 +41,4 @@ C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\PostageMicr
 C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\PostageMicroService\obj\Debug\net6.0\PostageMicroService.pdb
 C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\PostageMicroService\obj\Debug\net6.0\PostageMicroService.genruntimeconfig.cache
 C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\PostageMicroService\obj\Debug\net6.0\ref\PostageMicroService.dll
+C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\PostageMicroService\bin\Debug\net6.0\RabbitMQ.Client.dll

@@ -7,6 +7,7 @@ namespace AuctionMicroService.Controllers
 {
     [ApiController]
     [Route("/api/auction/[controller]")]
+    
     public class AuctionController : ControllerBase
     {
 
@@ -17,7 +18,7 @@ namespace AuctionMicroService.Controllers
             _auctionService = auctionService;
         }        
 
-        [HttpGet]
+        [HttpGet("/yolo")]
         public List<Auction> GetAll()
         {
             return _auctionService.GetAll().Result;
@@ -30,7 +31,7 @@ namespace AuctionMicroService.Controllers
 
 
 
-        [HttpPost]
+        [HttpPost("/test")]
         public IActionResult PostAuction([FromBody] AuctionPostModel auc)
         {
             try

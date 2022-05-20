@@ -1600,11 +1600,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj": {
-              "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj"
+            "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj": {
+              "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\BidMicroService\\BidMicroService.csproj"
             },
-            "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj": {
-              "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj"
+            "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj": {
+              "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj"
             }
           }
         }
