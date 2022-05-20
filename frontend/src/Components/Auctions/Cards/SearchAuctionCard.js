@@ -25,11 +25,12 @@ export default function SearchAuctionCard({auction, token}){
         
         
     }, [])
-    if(!auction) return <></>    
+    
+    if(!auction || auction.images == null) return <></>    
     return(
        
         <div className='border border-dark'>
-            <Link to={`/auction?auctionId=${auction._id}`} className="link-dark d-flex text-decoration-none">    
+            <Link to={`/auction?auctionId=${auction.id}`} className="link-dark d-flex text-decoration-none">    
                 <img src={imageHelpers.convertToUrl(auction.images[0])} placeholder="" style={{height: "15vh", width: "15vh"}}/>
     
                 <div>
@@ -66,7 +67,7 @@ export default function SearchAuctionCard({auction, token}){
                         <></>}
                     {auction.state === "Pågående" ? 
                     <p className=''>
-                        Bud: {auction.bidHistory.length > 0 ? auction.bidHistory[auction.bidHistory.length - 1].bid : auction.minimumBid} SEK {auction.purchasePrice > 0 ? <>- Köp nu: {auction.purchasePrice} SEK</> : ""} 
+                        Bud: {auction.highestBid > 0 ? auction.highestBid : auction.minimumBid} SEK {auction.purchasePrice > 0 ? <>- Köp nu: {auction.purchasePrice} SEK</> : ""} 
                     </p> 
                     :
                     <p>

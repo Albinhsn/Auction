@@ -1,5 +1,6 @@
 ﻿using AuctionMicroService.Models;
 using AuctionMicroService.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 
@@ -18,7 +19,7 @@ namespace AuctionMicroService.Controllers
             _auctionService = auctionService;
         }        
 
-        [HttpGet("/yolo")]
+        [HttpGet]
         public List<Auction> GetAll()
         {
             return _auctionService.GetAll().Result;
@@ -28,10 +29,15 @@ namespace AuctionMicroService.Controllers
         {
             return _auctionService.GetUserAuctions(Id).Result;
         }
+        [HttpGet("/api/[controller]/user/favorites")]
+        public List<Auction> GetUserFavorites(string Id)
+        {
+            //return _auctionService.GetUserFavorites();
+            return null;
+        }
 
 
-
-        [HttpPost("/test")]
+        [HttpPost]
         public IActionResult PostAuction([FromBody] AuctionPostModel auc, [FromQuery] int weight, [FromQuery] int volume)
         {
                 //AuctionHelpers.ValidateAuction c:

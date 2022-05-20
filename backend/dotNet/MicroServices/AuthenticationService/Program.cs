@@ -13,7 +13,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<UserAuthenticationService>();
 builder.Services.AddSingleton<JWTHelpers>();
-
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000"
+                                              )
+                          .AllowAnyHeader()
+                          .AllowAnyMethod(); 
+                      });
+});
 AccountUpdatedReceiver _messageReceiver = new(new UserAuthenticationService());
 AccountCreatedReceiver _messageCreatedReceiver = new(new UserAuthenticationService());  
 AccountDeletedReceiver _messageDeletedReceiver = new(new UserAuthenticationService());  
@@ -25,7 +36,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(MyAllowSpecificOrigins);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

@@ -6,7 +6,7 @@ import HomepageAuctionCard from '../Auctions/Cards/HomepageAuctionCard'
 export default function Explore({auctions, title}) {
     
 
-
+    
 
     if(auctions === null || auctions.length === 0) return<></>
     

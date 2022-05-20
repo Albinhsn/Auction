@@ -13,11 +13,11 @@ export default function HomepageAuctionCard({ auction}) {
   })
   
   return (
-    <Link to={`/auction?auctionId=${auction._id}`} className="text-decoration-none" key={auction._id}> 
+    <Link to={`/auction?auctionId=${auction.id}`} className="text-decoration-none" key={auction.id}> 
       
       <div className='card text-secondary justify-content-center bg-light mb-5 mx-3' style={{height: "25vh", width: "19vh"}}>
         {auction.name}
-        <img className="card-img-bot img-fluid" style={{height: "12vh"}} src={imageHelpers.convertToUrl(auction.images)} alt={auction.name}/>
+        <img className="card-img-bot img-fluid" style={{height: "12vh"}} src={imageHelpers.convertToUrl(auction.images[0])} alt={auction.name}/>
         <div>
           <TimeRemaining 
             date={date}
@@ -27,7 +27,7 @@ export default function HomepageAuctionCard({ auction}) {
           ?  
             <></>
           : 
-            <p className='mb-0'> Bud : {auction.highestBid}</p>
+            <p className='mb-0'> Bud : {auction.highestBid === 0 ? auction.minimumBid : auction.highestBid}</p>
           }
           {auction.auctionType != "Schweizisk" && auction.purchasePrice != 0 ? 
             <p className='mb-0'>

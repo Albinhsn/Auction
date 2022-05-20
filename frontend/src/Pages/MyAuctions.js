@@ -15,7 +15,8 @@ export default function MyAuctions({token}){
             navigate("/login")
             return <></>
         }
-        auctionService.getUserAuctions(token).then(response => {
+        auctionService.getUserAuctions("6246eaaafb49cf2ed543fd5f").then(response => {
+            console.log(response.data)
             setAuctions(response.data)
         })        
     }, [])
@@ -26,7 +27,7 @@ export default function MyAuctions({token}){
                 {auctions.map(auction => 
                     {                    
                         return(
-                                <Link className='text-decoration-none text-dark pt-3' to={`/auction?auctionId=${auction._id}`}><SearchAuctionCard key={auction._id} auction={auction} token={token}/></Link>
+                                <Link className='text-decoration-none text-dark pt-3' to={`/auction?auctionId=${auction.id}`}><SearchAuctionCard key={auction.id} auction={auction} token={token}/></Link>
                         )
                     }
                 )}

@@ -82,7 +82,10 @@ namespace AuctionMicroService.Services
             }
             return auctions;
         }
-
+        public async Task<List<Auction>> GetFavorites(string Id)
+        {
+            return null;
+        }
         public async Task<Auction> GetAuction(string id)
         {
             

@@ -15,5 +15,5 @@ export const convertFromGallery = (images) => {
 }
 
 export const convertToUrl = (id) => {
-    return `http://localhost:8000/images/image/${id}`
+    return `https://localhost:7141/api/Image/${id}`
 }

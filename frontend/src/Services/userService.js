@@ -1,8 +1,13 @@
 import http from "../http-common";
-
+import axios from 'axios'
 
 class userDataService{
-
+    userMicroService = axios.create({
+        baseURL: "https://localhost:7279",
+        headers: {
+            "Content-type": "application/json"
+        }
+    })
     getAllUsers(){
         return http.get(`/user/users`);
     }
@@ -79,6 +84,9 @@ class userDataService{
                 headers: { Authorization: `Bearer ${token}` }
             }
         )
+    }
+    getUserFromObjectId(id){
+        return this.userMicroService.get("/api/user/user")
     }
 }
 

@@ -11,19 +11,23 @@ export default function Home() {
   const [auctionsByTime, setAuctionsByTime] = useState([]) 
   
 
-
+  
 
   useEffect(() => {
 
-    auctionService.getAuctionsByBidAsc().then(response => {
+    auctionService.getAuctionsSortedLimited("highestBid", -1, 5).then(response => {
+      
       setAuctionsByBid(response.data)
     })
 
-    auctionService.getAuctionsByTimeAsc().then(response => {
+    auctionService.getAuctionsSortedLimited("endDate", -1, 5).then(response => {
+      
       setAuctionsByTime(response.data)
     })
     
-    auctionService.getAuctionsByPurchaseAsc().then(response => {
+    auctionService.getAuctionsSortedLimited("purchasePrice", 1, 5).then(response => {
+      
+      
       setAuctionsByPurchase(response.data)
     })
 
@@ -32,7 +36,7 @@ export default function Home() {
   return (
     <>
       <Jumbo />
-      <Explore auctions={auctionsByPurchase} title={"Cheapest Purchase Now"}/>
+      <Explore auctions={auctionsByPurchase} title={"Most Expensive"}/>
       <Explore auctions={auctionsByTime} title={"Ending Soon..."} />
       <Explore auctions={auctionsByBid} title={"Cheapest Bids here"} />
     </>

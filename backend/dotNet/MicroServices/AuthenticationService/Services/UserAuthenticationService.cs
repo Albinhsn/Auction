@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Org.BouncyCastle.Crypto.Generators;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -53,6 +54,7 @@ namespace AuthenticationService.Services
         {
             Console.WriteLine(Req.getUsername());
             Console.WriteLine(Req.getPassword());
+            
             User user = await _userCollection.Find(x => x.Email == Req.getUsername() && x.Password == Req.getPassword()).FirstOrDefaultAsync();
 
             if (user == null)

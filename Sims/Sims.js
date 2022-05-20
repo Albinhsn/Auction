@@ -597,7 +597,7 @@ const auctionType = ["Engelsk", "Holländsk", "Schweizisk"]
 const uri = "mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 const client = new MongoClient(uri)
-let dbs = ["Users", "Images", "Authentication", "Auctions", "Bids", "Email"]
+let dbs = ["Users", "Images", "Authentication", "Auctions", "Bids", "Email", "Postage"]
 async function doEverything(){
     mongodb.MongoClient.connect(uri, function (error, client) {
     assert.ifError(error);
@@ -769,7 +769,7 @@ async function doEverything(){
 
     const hashPasswords = async () => {
         for (let j = 0; j < passwords.length; j++) {
-            passwords[j] = await hash(passwords[j], 10)
+            // passwords[j] = await hash(passwords[j], 10)
         }
     }
     let authObjs = []

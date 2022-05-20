@@ -13,6 +13,17 @@ builder.Services.AddSingleton<AuctionService>();
 builder.Services.AddSingleton<GetAuctionBidsProducer>();
 builder.Services.AddSingleton<HighestBidFromListOfIdsProducer>();
 builder.Services.AddSingleton<AuctionCreatedProducer>();
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000"
+                                              );
+                      });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,7 +32,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(MyAllowSpecificOrigins);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

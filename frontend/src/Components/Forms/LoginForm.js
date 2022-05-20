@@ -3,29 +3,23 @@ import { Link } from 'react-router-dom'
 import {useNavigate} from 'react-router'
 import {GoogleLogin } from 'react-google-login'
 import userService from '../../Services/userService'
-
+import authService from '../../Services/authService'
 
 export default function LoginForm({setToken}) {
 
 
     const navigation = useNavigate()
     const [loginInfo, setLoginInfo] = useState({
-        email: "",
+        username: "",
         password: ""
     })
     const checkLogin = () => {
-        
-        userService.validateLogin(loginInfo).then(response => {            
+        authService.validateLogin(loginInfo.username, loginInfo.password).then(response => {      
             setToken(response.data)
-            localStorage.setItem("access_token", JSON.stringify(response.data))
-            navigation('/')
-        })
-        .catch(
-            function(error){
-                if(error.response){
-                    alert(error.response.data.message)
-                }
-        })
+            navigation("/")
+    })
+
+       
     } 
 
     const handleFailure = (resp) => {
@@ -33,7 +27,7 @@ export default function LoginForm({setToken}) {
     }
     const handleLogin = (data) => {
         let user = {       
-            email: data.profileObj.email,
+            username: data.profileObj.username,
             username: data.profileObj.givenName,
         }
         console.log(user)
@@ -55,10 +49,10 @@ export default function LoginForm({setToken}) {
             <div className='row card'>
                 <div className="mb-3 card-body">
                     <label className="form-label">
-                        Email address
+                        Email
                         </label>
-                    <input type="email" className="form-control" id="exampleInputEmail1"
-                        onChange={e => setLoginInfo({...loginInfo, email: e.target.value})}
+                    <input type="username" className="form-control" id="exampleInputusername1"
+                        onChange={e => setLoginInfo({...loginInfo, username: e.target.value})}
                     />
                 </div>
                 <div className="mb-3 justify-content-center">

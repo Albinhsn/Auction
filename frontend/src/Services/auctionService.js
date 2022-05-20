@@ -1,8 +1,14 @@
 import http from "../http-common";
-
+import axios from 'axios';
 
 class AuctionDataService{
-
+    auctionMicroService = axios.create({
+        baseURL: "https://localhost:7086",
+        headers: {
+            "Content-type": "application/json"
+        }
+    })
+    
     getAllCurrent(){
         return http.get(`/auction/state`);
     }
@@ -41,19 +47,9 @@ class AuctionDataService{
             headers: { Authorization: `Bearer ${token}` }
         })
     }
-    getFavoritesById(token){
-        return http.get("/auction/favorites", {
-            params: {token: token},
-            headers:{ Authorization: `Bearer ${token}`}
-        })
-    }
+   
 
-    getUserAuctions(token){
-        return http.get("/auction/user", {
-            params:{ token: token },
-            headers:{ Authorization: `Bearer ${token}`}
-        })
-    }
+    
 
     getAuctionsBySearch(search){
         return http.get("/auction/search",{
@@ -75,6 +71,26 @@ class AuctionDataService{
                 headers: { Authorization: `Bearer ${token}` }
             }
         )
+    }
+    getAuctionsSortedLimited(sort, direction, limitedBy){
+        return this.auctionMicroService.get("/api/auction/Auction/sorted/limited",{
+            params: {
+                sort: sort,
+                direction: direction,
+                limitedBy: limitedBy
+            }
+        })
+    }
+    getFavoriteAuctionsById(id){
+        return this.auctionMicroService.get("")
+    }
+
+    getUserAuctions(id){
+        return this.auctionMicroService.get("/api/auction/user/auctions", {
+            params: {
+                Id: id
+            }
+        })
     }
 }
 

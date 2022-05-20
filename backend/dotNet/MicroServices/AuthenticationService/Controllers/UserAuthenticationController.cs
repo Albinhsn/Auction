@@ -17,7 +17,7 @@ namespace AuthenticationService.Controllers
             
 
         [HttpPost("AuthenticateUser")]
-        public async Task<IActionResult?> AuthenticateUser(AuthenticateUserRequest req)
+        public async Task<IActionResult?> AuthenticateUser([FromBody] AuthenticateUserRequest req)
         {
             var response = await _userAuthenticationService.AuthenticateUser(req);
 
