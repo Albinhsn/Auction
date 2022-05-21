@@ -8,11 +8,10 @@ namespace AuctionMicroService.RabbitMQ
     public class AuctionCreatedProducer
     {
         IModel _channel;
-        public AuctionCreatedProducer()
+        public AuctionCreatedProducer(RabbitMQConnection connection)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+            
+            _channel = connection._connection.CreateModel();
             {
                 _channel.ExchangeDeclare(
                     exchange: "auctionCreated",

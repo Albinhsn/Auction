@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserMicroservice", "UserMic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WatchlistMicroservice", "WatchlistMicroservice\WatchlistMicroservice.csproj", "{C26C98FD-062B-41D6-9253-4D8B839569D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostageMicroService", "PostageMicroService\PostageMicroService.csproj", "{A41DA37F-82B3-4DCD-A00B-C94A51268632}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostageMicroService", "PostageMicroService\PostageMicroService.csproj", "{A41DA37F-82B3-4DCD-A00B-C94A51268632}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

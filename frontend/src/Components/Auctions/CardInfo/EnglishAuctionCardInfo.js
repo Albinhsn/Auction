@@ -13,6 +13,7 @@ export default function EnglishAuctionCardInfo({setAuction, auction, token}) {
                 onClick={() => auctionHelpers.handleBid(token, auction, bid, setAuction)}>
                 Lägg bud
             </button>
+            <p className='ms-1 align-self-center m-0'>Frakt: {auction.postage}</p>
             {auction.purchasePrice > 0 ?
                 <button type="button" className='btn btn-warning ms-1' style={{ height: "5vh" }}
                     onClick={() => auctionHelpers.makePurchase(token, auction.id, setAuction)}>

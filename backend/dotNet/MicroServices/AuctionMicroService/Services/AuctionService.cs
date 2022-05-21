@@ -21,17 +21,19 @@ namespace AuctionMicroService.Services
         private readonly GetIdFromTokenProducer _getIdFromTokenProducer;
         private readonly GetFavoritesFromUserProducer _getFavoritesFromUserProducer;
         private readonly GetLowestHighestBidFromListOfIds _getLowestHighestBidFromListOfIdsProducer;
+        private readonly GetPostageProducer _getPostageProducer;    
         public AuctionService()
         {
-            _getAuctionBidsProducer = new();
-            _getAuctionBidsProducer = new();
-            _allAuctionHighestBidProducer = new();            
-            _getFavoritesFromUserProducer = new();
-            _getIdFromTokenProducer = new();            
-            _highestBidFromListOfIdsProducer = new();
-            _auctionCreatedProducer = new();
-            _getLowestHighestBidFromListOfIdsProducer = new();
-
+            RabbitMQConnection connection = new();
+            _getAuctionBidsProducer = new(connection);
+            _getAuctionBidsProducer = new(connection);
+            _allAuctionHighestBidProducer = new(connection);            
+            _getFavoritesFromUserProducer = new(connection);
+            _getIdFromTokenProducer = new(connection);            
+            _highestBidFromListOfIdsProducer = new(connection);
+            _auctionCreatedProducer = new(connection);
+            _getLowestHighestBidFromListOfIdsProducer = new(connection);
+            _getPostageProducer = new(connection);
             MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Auctions");
 
@@ -103,6 +105,8 @@ namespace AuctionMicroService.Services
             
             Auction auc = await _auctionCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
             List<Bid> bids = _getAuctionBidsProducer.GetAuctionBids(id.ToString());
+            int postage = _getPostageProducer.GetPostage(id);
+            auc.Postage = postage;
             Console.WriteLine(JsonSerializer.Serialize<List<Bid>>(bids));
             auc.Bids = bids;
             return auc;

@@ -16,12 +16,11 @@ namespace AuctionMicroService.RabbitMQ
         AuctionService _auctionService;
         private readonly BlockingCollection<String> respQueue = new BlockingCollection<string>();
         private readonly IBasicProperties props;
-        public AuctionPurchasedProducer(AuctionService auctionService)
+        public AuctionPurchasedProducer(AuctionService auctionService, RabbitMQConnection connection)
         {
             _auctionService = auctionService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+            
+            _channel = connection._connection.CreateModel();
             {
                 _channel.QueueDeclare(
                     queue: "auctionEndedBids",
@@ -32,7 +31,7 @@ namespace AuctionMicroService.RabbitMQ
                     );
             }
 
-            _bidChannel = connection.CreateModel();
+            _bidChannel = connection._connection.CreateModel();
             var queueName = _bidChannel.QueueDeclare().QueueName;
             var consumer = new EventingBasicConsumer(_bidChannel);
 

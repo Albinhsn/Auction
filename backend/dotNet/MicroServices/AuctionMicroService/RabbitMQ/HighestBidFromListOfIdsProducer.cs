@@ -13,11 +13,10 @@ namespace AuctionMicroService.RabbitMQ
         private readonly BlockingCollection<String> respQueue = new BlockingCollection<String>();
         private readonly IBasicProperties props;
         IModel _channel;
-        public HighestBidFromListOfIdsProducer()
+        public HighestBidFromListOfIdsProducer(RabbitMQConnection connection)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+            
+            _channel = connection._connection.CreateModel();
             var queueName = _channel.QueueDeclare().QueueName;
             var consumer = new EventingBasicConsumer(_channel);
 

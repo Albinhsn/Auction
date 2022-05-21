@@ -19,7 +19,7 @@ export default function SwissAuction({ auction, token, setAuction}) {
 
   useEffect(() => {
     if(!favorite && token){
-    userService.checkFavorite(token, auction._id).then(response => {
+    userService.checkFavorite(token, auction.id).then(response => {
         if(response.data){
         setFavorite("red")
         }
@@ -30,12 +30,12 @@ export default function SwissAuction({ auction, token, setAuction}) {
     }
 }, [])
 
-
+  console.log(auction)
   if (!auction || !auction.endDate){
     return <></>
   }
 
-
+  
 
   return (
     <div className='d-flex align-items-center'>
@@ -45,7 +45,7 @@ export default function SwissAuction({ auction, token, setAuction}) {
           <AuctionCardTimeInfo auction={auction} />
           <div className='row pt-5'>
             <div className='d-flex align-items-center'>
-              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction._id, favorite, setFavorite)} style={{ color: favorite ? "red" : "black" }} />
+              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction.id, favorite, setFavorite)} style={{ color: favorite ? "red" : "black" }} />
               <button className='btn btn-warning ms-3' type="button" onClick={() => auctionHelpers.watchlistChange(watchlist)}>
                 {watchlist ? "Ta bort påminnelse" : "Lägg till påminnelse"}
               </button>
@@ -54,6 +54,7 @@ export default function SwissAuction({ auction, token, setAuction}) {
               <input type="number" id="bid-input" className=""
                 onChange={e => setBid(e.target.value)}
               />
+              
               <button type="button" className="btn btn-warning ms-3"
                 onClick={() => auctionHelpers.handleBid(token, auction, bid, setAuction)}
               >

@@ -39,7 +39,7 @@ export default function FinishedAuction({auction, favorite, setFavorite, token})
             <p className='fw-bold'>Såld för: {auction.purchasePrice} SEK</p>
             <div className='d-flex align-items-center'>
               <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1"
-                onClick={() => auctionHelpers.favoriteChange(token, auction._id, setFavorite)} style={{ color: favorite ? "red" : "black"}}
+                onClick={() => auctionHelpers.favoriteChange(token, auction.id, setFavorite)} style={{ color: favorite ? "red" : "black"}}
               />
             </div>
           </div>

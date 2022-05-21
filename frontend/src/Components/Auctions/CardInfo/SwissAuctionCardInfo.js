@@ -7,11 +7,14 @@ export default function SwissAuctionCardInfo({token, auction, setAuction}) {
           <input type="number" id="bid-input" className=""
               onChange={e => setBid(e.target.value)}
           />
+          
+            
           <button type="button" className="btn btn-warning ms-3"
               onClick={() => auctionHelpers.handleBid(token, auction, bid, setAuction)}
           >
               Lägg bud
           </button>
+            <p className='ms-1 align-self-center m-0'>Frakt: {auction.postage}</p>
       </div>
   )
 }

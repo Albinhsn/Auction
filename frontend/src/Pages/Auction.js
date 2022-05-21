@@ -27,17 +27,21 @@ export default function Auction({token}) {
   const renderAuctiontype = () => {
     switch(auction.auctionType){
       case "Engelsk":
+        
         return (
+          
           <EnglishAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
         )
-      // case "Holländsk":
-      //   return (
-      //     <DutchAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
-      //   )
-      // case "Schweizisk":
-      //   return(
-      //     <SwissAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
-      //   )
+      case "Holländsk":
+        
+        return (
+          <DutchAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
+        )
+      case "Schweizisk":
+        
+        return(
+          <SwissAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
+        )
     }
   }
   
@@ -118,7 +122,7 @@ export default function Auction({token}) {
               <p className='text-success fs-1 mb-0'>
                 {auction.highestBid}
               </p>
-              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction._id, setFavorite)} style={{ color: favorite ? "red" : "black" }} />
+              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction.id, setFavorite)} style={{ color: favorite ? "red" : "black" }} />
               <button className='btn btn-warning ms-3' type="button"
                 onClick={() => auctionHelpers.reminderChange(token, auction._id, reminder, setReminder)}>
                 {reminder ? "Ta bort påminnelse" : "Lägg till påminnelse"}

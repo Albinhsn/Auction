@@ -1,6 +1,6 @@
 using AuctionMicroService.RabbitMQ;
 using AuctionMicroService.Services;
-
+using RabbitMQ;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,8 +12,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<AuctionService>();
 builder.Services.AddSingleton<AuctionEndedProducer>();
 builder.Services.AddSingleton<AuctionPurchasedProducer>();
-new AuctionPurchasedProducer(new AuctionService());
-new AuctionEndedProducer(new AuctionService());
+builder.Services.AddSingleton<RabbitMQConnection>();
+RabbitMQConnection connection = new();
+new AuctionPurchasedProducer(new AuctionService(), connection);
+new AuctionEndedProducer(new AuctionService(), connection);
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>

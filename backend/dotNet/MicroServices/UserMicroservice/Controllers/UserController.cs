@@ -45,7 +45,11 @@ namespace UserMicroservice.Controllers
         }
 
         
-
+        [HttpGet("/api/[controller]/update/favorite")]
+        public bool UpdateFavorite(string token, string auctionId)
+        {
+            return _userService.UpdateFavorite(auctionId, token).Result;
+        }
         [HttpDelete]
         public void  DeleteUser(string Id)
         {

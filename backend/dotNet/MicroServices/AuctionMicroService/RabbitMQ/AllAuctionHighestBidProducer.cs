@@ -10,18 +10,17 @@ namespace AuctionMicroService.RabbitMQ
 {
     public class AllAuctionHighestBidProducer
     {
-        IModel _getAllAuctionHighestBidChannel;
+        IModel _channel;
         private readonly BlockingCollection<String> allAuctionHighestBidRespQueue = new BlockingCollection<string>();
         private readonly IBasicProperties allAuctionHighestBidProps;
-        public AllAuctionHighestBidProducer()
+        public AllAuctionHighestBidProducer(RabbitMQConnection connection)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _getAllAuctionHighestBidChannel = connection.CreateModel();
-            var replyAllAuctionHighestBidQueueName = _getAllAuctionHighestBidChannel.QueueDeclare().QueueName;
-            var allAuctionHighestBidConsumer = new EventingBasicConsumer(_getAllAuctionHighestBidChannel);
+            
+            _channel = connection._connection.CreateModel();
+            var replyAllAuctionHighestBidQueueName = _channel.QueueDeclare().QueueName;
+            var allAuctionHighestBidConsumer = new EventingBasicConsumer(_channel);
 
-            allAuctionHighestBidProps = _getAllAuctionHighestBidChannel.CreateBasicProperties();
+            allAuctionHighestBidProps = _channel.CreateBasicProperties();
             var allAuctionHighestBidCorrelationId = Guid.NewGuid().ToString();
             allAuctionHighestBidProps.CorrelationId = allAuctionHighestBidCorrelationId;
             allAuctionHighestBidProps.ReplyTo = replyAllAuctionHighestBidQueueName;
@@ -39,7 +38,7 @@ namespace AuctionMicroService.RabbitMQ
                 }
 
             };
-            _getAllAuctionHighestBidChannel.BasicConsume(
+            _channel.BasicConsume(
                 consumer: allAuctionHighestBidConsumer,
                 queue: replyAllAuctionHighestBidQueueName,
                 autoAck: true
@@ -50,7 +49,7 @@ namespace AuctionMicroService.RabbitMQ
         {
             Console.WriteLine("Publishing");
             var messageBytes = Encoding.UTF8.GetBytes("");
-            _getAllAuctionHighestBidChannel.BasicPublish(
+            _channel.BasicPublish(
                 exchange: "",
                 routingKey: "getAllAuctionHighestBid",
                 basicProperties: allAuctionHighestBidProps,

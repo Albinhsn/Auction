@@ -100,6 +100,21 @@ namespace UserMicroservice.Services
                 return false;
             }
         }
+        public async Task<bool> UpdateFavorite(string auctionId, string token)
+        {
+            string userId = _getUserIdFromTokenProducer.GetIdFromToken(token);
+            User user = await _userCollection.Find(x => x.Id == userId).FirstOrDefaultAsync();
+            if (user.Favorites.Any(auctionId.Contains))
+            {
+                user.Favorites.Remove(auctionId);
+                return false;
+            }
+            else
+            {
+                user.Favorites.Add(auctionId);
+                return true;
+            }
+        }
 
         public async Task<bool> UpdateUser(User user, string Id)
         {                       

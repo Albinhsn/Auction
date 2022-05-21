@@ -52,11 +52,11 @@ class userDataService{
     }
 
     updateFavorite(token, auctionId){
-        
-        return http.get("/user/update/favorite",
+        console.log(token)
+        console.log(auctionId)        
+        return this.userMicroService.get("/api/User/update/favorite",
             {
-                params: { token: token, auctionId: auctionId },
-                headers: { Authorization: `Bearer ${token}` }
+                params: { token: token, auctionId: auctionId },                
             })
     }
     updateWatchlist(token, auctionId){

@@ -44,10 +44,10 @@ export default function DutchAuction({ auction, token, setAuction}) {
                 {auction.purchasePrice}
               </p>
               <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1"
-                onClick={() => auctionHelpers.favoriteChange(token, auction._id, favorite, setFavorite)} style={{ color: favorite ? "red" : "black"}}
+                onClick={() => auctionHelpers.favoriteChange(token, auction.id, favorite, setFavorite)} style={{ color: favorite ? "red" : "black"}}
               />
               <button className='btn btn-warning ms-3' type="button"
-                onClick={() => auctionHelpers.watchlistChange(token, auction._id, watchlist, setWatchlist)}
+                onClick={() => auctionHelpers.watchlistChange(token, auction.id, watchlist, setWatchlist)}
               >
                 {watchlist ? "Ta bort påminnelse" : "Lägg till påminnelse"}
               </button>

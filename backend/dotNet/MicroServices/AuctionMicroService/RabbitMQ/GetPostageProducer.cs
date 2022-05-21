@@ -6,16 +6,16 @@ using System.Text.Json;
 
 namespace AuctionMicroService.RabbitMQ
 {
-    public class GetFavoritesFromUserProducer
+    public class GetPostageProducer
     {
         IModel _channel;
         private readonly BlockingCollection<String> respQueue = new BlockingCollection<string>();
         private readonly IBasicProperties props;
 
-        public GetFavoritesFromUserProducer(RabbitMQConnection connection)
+        public GetPostageProducer(RabbitMQConnection connection)
         {
 
-            
+
             _channel = connection._connection.CreateModel();
             var queueName = _channel.QueueDeclare().QueueName;
             var consumer = new EventingBasicConsumer(_channel);
@@ -48,20 +48,20 @@ namespace AuctionMicroService.RabbitMQ
         }
 
 
-        public List<string> GetFavoritesFromUser(string message)
+        public int GetPostage(string message)
         {
             var messageBytes = Encoding.UTF8.GetBytes(message);
 
             _channel.BasicPublish(
                 exchange: "",
-                routingKey: "getFavoritesFromUser",
+                routingKey: "getPostage",
                 basicProperties: props,
                 body: messageBytes
                 );
 
             string s = respQueue.Take();
-            
-            return JsonSerializer.Deserialize<List<string>>(s);
+            Console.WriteLine(s);
+            return int.Parse(s);
         }
 
     }
