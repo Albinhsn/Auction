@@ -4,8 +4,12 @@ import * as datesHelpers from '../../../Helpers/datesHelpers'
 
 export default function AuctionCardTimeInfo({auction}) {
     
-    const [date, setDate] = useState(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
-
+    const [date, setDate] = useState()
+    useEffect(() => {
+        if(auction.endDate && !date){
+            setDate(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
+        }                                
+    }, )
     return (
     <>
         <div className='pt-5'>

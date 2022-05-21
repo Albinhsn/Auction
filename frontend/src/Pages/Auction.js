@@ -30,14 +30,14 @@ export default function Auction({token}) {
         return (
           <EnglishAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
         )
-      case "Holländsk":
-        return (
-          <DutchAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
-        )
-      case "Schweizisk":
-        return(
-          <SwissAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
-        )
+      // case "Holländsk":
+      //   return (
+      //     <DutchAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
+      //   )
+      // case "Schweizisk":
+      //   return(
+      //     <SwissAuctionCardInfo setAuction={setAuction} auction={auction} token={token} />
+      //   )
     }
   }
   
@@ -46,10 +46,23 @@ export default function Auction({token}) {
     if (!auctionId) return <></>
     if(Object.keys(auction).length === 0){
       auctionService.getAuctionByObjectId(auctionId).then(response=> {
-        console.log(response)
-        setAuction(response.data)
-        let images = []
+        
+        
+        
+        if(response.data.highestBid === 0){
+          
+          response.data.highestBid = response.data.minimumBid
+        }
+
+        userService.getNameFromObjectId(response.data.seller).then(nameResponse => {
+          response.data.seller =  nameResponse.data
+          setAuction(response.data)
+        }).catch(error => {
+          setAuction(response.data)
+        })        
+        let images = []        
         response.data.images.map(image => {
+          
           images.push(  
             imageHelpers.convertToGallery(
               imageHelpers.convertToUrl(image)
@@ -64,14 +77,14 @@ export default function Auction({token}) {
     
   }, [])
 
-
+  
   useEffect(() => {
     if(images.length>0 && auction.images != images){
         setAuction({...auction, images: images})
     }
-    if(favorite === undefined && token && auction._id){
+    if(favorite === undefined && token && auction.id){
         
-        userService.checkFavorite(token, auction._id).then(resp => {
+        userService.checkFavorite(token, auction.id).then(resp => {
           
           
           if (resp.data === true) {

@@ -15,7 +15,7 @@ export default function EnglishAuctionCardInfo({setAuction, auction, token}) {
             </button>
             {auction.purchasePrice > 0 ?
                 <button type="button" className='btn btn-warning ms-1' style={{ height: "5vh" }}
-                    onClick={() => auctionHelpers.makePurchase(token, auction._id, setAuction)}>
+                    onClick={() => auctionHelpers.makePurchase(token, auction.id, setAuction)}>
                     Köp Nu {auction.purchasePrice}
                 </button>
                 :
@@ -34,10 +34,10 @@ export default function EnglishAuctionCardInfo({setAuction, auction, token}) {
                             Start pris: {auction.minimumBid} Tid: {new Date(auction.startDate).toLocaleDateString("en-US")}
                         </p>
                     </li>
-                    {auction.bidHistory.map(bid =>{                                                                                                                
+                    {auction.bids.map(bid =>{                                                                                                                
                         return(
-                            <li key={bid._id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 justify-content-center">
-                                <p className=''>Bud:{bid.bid} Tid: {new Date(bid.time).toLocaleDateString("en-US")}</p>
+                            <li key={bid.id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 justify-content-center">
+                                <p className=''>Bud:{bid.amount} Tid: {new Date(bid.time).toLocaleDateString("en-US")}</p>
                                 
                             </li>
                         )
