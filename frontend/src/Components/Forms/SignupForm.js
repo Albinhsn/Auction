@@ -7,11 +7,11 @@ export default function SignupForm({setAuthId, token}) {
 
     let navigation = useNavigate()
     const [accountInfo, setAccountInfo] = useState({
-        username: "",
-        email: "",
-        matchingEmail: "",
-        password: "",
-        matchingPassword: "",
+        Name: "",
+        Email: "",
+        MatchingEmail: "",
+        Password: "",
+        MatchingPassword: "",
     })
     
     
@@ -27,16 +27,18 @@ export default function SignupForm({setAuthId, token}) {
             .catch(
                 function(error){
                     if(error.response){
-                        alert(error.response.data.message)
+                        alert(error.response.data)
                     }
             })
         
     }
-
+    if(token){
+        navigation("/")
+    }
 
     return (
         
-        <div className='d-flex align-items-center justify-content-center' style={{ height: "75vh" }}>
+        <div class='d-flex align-items-center justify-content-center' style={{ height: "75vh" }}>
             <div className='row card'>
                 <form className='card-body'>
 
@@ -46,7 +48,7 @@ export default function SignupForm({setAuthId, token}) {
                                 Användarnamn
                             </label>
                         <input type="text" className="form-control" 
-                            onChange={e => setAccountInfo({...accountInfo, username: e.target.value})}/>
+                            onChange={e => setAccountInfo({...accountInfo, Name: e.target.value})}/>
                     </div>
 
 
@@ -54,15 +56,15 @@ export default function SignupForm({setAuthId, token}) {
                         <label className="form-label">
                             Email address
                             </label>
-                        <input type="email" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, email: e.target.value })}/>
+                        <input type="Email" className="form-control" 
+                            onChange={e => setAccountInfo({ ...accountInfo, Email: e.target.value })}/>
                     </div>
                     
                     <div className="mb-3">
                         <label className="form-label">
                             Bekräfta Email address
                             </label>
-                        <input type="email" className="form-control" 
+                        <input type="Email" className="form-control" 
                             onChange={e => setAccountInfo({ ...accountInfo, matchingEmail: e.target.value })}
                         />
                     </div>
@@ -72,8 +74,8 @@ export default function SignupForm({setAuthId, token}) {
                         <label className="form-label">
                             Lösenord
                             </label>
-                        <input type="password" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, password: e.target.value })}
+                        <input type="Password" className="form-control" 
+                            onChange={e => setAccountInfo({ ...accountInfo, Password: e.target.value })}
                         />
                     </div>
                     
@@ -81,8 +83,8 @@ export default function SignupForm({setAuthId, token}) {
                         <label className="form-label">
                             Confirm Lösenord
                             </label>
-                        <input type="password" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, matchingPassword: e.target.value })}
+                        <input type="Password" className="form-control" 
+                            onChange={e => setAccountInfo({ ...accountInfo, MatchingPassword: e.target.value })}
                         />
                     </div>
                 </form>

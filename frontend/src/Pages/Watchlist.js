@@ -11,7 +11,7 @@ export default function Watchlist({token}) {
     useEffect(() => {
         if (token) {
 
-            auctionService.getWatchlistById(token).then(response => {
+            auctionService.getUserWatchlist(token).then(response => {
                 setAuctions(response.data)
             }).catch(function (error) {
                 if (error.response) {
@@ -28,12 +28,12 @@ export default function Watchlist({token}) {
             <div className='col-6'>
                 {auctions.map(auction => {
                     return (
-                        <div className='pt-3' key={`div-${auction._id}`}>
+                        <div className='pt-3' key={`div-${auction.id}`}>
                             <Link
                                 className='text-decoration-none text-dark'
-                                to={`/auction?auctionId=${auction._id}`}>
+                                to={`/auction?auctionId=${auction.id}`}>
                                 <SearchAuctionCard
-                                    key={auction._id}
+                                    key={auction.id}
                                     auction={auction}
                                     token={token}
                                 />

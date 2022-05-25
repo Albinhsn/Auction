@@ -34,7 +34,7 @@ namespace ImageMicroservice.Controllers
                 
                 if (file.Length > 0)
                 {                   
-                    ObjectId id = _imageService.saveImage(file).Result;
+                    string id = _imageService.saveImage(file).Result;
                     return Ok(id);
                 }
                 else
@@ -60,7 +60,7 @@ namespace ImageMicroservice.Controllers
         [HttpGet("/api/[controller]/{id}")]
         public async Task<IActionResult> GetImage(string id)
         {
-            ImageFile imageFile = await _imageService.GetImage(id);
+            ImageFile imageFile = await _imageService.GetImage(id);            
             return File(imageFile.File, imageFile.FileType);
         }
 

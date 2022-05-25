@@ -1,5 +1,5 @@
-﻿using BidMicroService.Controllers;
-using BidMicroService.Models;
+﻿using BidMicroService.Models;
+using BidMicroService.Services;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;

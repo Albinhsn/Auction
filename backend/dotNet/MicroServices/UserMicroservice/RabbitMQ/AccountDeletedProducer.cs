@@ -13,11 +13,9 @@ namespace UserMicroservice.RabbitMQ
 
 
         IModel _channel;
-        public AccountDeletedProducer()
-        {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+        public AccountDeletedProducer(RabbitMQConnection connection)
+        {            
+            _channel = connection._connection.CreateModel();
             {
                 _channel.ExchangeDeclare(
                     exchange: "accountDeleted",

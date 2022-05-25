@@ -9,21 +9,50 @@ namespace ImageMicroservice.Services
     public class ImageService
     {
         private readonly GridFSBucket _bucket;
+        private readonly IMongoCollection<GridFSFile> _collection;
 
         public ImageService()
         {
             MongoClient client = new("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             IMongoDatabase database = client.GetDatabase("Images");
             _bucket = new GridFSBucket(database);
+            _collection = database.GetCollection<GridFSFile>("fs.files");
         }
 
 
-        public async Task<ObjectId> saveImage(IFormFile file)
+        public async Task<string> saveImage(IFormFile file)
         {
-            Stream source = file.OpenReadStream();      
+            Stream source = file.OpenReadStream();
+            
             ObjectId id = await _bucket.UploadFromStreamAsync(file.FileName, source);
+            var filter = Builders<GridFSFileInfo>.Filter.Eq("_id", id);
+            
+            GridFSFileInfo fileInfo = await _bucket.Find(filter).FirstOrDefaultAsync();
+            GridFSFile gridFSFile = new();
+            gridFSFile.Id = fileInfo.Id.ToString();
+            gridFSFile.length = fileInfo.Length;
+            gridFSFile.chunkSize = fileInfo.ChunkSizeBytes;
+            gridFSFile.uploadDate = fileInfo.UploadDateTime;
+            gridFSFile.filename = fileInfo.Filename;
+            
+            Metadata metadata = new Metadata();
+            metadata._contentType = file.ContentType;
+            gridFSFile.metadata = metadata;
+
+
+            
+            
+            
+            
+            var filterFile = Builders<GridFSFile>.Filter.Where(x => x.Id == gridFSFile.Id);
+            var options = new FindOneAndReplaceOptions<GridFSFile>
+            {
+                ReturnDocument = ReturnDocument.After
+            };
+            
+            var result = await _collection.FindOneAndReplaceAsync<GridFSFile>(filterFile, gridFSFile, options);
             source.Close();
-            return id;
+            return id.ToString();
 
         }
 
@@ -41,14 +70,15 @@ namespace ImageMicroservice.Services
         }
         public async Task<ImageFile> GetImage(string id)
         {
-            ObjectId _id = new ObjectId(id);
-            var filter = Builders<GridFSFileInfo>.Filter.Eq("_id", _id);
-            GridFSFileInfo gridFSFileInfo = await _bucket.Find(filter).FirstOrDefaultAsync();
-            Byte[] b = await _bucket.DownloadAsBytesAsync(_id);
+            
+            
+            GridFSFile gridFSFile = await _collection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            Byte[] b = await _bucket.DownloadAsBytesAsync(new ObjectId(id));
             ImageFile imageFile = new();
             imageFile.File = b;
-            imageFile.FileType = gridFSFileInfo.Metadata["_contentType"].ToString();
-
+            imageFile.FileType = gridFSFile.metadata._contentType;
+            
+            
             return imageFile;
         }
 

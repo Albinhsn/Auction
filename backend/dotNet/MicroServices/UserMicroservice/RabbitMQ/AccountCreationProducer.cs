@@ -8,11 +8,9 @@ namespace UserMicroservice.RabbitMQ
     public class AccountCreationProducer
     {
         IModel _channel;
-        public AccountCreationProducer()
-        {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+        public AccountCreationProducer(RabbitMQConnection connection)
+        {            
+            _channel = connection._connection.CreateModel();
             {
                 _channel.ExchangeDeclare(
                     exchange: "accountCreated",                                                            

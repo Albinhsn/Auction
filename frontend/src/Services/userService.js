@@ -13,7 +13,7 @@ class userDataService{
     }
 
     postRegistrationForm(formInfo){
-        return http.post("/registration/user",formInfo)
+        return this.userMicroService.post("/api/User/user",formInfo)
     }
 
     validateLogin(formInfo){
@@ -69,9 +69,9 @@ class userDataService{
             )
     }
 
-    getUserFromObjectId(token){
-        return http.get("/user/user", {params: {token: token}})
-    }
+    // getUserFromObjectId(token){
+    //     return http.get("/user/user", {params: {token: token}})
+    // }
 
     changeEmail(token, email, matchingEmail){
         

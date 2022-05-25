@@ -10,8 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<UserService>();
-builder.Services.AddSingleton<AccountDeletedProducer>();
 new GetFavoritesFromUserReceiver(new UserService());
+RabbitMQConnection connection = new RabbitMQConnection();
+new GetUsernameFromListOfIdsReceiver(new UserService(), connection);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>

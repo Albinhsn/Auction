@@ -1,5 +1,4 @@
-﻿using BidMicroService.Models;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson.Serialization.IdGenerators;
 
@@ -34,6 +33,7 @@ namespace AuctionMicroService.Models
         public List<Bid> Bids{ get; set; }
         public int Postage { get; set; }
         
+        public Tags? Tags { get; set; }
 
     }
 }

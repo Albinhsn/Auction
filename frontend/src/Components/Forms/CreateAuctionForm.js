@@ -13,23 +13,19 @@ export default function CreateAuctionForm({token}) {
     let currentDate = new Date()
     const navigate = useNavigate();
     let [auctionInfo, setAuctionInfo] = useState({
-        name: "",
-        minimumBid: 0,
-        purchasePrice: 0,
-        condition: "",
-        auctionType: "",
-        description: "",
-        images: [],
-        bidHistory: [],
-        startDate: new Date(),
-        endDate: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()+7),
-        seller: token,
-        state: "Pågående",
-        tags: {}
+        Name: "",
+        MinimumBid: 0,
+        PurchasePrice: 0,
+        Condition: "",
+        AuctionType: "",
+        Description: "",
+        Images: [],                        
+        SellerToken: token,    
+        Tags:  []       
     })
 
     const [currentIndex, setCurrentIndex] = useState(0)
-    const [tags, setTags] = useState([])
+    
     const myRef = useRef(null);
     
     if(!token){
@@ -40,19 +36,19 @@ export default function CreateAuctionForm({token}) {
     
     const createAuction = () => {
         
-        //Mapping tags
-        tags.map(tag => {
-            if(!auctionInfo.tags[tag.key]){
-                auctionInfo.tags[tag.key] = tag.value
-            }else if(typeof auctionInfo.tags[tag.key] === "string"){
-                auctionInfo.tags[tag.key] = [auctionInfo.tags[tag.key], tag.value]
+        //Mapping Tags
+        auctionInfo.Tags.map(tag => {
+            if(!auctionInfo.Tags[tag.key]){
+                auctionInfo.Tags[tag.key] = tag.value
+            }else if(typeof auctionInfo.Tags[tag.key] === "string"){
+                auctionInfo.Tags[tag.key] = [auctionInfo.Tags[tag.key], tag.value]
             }else{
-                auctionInfo.tags[tag.key] = [...auctionInfo.tags[tag.key], tag.value]
+                auctionInfo.Tags[tag.key] = [...auctionInfo.Tags[tag.key], tag.value]
             }
             
         }) 
         
-        auctionInfo.images = imageHelpers.convertFromGallery(auctionInfo.images)
+        auctionInfo.Images = imageHelpers.convertFromGallery(auctionInfo.Images)
         //Post auction
         auctionService.postAuction(auctionInfo, token).then(response => {
             console.log(response)
@@ -62,38 +58,39 @@ export default function CreateAuctionForm({token}) {
                 if(error.response){
                     alert(error.response.data.message)
                     let imgs = []
-                    auctionInfo.images.forEach(image => {
+                    auctionInfo.Images.forEach(image => {
                         imgs.push(imageHelpers.convertToGallery(image))
                     })
-                    auctionInfo.images = imgs
-                    auctionInfo.tags = {}
+                    auctionInfo.Images = imgs
+                    auctionInfo.Tags = {}
                 }
         })
     }
 
 
     const removeImage = () => {    
-            if (! auctionInfo.images) return
-            if(auctionInfo.images.length > 1){
+            if (! auctionInfo.Images) return
+            if(auctionInfo.Images.length > 1){
                 if (currentIndex <= 1) {
-                    auctionInfo.images.splice(currentIndex, 1)
-                    myRef.current.slideToIndex(auctionInfo.images.length - 1)
+                    auctionInfo.Images.splice(currentIndex, 1)
+                    myRef.current.slideToIndex(auctionInfo.Images.length - 1)
                    
                 }
                 else {                   
-                    auctionInfo.images.splice(currentIndex, 1)                    
+                    auctionInfo.Images.splice(currentIndex, 1)                    
                     myRef.current.slideToIndex(currentIndex) 
                 }
                 return
             }
-            setAuctionInfo({...auctionInfo, images: []})
+            setAuctionInfo({...auctionInfo, Images: []})
             setCurrentIndex(1)    
     
     }
     const addImage = async e => {
         imageService.uploadImage(e.target.files[0]).then(response => {
-            let image = imageHelpers.convertToGallery(`http://localhost:8000/images/image/${response.data}`)
-            setAuctionInfo({...auctionInfo, images: [... auctionInfo.images, image]})
+            console.log(response.data)
+            let image = imageHelpers.convertToGallery(`https://localhost:7141/api/Image/${response.data}`)
+            setAuctionInfo({...auctionInfo, Images: [... auctionInfo.Images, image]})
             
         })
         
@@ -104,38 +101,42 @@ export default function CreateAuctionForm({token}) {
     }
     
     const addTag = () => {
-        var e = document.querySelector("#tags")
+        var e = document.querySelector("#Tags")
         if(e.options[e.selectedIndex].text !== "Minneskort (flera val)" && e.options[e.selectedIndex].text !== "Uppkoppling (flera val)"){
-            for(let i = 0; i<tags.length; i++){
-                if (e.options[e.selectedIndex].text === tags[i].name){
+            for(let i = 0; i<auctionInfo.Tags.length; i++){
+                if (e.options[e.selectedIndex].text === auctionInfo.Tags[i].name){
                     alert("Taggen finns redan, ta bort den för att lägga till en ny")
                     return
                 }
             }
         }else{
-            for(let i = 0; i<tags.length; i++){
+            for(let i = 0; i<auctionInfo.Tags.length; i++){
                 var v = document.querySelector("#tag-value")
-                if(e.options[e.selectedIndex].text  === tags[i].name && v.value === tags[i].value){
+                if(e.options[e.selectedIndex].text  === auctionInfo.Tags[i].name && v.value === auctionInfo.Tags[i].value){
                     alert("Taggen finns redan, ta bort den för att lägga till en ny")
                     return
                 }
             }
         }
         
-        setTags([...tags, {
-            name: e.options[e.selectedIndex].text,
-            value: document.querySelector("#tag-value").value,
-            key: document.querySelector("#tags").value
-        }])
+        setAuctionInfo({...auctionInfo, Tags:
+            [
+                ...auctionInfo.Tags,
+                {
+                    name: e.options[e.selectedIndex].text,
+                    value: document.querySelector("#tag-value").value,
+                    key: document.querySelector("#Tags").value
+                }
+            ]
+        })
         
     }
 
     const removeTag = (e) => {
-        for (let i = 0; i < tags.length; i++) {
-            if (e.target.value === tags[i].name + tags[i].value) {
-                console.log(tags)
-                setTags(tags.filter(item => item.name + item.value !== e.target.value))
-                delete auctionInfo.tags[tags[i].key]
+        for (let i = 0; i < auctionInfo.Tags.length; i++) {
+            if (e.target.value === auctionInfo.Tags[i].name + auctionInfo.Tags[i].value) {
+                
+                setAuctionInfo({...auctionInfo, Tags: [auctionInfo.Tags.filter(item => item.name + item.value !== e.target.value)]})                                
                 return
             }
         }
@@ -161,7 +162,7 @@ export default function CreateAuctionForm({token}) {
                     <div className='col-4'>
                         <div className='position-relative'>
                             <ImageGallery
-                                items={auctionInfo.images}
+                                items={auctionInfo.Images}
                                 showPlayButton={false}
                                 useBrowserFullscreen={false}
                                 originalHeight={"200"}
@@ -182,12 +183,12 @@ export default function CreateAuctionForm({token}) {
                     <div className='col-6'>
                         <div className='d-flex flex-column'>
                             <input type="text" placeholder="Titel" style={{ width: "20vw" }} className='align-self-center' 
-                                onChange={e => setAuctionInfo({...auctionInfo, name: e.target.value})}
+                                onChange={e => setAuctionInfo({...auctionInfo, Name: e.target.value})}
                             />
                         </div>
                         <div className='input-group pt-2'>
                             <select name="condition" id="condition" className='form-select'
-                                onChange={e => setAuctionInfo({...auctionInfo, condition: e.target.value })}
+                                onChange={e => setAuctionInfo({...auctionInfo, Condition: e.target.value })}
                             >
                                 <option value="">
                                     Välj Skick
@@ -229,15 +230,15 @@ export default function CreateAuctionForm({token}) {
                             </select>
                         </div>
                         <div className='d-flex flex-column'>
-                            {auctionInfo.auctionType === "Engelsk" ? 
+                            {auctionInfo.AuctionType === "Engelsk" ? 
                                     <input type="number" placeholder="Minimumbud" className='mt-2 align-self-center' id="bid-input" style={{ width: "20vw" }}
-                                        onChange={e => setAuctionInfo({ ...auctionInfo, minimumBid: parseInt(e.target.value) })}
+                                        onChange={e => setAuctionInfo({ ...auctionInfo, MinimumBid: parseInt(e.target.value) })}
                                     />
                                 : 
                                     <></>}
-                            {auctionInfo.auctionType === "Engelsk" || auctionInfo.auctionType === "Holländsk"?
+                            {auctionInfo.AuctionType === "Engelsk" || auctionInfo.AuctionType === "Holländsk"?
                                     <input type="number" placeholder="Köpa direkt" className='mt-2 align-self-center ' id="bid-input" style={{ width: "20vw" }}
-                                        onChange={e => setAuctionInfo({ ...auctionInfo, purchasePrice: parseInt(e.target.value) })}
+                                        onChange={e => setAuctionInfo({ ...auctionInfo, PurchasePrice: parseInt(e.target.value) })}
                                     />    
                                 :
                                     <></>
@@ -245,10 +246,10 @@ export default function CreateAuctionForm({token}) {
                         </div>
                         <div className='d-flex flex-column'>
                             <TextAreaAutoSize maxRows={5} minRows={5} placeholder="Beskrivning" className='mt-2' id="bid-input" style={{ resize: "none" }} 
-                                onChange={e => setAuctionInfo({ ...auctionInfo, description: e.target.value })}
+                                onChange={e => setAuctionInfo({ ...auctionInfo, Description: e.target.value })}
                             />
                             <div className='input-group pt-2'>
-                                <select name="tags" id="tags" className='form-select'>
+                                <select name="Tags" id="Tags" className='form-select'>
                                     <option value="">
                                         Välj tag
                                     </option>
@@ -283,7 +284,7 @@ export default function CreateAuctionForm({token}) {
                             </div>
                                 <div>
                                     <li className='list-group'>
-                                        {tags.map(tag => {
+                                        {auctionInfo.Tags.map(tag => {
                                             return(
                                                 <ul className='list-item d-flex' key={tag.name + tag.value}>
                                                     <p className='mb-0 align-self-center'>

@@ -1,4 +1,4 @@
-﻿namespace WatchlistService.Models
+﻿namespace WatchlistMicroservice.Models
 {
     public class AuctionistaDatabaseSettings
     {

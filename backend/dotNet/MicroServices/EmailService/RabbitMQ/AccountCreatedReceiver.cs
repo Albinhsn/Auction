@@ -4,6 +4,7 @@ using System.Text.Json;
 using UserMicroservice.Models;
 using EmailService.Models;
 using System.Text;
+using EmailService.Services;
 
 namespace EmailService.RabbitMQ
 {
@@ -50,7 +51,7 @@ namespace EmailService.RabbitMQ
             Console.WriteLine(message);
 
             UserMicroservice.Models.User result = JsonSerializer.Deserialize<UserMicroservice.Models.User>(message);
-            EmailService.Models.User user = new();
+            Models.User user = new();
             user.Email = result.Email;
             
             try

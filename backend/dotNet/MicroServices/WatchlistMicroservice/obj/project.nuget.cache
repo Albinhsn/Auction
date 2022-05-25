@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zIkRLobDD5m5HDMbes7RK90scFnJJbkXWg1ve+P3HAtoAa1O4vnXvmR9l4yRozM/AQ85M4OT9RJJg17wKGuDPw==",
+  "dgSpecHash": "7IZa+Uwlj/r2Trmz9Bw4fHoIZOqbfVrgizoksBY8PAvOImkwXXohapZVCfH/UedS4CNlpUuClEjdq8fu//gHOA==",
   "success": true,
   "projectFilePath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\WatchlistMicroservice\\WatchlistMicroservice.csproj",
   "expectedPackageFiles": [
@@ -13,15 +13,18 @@
     "C:\\Users\\hart9\\.nuget\\packages\\mongodb.driver\\2.15.1\\mongodb.driver.2.15.1.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\mongodb.driver.core\\2.15.1\\mongodb.driver.core.2.15.1.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\mongodb.libmongocrypt\\1.3.0\\mongodb.libmongocrypt.1.3.0.nupkg.sha512",
+    "C:\\Users\\hart9\\.nuget\\packages\\rabbitmq.client\\6.3.0\\rabbitmq.client.6.3.0.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\hart9\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
-    "C:\\Users\\hart9\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512"
+    "C:\\Users\\hart9\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\hart9\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
   ],
   "logs": []
 }

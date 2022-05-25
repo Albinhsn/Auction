@@ -1,5 +1,5 @@
 ﻿using AuctionMicroService.Models;
-using BidMicroService.Models;
+
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Collections.Concurrent;

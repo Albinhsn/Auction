@@ -1,18 +1,20 @@
 ﻿using EmailService.EmailConfig;
+using EmailService.Helpers;
 using EmailService.Models;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MongoDB.Driver;
 
-namespace EmailService
+namespace EmailService.Services
 {
     public class EmailsService
     {
         private readonly IOptions<EmailConfiguration> _config;
         private readonly MessageHelper messageHelper = new();
         private readonly IMongoCollection<User> _collection;
-        public EmailsService(IOptions<EmailConfiguration> emailConfig) {
+        public EmailsService(IOptions<EmailConfiguration> emailConfig)
+        {
 
             MongoClient client = new("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Email");
@@ -38,6 +40,24 @@ namespace EmailService
             Message message = messageHelper.createWonAuctionMessage(auction, user);
             SendEmail(message);
         }
+        public async void sendPurchasedWatchlistEmails(List<Auction> auctions)
+        {
+            foreach(var auction in auctions)
+            {
+                User user = await _collection.Find(x => x.Id == auction.UserId).FirstOrDefaultAsync();
+                Message message = messageHelper.createWatchlistPurchaseMadeEmail(auction, user);
+                SendEmail(message);
+            }
+        }
+        public async void sendBidWatchlistEmails(List<Auction> auctions)
+        {
+            foreach (var auction in auctions)
+            {
+                User user = await _collection.Find(x => x.Id == auction.UserId).FirstOrDefaultAsync();
+                Message message = messageHelper.createWatchlistBidMadeEmail(auction, user);
+                SendEmail(message);
+            }
+        }
 
         public async void sendMadeBidEmail(Auction auction)
         {
@@ -46,6 +66,12 @@ namespace EmailService
             SendEmail(message);
         }
 
+        public void sendWinnerSellerEmail(List<Auction> auctions)
+        {
+            sendWonAuctionEmail(auctions[0]);
+            sendSoldAuctionEmail(auctions[1]);
+        }
+        
         public async void sendWatchlistBidMadeEmail(Auction auction)
         {
             User user = await _collection.Find(x => x.Id == auction.UserId).FirstOrDefaultAsync();
@@ -56,6 +82,7 @@ namespace EmailService
         public async void sendPurchaseMadeEmail(Auction auction)
         {
             User user = await _collection.Find(x => x.Id == auction.UserId).FirstOrDefaultAsync();
+
             Message message = messageHelper.createMadePurchaseMessage(auction, user);
             SendEmail(message);
         }
@@ -74,15 +101,17 @@ namespace EmailService
         }
         public void SendEmail(Message message)
         {
-            var emailMessage = CreateEmailMessage(message);
+            MimeMessage emailMessage = CreateEmailMessage(message);
+            
             Send(emailMessage);
         }
 
         private MimeMessage CreateEmailMessage(Message message)
         {
             var emailMessage = new MimeMessage();
-            //emailMessage.From.Add(new MailboxAddress(_config.Value.From));
-            emailMessage.To.AddRange(message.To);
+            emailMessage.From.Add(MailboxAddress.Parse(_config.Value.From));
+            emailMessage.To.Add(MailboxAddress.Parse(message.To));
+
             emailMessage.Subject = message.Subject;
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = message.Content };
             return emailMessage;
@@ -97,7 +126,7 @@ namespace EmailService
                     client.Connect(_config.Value.SmtpServer, _config.Value.Port, true);
                     client.AuthenticationMechanisms.Remove("XOAUTH2");
                     client.Authenticate(_config.Value.UserName, _config.Value.Password);
-
+                    Console.WriteLine(mailMessage.To);
                     client.Send(mailMessage);
                 }
                 catch

@@ -2,7 +2,7 @@
 using MongoDB.Bson;
 using UserMicroservice.Models;
 using UserMicroservice.Services;
-
+using UserMicroservice.Helpers;
 namespace UserMicroservice.Controllers
 {
     [ApiController]
@@ -11,18 +11,28 @@ namespace UserMicroservice.Controllers
     {
 
         private readonly UserService _userService;
-
+        private readonly UserHelpers _userHelpers;
         public UserController(UserService userService)
         {
             _userService = userService;
+            _userHelpers = new UserHelpers();   
         }
 
 
         [HttpPost]
-        public IActionResult CreateUser(UserPostModel user)
+        public IActionResult CreateUser([FromBody] UserPostModel user)
         {
-            User u = _userService.CreateUser(user);
-
+            //Validate email
+            string validatePostModel = _userHelpers.ValidateUserPostModel(user);
+            if (!string.IsNullOrEmpty(validatePostModel))
+            {
+                return BadRequest(validatePostModel);
+            }
+            User u = _userService.CreateUser(user).Result;
+            if(u == null)
+            {
+                return BadRequest("Ett konto finns redan men angivnga email adressen");
+            }
             return Ok(u);
         }
 
@@ -33,11 +43,11 @@ namespace UserMicroservice.Controllers
             return _userService.GetUser(token).Result;
         }
 
-        [HttpPut("/api/[controller]/password")]
-        public User UpdatePassword(string token, string password, string matchingPassword)
-        {            
-            return _userService.UpdatePassword(token, password, matchingPassword).Result;
-        }
+        //[HttpPut("/api/[controller]/password")]
+        //public User UpdatePassword(string token, string password, string matchingPassword)
+        //{            
+        //    return _userService.UpdatePassword(token, password, matchingPassword).Result;
+        //}
         [HttpPut("/api/[controller]/email")]
         public User UpdateEmail(string token, string email, string matchingEmail)
         {

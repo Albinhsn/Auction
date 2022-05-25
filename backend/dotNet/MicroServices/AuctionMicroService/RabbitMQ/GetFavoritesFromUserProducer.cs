@@ -51,7 +51,7 @@ namespace AuctionMicroService.RabbitMQ
         public List<string> GetFavoritesFromUser(string message)
         {
             var messageBytes = Encoding.UTF8.GetBytes(message);
-
+            
             _channel.BasicPublish(
                 exchange: "",
                 routingKey: "getFavoritesFromUser",

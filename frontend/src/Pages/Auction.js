@@ -6,26 +6,31 @@ import EnglishAuctionCardInfo from '../Components/Auctions/CardInfo/EnglishAucti
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import * as auctionHelpers from "../Helpers/auctionHelpers"
+import * as watchlistHelpers from '../Helpers/watchlistHelpers'
 import userService from '../Services/userService'
 import AuctionCardProductInfo from "../Components/Auctions/CardInfo/AuctionCardProductInfo"
 import AuctionCardTimeInfo from "../Components/Auctions/CardInfo/AuctionCardTimeInfo"
 import DutchAuctionCardInfo from '../Components/Auctions/CardInfo/DutchAuctionCardInfo'
 import SwissAuctionCardInfo from '../Components/Auctions/CardInfo/SwissAuctionCardInfo'
+import AuctionPriceInfo from '../Components/Auctions/CardInfo/AuctionPriceInfo'
+import watchlistService from '../Services/watchlistService'
 
 
 export default function Auction({token}) {
   
   const [auction, setAuction] = useState({})
   const [images, setImages] = useState([])
-  const [reminder, setReminder] = useState(false)
-  const [keepMePosted, setKeepMePosed] = useState(false)
+  const [reminder, setReminder] = useState()
+  const [updated, setUpdated] = useState()
   const [favorite, setFavorite] = useState()
 
   
   const auctionId = new URLSearchParams(window.location.search).get('auctionId')
   
   const renderAuctiontype = () => {
+    
     switch(auction.auctionType){
+      
       case "Engelsk":
         
         return (
@@ -60,8 +65,10 @@ export default function Auction({token}) {
 
         userService.getNameFromObjectId(response.data.seller).then(nameResponse => {
           response.data.seller =  nameResponse.data
+          
           setAuction(response.data)
         }).catch(error => {
+          console.log(error)
           setAuction(response.data)
         })        
         let images = []        
@@ -99,6 +106,23 @@ export default function Auction({token}) {
           }
         })
     }
+    if(updated === undefined && reminder === undefined && auction.id && token){
+      watchlistService.getWatchlist(token, auction.id).then(response => {
+        
+        if(response.data === []){
+          setUpdated(false)
+          setReminder(false)
+        }else{
+          response.data.map(x => {
+            if(x.type === "Reminder"){
+              setReminder(true)
+            }else{
+              setUpdated(true)
+            }
+          })
+        }        
+      })
+    }
 }, )
   
 
@@ -119,18 +143,18 @@ export default function Auction({token}) {
               Nuvarande bud
             </p>
             <div className='d-flex align-items-center'>
-              <p className='text-success fs-1 mb-0'>
-                {auction.highestBid}
-              </p>
+              <>
+                <AuctionPriceInfo auction={auction}/>
+              </>
               <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction.id, setFavorite)} style={{ color: favorite ? "red" : "black" }} />
               <button className='btn btn-warning ms-3' type="button"
-                onClick={() => auctionHelpers.reminderChange(token, auction._id, reminder, setReminder)}>
+                onClick={() => watchlistHelpers.updateWatchlist(token, "Reminder",auction.id, setReminder, reminder)}>
                 {reminder ? "Ta bort påminnelse" : "Lägg till påminnelse"}
               </button>
               <button className='btn btn-warning ms-3' type="button"
-                onClick={() => auctionHelpers.keepMePostedChange(token, auction._id, keepMePosted, setKeepMePosed)}
+                onClick={() => watchlistHelpers.updateWatchlist(token, "Updated", auction.id, updated, setUpdated)}
                 >    
-                {keepMePosted ? "Ta bort uppdateringar" : "Håll mig uppdaterad"}
+                {updated ? "Ta bort uppdateringar" : "Håll mig uppdaterad"}
               </button>
             </div>
             

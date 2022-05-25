@@ -27,13 +27,14 @@ namespace AuctionMicroService.RabbitMQ
 
             consumer.Received += (model, ea) =>
             {
+             
                 var body = ea.Body.ToArray();
                 var response = Encoding.UTF8.GetString(body);
                 if (ea.BasicProperties.CorrelationId == correlationId)
                 {
 
                     respQueue.Add(response);
-                    Console.WriteLine(response);
+             
                 }
             };
 
@@ -58,7 +59,7 @@ namespace AuctionMicroService.RabbitMQ
                 );
 
             string s = respQueue.Take();
-            Console.WriteLine(s + "Got it back");
+            
             return s;
         }
 

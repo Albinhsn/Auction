@@ -1,6 +1,6 @@
 import auctionService from '../Services/auctionService'
 import userService from '../Services/userService'
-
+import bidService from '../Services/bidService'
 export const favoriteChange = (token, _id, setFavorite) => {
     
     if(!token) return
@@ -13,11 +13,11 @@ export const favoriteChange = (token, _id, setFavorite) => {
     })
 }
 
-export const keepMePostedChange = (token, _id, keepMePosted, setKeepMePosed) => {
+export const updatedChange = (token, _id, updated, setUpdated) => {
     if (!token) return
 
     //userService.updateKeepMePosted(token, _id).then(() => {
-        setKeepMePosed(!keepMePosted)
+        setUpdated(!updated)
     //})
 }
 
@@ -34,8 +34,8 @@ export const reminderChange = (token, _id, reminder, setReminder) => {
 export const handleBid = (token, auction, bid, setAuction) => {
     
     if(!token) return
-    if(auction.bidHistory.length > 0){
-        if (parseInt(auction.bidHistory[auction.bidHistory.length - 1].bid) + 10 > bid) {
+    if(auction.highestBid > 0){
+        if (auction.highestBid + 10 > bid) {
             alert("Vänligen ange korrekt bud")
             return
         }
@@ -46,10 +46,10 @@ export const handleBid = (token, auction, bid, setAuction) => {
         }
     }
     
-    auctionService.makeBid(token, auction._id, bid).then(response => {
+    bidService.makeBid(token, auction.id, bid).then(response => {
         console.log(response)
     }).then(() => {
-        auctionService.getAuctionByObjectId(auction._id).then(response => {
+        auctionService.getAuctionByObjectId(auction.id).then(response => {
             setAuction(response.data)
         })
     })

@@ -1,6 +1,6 @@
 ﻿using AuctionMicroService.Models;
 using AuctionMicroService.Services;
-using BidMicroService.Models;
+
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Collections.Concurrent;
@@ -11,86 +11,140 @@ namespace AuctionMicroService.RabbitMQ
 {
     public class AuctionPurchasedProducer
     {
-        IModel _channel;
-        IModel _bidChannel;
-        AuctionService _auctionService;
+        IModel _purchasedChannel;
+        IModel _watchlistChannel;
+        IModel _emailChannel;
         private readonly BlockingCollection<String> respQueue = new BlockingCollection<string>();
         private readonly IBasicProperties props;
-        public AuctionPurchasedProducer(AuctionService auctionService, RabbitMQConnection connection)
+
+        public AuctionPurchasedProducer(RabbitMQConnection connection)
         {
-            _auctionService = auctionService;
-            
-            _channel = connection._connection.CreateModel();
+
+
+            _purchasedChannel = connection._connection.CreateModel();
             {
-                _channel.QueueDeclare(
-                    queue: "auctionEndedBids",
-                    durable: false,
-                    autoDelete: false,
-                    arguments: null,
-                    exclusive: false
-                    );
+                {
+                    _purchasedChannel.QueueDeclare(
+                        queue: "auctionPurchased",
+                        durable: false,
+                        autoDelete: false,
+                        arguments: null,
+                        exclusive: false
+                        );
+                }
             }
-
-            _bidChannel = connection._connection.CreateModel();
-            var queueName = _bidChannel.QueueDeclare().QueueName;
-            var consumer = new EventingBasicConsumer(_bidChannel);
-
+            _watchlistChannel = connection._connection.CreateModel();
+            var queueName = _watchlistChannel.QueueDeclare().QueueName;
+            var consumer = new EventingBasicConsumer(_watchlistChannel);
 
 
-            props = _bidChannel.CreateBasicProperties();
-            var allAuctionHighestBidCorrelationId = Guid.NewGuid().ToString();
-            props.CorrelationId = allAuctionHighestBidCorrelationId;
+            props = _watchlistChannel.CreateBasicProperties();
+            var correlationId = Guid.NewGuid().ToString();
+            props.CorrelationId = correlationId;
             props.ReplyTo = queueName;
+
 
             consumer.Received += (model, ea) =>
             {
                 var body = ea.Body.ToArray();
                 var response = Encoding.UTF8.GetString(body);
-                Console.WriteLine("received back again");
-                if (ea.BasicProperties.CorrelationId == allAuctionHighestBidCorrelationId)
+                if (ea.BasicProperties.CorrelationId == correlationId)
                 {
+
                     respQueue.Add(response);
 
-
                 }
-
             };
-            _bidChannel.BasicConsume(
+
+
+            _watchlistChannel.BasicConsume(
                 consumer: consumer,
                 queue: queueName,
                 autoAck: true
                 );
+        
+
+
+            
+
+            _emailChannel = connection._connection.CreateModel();
+            {
+                {
+                    _emailChannel.QueueDeclare(
+                        queue: "auctionPurchasedEmailWatchlist",
+                        durable: false,
+                        autoDelete: false,
+                        arguments: null,
+                        exclusive: false
+                        );
+                }
+            }
         }
 
-        public void AuctionEnded(string Id)
+        public void AuctionPurchased(Auction auc)
         {
 
-            HighestBid highestBid = getHighestBidFromAuction(Id);
-            EmailAuction auc = new EmailAuction();
-            Auction auction = _auctionService.GetAuction(Id).Result;
-            auc.AuctionName = auction.Name;
-            auc.Price = highestBid.Amount;
-            auc.UserId = highestBid.UserId;
-            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<EmailAuction>(auc));
-            _channel.BasicPublish(
+            List<EmailAuction> emailAucs = new();
+            EmailAuction wonEmailAuc = new();            
+            wonEmailAuc.AuctionName = auc.Name;
+            wonEmailAuc.Price = auc.PurchasePrice;
+            wonEmailAuc.UserId = auc.Winner;
+            emailAucs.Add(wonEmailAuc);
+
+            EmailAuction soldEmailAuc = new();
+            soldEmailAuc.AuctionName = auc.Name;
+            soldEmailAuc.Price = auc.PurchasePrice;
+            soldEmailAuc.UserId = auc.Seller;
+            emailAucs.Add(soldEmailAuc);
+
+
+
+            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<List<EmailAuction>>(emailAucs));
+            _purchasedChannel.BasicPublish(
                 exchange: "",
-                routingKey: "auctionPurchasedEmail",
+                routingKey: "auctionPurchased",
                 basicProperties: null,
                 body: body
                 );
-        }
-        public HighestBid getHighestBidFromAuction(string Id)
-        {
-
-            var body = Encoding.UTF8.GetBytes(Id);
-            _bidChannel.BasicPublish(
+            Console.WriteLine("Publishing to purchasedWatchlist");
+            body = Encoding.UTF8.GetBytes(auc.Id);
+            _watchlistChannel.BasicPublish(
                 exchange: "",
-                routingKey: "auctionEndedBids",
-                basicProperties: null,
+                routingKey: "auctionPurchasedWatchlist",
+                basicProperties: props,
                 body: body
                 );
+
             string s = respQueue.Take();
-            return JsonSerializer.Deserialize<HighestBid>(s);
+            List<string> watchlistUserIds = JsonSerializer.Deserialize<List<string>>(s);
+            List<EmailAuction> watchlistEmails = new();
+            Console.WriteLine("Got back from watchlist with " + s);
+            foreach(var watchlistUserId in watchlistUserIds)
+            {
+                EmailAuction ea = new();
+                ea.AuctionName = auc.Name;
+                ea.Price = auc.PurchasePrice;
+                ea.UserId = watchlistUserId;
+                watchlistEmails.Add(ea);
+            }
+            if (watchlistEmails.Count > 0)
+            {
+                Console.WriteLine("Publishing to " + watchlistEmails.Count.ToString());
+                body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<List<EmailAuction>>(watchlistEmails));
+                _emailChannel.BasicPublish(
+                    exchange: "",
+                    routingKey: "auctionPurchasedEmailWatchlist",
+                    basicProperties: null,
+                    body: body
+                    );
+
+            }
+            else
+            {
+                Console.WriteLine("None found");
+            }
+
         }
+       
     }
 }

@@ -102,3 +102,4 @@ C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\Authenticat
 C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\AuthenticationService\obj\Debug\net6.0\AuthenticationService.pdb
 C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\AuthenticationService\obj\Debug\net6.0\AuthenticationService.genruntimeconfig.cache
 C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\AuthenticationService\obj\Debug\net6.0\ref\AuthenticationService.dll
+B:\Program\Programmering\Github\Auction\backend\dotNet\MicroServices\AuthenticationService\bin\Debug\net6.0\BCrypt.Net-Next.dll

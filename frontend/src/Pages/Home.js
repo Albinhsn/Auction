@@ -18,17 +18,17 @@ export default function Home() {
     auctionService.getAuctionByHighestBidAsc().then(response => {      
       
       setAuctionsByBid(response.data)
-      console.log(response)
+      
     })
 
     auctionService.getAuctionsByPurchasePriceAsc().then(response => {      
       setAuctionsByTime(response.data)
-      console.log(response)
+      
     })
     
     auctionService.getAuctionsByTimeRemainingAsc().then(response => {          
       setAuctionsByPurchase(response.data)
-      console.log(response)
+      
     })
 
   }, [])

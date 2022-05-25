@@ -7,10 +7,10 @@ import * as auctionHelpers from '../../../Helpers/auctionHelpers'
 import * as imageHelpers from '../../../Helpers/imageHelpers'
 import userService from '../../../Services/userService'
 
-export default function SearchAuctionCard({auction, token}){
+export default function SearchAuctionCard({auction, token, search}){
     const [favorite, setFavorite] = useState()
     const [timeRemaining, setTimeRemaining] = useState(dates.getTimeRemaining(auction.endDate))
-    const [auc, setAuction] = useState()
+    const [auc, setAuction] = useState(auction)
     useEffect(() => {
         if(token){
             userService.checkFavorite(token, auction.id).then(response => {
@@ -24,9 +24,12 @@ export default function SearchAuctionCard({auction, token}){
         }{
             setFavorite("black")
         }
-        if(auction){            
+        if(auction && !search){            
+        
             userService.getNameFromObjectId(auction.seller).then(response => {
+                
                 setAuction({...auction, seller: response.data})
+                
             })           
         }
         
@@ -34,6 +37,7 @@ export default function SearchAuctionCard({auction, token}){
     }, [])
     
     if(!auc || auction.images == null) return <></>    
+    
     return(
        
         <div className='border border-dark'>

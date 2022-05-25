@@ -1,19 +1,25 @@
 ﻿using BidMicroService.Models;
+using BidMicroService.RabbitMQ;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Text.Json;
 
-namespace BidMicroService.Controllers
+namespace BidMicroService.Services
 {
     public class BidService
     {
 
         private readonly IMongoCollection<Bid> _bidCollection;
+        private readonly GetIdFromTokenProducer _getIdFromTokenProducer;
+        private readonly RabbitMQConnection _connection;
         public BidService()
         {
+            
             MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Bids");
-
+            RabbitMQConnection connection = new();
+            _connection = connection;
+            _getIdFromTokenProducer = new(connection);
             _bidCollection = db.GetCollection<Bid>("Bids");
         }
 
@@ -22,30 +28,32 @@ namespace BidMicroService.Controllers
             var results = await _bidCollection.Aggregate()
                 .Group(
                     x => x.AuctionId,
-                    y => new {
+                    y => new
+                    {
                         Id = y.Key,
-                        Amount = y.Max(a => (int)a.Amount) 
-                    }                                                                  
+                        Amount = y.Max(a => (int)a.Amount)
+                    }
                 ).ToListAsync();
-            List<HighestBid> highestBids = new List<HighestBid>();  
-            foreach(var result in results)
+            List<HighestBid> highestBids = new List<HighestBid>();
+            foreach (var result in results)
             {
                 HighestBid highestBid = new();
                 highestBid.UserId = result.Id;
                 highestBid.Amount = result.Amount;
                 highestBids.Add(highestBid);
-            }                         
+            }
             return highestBids;
-          
-            
+
+
         }
 
-        public async Task<List<HighestBid>> GetLowestHighestBidFromListOfIds(List<string>Ids)
+        public async Task<List<HighestBid>> GetLowestHighestBidFromListOfIds(List<string> Ids)
         {
             var results = await _bidCollection.Aggregate()
                 .Match(Builders<Bid>.Filter.In(b => b.AuctionId, Ids)
                 ).Group(x => x.AuctionId,
-                    y => new {
+                    y => new
+                    {
                         Id = y.Key,
                         Amount = y.Min(a => (int)a.Amount),
                     })
@@ -54,7 +62,7 @@ namespace BidMicroService.Controllers
 
             foreach (var result in results)
             {
-                HighestBid highestBid = new();                
+                HighestBid highestBid = new();
                 highestBid.Id = result.Id;
                 highestBid.Amount = result.Amount;
                 highestBids.Add(highestBid);
@@ -62,57 +70,74 @@ namespace BidMicroService.Controllers
             }
             return highestBids;
         }
-        public async Task<List<HighestBid>> GetHighestBidFromListOfIds(List<string>Ids)
+        public async Task<List<HighestBid>> GetHighestBidFromListOfIds(List<string> Ids)
         {
             Console.WriteLine(Ids);
             var results = await _bidCollection.Aggregate()
-                .Match(Builders<Bid>.Filter.In(b => b.AuctionId, Ids)              
+                .Match(Builders<Bid>.Filter.In(b => b.AuctionId, Ids)
                 ).Group(x => x.AuctionId,
-                    y => new {
+                    y => new
+                    {
                         Id = y.Key,
-                        Amount = y.Max(a => (int)a.Amount),                        
+                        Amount = y.Max(a => (int)a.Amount),
                     })
                 .ToListAsync();
-            
+
             List<HighestBid> highestBids = new List<HighestBid>();
-            
+
             foreach (var result in results)
             {
                 HighestBid highestBid = new();
                 highestBid.UserId = result.Id;
                 highestBid.Amount = result.Amount;
                 highestBids.Add(highestBid);
-                
+
             }
             return highestBids;
         }
-        
+
 
         public List<Bid> GetAllBidsByAuction(string Id)
         {
             ObjectId aucId = new ObjectId(Id);
             Console.WriteLine(aucId);
             List<Bid> results = _bidCollection.Find(x => x.AuctionId == aucId.ToString()).ToList();
-            
-            
+
+
             return results;
         }
 
-        public List<Bid>CreateBid(BidPostModel bid)
+        public async Task<Bid> CreateBid(BidPostModel bid)
         {
-            Bid b = new Bid();
-            b.AuctionId = new ObjectId(bid.AuctionId).ToString();
-            b.UserId = new ObjectId(bid.UserId).ToString();
-            b.Id = new ObjectId().ToString();
+            
+            
+            string userId = _getIdFromTokenProducer.GetIdFromToken(bid.Token);
+            Bid b = new();
+            b.AuctionId = bid.AuctionId;
+            b.UserId = userId;
+            IsBidderSellerProducer isBidderSellerProducer = new(_connection);
+            if (isBidderSellerProducer.IsBidderSeller(b))
+            {
+                
+                return null;
+            }
+
+            b = new();
+            b.AuctionId = bid.AuctionId;
+            b.UserId = userId;
+            b.Id = ObjectId.GenerateNewId().ToString();
             b.Amount = bid.Amount;
             //Returns all current bids on auction
-            _bidCollection.InsertOneAsync(b).Wait();
-            return GetAllBidsByAuction(bid.AuctionId); 
+            await _bidCollection.InsertOneAsync(b);
+            BidMadeWatchlistProducer producer = new(_connection);
+            producer.BidMadeWatchlist(b);
+            Console.WriteLine("Returning a successfull bid");
+            return b;
         }
 
         public async Task<HighestBid> GetHighestBidOnAuction(string Id)
         {
-            
+
             var results = await _bidCollection.Aggregate()
                 .Match(Builders<Bid>.Filter.Eq(b => b.AuctionId, Id))
                 .Sort(new BsonDocument
@@ -122,26 +147,26 @@ namespace BidMicroService.Controllers
                         Builders<Bid>.Projection
                             .Include(b => b.UserId)
                             .Include(b => b.Amount)
-                            .Exclude(b => b.Id) 
+                            .Exclude(b => b.Id)
                 ).ToListAsync();
             HighestBid bid = new();
             Console.WriteLine(results.Count);
-            foreach(var result in results)
+            foreach (var result in results)
             {
 
                 bid.UserId = result["UserId"].ToString();
                 bid.Amount = int.Parse(result["Amount"].ToString());
             }
-            if(bid != null)
+            if (bid != null)
             {
                 Console.WriteLine(bid.UserId);
                 Console.WriteLine(bid.Amount);
             }
-            
+
             return bid;
         }
 
-        
- 
+
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿using BidMicroService.Models;
+using EmailService.Models;
+using EmailService.Services;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
@@ -19,9 +21,9 @@ namespace EmailService.RabbitMQ
             _channel = connection.CreateModel();
             {
                 _channel.QueueDeclare(
-                    queue: "accountEndedEmail",
+                    queue: "auctionEnded",
                     durable: false,
-                    autoDelete: true,
+                    autoDelete: false,
                     arguments: null,
                     exclusive: false
                     );
@@ -30,11 +32,12 @@ namespace EmailService.RabbitMQ
                 {
                     var body = ea.Body.ToArray();
                     var message = Encoding.UTF8.GetString(body);
+                    
                     auctionEnded(message);
 
                 };
                 _channel.BasicConsume(
-                    queue: "auctionEndedEmail",
+                    queue: "auctionEnded",
                     autoAck: true,
                     consumer: consumer
                     );
@@ -43,8 +46,8 @@ namespace EmailService.RabbitMQ
         }
         public void auctionEnded(string message)
         {
-            Auction bid = JsonSerializer.Deserialize<Auction>(message);
-            _emailService.sendWonAuctionEmail(bid);
+            List<Auction> aucs = JsonSerializer.Deserialize<List<Auction>>(message);
+            _emailService.sendWinnerSellerEmail(aucs);
             
         }
     }

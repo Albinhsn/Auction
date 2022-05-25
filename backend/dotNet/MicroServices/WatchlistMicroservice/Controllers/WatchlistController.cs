@@ -1,50 +1,50 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using WatchlistService.Models;
-using WatchlistService.Services;
+using WatchlistMicroservice.Models;
 
-namespace WatchlistService.Controllers
+namespace WatchlistMicroservice.Controllers
 
 {
     [ApiController]
-    [Route("/api")]
+    [Route("/api/[controller]")]
     public class WatchlistController : ControllerBase
     {
-        private readonly WatchListService _watchlistService;
+        private readonly Services.WatchlistService _watchlistService;
 
-        public WatchlistController(WatchListService watchlistService)
+        public WatchlistController(Services.WatchlistService watchlistService)
         {
 
             _watchlistService = watchlistService;
         }
 
         [HttpPost]
-        public ObjectId CreateWatchlist([FromQuery] WatchlistPostModel watchlist)
+        public string CreateWatchlist([FromQuery] WatchlistPostModel watchlist)
         {
             return _watchlistService.SaveWatchlist(watchlist);
         }
 
         [HttpGet]
-        public Watchlist GetWatchlist([FromQuery] string userId, [FromQuery] string auctionId)
+        public List<Watchlist> GetWatchlist(string token, string auctionId)
         {
 
-            return _watchlistService.GetWatchlist(new ObjectId(userId), new ObjectId(auctionId)).Result;
+            return _watchlistService.GetWatchlist(token, auctionId).Result;
         }
 
 
         [HttpPut]
-        public Watchlist UpdateWatchlist([FromQuery] string userId, [FromQuery] string auctionId, [FromQuery] string type)
+        public bool UpdateWatchlist(string token, string auctionId, string type)
         {
-            return _watchlistService.UpdateWatchlist(new ObjectId(userId), new ObjectId(auctionId), type).Result;
+            Console.WriteLine("GOT");
+            return _watchlistService.UpdateWatchlist(token, auctionId, type).Result;
         }
 
         [HttpDelete]
         public DeleteResult DeleteWatchlist([FromQuery] string userId, [FromQuery] string auctionId)
         {
-            return _watchlistService.DeleteWatchlist(new ObjectId(userId), new ObjectId(auctionId)).Result;
-            
-        }  
+            return _watchlistService.DeleteWatchlist(userId, auctionId).Result;
+
+        }
 
 
     }

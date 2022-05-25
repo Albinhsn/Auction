@@ -86,3 +86,4 @@ C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\AuctionMicr
 C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\AuctionMicroService\obj\Debug\net6.0\AuctionMicroService.pdb
 C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\AuctionMicroService\obj\Debug\net6.0\AuctionMicroService.genruntimeconfig.cache
 C:\Users\jeppe\Documents\GitHub\Auction\backend\dotNet\MicroServices\AuctionMicroService\obj\Debug\net6.0\ref\AuctionMicroService.dll
+B:\Program\Programmering\Github\Auction\backend\dotNet\MicroServices\AuctionMicroService\bin\Debug\net6.0\BCrypt.Net-Next.dll

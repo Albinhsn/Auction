@@ -15,7 +15,8 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters) => {
                     
                     break;
                 case "Märke":
-                    localAuc = localAuc.filter(auc => filter.val.includes(auc.brand) === true)
+                    
+                    localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.brand) === true)
                     
                     break; 
                 case "Typ av kamera":

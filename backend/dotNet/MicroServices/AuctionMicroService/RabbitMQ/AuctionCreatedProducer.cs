@@ -10,7 +10,7 @@ namespace AuctionMicroService.RabbitMQ
         IModel _channel;
         public AuctionCreatedProducer(RabbitMQConnection connection)
         {
-            
+
             _channel = connection._connection.CreateModel();
             {
                 _channel.ExchangeDeclare(
@@ -21,12 +21,12 @@ namespace AuctionMicroService.RabbitMQ
 
             }
         }
-        public void sendAuctionCreatedMessage(PostageAuction auction)
+        public void AuctionCreated(AuctionPostModel auc)
         {
 
-            string message = JsonSerializer.Serialize<PostageAuction>(auction);
+            string message = JsonSerializer.Serialize<AuctionPostModel>(auc);
             var body = Encoding.UTF8.GetBytes(message);
-            Console.WriteLine("Sent in User");
+            Console.WriteLine("Sent in Auction");
             _channel.BasicPublish(
                          exchange: "auctionCreated",
                          routingKey: "",

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "yo0GthhOIHaiQg0q1L3mpuonaBLQwRcJBVX7IwkgOwjFToF/7v8aDF+Fhcs6Bm8l0mUiiCMBLGo3kvvnk8j9zw==",
+  "dgSpecHash": "5jW0vMUY7mJQifITvNxQh55uEI+8jzvNOFs0kaok+T5/5cY78lM7EbIg8YVs1HRtTCwKQnU+QptbPNWkjTAYug==",
   "success": true,
   "projectFilePath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\AuthenticationService\\AuthenticationService.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\hart9\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\dnsclient\\1.6.0\\dnsclient.1.6.0.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\mailkit\\3.2.0\\mailkit.3.2.0.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

@@ -34,19 +34,38 @@ namespace AuctionMicroService.Controllers
         {
             return _auctionService.GetFavorites(token).Result;                        
         }
+        [HttpGet("/api/[controller]/user/watchlist")]
+        public List<Auction> GetUserWatchlist(string token)
+        {
+            return _auctionService.GetUserWatchlist(token).Result;
+        }
 
+        [HttpGet("/api/[controller]/search")]
+        public List<Auction> GetAuctionsBySearch(string? search)
+        {
+            
+            return _auctionService.GetAuctionsBySearch(search).Result;
+        }
 
         [HttpPost]
-        public IActionResult PostAuction([FromBody] AuctionPostModel auc, [FromQuery] int weight, [FromQuery] int volume)
+        public async Task<IActionResult> PostAuction([FromBody] AuctionPostModel auc)
         {
-                //AuctionHelpers.ValidateAuction c:
-                _auctionService.CreateAuction(auc, weight, volume);
+            //AuctionHelpers.ValidateAuction c:
+            try
+            {
+                await _auctionService.CreateAuction(auc);
+            }
+            catch(Exception e)
+            {
+                return BadRequest("Bad request");
+            }
+ 
             
 
             return Ok("Created Auction");
         }
         [HttpGet("/api/[controller]/single/auction")]
-        public async Task<Auction> getAuction(string id)
+        public async Task<Auction> GetAuction(string id)
         {
             return await _auctionService.GetAuction(id);
         }
@@ -81,9 +100,9 @@ namespace AuctionMicroService.Controllers
         }
 
         [HttpPut("/api/[controller]/purchase")]
-        public void MadePurchase(string userId, string auctionId)
+        public void MadePurchase(string token, string auctionId)
         {
-            _auctionService.MadePurchase(userId, auctionId);
+            _auctionService.MadePurchase(token, auctionId);
         }
     }
 }

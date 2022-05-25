@@ -1,5 +1,4 @@
 ﻿using AuctionMicroService.Models;
-using BidMicroService.Models;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Collections.Concurrent;
@@ -36,7 +35,7 @@ namespace AuctionMicroService.RabbitMQ
                 {
                     
                     respQueue.Add(response);
-                    Console.WriteLine(response);
+                   
                 }
             };
 

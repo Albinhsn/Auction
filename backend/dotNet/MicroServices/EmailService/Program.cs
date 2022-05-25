@@ -1,6 +1,6 @@
-using EmailService;
 using EmailService.EmailConfig;
 using EmailService.RabbitMQ;
+using EmailService.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.Text.Json;
@@ -19,11 +19,15 @@ EmailConfiguration config = new();
 builder.Configuration.GetSection("EmailConfiguration").Bind(config);
 IOptions<EmailConfiguration> myOptions = Options.Create(config);
 builder.Configuration.GetSection("EmailConfiguration").Bind(myOptions);
-new AccountCreatedReceiver(new EmailsService(myOptions));
-new AccountDeletedReceiver(new EmailsService(myOptions));
-new AuctionEndedReceiver(new EmailsService(myOptions));
-new MadePurchaseReceiver(new EmailsService(myOptions));
-new AccountUpdatedReceiver(new EmailsService(myOptions));
+RabbitMQConnection connection = new();
+EmailsService service = new(myOptions);
+new AccountCreatedReceiver(service);
+new AccountDeletedReceiver(service);
+new AuctionEndedReceiver(service);
+new AuctionPurchasedReceiver(service);
+new AccountUpdatedReceiver(service);
+new AuctionPurchasedWatchlistReceiver(service, connection);
+new AuctionBidWatchlistReceiver(service, connection);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using Org.BouncyCastle.Crypto.Generators;
+using BCrypt.Net;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -16,10 +16,10 @@ namespace AuthenticationService.Services
 
         private readonly Env _env;
         private readonly IMongoCollection<User> _userCollection;
-
+        private readonly string salt;
         public UserAuthenticationService()
         {
-            
+            salt = BCrypt.Net.BCrypt.GenerateSalt(10);
             _env = new();
             _env.Secret = "this is not supposed to be here";            
             MongoClient client = new("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
@@ -42,6 +42,8 @@ namespace AuthenticationService.Services
 
         public void CreateUser(User user)
         {
+            
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             _userCollection.InsertOneAsync(user);
             
         }
@@ -53,10 +55,9 @@ namespace AuthenticationService.Services
         public async Task<string?> generateToken(AuthenticateUserRequest Req)
         {
             
-            
-            User user = await _userCollection.Find(x => x.Email == Req.Email && x.Password == Req.Password).FirstOrDefaultAsync();
+            User user = await _userCollection.Find(x => x.Email == Req.Email).FirstOrDefaultAsync();
 
-            if (user == null)
+            if (user == null ||!BCrypt.Net.BCrypt.Verify(Req.Password, user.Password))
             {
                 return null;
             }

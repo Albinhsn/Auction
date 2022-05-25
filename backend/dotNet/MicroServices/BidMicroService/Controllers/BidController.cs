@@ -1,4 +1,5 @@
 ﻿using BidMicroService.Models;
+using BidMicroService.Services;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 
@@ -23,9 +24,18 @@ namespace BidMicroService.Controllers
             return _bidService.GetAllBidsByAuction(Id);
         }
         [HttpPost]
-        public List<Bid> CreateBid(BidPostModel bid)
+        public IActionResult CreateBid(BidPostModel bid)
         {
-            return _bidService.CreateBid(bid);
+            Console.WriteLine(bid.Amount);
+            Bid b =  _bidService.CreateBid(bid).Result;
+            if(b == null)
+            {
+                return BadRequest("Kan inte buda på din egna auktion");
+            }
+            else
+            {
+                return Ok(b);
+            }
         }
         [HttpGet("/api/bid/[controller]/highest")]
         public HighestBid GetHighestBidOnAuction(string Id)

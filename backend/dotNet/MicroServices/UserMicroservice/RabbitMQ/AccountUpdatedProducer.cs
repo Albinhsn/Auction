@@ -8,12 +8,9 @@ namespace UserMicroservice.RabbitMQ
     public class AccountUpdatedProducer
     {
         IModel _channel;
-        public AccountUpdatedProducer()
-        {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-
-            _channel = connection.CreateModel();
+        public AccountUpdatedProducer(RabbitMQConnection connection)
+        {            
+            _channel = connection._connection.CreateModel();
             {
                 _channel.ExchangeDeclare(
                    exchange: "accountUpdated",

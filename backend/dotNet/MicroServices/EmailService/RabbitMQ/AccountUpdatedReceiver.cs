@@ -1,4 +1,5 @@
 ﻿using EmailService.Models;
+using EmailService.Services;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;

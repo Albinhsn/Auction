@@ -6,9 +6,11 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import userService from '../../Services/userService'
 
 import * as auctionHelpers from '../../Helpers/auctionHelpers'
-
 import AuctionCardProductInfo from './CardInfo/AuctionCardProductInfo'
 import AuctionCardTimeInfo from './CardInfo/AuctionCardTimeInfo'
+import SwissAuctionCardInfo from './CardInfo/SwissAuctionCardInfo'
+
+
 export default function SwissAuction({ auction, token, setAuction}) {
 
  
@@ -50,17 +52,7 @@ export default function SwissAuction({ auction, token, setAuction}) {
                 {watchlist ? "Ta bort påminnelse" : "Lägg till påminnelse"}
               </button>
             </div>
-            <div className='d-flex mt-2'>
-              <input type="number" id="bid-input" className=""
-                onChange={e => setBid(e.target.value)}
-              />
-              
-              <button type="button" className="btn btn-warning ms-3"
-                onClick={() => auctionHelpers.handleBid(token, auction, bid, setAuction)}
-              >
-                Lägg bud
-              </button>
-            </div>
+           <SwissAuctionCardInfo token={token} auction={auction} setAuction={setAuction}/>
           </div>
         </div>
       </div>

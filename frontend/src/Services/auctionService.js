@@ -36,26 +36,33 @@ class AuctionDataService{
         // })
     }
 
-    makeBid(token, _id, bid){
-        return http.get("/auction/bid", 
-        {
-            params: { auctionId: _id, token: token, bid: bid},
-            headers: { Authorization: `Bearer ${token}` }
-        })
-    }
+    
 
     makePurchase(token, auctionId){
-        return http.get("/auction/purchase", { 
-            params:{ token: token, auctionId: auctionId},
-            headers: { Authorization: `Bearer ${token}` }
+        console.log(token, auctionId)
+        return this.auctionMicroService.put("/api/Auction/purchase", null, {
+            params: {
+                token: token, 
+                auctionId: auctionId 
+            } 
         })
+        // return http.get("/auction/purchase", { 
+        //     params:{ token: token, auctionId: auctionId},
+        //     headers: { Authorization: `Bearer ${token}` }
+        // })
     }
    
 
-    
+    getUserWatchlist(token){
+        return this.auctionMicroService.get("/api/Auction/user/watchlist", {
+            params: {
+                token: token
+            }
+        })
+    }
 
     getAuctionsBySearch(search){
-        return http.get("/auction/search",{
+        return this.auctionMicroService.get("/api/Auction/search",{
             params:{
                 search: search
             }
@@ -98,6 +105,13 @@ class AuctionDataService{
         return this.auctionMicroService.get("/api/auction/user/auctions", {
             params: {
                 Id: id
+            }
+        })
+    }
+    getUserFavorites(token) {
+        return this.auctionMicroService.get("/api/auction/user/favorites", {
+            params: {
+                token: token
             }
         })
     }

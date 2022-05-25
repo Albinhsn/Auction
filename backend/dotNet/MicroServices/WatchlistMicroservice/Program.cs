@@ -1,18 +1,32 @@
-using WatchlistService.Services;
+using WatchlistMicroservice.RabbitMQ;
+using WatchlistMicroservice.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddSingleton<WatchListService>();
+builder.Services.AddSingleton<WatchlistService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000"
+                                              )
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                      });
+});
 var app = builder.Build();
-
-
+WatchlistService service = new();
+RabbitMQConnection connection = new();
+new AuctionPurchasedReceiver(service, connection);
+new GetUserWatchlistReceiver(service, connection);  
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -21,7 +35,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthorization();
 
 app.MapControllers();

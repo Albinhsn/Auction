@@ -1,6 +1,6 @@
 ﻿using AuctionMicroService.Models;
 using AuctionMicroService.Services;
-using BidMicroService.Models;
+
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Collections.Concurrent;
@@ -23,7 +23,7 @@ namespace AuctionMicroService.RabbitMQ
             _channel = connection._connection.CreateModel();
             {
                 _channel.QueueDeclare(
-                    queue: "auctionEndedBids",
+                    queue: "auctionEnded",
                     durable: false,
                     autoDelete: false,
                     arguments: null,
@@ -63,21 +63,31 @@ namespace AuctionMicroService.RabbitMQ
         }
        
         public void AuctionEnded(string Id)
-        {            
-           
+        {
+            List<EmailAuction> auctions = new();
+
             HighestBid highestBid = getHighestBidFromAuction(Id);                        
-            EmailAuction auc = new EmailAuction();
+            EmailAuction winnerAuction = new EmailAuction();
             Auction auction = _auctionService.GetAuction(Id).Result;
-            auc.AuctionName = auction.Name;
-            auc.Price = highestBid.Amount;
-            auc.UserId = highestBid.UserId;
-            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<EmailAuction>(auc));
+            winnerAuction.AuctionName = auction.Name;
+            winnerAuction.Price = highestBid.Amount;
+            winnerAuction.UserId = highestBid.UserId;
+            
+            
+            auctions.Add(winnerAuction);
+
+            EmailAuction sellerAuction = new();
+            sellerAuction.AuctionName= auction.Name;
+            sellerAuction.Price= highestBid.Amount;
+            sellerAuction.UserId = auction.Seller;
+            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize<List<EmailAuction>>(auctions));
             _channel.BasicPublish(
                 exchange: "",
-                routingKey: "auctionEndedEmail",
+                routingKey: "auctionEnded",
                 basicProperties: null,
                 body: body
                 );
+            
         }
         public HighestBid getHighestBidFromAuction(string Id)
         {

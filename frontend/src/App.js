@@ -33,7 +33,7 @@ function App() {
 
   const [token, setToken] = useState()
 
-  // console.log(token)
+  console.log(token)
   useEffect(() => {
     
     if(!token){

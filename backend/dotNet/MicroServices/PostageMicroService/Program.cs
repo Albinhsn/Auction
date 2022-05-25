@@ -10,9 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<PostageService>();
-
-new AuctionCreatedReceiver(new PostageService());
-new GetPostageReceiver(new PostageService(), new RabbitMQConnection());
+RabbitMQConnection connection= new ();
+new AuctionCreatedReceiver(new PostageService(), connection);
+new GetPostageReceiver(new PostageService(), connection);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

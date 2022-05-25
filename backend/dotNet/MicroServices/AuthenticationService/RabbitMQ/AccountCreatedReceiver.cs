@@ -29,6 +29,7 @@ namespace AuthenticationService.RabbitMQ
                     exchange: "accountCreated",
                     routingKey: ""
                     );
+                Console.WriteLine("GOT");
                 var consumer = new EventingBasicConsumer(_channel);
                 consumer.Received += (model, ea) =>
                 {
@@ -46,7 +47,7 @@ namespace AuthenticationService.RabbitMQ
 
             }
         }
-        public async void accountCreated(string message)
+        public void accountCreated(string message)
         {
             Console.WriteLine(message);
 
@@ -56,7 +57,7 @@ namespace AuthenticationService.RabbitMQ
             {
 
 
-                _userAuthenticationService.CreateUser(user);
+               _userAuthenticationService.CreateUser(user);
             }
             catch (Exception ex)
             {

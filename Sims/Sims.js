@@ -1,4 +1,4 @@
-const { MongoClient, GridFSBucket, ObjectId } = require('mongodb')
+const {GridFSBucket, ObjectId } = require('mongodb')
 const mongodb = require('mongodb')
 const assert = require('assert')
 var fs = require('fs')
@@ -175,16 +175,16 @@ let cameras = [
         name: "Sony A7R III A Body",
         tags:
         {
-            brand: "Sony",
-            type: "Systemkamera",
-            lens: "Sony E",
-            imageSensorSize: "24x36",
-            resolution: "42.4",
-            weatherProof: "Nej",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth", "NFC"],
-            angledScreen: "Fällbar"
+            Brand: "Sony",
+            Type: "Systemkamera",
+            Lens: "Sony E",
+            ImageSensorSize: "24x36",
+            Resolution: "42.4",
+            WeatherProof: "Nej",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth", "NFC"],
+            AngledScreen: "Fällbar"
         },
         images: [
             ObjectId("625d58268cdfe43a88040e59"),
@@ -195,16 +195,16 @@ let cameras = [
         name: "Canon EOS R6",
         tags:
         {
-            brand: "Canon",
-            type: "Systemkamera",
-            lens: "Canon RF",
-            imageSensorSize: "24x36",
-            resolution: "20.1",
-            weatherProof: "Ja",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fullt roter- & fällbar"
+            Brand: "Canon",
+            Type: "Systemkamera",
+            Lens: "Canon RF",
+            ImageSensorSize: "24x36",
+            Resolution: "20.1",
+            WeatherProof: "Ja",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
             ObjectId('625d598839d4f06f9a7e59d8'),
@@ -215,15 +215,15 @@ let cameras = [
         name: "Sony ZV E10L",
         tags:
         {
-            brand: "Sony",
-            type: "Systemkamera",
-            lens: "Sony E",
-            imageSensorSize: "APS-C",
-            resolution: "24.2",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fullt roter- & fällbar"
+            Brand: "Sony",
+            Type: "Systemkamera",
+            Lens: "Sony E",
+            ImageSensorSize: "APS-C",
+            Resolution: "24.2",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
             ObjectId('625d5a6ee245c365b07af0a8'),
@@ -234,16 +234,16 @@ let cameras = [
         name: "Canon EOS m50 Mark II",
         tags:
         {
-            brand: "Canon",
-            type: "Systemkamera",
-            lens: "Canon EOS M",
-            imageSensorSize: "APS-C",
-            resolution: "24.1",
-            weatherProof: "Nej",
-            videoFormat: "4k 24fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fällbar med selfieläge"
+            Brand: "Canon",
+            Type: "Systemkamera",
+            Lens: "Canon EOS M",
+            ImageSensorSize: "APS-C",
+            Resolution: "24.1",
+            WeatherProof: "Nej",
+            VideoFormat: "4k 24fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fällbar med selfieläge"
         },
         images: [
             ObjectId('625d5b9854ce7f62ae79b3fe'),
@@ -254,16 +254,16 @@ let cameras = [
     {
         name: "Canon EOS R",
         tags: {
-            brand: "Canon",
-            type: "Systemkamera",
-            lens: "Canon RF",
-            imageSensorSize: "24x36",
-            resolution: "30.3",
-            weatherProof: "Ja",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fullt roter- & fällbar"
+            Brand: "Canon",
+            Type: "Systemkamera",
+            Lens: "Canon RF",
+            ImageSensorSize: "24x36",
+            Resolution: "30.3",
+            WeatherProof: "Ja",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
             ObjectId('625d5bb754ce7f62ae79b403'),
@@ -273,16 +273,16 @@ let cameras = [
     {
         name: "Sony A7 III",
         tags: {
-            brand: "Sony",
-            type: "Systemkamera",
-            lens: "Sony E",
-            imageSensorSize: "24x36",
-            resolution: "24.2",
-            weatherProof: "Ja",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth", "NFC"],
-            angledScreen: "Fällbar"
+            Brand: "Sony",
+            Type: "Systemkamera",
+            Lens: "Sony E",
+            ImageSensorSize: "24x36",
+            Resolution: "24.2",
+            WeatherProof: "Ja",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth", "NFC"],
+            AngledScreen: "Fällbar"
         },
         images: [
             ObjectId('625d5bd954ce7f62ae79b409'),
@@ -292,16 +292,16 @@ let cameras = [
     {
         name: "Canon EOS 90D",
         tags: {
-            brand: "Canon",
-            type: "Systemkamera",
-            lens: "Canon EF",
-            imageSensorSize: "APS-C",
-            resolution: "32.5",
-            weatherProof: "Ja",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
-            wirelessConnection: ["Wi-Fi"],
-            angledScreen: "Fullt roter- & fällbar"
+            Brand: "Canon",
+            Type: "Systemkamera",
+            Lens: "Canon EF",
+            ImageSensorSize: "APS-C",
+            Resolution: "32.5",
+            WeatherProof: "Ja",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
+            WirelessConnection: ["Wi-Fi"],
+            AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
             ObjectId('625d5bf754ce7f62ae79b40d'),
@@ -311,16 +311,16 @@ let cameras = [
     {
         name: "Fujifilm X-T3",
         tags: {
-            brand: "Fujifilm",
-            type: "Systemkamera",
-            lens: "Fuji X",
-            imageSensorSize: "24x36",
-            resolution: "26",
-            weatherProof: "Ja",
-            videoFormat: "4k 60fps",
-            memoryCards: ["UHS-II"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fällbar"
+            Brand: "Fujifilm",
+            Type: "Systemkamera",
+            Lens: "Fuji X",
+            ImageSensorSize: "24x36",
+            Resolution: "26",
+            WeatherProof: "Ja",
+            VideoFormat: "4k 60fps",
+            MemoryCards: ["UHS-II"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fällbar"
         },
         images: [
             ObjectId('625d5c1454ce7f62ae79b411'),
@@ -330,16 +330,16 @@ let cameras = [
     {
         name: "Canon EOS R5",
         tags: {
-            brand: "Canon",
-            type: "Systemkamera",
-            lens: "Canon RF",
-            imageSensorSize: "24x36",
-            resolution: "45",
-            weatherProof: "Ja",
-            videoFormat: "8k 30fps",
-            memoryCards: ["CFexpress type B", "UHS-II"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fullt roter- & fällbar"
+            Brand: "Canon",
+            Type: "Systemkamera",
+            Lens: "Canon RF",
+            ImageSensorSize: "24x36",
+            Resolution: "45",
+            WeatherProof: "Ja",
+            VideoFormat: "8k 30fps",
+            MemoryCards: ["CFexpress Type B", "UHS-II"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
             ObjectId('625d5c3354ce7f62ae79b415'),
@@ -349,16 +349,16 @@ let cameras = [
     {
         name: "Nikon Z6 II",
         tags: {
-            brand: "Nikon",
-            type: "Systemkamera",
-            lens: "Nikon Z",
-            imageSensorSize: "24x36",
-            resolution: "24.5",
-            weatherProof: "Ja",
-            videoFormat: "4k 30fps",
-            memoryCards: ["CFexpress type B", "UHS-II", "XQD"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fällbar"
+            Brand: "Nikon",
+            Type: "Systemkamera",
+            Lens: "Nikon Z",
+            ImageSensorSize: "24x36",
+            Resolution: "24.5",
+            WeatherProof: "Ja",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["CFexpress Type B", "UHS-II", "XQD"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fällbar"
         },
         images: [
             ObjectId('625d5c4b54ce7f62ae79b419'),
@@ -368,14 +368,14 @@ let cameras = [
     {
         name: "Canon IXUS 185",
         tags: {
-            brand: "Canon",
-            type: "Kompaktkamera",
-            imageSensorSize: "2.3'",
-            resolution: "20",
-            weatherProof: "Nej",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            angledScreen: "Fast skärm"
+            Brand: "Canon",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "2.3'",
+            Resolution: "20",
+            WeatherProof: "Nej",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            AngledScreen: "Fast skärm"
         },
         images: [
             ObjectId('625d5c6254ce7f62ae79b420'),
@@ -385,15 +385,15 @@ let cameras = [
     {
         name: "Panasonic Lumix DC-TZ200",
         tags: {
-            brand: "Panasonic",
-            type: "Kompaktkamera",
-            imageSensorSize: "2.3'",
-            resolution: "20.1",
-            weatherProof: "Nej",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fast skärm"
+            Brand: "Panasonic",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "2.3'",
+            Resolution: "20.1",
+            WeatherProof: "Nej",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fast skärm"
         },
         images: [
             ObjectId('625d5c7c54ce7f62ae79b424'),
@@ -403,15 +403,15 @@ let cameras = [
     {
         name: "Nikon Coolpix P950",
         tags: {
-            brand: "Nikon",
-            type: "Kompaktkamera",
-            imageSensorSize: "2.3'",
-            resolution: "16",
-            weatherProof: "Nej",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth", "GPS"],
-            angledScreen: "Fullt roter- & fällbar"
+            Brand: "Nikon",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "2.3'",
+            Resolution: "16",
+            WeatherProof: "Nej",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth", "GPS"],
+            AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
             ObjectId('625d5c9454ce7f62ae79b428'),
@@ -422,15 +422,15 @@ let cameras = [
         name: "Panasonic LX100 II",
         tags:
         {
-            brand: "Panasonic",
-            type: "Kompaktkamera",
-            imageSensorSize: "High Sens MOS",
-            resolution: "17",
-            weatherProof: "Nej",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth", "NFC"],
-            angledScreen: "Fast skärm"
+            Brand: "Panasonic",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "High Sens MOS",
+            Resolution: "17",
+            WeatherProof: "Nej",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth", "NFC"],
+            AngledScreen: "Fast skärm"
         },
         images: [
             ObjectId('625d5cab54ce7f62ae79b42f'),
@@ -441,15 +441,15 @@ let cameras = [
         name: "Nikon Coolpix P1000",
         tags:
         {
-            brand: "Nikon",
-            type: "Kompaktkamera",
-            imageSensorSize: "2.3'",
-            resolution: "16",
-            weatherProof: "Nej",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fullt roter- & fällbar"
+            Brand: "Nikon",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "2.3'",
+            Resolution: "16",
+            WeatherProof: "Nej",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
             ObjectId('625d5cbf54ce7f62ae79b433'),
@@ -460,15 +460,15 @@ let cameras = [
         name: "Olympus Tough TG-6",
         tags:
         {
-            brand: "Olympus",
-            type: "Kompaktkamera",
-            imageSensorSize: "2.3'",
-            resolution: "12",
-            weatherProof: "Ja",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi"],
-            angledScreen: "Fast skärm"
+            Brand: "Olympus",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "2.3'",
+            Resolution: "12",
+            WeatherProof: "Ja",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi"],
+            AngledScreen: "Fast skärm"
         },
         images: [
             ObjectId('625d5cd554ce7f62ae79b437'),
@@ -479,15 +479,15 @@ let cameras = [
         name: "Fujifilm X100V",
         tags:
         {
-            brand: "Fujifilm",
-            type: "Kompaktkamera",
-            imageSensorSize: "APS-C",
-            resolution: "26.1",
-            weatherProof: "Ja",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fällbar"
+            Brand: "Fujifilm",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "APS-C",
+            Resolution: "26.1",
+            WeatherProof: "Ja",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fällbar"
         },
         images: [
             ObjectId('625d5ced54ce7f62ae79b43b'),
@@ -498,15 +498,15 @@ let cameras = [
         name: "Canon PowerShot G7 X III",
         tags:
         {
-            brand: "Canon",
-            type: "Kompaktkamera",
-            imageSensorSize: "1'",
-            resolution: "20.1",
-            weatherProof: "Nej",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fällbar med selfieläge"
+            Brand: "Canon",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "1'",
+            Resolution: "20.1",
+            WeatherProof: "Nej",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fällbar med selfieläge"
         },
         images: [
             ObjectId('625d5d2d54ce7f62ae79b43f'),
@@ -517,15 +517,15 @@ let cameras = [
         name: "Canon PowerShot SX70 HS",
         tags:
         {
-            brand: "Canon",
-            type: "Kompaktkamera",
-            imageSensorSize: "2.3'",
-            resolution: "20.3",
-            weatherProof: "Nej",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi"],
-            angledScreen: "Fullt roter- & fällbar"
+            Brand: "Canon",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "2.3'",
+            Resolution: "20.3",
+            WeatherProof: "Nej",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi"],
+            AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
             ObjectId('625d5d4454ce7f62ae79b444'),
@@ -536,14 +536,14 @@ let cameras = [
         name: "Canon PowerShot SX430 IS",
         tags:
         {
-            brand: "Canon",
-            type: "Kompaktkamera",
-            imageSensorSize: "2.3'",
-            resolution: "20.5",
-            weatherProof: "Nej",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "NFC"],
-            angledScreen: "Fast skärm"
+            Brand: "Canon",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "2.3'",
+            Resolution: "20.5",
+            WeatherProof: "Nej",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "NFC"],
+            AngledScreen: "Fast skärm"
         },
         images: [
             ObjectId('625d5d5e54ce7f62ae79b448'),
@@ -554,15 +554,15 @@ let cameras = [
         name: "Sony CyberShot DSC-RX100 III",
         tags:
         {
-            brand: "Sony",
-            type: "Kompaktkamera",
-            imageSensorSize: "1'",
-            resolution: "20.1",
-            weatherProof: "Nej",
-            videoFormat: "FHD 60fps",
-            memoryCards: ["SD", "SDHC", "SDXC"],
-            wirelessConnection: ["Wi-Fi", "NFC"],
-            angledScreen: "Fällbar med selfieläge"
+            Brand: "Sony",
+            Type: "Kompaktkamera",
+            ImageSensorSize: "1'",
+            Resolution: "20.1",
+            WeatherProof: "Nej",
+            VideoFormat: "FHD 60fps",
+            MemoryCards: ["SD", "SDHC", "SDXC"],
+            WirelessConnection: ["Wi-Fi", "NFC"],
+            AngledScreen: "Fällbar med selfieläge"
         },
         images: [
             ObjectId('625d5d7354ce7f62ae79b44c'),
@@ -573,16 +573,16 @@ let cameras = [
         name: "Fujifilm GFX100s",
         tags:
         {
-            brand: "Fujifilm",
-            type: "Mellanformatskamera",
-            lens: "Fuji GF",
-            imageSensorSize: "43.8x32.9",
-            resolution: "102",
-            weatherProof: "Ja",
-            videoFormat: "4k 30fps",
-            memoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
-            wirelessConnection: ["Wi-Fi", "Bluetooth"],
-            angledScreen: "Fällbar"
+            Brand: "Fujifilm",
+            Type: "Mellanformatskamera",
+            Lens: "Fuji GF",
+            ImageSensorSize: "43.8x32.9",
+            Resolution: "102",
+            WeatherProof: "Ja",
+            VideoFormat: "4k 30fps",
+            MemoryCards: ["SD", "SDHC", "SDXC", "UHS-II"],
+            WirelessConnection: ["Wi-Fi", "Bluetooth"],
+            AngledScreen: "Fällbar"
         },
         images: [
             ObjectId('625d5d9054ce7f62ae79b450'),
@@ -591,13 +591,13 @@ let cameras = [
     }
 ]
 
-let states = ["Slut", "Pågående"]
+
 let conditions = ["Perfekt", "Bra", "Utmärkt", "Dåligt", "Hyggligt"]
 const auctionType = ["Engelsk", "Holländsk", "Schweizisk"]
 const uri = "mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
-const client = new MongoClient(uri)
-let dbs = ["Users", "Images", "Authentication", "Auctions", "Bids", "Email", "Postage"]
+
+let dbs = ["Users", "Images", "Authentication", "Auctions", "Bids", "Email", "Postage", "Tags"]
 async function doEverything(){
     mongodb.MongoClient.connect(uri, function (error, client) {
     assert.ifError(error);
@@ -635,51 +635,45 @@ async function doEverything(){
                 });
             console.log(i)
         }
-    //Bid sims 
-    let bids = []
-    for (auc in auctionIds) {
-
-        let rand = Math.floor(Math.random() * 5)
-        Amount = Math.floor(Math.random() * 2000) + 100;
-
-        for (let i = 0; i < rand; i++) {
-
-            bids.push({
-                AuctionId: auctionIds[auc],
-                UserId: bidderIds[Math.floor(Math.random() * bidderIds.length) - 1],
-                Amount: Amount + i * 100
-            })
-        }
-
-    }
-    let database = client.db("Bids")
-    let auctions = database.collection("Bids")
-    let result = auctions.insertMany(bids)
-
+    
 
 
     //Auction sims
     let C = []
+    let bids = []
+    let tags = []
     //50 current 50 sold
     for (let i = 0; i < 100; i++) {
         let camera = {}
-        cam = cameras[Math.floor(Math.random() * cameras.length)]
+        let cameraIdx = Math.floor(Math.random() * cameras.length)
+        cam = cameras[cameraIdx]
         camera._id = auctionIds[i]
-        camera.Name = cam.name
-        //camera.Tags = cam.tags
+        camera.Name = cam.name        
         camera.Images = cam.images
         camera.Condition = conditions[Math.floor(Math.random() * conditions.length)]
         camera.AuctionType = auctionType[Math.floor(Math.random() * auctionType.length)]
         camera.Description = description
         camera.MinimumBid = Math.floor(Math.random() * 10000) + 500 - (Math.floor(Math.random() * 10000) + 500) % 10
         camera.Seller = ObjectId(bidderIds[Math.floor(Math.random() * bidderIds.length)])
-        //camera.BidHistory = []
-
-
-
+        
+        
+        //Sim tags
+        const possibleTags = ["Brand", "Type", "Lens", "ImageSensorSize", "Resolution", "WeatherProof", "VideoFormat", "MemoryCards", "WirelessConnection", "AngledScreen"]
+        let tag = {
+            _id: auctionIds[i],
+            
+        }
+        for(let i = 0; i<possibleTags.length; i++){
+            try {
+                
+                tag[possibleTags[i]] = cameras[cameraIdx]["tags"][possibleTags[i]]
+            } catch {                            
+            }
+        }
+        tags.push(tag)
 
         //Create winner
-        if (i % 2 === 0) {
+        if (i % 2 === 0 && bids.length > 0) {
 
             camera.Winner = ObjectId(bidderIds[Math.floor(Math.random() * bidderIds.length)])
             while (camera.Winner === camera.Seller) {
@@ -701,17 +695,39 @@ async function doEverything(){
             camera.MinimumBid = 0
         }
 
-
+        //Bid sims 
         if (camera.State === "Pågående") {
             StartDate = randomDate(new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() - 7), new Date(), 0, 23)
-        }
-        else {
+        }else{
             StartDate = randomDate(new Date(new Date().getFullYear(), new Date().getMonth() - 4, new Date().getDate()), new Date(), 0, 23)
         }
         camera.StartDate = StartDate
         camera.EndDate = new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate() + 8);
+        if (camera.AuctionType == "Engelsk" || camera.AuctionType == "Schweizisk") {
 
+            let rand = Math.floor(Math.random() * 5)
+            Amount = camera.MinimumBid + 100;
 
+            for (let i = 0; i < rand; i++) {
+                let bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length) - 1]
+                while (camera.Seller == bidderId) {
+                    bidderIds[Math.floor(Math.random() * bidderIds.length) - 1]
+                }
+                bids.push({
+                    AuctionId: camera._id,
+                    UserId: bidderIds[Math.floor(Math.random() * bidderIds.length) - 1],
+                    Amount: Amount + i * 100
+                })
+            }
+            
+        }
+        
+        if(camera.State === "Slut"){                        
+            camera.Winner = bids[bids.length -1].UserId
+        }
+        
+        
+        //Old sims for bids (Sprint 2)
         // if (camera.AuctionType === "Engelsk") {
         //     for (let j = 0; j < Math.floor(Math.random() * 6); j++) {
         //         let bidderId = bidderIds[Math.floor(Math.random() * bidderIds.length)]
@@ -740,9 +756,16 @@ async function doEverything(){
     }
 
     
-    database = client.db("Auctions")
-    auctions = database.collection("Auctions")
-    result = auctions.insertMany(C)
+    let database = client.db("Auctions")
+    let auctions = database.collection("Auctions")
+    let result = auctions.insertMany(C)
+    database = client.db("Bids")
+    auctions = database.collection("Bids")
+    result = auctions.insertMany(bids)
+    database = client.db("Tags")
+    collection = database.collection("Tags")
+    result = collection.insertMany(tags)
+
 
     let postages = []
     let postagePrices = [39, 79, 129]
@@ -769,7 +792,7 @@ async function doEverything(){
 
     const hashPasswords = async () => {
         for (let j = 0; j < passwords.length; j++) {
-            // passwords[j] = await hash(passwords[j], 10)
+            passwords[j] = await hash(passwords[j], 10)
         }
     }
     let authObjs = []
@@ -810,33 +833,33 @@ async function doEverything(){
     //User sims
 
     objs = []
-    hashPasswords().then(() => {
+    
 
-        for (i = 0; i < usersnames.length; i++) {
-            let favo = []
-            for (let i = 0; i < Math.floor(Math.random() * 10); i++) {
-                favo.push(auctionIds[Math.floor(Math.random() * auctionIds.length)])
-            }
-
-
-            let obj = {
-                _id: bidderIds[i],
-                Name: usersnames[i],
-                Email: `${usersnames[i]}@gmail.com`,
-                Password: passwords[i],
-                Favorites: favo,
-                //Watchlist: []
-            }
-
-            objs.push(obj)
+    for (i = 0; i < usersnames.length; i++) {
+        let favo = []
+        for (let i = 0; i < Math.floor(Math.random() * 10); i++) {
+            favo.push(auctionIds[Math.floor(Math.random() * auctionIds.length)])
         }
-        const database = client.db("Users")
-        const auctions = database.collection("Users")
-        const result = auctions.insertMany(objs)
+
+
+        let obj = {
+            _id: bidderIds[i],
+            Name: usersnames[i],
+            Email: `${usersnames[i]}@gmail.com`,
+            //Password: passwords[i],
+            Favorites: favo,
+            //Watchlist: []
+        }
+
+        objs.push(obj)
+    }
+    database = client.db("Users")
+    auctions = database.collection("Users")
+    result = auctions.insertMany(objs)
 
 
     
-})}
+}
     
 )}
 doEverything()

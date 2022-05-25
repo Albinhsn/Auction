@@ -1,4 +1,6 @@
 ﻿using EmailService.EmailConfig;
+using EmailService.Models;
+using EmailService.Services;
 using Microsoft.AspNetCore.Mvc;
 
 

@@ -11,11 +11,10 @@ namespace UserMicroservice.RabbitMQ
         private readonly BlockingCollection<String> respQueue = new BlockingCollection<string>();
         private readonly IBasicProperties props;
 
-        public GetIdFromTokenProducer()
+        public GetIdFromTokenProducer(RabbitMQConnection connection)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+            
+            _channel = connection._connection.CreateModel();
             var queueName = _channel.QueueDeclare().QueueName;
             var consumer = new EventingBasicConsumer(_channel);
 

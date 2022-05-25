@@ -14,9 +14,10 @@ builder.Services.AddSingleton<AuctionEndedProducer>();
 builder.Services.AddSingleton<AuctionPurchasedProducer>();
 builder.Services.AddSingleton<RabbitMQConnection>();
 RabbitMQConnection connection = new();
-new AuctionPurchasedProducer(new AuctionService(), connection);
-new AuctionEndedProducer(new AuctionService(), connection);
-
+AuctionService aucService = new();
+new AuctionEndedProducer(aucService, connection);
+new GetAuctionNameFromIdReceiver(aucService, connection);
+new IsBidderSellerReceiver(aucService, connection);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
@@ -24,7 +25,11 @@ builder.Services.AddCors(options =>
                       policy =>
                       {
                           policy.WithOrigins("http://localhost:3000"
-                                              );
+                                              )
+                              .AllowAnyHeader()
+                              .AllowAnyMethod()
+                          ;
+                                                
                       });
 });
 

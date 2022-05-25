@@ -25,10 +25,11 @@ builder.Services.AddCors(options =>
                           .AllowAnyMethod(); 
                       });
 });
+RabbitMQConnection connection = new();
 AccountUpdatedReceiver _messageReceiver = new(new UserAuthenticationService());
 AccountCreatedReceiver _messageCreatedReceiver = new(new UserAuthenticationService());  
 AccountDeletedReceiver _messageDeletedReceiver = new(new UserAuthenticationService());
-new GetIdFromTokenReceiver(new UserAuthenticationService());
+GetIdFromTokenReceiver _getIdFromTokenReceiver = new (new UserAuthenticationService(), connection);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
