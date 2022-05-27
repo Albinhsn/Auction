@@ -10,7 +10,7 @@ namespace BidMicroService.Services
     {
 
         private readonly IMongoCollection<Bid> _bidCollection;
-        private readonly GetIdFromTokenProducer _getIdFromTokenProducer;
+        
         private readonly RabbitMQConnection _connection;
         public BidService()
         {
@@ -18,8 +18,7 @@ namespace BidMicroService.Services
             MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Bids");
             RabbitMQConnection connection = new();
-            _connection = connection;
-            _getIdFromTokenProducer = new(connection);
+            _connection = connection;            
             _bidCollection = db.GetCollection<Bid>("Bids");
         }
 
@@ -109,9 +108,9 @@ namespace BidMicroService.Services
 
         public async Task<Bid> CreateBid(BidPostModel bid)
         {
-            
-            
-            string userId = _getIdFromTokenProducer.GetIdFromToken(bid.Token);
+
+            GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
+            string userId = getIdFromTokenProducer.GetIdFromToken(bid.Token);
             Bid b = new();
             b.AuctionId = bid.AuctionId;
             b.UserId = userId;

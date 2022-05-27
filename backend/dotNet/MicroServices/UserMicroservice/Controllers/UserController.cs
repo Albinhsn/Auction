@@ -75,5 +75,10 @@ namespace UserMicroservice.Controllers
         {
             return _userService.IsFavorite(auctionId, token).Result;
         }
+        //TODO
+        //public List<bool> IsFavoriteFromList(List<string> auctionIds, string token)
+        //{
+        //    return _userService.IsFavoriteFromList(auctionIds, token).Result;
+        //}
     }
 }

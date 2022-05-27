@@ -12,12 +12,11 @@ namespace AuthenticationService.RabbitMQ
     {
         IModel _channel;
         UserAuthenticationService _userAuthenticationService;
-        public AccountCreatedReceiver(UserAuthenticationService userAuthenticationService)
+        public AccountCreatedReceiver(UserAuthenticationService userAuthenticationService, RabbitMQConnection connection)
         {
             _userAuthenticationService = userAuthenticationService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+            
+            _channel = connection._connection.CreateModel();
             {
                 _channel.ExchangeDeclare(
                     exchange: "accountCreated",

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router'
 import ChangeProfileInfoForm from '../Components/Forms/ChangeProfileInfoForm'
 import userService from '../Services/userService'
 import ProfileInfo from '../Components/Profile/ProfileInfo'
-export default function Profile({token}) {
+export default function Profile({token, setToken}) {
   
   const [user, setUser] = useState()
   const navigate = useNavigate()
@@ -33,7 +33,7 @@ export default function Profile({token}) {
                   <ProfileInfo user={user}/>
                 </div>
 
-                <ChangeProfileInfoForm token={token} user={user} setUser={setUser}/>
+                <ChangeProfileInfoForm token={token} setToken={setToken}/>
               </div>
             </div>
           </div> 

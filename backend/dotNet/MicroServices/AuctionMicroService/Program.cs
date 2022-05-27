@@ -9,12 +9,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+AuctionService aucService = new();
 builder.Services.AddSingleton<AuctionService>();
-builder.Services.AddSingleton<AuctionEndedProducer>();
-builder.Services.AddSingleton<AuctionPurchasedProducer>();
 builder.Services.AddSingleton<RabbitMQConnection>();
 RabbitMQConnection connection = new();
-AuctionService aucService = new();
+
 new AuctionEndedProducer(aucService, connection);
 new GetAuctionNameFromIdReceiver(aucService, connection);
 new IsBidderSellerReceiver(aucService, connection);

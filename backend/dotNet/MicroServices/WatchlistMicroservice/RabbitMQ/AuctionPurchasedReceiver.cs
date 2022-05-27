@@ -13,7 +13,7 @@ namespace WatchlistMicroservice.RabbitMQ
         
         public AuctionPurchasedReceiver(WatchlistService watchlistService, RabbitMQConnection connection)
         {
-            Console.WriteLine("Built auctionPurchasedReceiver");
+            
             {
                 _channel = connection._connection.CreateModel();
                 

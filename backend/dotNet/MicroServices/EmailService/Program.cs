@@ -13,14 +13,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.Configure<EmailConfiguration>(builder.Configuration.GetSection("EmailConfiguration"));
-builder.Services.AddSingleton<EmailsService>();
 EmailConfiguration config = new();
 builder.Configuration.GetSection("EmailConfiguration").Bind(config);
 IOptions<EmailConfiguration> myOptions = Options.Create(config);
 builder.Configuration.GetSection("EmailConfiguration").Bind(myOptions);
-RabbitMQConnection connection = new();
 EmailsService service = new(myOptions);
+builder.Services.AddSingleton<EmailsService>(service);
+
+RabbitMQConnection connection = new();
+
 new AccountCreatedReceiver(service);
 new AccountDeletedReceiver(service);
 new AuctionEndedReceiver(service);

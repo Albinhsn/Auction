@@ -55,7 +55,7 @@ export default function Auction({token}) {
     if (!auctionId) return <></>
     if(Object.keys(auction).length === 0){
       auctionService.getAuctionByObjectId(auctionId).then(response=> {
-        
+        console.log(response)
         
         
         if(response.data.highestBid === 0){
@@ -67,11 +67,13 @@ export default function Auction({token}) {
           response.data.seller =  nameResponse.data
           
           setAuction(response.data)
+          
         }).catch(error => {
           console.log(error)
           setAuction(response.data)
+          
         })        
-        let images = []        
+        let images = []
         response.data.images.map(image => {
           
           images.push(  

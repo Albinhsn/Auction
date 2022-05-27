@@ -8,8 +8,11 @@ export const convertToGallery= (image) => {
 
 export const convertFromGallery = (images) => {
     let I = []
+    
     images.map(image => {
-        I.push(image.original)
+        
+        image = image.original.replace('https://localhost:7141/api/Image/', '')
+        I.push(image)
     }) 
     return I
 }

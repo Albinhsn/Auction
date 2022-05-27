@@ -28,7 +28,6 @@ namespace TagsMicroService.Services
         public async void AuctionCreated(Models.Tag auc)
         {
             Console.WriteLine(auc.Id);
-            Console.WriteLine(auc.Brand);
             await _collection.InsertOneAsync(auc);
         }
         public async Task<List<Models.Tag>> GetAuctionBySearchTags(string search)

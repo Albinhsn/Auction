@@ -15,13 +15,10 @@ namespace AuthenticationService.RabbitMQ
         
         IModel _channel;
         UserAuthenticationService _userAuthenticationService;
-        public AccountUpdatedReceiver(UserAuthenticationService userAuthenticationService)
+        public AccountUpdatedReceiver(UserAuthenticationService userAuthenticationService, RabbitMQConnection connection)
         {
-            _userAuthenticationService = userAuthenticationService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-
-            _channel = connection.CreateModel();
+            _userAuthenticationService = userAuthenticationService;                                 
+            _channel = connection._connection.CreateModel();
             {
                 _channel.ExchangeDeclare(
                     exchange: "accountUpdated",
@@ -40,7 +37,7 @@ namespace AuthenticationService.RabbitMQ
                 {
                     var body = ea.Body.ToArray();
                     var message = Encoding.UTF8.GetString(body);
-                    accountUpdated(message.ToString());
+                    AccountUpdated(message.ToString());
 
                 };
                 _channel.BasicConsume(
@@ -56,7 +53,7 @@ namespace AuthenticationService.RabbitMQ
         
         
     
-        public void accountUpdated(string message)
+        public void AccountUpdated(string message)
         {
             Console.WriteLine(message);
             User user = JsonSerializer.Deserialize<User>(message);            

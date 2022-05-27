@@ -69,10 +69,10 @@ class AuctionDataService{
         })
     }
 
-    postAuction(auctioninfo, token){
-        return http.post("/auction/create",
-            auctioninfo, 
-            {headers: { Authorization: `Bearer ${token}` }}
+    postAuction(auctioninfo){
+        return this.auctionMicroService.post("api/auction/Auction",
+            auctioninfo
+            
     )}
 
     getWatchlistById(token){

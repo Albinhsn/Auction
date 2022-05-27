@@ -9,10 +9,7 @@ namespace UserMicroservice.Services
     {
 
         private readonly IMongoCollection<User> _userCollection;
-        private AccountDeletedProducer _messageDeletedProducer;
-        private AccountCreationProducer _messageCreationProducer;
-        private  AccountUpdatedProducer _messageInfoChangedProducer;
-        private GetIdFromTokenProducer _getUserIdFromTokenProducer;
+       
         private RabbitMQConnection _connection;
         public UserService()
         {
@@ -26,9 +23,10 @@ namespace UserMicroservice.Services
 
         public async Task<User> GetUser(string token)
         {
-            _getUserIdFromTokenProducer = new(_connection);
+             
+            GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
             Console.WriteLine(token);
-            string Id = _getUserIdFromTokenProducer.GetIdFromToken(token);
+            string Id = getIdFromTokenProducer.GetIdFromToken(token);
             Console.WriteLine(Id);
             return await _userCollection.Find(x => x.Id == Id).FirstOrDefaultAsync();
         }
@@ -49,8 +47,10 @@ namespace UserMicroservice.Services
         //}
         public async Task<User> UpdateEmail(string token, string email, string matchingEmail)
         {
-            _messageInfoChangedProducer = new(_connection);
-            string Id = _getUserIdFromTokenProducer.GetIdFromToken(token);
+
+            GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
+
+            string Id = getIdFromTokenProducer.GetIdFromToken(token);
             var filter = Builders<User>.Filter.Where(x => x.Id == Id);
             var options = new FindOneAndReplaceOptions<User>
             {
@@ -59,12 +59,14 @@ namespace UserMicroservice.Services
             User user = await _userCollection.Find(x => x.Id == Id).FirstOrDefaultAsync();
             user.Email = email;
             user = await _userCollection.FindOneAndReplaceAsync<User>(x => x.Id == Id, user, options);
-            _messageInfoChangedProducer.sendAccountUpdatedMessage(user);
+
+            AccountUpdatedProducer accountUpdatedProducer = new(_connection);
+            accountUpdatedProducer.sendAccountUpdatedMessage(user);
             return user;
         }
         public  async Task<User> CreateUser(UserPostModel user)
         {
-            _messageCreationProducer = new(_connection);
+            
             User x = await _userCollection.Find(x => x.Email == user.Email).FirstOrDefaultAsync();
             if (x != null)
             {
@@ -78,8 +80,10 @@ namespace UserMicroservice.Services
                 u.Password = user.Password;
                 
                 u.Favorites = new List<string>();
-                _userCollection.InsertOne(u);                
-                _messageCreationProducer.sendAccountCreatedMessage(u);
+                _userCollection.InsertOne(u);
+                AccountCreationProducer accountCreationProducer = new(_connection);
+                accountCreationProducer = new(_connection);
+                accountCreationProducer.sendAccountCreatedMessage(u);
                 return u;
             }catch (Exception ex)
             {
@@ -105,9 +109,15 @@ namespace UserMicroservice.Services
 
         public async Task<bool> IsFavorite(string auctionId, string token)
         {
-            _getUserIdFromTokenProducer = new(_connection);
-            string id = _getUserIdFromTokenProducer.GetIdFromToken(token);
+
+            GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
+            string id = getIdFromTokenProducer.GetIdFromToken(token);
             User user = await _userCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            Console.WriteLine(token, id);
+            if(user == null)
+            {
+                return false;
+            }
             List<string> favorites = user.Favorites;
             if (favorites.Contains(auctionId))
             {
@@ -118,9 +128,12 @@ namespace UserMicroservice.Services
                 return false;
             }
         }
+       
+
         public async Task<bool> UpdateFavorite(string auctionId, string token)
         {
-            string userId = _getUserIdFromTokenProducer.GetIdFromToken(token);
+            GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
+            string userId = getIdFromTokenProducer.GetIdFromToken(token);
             User user = await _userCollection.Find(x => x.Id == userId).FirstOrDefaultAsync();
             if (user.Favorites.Any(x => x == auctionId))
             {
@@ -147,8 +160,9 @@ namespace UserMicroservice.Services
             };
             
             var result = await _userCollection.FindOneAndReplaceAsync<User>(x => x.Id == user.Id, user, options);
-            _messageInfoChangedProducer.sendAccountUpdatedMessage(user);
-            Console.WriteLine(result);
+            AccountUpdatedProducer accountUpdatedProducer = new(_connection);            
+            accountUpdatedProducer.sendAccountUpdatedMessage(user);
+            
             return true;            
         }
 
@@ -156,10 +170,11 @@ namespace UserMicroservice.Services
         public async void DeleteUser(string Id)
         {
 
-                User user = await _userCollection.Find(x => x.Id == Id).FirstOrDefaultAsync();
-                _userCollection.DeleteOne(x => x.Id == Id);
-            _messageDeletedProducer = new(_connection);
-            _messageDeletedProducer.sendAccountDeletedMessage(user);
+            User user = await _userCollection.Find(x => x.Id == Id).FirstOrDefaultAsync();
+            _userCollection.DeleteOne(x => x.Id == Id);
+            AccountDeletedProducer accountDeletedProducer = new(_connection);
+            accountDeletedProducer = new(_connection);
+            accountDeletedProducer.sendAccountDeletedMessage(user);
              
         }
         public async Task<string> GetUserName(string id)

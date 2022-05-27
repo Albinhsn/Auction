@@ -1,25 +1,34 @@
 
 import { React, useState} from 'react'
+import authService from '../../Services/authService'
 import userService from '../../Services/userService'
-export default function ChangeProfileInfoForm({token, user, setUser}) {
+import { useNavigate } from 'react-router'
+export default function ChangeProfileInfoForm({token, setToken}) {
     
 
-    
+    const navigation = useNavigate()
 
     const [formInput, setFormInput] = useState({
-        email: "",
-        matchingEmail: "",
-        password: "",
-        matchingPassword: ""
+        token: token,
+        newEmail: "",
+        matchingNewEmail: "",
+        newPassword: "",
+        matchingNewPassword: "",
+        oldPasswordEmail: "",
+        oldPasswordPassword: ""
     })
 
     const changePassword = () => {
-        console.log("GOT")
-        userService.changePassword(token, formInput.password, formInput.matchingPassword).then(response=>{
-            console.log(response)
+        
+        authService.changePassword(formInput).then(response=>{
+            localStorage.removeItem("access_token")
+            setToken()            
+            alert(response.data)
+            navigation("/Login")
+            
         }).catch(function (error) {
             if(error.response){
-                alert(error.response.data.message)
+                alert(error.response.data)
             }
             
         })
@@ -36,8 +45,10 @@ export default function ChangeProfileInfoForm({token, user, setUser}) {
     const changeEmail = () => {
         console.log(formInput.email, formInput.matchingEmail, token)
         userService.changeEmail(token, formInput.email, formInput.matchingEmail).then(response => {
-            setUser(response.data)            
+                      
             console.log(response.data)
+            // localStorage.removeItem("access_token")
+            // setToken('')
         }).catch(function(error){
             if(error.response){
                 console.log(error.response)
@@ -65,7 +76,17 @@ export default function ChangeProfileInfoForm({token, user, setUser}) {
                 </label>
                 <div className="col-sm-7">
                     <input type="email" className="form-control" id="matching-email" 
-                        onChange={e => setFormInput({ ...formInput, matchingEmail: e.target.value })}
+                        onChange={e => setFormInput({ ...formInput, matchingNewEmail: e.target.value })}
+                    />
+                </div>
+            </div>
+            <div className="mb-3 row">
+                <label className="col-sm-4 col-form-label">
+                    Bekräfta nuvarande lösenord
+                </label>
+                <div className="col-sm-7">
+                    <input type="password" className="form-control" id="matching-email"
+                        onChange={e => setFormInput({ ...formInput, oldPasswordEmail: e.target.value })}
                     />
                 </div>
             </div>
@@ -83,7 +104,7 @@ export default function ChangeProfileInfoForm({token, user, setUser}) {
                 </label>
                 <div className="col-sm-7">
                     <input type="password" className='form-control' id="password" 
-                        onChange={e => setFormInput({ ...formInput, password: e.target.value })}
+                        onChange={e => setFormInput({ ...formInput, newPassword: e.target.value })}
                     />
                 </div>
                 
@@ -94,11 +115,21 @@ export default function ChangeProfileInfoForm({token, user, setUser}) {
                 </label>
                 <div className="col-sm-7">
                     <input type="password" className="form-control" id="matching-password" 
-                        onChange={e => setFormInput({ ...formInput, matchingPassword: e.target.value })}
+                        onChange={e => setFormInput({ ...formInput, matchingNewPassword: e.target.value })}
                     />
                 </div>
             </div>
-            <hr />
+            <div className="mb-3 row">
+                <label className="col-sm-4 col-form-label">
+                    Bekräfta nuvarande lösenord
+                </label>
+                <div className="col-sm-7">
+                    <input type="password" className="form-control" id="matching-email"
+                        onChange={e => setFormInput({ ...formInput, oldPasswordPassword: e.target.value })}
+                    />
+                </div>
+            </div>
+            <hr />            
             <div className='d-flex justify-content-center'>
                 <button type="button" className='btn btn-primary' onClick={() => changePassword()}>
                     Byt Lösenord

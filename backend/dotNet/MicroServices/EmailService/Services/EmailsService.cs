@@ -119,27 +119,27 @@ namespace EmailService.Services
 
         private void Send(MimeMessage mailMessage)
         {
-            using (var client = new SmtpClient())
-            {
-                try
-                {
-                    client.Connect(_config.Value.SmtpServer, _config.Value.Port, true);
-                    client.AuthenticationMechanisms.Remove("XOAUTH2");
-                    client.Authenticate(_config.Value.UserName, _config.Value.Password);
-                    Console.WriteLine(mailMessage.To);
-                    client.Send(mailMessage);
-                }
-                catch
-                {
-                    //TODO THROW SOMETHING USEFUL 
-                    throw;
-                }
-                finally
-                {
-                    client.Disconnect(true);
-                    client.Dispose();
-                }
-            }
+            //using (var client = new SmtpClient())
+            //{
+            //    try
+            //    {
+            //        client.Connect(_config.Value.SmtpServer, _config.Value.Port, true);
+            //        client.AuthenticationMechanisms.Remove("XOAUTH2");
+            //        client.Authenticate(_config.Value.UserName, _config.Value.Password);
+            //        Console.WriteLine(mailMessage.To);
+            //        client.Send(mailMessage);
+            //    }
+            //    catch
+            //    {
+            //        //TODO THROW SOMETHING USEFUL 
+            //        throw;
+            //    }
+            //    finally
+            //    {
+            //        client.Disconnect(true);
+            //        client.Dispose();
+            //    }
+            //}
         }
     }
 }

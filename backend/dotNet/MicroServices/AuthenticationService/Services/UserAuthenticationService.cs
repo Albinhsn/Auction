@@ -27,6 +27,43 @@ namespace AuthenticationService.Services
 
             _userCollection = db.GetCollection<User>("Users");
         }
+        public async Task<string> ChangePassword(ChangePasswordModel model)
+        {
+            //Validate token
+            
+            
+            string id = validateToken(model.Token);
+            if (id == null)
+            {
+                return "Dålig token";
+            }
+            
+            //Check if old password matches current
+            User user = await _userCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+            if (!BCrypt.Net.BCrypt.Verify(model.OldPasswordPassword, user.Password))
+            {
+                return "Felaktigt lösenord";
+            }
+
+            //Check if new passwords match
+
+            
+            if (model.NewPassword != model.MatchingNewPassword)
+            {
+                return "Lösenorden matchar inte";
+            }
+            if(model.NewPassword.Length <= 3)
+            {
+                return "Vänligen mata in ett lösenord som är mer än 3 långt";
+            }
+            
+            //Encrypt and update password            
+            user.Password = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
+            UpdateUser(user);
+            
+            return "good";
+        }
+
         public async Task<string> AuthenticateUser(AuthenticateUserRequest Req)
         {
             string jwt = await generateToken(Req);
@@ -73,8 +110,7 @@ namespace AuthenticationService.Services
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
-            JwtSecurityToken token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);
-            Console.WriteLine(tokenHandler.WriteToken(token));
+            JwtSecurityToken token = tokenHandler.CreateJwtSecurityToken(tokenDescriptor);            
             return tokenHandler.WriteToken(token);
         }
 
@@ -93,8 +129,7 @@ namespace AuthenticationService.Services
                     ClockSkew = TimeSpan.Zero
                 }, out SecurityToken validatedToken);
 
-                var jwt = (JwtSecurityToken)validatedToken;
-                Console.WriteLine(jwt.Claims.First(claim => claim.Type == "Email"));
+                var jwt = (JwtSecurityToken)validatedToken;                
                 return jwt.Claims.First(claim => claim.Type == "_id").Value;
             }
             catch

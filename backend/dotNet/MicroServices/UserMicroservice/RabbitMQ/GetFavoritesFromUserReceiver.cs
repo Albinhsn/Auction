@@ -10,13 +10,12 @@ namespace UserMicroservice.RabbitMQ
     {
         IModel _channel;
         UserService _userService;
-        public GetFavoritesFromUserReceiver(UserService userService)
+        public GetFavoritesFromUserReceiver(UserService userService, RabbitMQConnection connection)
         {
             _userService = userService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
+            
             {
-                _channel = connection.CreateModel();
+                _channel = connection._connection.CreateModel();
                 {
                     _channel.QueueDeclare(
                         queue: "getFavoritesFromUser",

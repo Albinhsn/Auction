@@ -17,7 +17,12 @@ export default function HomepageAuctionCard({ auction}) {
       
       <div className='card text-secondary justify-content-center bg-light mb-5 mx-3' style={{height: "25vh", width: "19vh"}}>
         {auction.name}
-        <img className="card-img-bot img-fluid" style={{height: "12vh"}} src={imageHelpers.convertToUrl(auction.images[0])} alt={auction.name}/>
+        {auction.images.length > 0? 
+          <img className="card-img-bot img-fluid" style={{ height: "12vh" }} src={imageHelpers.convertToUrl(auction.images[0])} alt={auction.name} />
+        : 
+          <></>
+        }
+        
         <div>
           <TimeRemaining 
             date={date}
@@ -35,7 +40,7 @@ export default function HomepageAuctionCard({ auction}) {
               SEK
             </p>
           :
-            <></>
+            <p className='mb-o'>Mörk budgivning</p>
           }
           
         </div>

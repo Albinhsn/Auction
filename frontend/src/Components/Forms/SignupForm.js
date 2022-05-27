@@ -20,7 +20,7 @@ export default function SignupForm({setAuthId, token}) {
     const createAccount = () => {
 
         userService.postRegistrationForm(accountInfo)
-            .then(response => {
+            .then(() => {
                 alert("Kontot skapades, var vänligen logga in")
                 navigation('/login')
             })

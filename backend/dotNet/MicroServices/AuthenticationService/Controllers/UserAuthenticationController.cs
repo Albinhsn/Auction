@@ -43,5 +43,15 @@ namespace AuthenticationService.Controllers
             }
             return Ok(response);
         }
+        [HttpPut("/api/[controller]/update/password")]
+        public IActionResult ChangePassword(ChangePasswordModel model)
+        {
+            string result = _userAuthenticationService.ChangePassword(model).Result;
+            if(result != "good")
+            {
+                return BadRequest(result);
+            }
+            return Ok("Lösenordet byttes, vänligen logga in igen");
+        }
     }
 }

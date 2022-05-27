@@ -9,9 +9,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<TagsService>();
-RabbitMQConnection connection = new();
 TagsService service = new();
+builder.Services.AddSingleton<TagsService>(service);
+RabbitMQConnection connection = new();
 new GetAuctionTagsReceiver(service,connection);
 new GetAuctionBySearchTagReceiver(service, connection);
 new GetAuctionTagsFromListOfIdsReceiver(service, connection);

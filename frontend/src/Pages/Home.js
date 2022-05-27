@@ -16,19 +16,20 @@ export default function Home() {
   useEffect(() => {
 
     auctionService.getAuctionByHighestBidAsc().then(response => {      
-      
+      console.log(response.data, "highestBid")
       setAuctionsByBid(response.data)
       
     })
 
     auctionService.getAuctionsByPurchasePriceAsc().then(response => {      
-      setAuctionsByTime(response.data)
+      console.log(response.data, "purchase")
+      setAuctionsByPurchase(response.data)
       
     })
     
     auctionService.getAuctionsByTimeRemainingAsc().then(response => {          
-      setAuctionsByPurchase(response.data)
-      
+      setAuctionsByTime(response.data)
+      console.log(response.data, "time")
     })
 
   }, [])

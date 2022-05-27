@@ -1,4 +1,4 @@
-using ImageMicroservice.RabbitMQ;
+
 using ImageMicroservice.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +22,6 @@ builder.Services.AddCors(options =>
                       });
 });
 var app = builder.Build();
-new AuctionDeletedReceiver();
 
 
 

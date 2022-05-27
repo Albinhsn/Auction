@@ -7,7 +7,7 @@ let imageIds = [
     ObjectId('625d5bf754ce7f62ae79b40d'),
     ObjectId('625d5c0454ce7f62ae79b40f'),
     ObjectId('625d5b9854ce7f62ae79b3fe'),
-    ObjectId('625d5baa54ce7f62ae79b401'),
+    ObjectId('625d5baa54ce7f62ae79b401'), 
     ObjectId('625d5bb754ce7f62ae79b403'),
     ObjectId('625d5bc454ce7f62ae79b405'),
     ObjectId('625d5c3354ce7f62ae79b415'),
@@ -45,7 +45,10 @@ let imageIds = [
     ObjectId('625d5d7354ce7f62ae79b44c'),
     ObjectId('625d5d7d54ce7f62ae79b44e'),
     ObjectId('625d5a6ee245c365b07af0a8'),
-    ObjectId('625d5b7b54ce7f62ae79b3fc')
+    ObjectId('625d5b7b54ce7f62ae79b3fc'),
+    ObjectId('625d5d9054ce7f62ae79b450'),
+    ObjectId('625d5d9c54ce7f62ae79b452'),
+    ObjectId('628feb5a7771e2d5f99c6ecb')
 ]
 let auctionIds = [
     ObjectId("6247545c643cc19aaa52da90"),
@@ -187,8 +190,9 @@ let cameras = [
             AngledScreen: "Fällbar"
         },
         images: [
-            ObjectId("625d58268cdfe43a88040e59"),
-            ObjectId("625d5905a116036a983f6b21")
+            ObjectId('625d5d7354ce7f62ae79b44c'),
+            ObjectId('625d5d7d54ce7f62ae79b44e')
+            
         ]
     },
     {
@@ -226,8 +230,9 @@ let cameras = [
             AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
-            ObjectId('625d5a6ee245c365b07af0a8'),
-            ObjectId('625d5b7b54ce7f62ae79b3fc')
+            ObjectId('625d5d9054ce7f62ae79b450'),
+            ObjectId('625d5d9c54ce7f62ae79b452')
+            
         ]
     },
     {
@@ -285,8 +290,9 @@ let cameras = [
             AngledScreen: "Fällbar"
         },
         images: [
-            ObjectId('625d5bd954ce7f62ae79b409'),
-            ObjectId('625d5be754ce7f62ae79b40b')
+            ObjectId("625d58268cdfe43a88040e59"),
+            ObjectId("625d5905a116036a983f6b21")
+            
         ]
     },
     {
@@ -323,8 +329,9 @@ let cameras = [
             AngledScreen: "Fällbar"
         },
         images: [
-            ObjectId('625d5c1454ce7f62ae79b411'),
-            ObjectId('625d5c2254ce7f62ae79b413')
+            ObjectId('625d5ced54ce7f62ae79b43b'),
+            ObjectId('625d5cfd54ce7f62ae79b43d')
+            
         ]
     },
     {
@@ -361,8 +368,9 @@ let cameras = [
             AngledScreen: "Fällbar"
         },
         images: [
-            ObjectId('625d5c4b54ce7f62ae79b419'),
-            ObjectId('625d5c5654ce7f62ae79b41b')
+            ObjectId('625d5cd554ce7f62ae79b437'),
+            ObjectId('625d5ce254ce7f62ae79b439')
+           
         ]
     },
     {
@@ -396,8 +404,8 @@ let cameras = [
             AngledScreen: "Fast skärm"
         },
         images: [
-            ObjectId('625d5c7c54ce7f62ae79b424'),
-            ObjectId('625d5c8854ce7f62ae79b426')
+            ObjectId('625d5bd954ce7f62ae79b409'),
+            ObjectId('625d5be754ce7f62ae79b40b')           
         ]
     },
     {
@@ -414,8 +422,9 @@ let cameras = [
             AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
-            ObjectId('625d5c9454ce7f62ae79b428'),
-            ObjectId('625d5c9f54ce7f62ae79b42c')
+            ObjectId('625d5c4b54ce7f62ae79b419'),
+            ObjectId('625d5c5654ce7f62ae79b41b')
+           
         ]
     },
     {
@@ -435,6 +444,8 @@ let cameras = [
         images: [
             ObjectId('625d5cab54ce7f62ae79b42f'),
             ObjectId('625d5cb454ce7f62ae79b431')
+            
+           
         ]
     },
     {
@@ -471,8 +482,9 @@ let cameras = [
             AngledScreen: "Fast skärm"
         },
         images: [
-            ObjectId('625d5cd554ce7f62ae79b437'),
-            ObjectId('625d5ce254ce7f62ae79b439')
+            ObjectId('625d5c7c54ce7f62ae79b424'),
+            ObjectId('625d5c8854ce7f62ae79b426')
+           
         ]
     },
     {
@@ -490,8 +502,9 @@ let cameras = [
             AngledScreen: "Fällbar"
         },
         images: [
-            ObjectId('625d5ced54ce7f62ae79b43b'),
-            ObjectId('625d5cfd54ce7f62ae79b43d')
+            ObjectId('625d5c9454ce7f62ae79b428'),
+            ObjectId('625d5c9f54ce7f62ae79b42c')
+            
         ]
     },
     {
@@ -528,8 +541,8 @@ let cameras = [
             AngledScreen: "Fullt roter- & fällbar"
         },
         images: [
-            ObjectId('625d5d4454ce7f62ae79b444'),
-            ObjectId('625d5d5154ce7f62ae79b446')
+            ObjectId('625d5d5e54ce7f62ae79b448'),
+            ObjectId('625d5d6854ce7f62ae79b44a')
         ]
     },
     {
@@ -546,8 +559,9 @@ let cameras = [
             AngledScreen: "Fast skärm"
         },
         images: [
-            ObjectId('625d5d5e54ce7f62ae79b448'),
-            ObjectId('625d5d6854ce7f62ae79b44a')
+            ObjectId('625d5d4454ce7f62ae79b444'),
+            ObjectId('625d5d5154ce7f62ae79b446')
+            
         ]
     },
     {
@@ -565,8 +579,9 @@ let cameras = [
             AngledScreen: "Fällbar med selfieläge"
         },
         images: [
-            ObjectId('625d5d7354ce7f62ae79b44c'),
-            ObjectId('625d5d7d54ce7f62ae79b44e')
+            ObjectId('625d5a6ee245c365b07af0a8'),
+            ObjectId('625d5b7b54ce7f62ae79b3fc')
+            
         ]
     },
     {
@@ -585,8 +600,8 @@ let cameras = [
             AngledScreen: "Fällbar"
         },
         images: [
-            ObjectId('625d5d9054ce7f62ae79b450'),
-            ObjectId('625d5d9c54ce7f62ae79b452')
+            ObjectId('625d5c1454ce7f62ae79b411'),
+            ObjectId('625d5c2254ce7f62ae79b413')
         ]
     }
 ]
@@ -631,9 +646,12 @@ async function doEverything(){
                     assert.ifError(error);
                 }).
                 on('finish', function () {
-                    console.log('done!');
+                    if(i == files.length - 1){
+                        console.log("Done with", i+1, " of ", files.length, " images")
+                    }
+                    
                 });
-            console.log(i)
+            
         }
     
 
@@ -702,7 +720,8 @@ async function doEverything(){
             StartDate = randomDate(new Date(new Date().getFullYear(), new Date().getMonth() - 4, new Date().getDate()), new Date(), 0, 23)
         }
         camera.StartDate = StartDate
-        camera.EndDate = new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate() + 8);
+        camera.EndDate = new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate() + 8, StartDate.getHours());
+        
         if (camera.AuctionType == "Engelsk" || camera.AuctionType == "Schweizisk") {
 
             let rand = Math.floor(Math.random() * 5)

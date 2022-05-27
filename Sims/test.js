@@ -19,5 +19,5 @@ else {
     
 }
 EndDate = new Date(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate() + 8);
-console.log(StartDate)
+console.log(StartDate.toISOString())
 console.log(EndDate)

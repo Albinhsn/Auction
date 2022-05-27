@@ -15,5 +15,9 @@ class authService {
             Password: password
         })
     }
+
+    changePassword = (formInput) => {
+        return this.authMicroService.put("/api/UserAuthentication/update/password", formInput)
+    }
 }
 export default new authService;

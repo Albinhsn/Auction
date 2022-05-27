@@ -48,7 +48,7 @@ namespace TagsMicroService.RabbitMQ
             Console.WriteLine(message);
             Auction auc = JsonSerializer.Deserialize<Auction>(message);            
             Tag tags = auc.Tags;
-            Console.WriteLine(tags.Brand);
+            tags.Id = auc.Id;
             _service.AuctionCreated(tags);
         }
     }

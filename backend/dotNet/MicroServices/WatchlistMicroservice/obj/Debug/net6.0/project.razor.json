@@ -1,5 +1,5 @@
 {
-  "FilePath": "b:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\ImageMicroservice\\ImageMicroservice.csproj",
+  "FilePath": "b:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\WatchlistMicroservice\\WatchlistMicroservice.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "6.0",
@@ -16295,7 +16295,7 @@
     ],
     "CSharpLanguageVersion": 1000
   },
-  "RootNamespace": "ImageMicroservice",
+  "RootNamespace": "WatchlistMicroservice",
   "Documents": [],
   "SerializationFormat": "0.2"
 }

@@ -6,7 +6,7 @@ namespace AuctionMicroService.Models
     public class Tags
     {
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
         public string? Brand { get; set; }
         public string? Type { get; set; }
         public string? Lens { get; set; }

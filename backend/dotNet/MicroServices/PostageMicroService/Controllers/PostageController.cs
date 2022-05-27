@@ -22,9 +22,9 @@ namespace PostageMicroService.Controllers
             return _postageService.GetPostagePrice(id).Result;
         }
         [HttpDelete]
-        public void DeletePostage(string id)
+        public async void DeletePostage(string id)
         {
-            _postageService.DeletePostage(id);
+            await _postageService.DeletePostage(id);
         }
         [HttpPost]
         public IActionResult PostPostage(string id, int weight, int volume)

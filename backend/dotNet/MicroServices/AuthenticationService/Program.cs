@@ -11,7 +11,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<UserAuthenticationService>();
+UserAuthenticationService service = new();
+builder.Services.AddSingleton<UserAuthenticationService>(service);
 builder.Services.AddSingleton<JWTHelpers>();
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
@@ -25,11 +26,12 @@ builder.Services.AddCors(options =>
                           .AllowAnyMethod(); 
                       });
 });
+
 RabbitMQConnection connection = new();
-AccountUpdatedReceiver _messageReceiver = new(new UserAuthenticationService());
-AccountCreatedReceiver _messageCreatedReceiver = new(new UserAuthenticationService());  
-AccountDeletedReceiver _messageDeletedReceiver = new(new UserAuthenticationService());
-GetIdFromTokenReceiver _getIdFromTokenReceiver = new (new UserAuthenticationService(), connection);
+AccountUpdatedReceiver _messageReceiver = new(service, connection);
+AccountCreatedReceiver _messageCreatedReceiver = new(service, connection);  
+AccountDeletedReceiver _messageDeletedReceiver = new(service, connection);
+GetIdFromTokenReceiver _getIdFromTokenReceiver = new (service, connection);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

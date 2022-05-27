@@ -8,25 +8,24 @@ import AuctionCardTimeInfo from './CardInfo/AuctionCardTimeInfo'
 import userService from '../../Services/userService'
 
 
-export default function FinishedAuction({auction, favorite, setFavorite, token}){
+export default function FinishedAuction({auction, setAuction, favorite, setFavorite, token}){
     
-    useEffect(() => {
-      if (!favorite && token) {
-        userService.checkFavorite(token, auction._id).then(response => {
-          if (response.data) {
-            setFavorite(true)
-          }
-          else {
-            setFavorite(false)
-          }
-        })
-      }
-    }, )
+    
 
-
+  useEffect(() => {
+    
     if(auction.winner === null){
-        auction.winner = "Ingen köpare"
+      setAuction({...auction, winner: "Ingen köpare"})
+    }else if (auction.winner != "Ingen köpare"){
+      
+      userService.getNameFromObjectId(auction.winner).then(response => {
+        
+        setAuction({...auction, winner: response.data})
+        
+      })
     }
+  }, [])
+    
 
 
     return (

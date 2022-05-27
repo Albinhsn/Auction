@@ -6,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddSingleton<WatchlistService>();
+WatchlistService service = new();
+builder.Services.AddSingleton<WatchlistService>(service);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -23,7 +24,7 @@ builder.Services.AddCors(options =>
                       });
 });
 var app = builder.Build();
-WatchlistService service = new();
+
 RabbitMQConnection connection = new();
 new AuctionPurchasedReceiver(service, connection);
 new GetUserWatchlistReceiver(service, connection);  

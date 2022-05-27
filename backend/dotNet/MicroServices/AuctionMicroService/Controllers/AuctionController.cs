@@ -1,4 +1,5 @@
-﻿using AuctionMicroService.Models;
+﻿using AuctionMicroService.Helpers;
+using AuctionMicroService.Models;
 using AuctionMicroService.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -51,18 +52,30 @@ namespace AuctionMicroService.Controllers
         public async Task<IActionResult> PostAuction([FromBody] AuctionPostModel auc)
         {
             //AuctionHelpers.ValidateAuction c:
+            //TODO Check valid Auction
+            AuctionValidationHelpers helper = new();
+            string validated = helper.ValidateAuction(auc);
+            Console.WriteLine(validated);
+            if (validated != "")
+            {
+                return BadRequest(validated);
+            }
+            string id;
             try
             {
-                await _auctionService.CreateAuction(auc);
+                id = await _auctionService.CreateAuction(auc);
             }
             catch(Exception e)
             {
+                Console.WriteLine(e);
                 return BadRequest("Bad request");
+            }            
+            if(id == null)
+            {
+                return BadRequest("Felaktig token");
             }
- 
-            
 
-            return Ok("Created Auction");
+            return Ok(id);
         }
         [HttpGet("/api/[controller]/single/auction")]
         public async Task<Auction> GetAuction(string id)
@@ -100,9 +113,9 @@ namespace AuctionMicroService.Controllers
         }
 
         [HttpPut("/api/[controller]/purchase")]
-        public void MadePurchase(string token, string auctionId)
+        public async Task<Auction> MadePurchase(string token, string auctionId)
         {
-            _auctionService.MadePurchase(token, auctionId);
+            return await _auctionService.MadePurchase(token, auctionId);
         }
     }
 }

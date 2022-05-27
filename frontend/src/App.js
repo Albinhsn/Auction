@@ -52,7 +52,7 @@ function App() {
         <Navbar token={token} setToken={setToken}/>
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/profile" element={<Profile token={token} />}/>
+          <Route path="/profile" element={<Profile token={token} setToken={setToken}/>}/>
           <Route path="/login" element={<Login setToken={setToken}/>}/>
           <Route path="/search" element={<Search  token={token}/>}/>
           <Route path="/auction" element={<Auction  token={token} />}/>

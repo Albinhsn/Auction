@@ -17,9 +17,10 @@ export default function Search({token}){
 
     const getAuctionsBySearch = () => {
         auctionService.getAuctionsBySearch(search).then(response => {
-            console.log(response)
+            
             setLocalAuc(response.data.filter(auc => auc.state !== "Slut"))
             setAuctions(response.data)
+            
         })
     }
 

@@ -9,10 +9,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<PostageService>();
+PostageService service = new();
+builder.Services.AddSingleton<PostageService>(service);
 RabbitMQConnection connection= new ();
-new AuctionCreatedReceiver(new PostageService(), connection);
-new GetPostageReceiver(new PostageService(), connection);
+new AuctionCreatedReceiver(service, connection);
+new GetPostageReceiver(service, connection);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

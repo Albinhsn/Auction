@@ -9,10 +9,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<UserService>();
-new GetFavoritesFromUserReceiver(new UserService());
-RabbitMQConnection connection = new RabbitMQConnection();
-new GetUsernameFromListOfIdsReceiver(new UserService(), connection);
+UserService service = new();
+builder.Services.AddSingleton<UserService>(service);
+RabbitMQConnection connection = new ();
+new GetFavoritesFromUserReceiver(service, connection);
+new GetUsernameFromListOfIdsReceiver(service, connection);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>

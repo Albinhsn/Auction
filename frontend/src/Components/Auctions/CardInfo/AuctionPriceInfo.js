@@ -6,7 +6,7 @@ export default function AuctionPriceInfo({auction}) {
         case "Engelsk":
             return(
                 <p className='text-success fs-1 mb-0'>
-                    {auction.minimumBid}
+                    {auction.highestBid === 0 ? auction.minimumBid : auction.highestBid}
                 </p>
             )
         case "Holländsk":
