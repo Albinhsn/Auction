@@ -13,7 +13,7 @@ namespace EmailService.RabbitMQ
         EmailsService _emailService;
         public AuctionPurchasedWatchlistReceiver(EmailsService service, RabbitMQConnection connection)
          {
-            Console.WriteLine("Created AuctionPurchasedWatchlistReceiver");
+            
                 _emailService = service;
                 _channel = connection._connection.CreateModel();
                 {

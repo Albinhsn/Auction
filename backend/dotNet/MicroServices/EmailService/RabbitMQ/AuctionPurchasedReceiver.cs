@@ -11,12 +11,11 @@ namespace EmailService.RabbitMQ
     {
         EmailsService _emailService;
         IModel _channel;
-        public AuctionPurchasedReceiver(EmailsService emailService)
+        public AuctionPurchasedReceiver(EmailsService emailService, RabbitMQConnection connection)
         {
             _emailService = emailService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+            
+            _channel = connection._connection.CreateModel();
             {
                 _channel.QueueDeclare(
                     queue: "auctionPurchased",

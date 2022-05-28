@@ -11,13 +11,11 @@ namespace EmailService.RabbitMQ
     {
         IModel _channel;
         EmailsService _emailService;
-        public AccountUpdatedReceiver(EmailsService emailsService)
+        public AccountUpdatedReceiver(EmailsService emailsService, RabbitMQConnection connection)
         {
             _emailService = emailsService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-
-            _channel = connection.CreateModel();
+            
+            _channel = connection._connection.CreateModel();
             {
                 _channel.ExchangeDeclare(
                     exchange: "accountUpdated",

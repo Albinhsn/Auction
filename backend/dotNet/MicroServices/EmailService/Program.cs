@@ -22,11 +22,11 @@ builder.Services.AddSingleton<EmailsService>(service);
 
 RabbitMQConnection connection = new();
 
-new AccountCreatedReceiver(service);
-new AccountDeletedReceiver(service);
-new AuctionEndedReceiver(service);
-new AuctionPurchasedReceiver(service);
-new AccountUpdatedReceiver(service);
+new AccountCreatedReceiver(service, connection);
+new AccountDeletedReceiver(service, connection);
+new AuctionEndedReceiver(service, connection);
+new AuctionPurchasedReceiver(service, connection);
+new AccountUpdatedReceiver(service, connection);
 new AuctionPurchasedWatchlistReceiver(service, connection);
 new AuctionBidWatchlistReceiver(service, connection);
 var app = builder.Build();

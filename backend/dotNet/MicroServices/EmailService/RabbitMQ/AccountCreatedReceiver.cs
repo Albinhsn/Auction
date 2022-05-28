@@ -1,7 +1,6 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text.Json;
-using UserMicroservice.Models;
 using EmailService.Models;
 using System.Text;
 using EmailService.Services;
@@ -12,12 +11,11 @@ namespace EmailService.RabbitMQ
     {
         IModel _channel;
         EmailsService _emailService;
-        public AccountCreatedReceiver(EmailsService emailService)
+        public AccountCreatedReceiver(EmailsService emailService, RabbitMQConnection connection)
         {
             _emailService = emailService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+          
+            _channel = connection._connection.CreateModel();
             {
                 _channel.ExchangeDeclare(
                     exchange: "accountCreated",
@@ -50,7 +48,7 @@ namespace EmailService.RabbitMQ
         {
             Console.WriteLine(message);
 
-            UserMicroservice.Models.User result = JsonSerializer.Deserialize<UserMicroservice.Models.User>(message);
+            User result = JsonSerializer.Deserialize<User>(message);
             Models.User user = new();
             user.Email = result.Email;
             
