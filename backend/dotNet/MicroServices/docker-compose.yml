@@ -1,4 +1,4 @@
-version: "3.10.2"
+version: "3.3"
 
 
 services: 
@@ -14,7 +14,7 @@ services:
      - messaging
   user:
    container_name: user
-   image: arlaharen/user:1.2
+   image: auctionista/user:1.2
    build:
     dockerfile: ./UserMicroService/Dockerfile
    ports: 
@@ -27,7 +27,7 @@ services:
   
   auction:
    container_name: auction
-   image: arlaharen/auction/2.1
+   image: auctionista/auction:2.1
    build:
     dockerfile: ./AuctionMicroService/Dockerfile
    ports:
@@ -40,7 +40,7 @@ services:
 
   authentication:
     container_name: authentication
-    image: arlaharen/authentication/1.0
+    image: auctionista/authentication:1.0
     build:
      dockerfile: ./AuthenticationService/Dockerfile
     ports: 
@@ -53,7 +53,7 @@ services:
 
   bids:
     container_name: bids
-    image: arlaharen/bids/1.0
+    image: auctionista/bids:1.0
     build:
      dockerfile: ./BidMicroService/Dockerfile
     ports: 
@@ -66,7 +66,7 @@ services:
 
   email:
     container_name: email
-    image: arlaharen/email/1.0
+    image: auctionista/email:1.0
     build:
      dockerfile: ./EmailService/Dockerfile
     ports: 
@@ -79,7 +79,7 @@ services:
 
   image:
     container_name: image
-    image: arlaharen/image/1.0
+    image: auctionista/image:1.0
     build:
      dockerfile: ./ImageMicroservice/Dockerfile
     ports: 
@@ -92,7 +92,7 @@ services:
 
   postage:
     container_name: postage
-    image: arlaharen/postage/1.0
+    image: auctionista/postage:1.0
     build:
      dockerfile: ./PostageMicroService/Dockerfile
     ports: 
@@ -105,7 +105,7 @@ services:
 
   tags:
     container_name: tags
-    image: arlaharen/tags/1.0
+    image: auctionista/tags:1.0
     build:
      dockerfile: ./TagsMicroService/Dockerfile
     ports:
@@ -119,7 +119,7 @@ services:
 
   watchlist:
     container_name: watchlist
-    image: arlaharen/watchlist/1.0
+    image: auctionista/watchlist:1.0
     build:
      dockerfile: ./WatchlistMicroservice/Dockerfile
     ports: 
@@ -131,7 +131,7 @@ services:
     restart: on-failure
   frontend:
     container_name: frontend
-    image: auctionista/frontend/1.0
+    image: auctionista/frontend:1.0
     build:
       context: ../../../frontend
       dockerfile: Dockerfile
