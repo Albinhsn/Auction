@@ -3,7 +3,7 @@ import axios from 'axios'
 
 class watchlistService {
     watchlistMicroservice = axios.create({
-        baseURL: "https://localhost:7294",
+        baseURL: "http://localhost:724",
         headers: {
             "Content-type": "application/json"
         }

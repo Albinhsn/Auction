@@ -44,7 +44,7 @@ services:
     build:
      dockerfile: ./AuthenticationService/Dockerfile
     ports: 
-     - 7292:443
+     - 7292:80
     networks:
      - messaging
     depends_on: 
@@ -57,7 +57,7 @@ services:
     build:
      dockerfile: ./BidMicroService/Dockerfile
     ports: 
-     - 7266:443
+     - 7206:80
     networks:
      - messaging
     depends_on: 
@@ -70,7 +70,7 @@ services:
     build:
      dockerfile: ./EmailService/Dockerfile
     ports: 
-     - 7057:5057
+     - 7057:80
     networks:
      - messaging
     depends_on: 
@@ -83,7 +83,7 @@ services:
     build:
      dockerfile: ./ImageMicroservice/Dockerfile
     ports: 
-     - 7141:443
+     - 7141:80
     networks:
      - messaging
     depends_on: 
@@ -96,7 +96,7 @@ services:
     build:
      dockerfile: ./PostageMicroService/Dockerfile
     ports: 
-     - 7151:443
+     - 7151:80
     networks:
      - messaging
     depends_on: 
@@ -109,8 +109,8 @@ services:
     build:
      dockerfile: ./TagsMicroService/Dockerfile
     ports:
-     - 7248:80
-     - 7249:443
+     - 7209:80
+     
     networks:
      - messaging
     depends_on: 
@@ -123,7 +123,7 @@ services:
     build:
      dockerfile: ./WatchlistMicroservice/Dockerfile
     ports: 
-     - 7294:443
+     - 7204:80
     networks:
      - messaging
     depends_on: 
@@ -133,9 +133,8 @@ services:
     container_name: frontend
     image: auctionista/frontend/1.0
     build:
-      dockerfile: ../../../frontend/Dockerfile
-    environment:
-      NODE_ENV: production
+      context: ../../../frontend
+      dockerfile: Dockerfile
     ports:
       - 3000:3000
 networks:
