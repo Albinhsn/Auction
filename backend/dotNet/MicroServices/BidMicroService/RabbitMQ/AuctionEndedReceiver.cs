@@ -12,12 +12,10 @@ namespace BidMicroService.RabbitMQ
         IModel _channel;
         IModel _channelEmail;
         BidService _bidService;
-        public AuctionEndedReceiver(BidService bidService)
+        public AuctionEndedReceiver(BidService bidService, RabbitMQConnection connection)
         {
-            _bidService = bidService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+            _bidService = bidService;            
+            _channel = connection._connection.CreateModel();
             {
                 _channel.QueueDeclare(
                     queue: "auctionEndedBids",
@@ -41,7 +39,7 @@ namespace BidMicroService.RabbitMQ
                     );
 
             }
-            _channelEmail = connection.CreateModel();
+            _channelEmail = connection._connection.CreateModel();
             {
                 _channelEmail.QueueDeclare(
                     queue: "auctionEndedEmail",
@@ -56,8 +54,12 @@ namespace BidMicroService.RabbitMQ
 
         public void auctionEnded(string Id)
         {
-            HighestBid bid = _bidService.GetHighestBidOnAuction(Id).Result;
-            sendAuctionEndedEmail(bid);
+            HighestBid? bid = _bidService.GetHighestBidOnAuction(Id).Result;
+            if(bid != null)
+            {
+                sendAuctionEndedEmail(bid);
+            }
+
             
         }
         public void sendAuctionEndedEmail(HighestBid bid)

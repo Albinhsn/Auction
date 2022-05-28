@@ -13,14 +13,12 @@ namespace BidMicroService.RabbitMQ
         BidService _bidService;
 
 
-        public GetLowestHighestBidLimitedReceiver(BidService bidService)
+        public GetLowestHighestBidLimitedReceiver(BidService bidService, RabbitMQConnection connection)
         {
             _bidService = bidService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            {
+            
 
-                _channel = connection.CreateModel();
+                _channel = connection._connection.CreateModel();
                 {
                     _channel.QueueDeclare(
                        queue: "getLowestHighestBidsLimited",
@@ -39,7 +37,7 @@ namespace BidMicroService.RabbitMQ
 
                     consumer.Received += (model, ea) =>
                     {
-                        string response = "";
+                        string? response = "";
                         Console.WriteLine("Received in lowestHighestBid");
                         var body = ea.Body.ToArray();
                         var props = ea.BasicProperties;
@@ -49,8 +47,12 @@ namespace BidMicroService.RabbitMQ
                         try
                         {
                             var message = Encoding.UTF8.GetString(body);
-                            List<string> Ids = JsonSerializer.Deserialize<List<string>>(message);
+                            List<string>? Ids = JsonSerializer.Deserialize<List<string>>(message);
+
+#pragma warning disable CS8604 // Possible null reference argument.
                             response = JsonSerializer.Serialize<List<HighestBid>>(_bidService.GetLowestHighestBidFromListOfIds(Ids).Result);
+#pragma warning restore CS8604 // Possible null reference argument.
+
 
 
                         }
@@ -78,7 +80,7 @@ namespace BidMicroService.RabbitMQ
                     };
                 }
 
-            }
+            
 
         }
     }

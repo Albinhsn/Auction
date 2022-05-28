@@ -19,7 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostageMicroService", "Post
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TagsMicroService", "TagsMicroService\TagsMicroService.csproj", "{70CC9281-5729-4811-87F5-29A05DB1F955}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchlistMicroservice", "WatchlistMicroservice\WatchlistMicroservice.csproj", "{54DA9129-F110-4B16-A1BA-E02C4BA406C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WatchlistMicroservice", "WatchlistMicroservice\WatchlistMicroservice.csproj", "{54DA9129-F110-4B16-A1BA-E02C4BA406C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7B813658-869E-4C35-8E75-AB7A11B890F5}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

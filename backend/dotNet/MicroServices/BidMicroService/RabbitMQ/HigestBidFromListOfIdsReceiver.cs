@@ -11,12 +11,11 @@ namespace BidMicroService.RabbitMQ
     {
         IModel _channel;
         BidService _bidService;
-        public HigestBidFromListOfIdsReceiver(BidService bidService)
+        public HigestBidFromListOfIdsReceiver(BidService bidService, RabbitMQConnection connection)
         {
             _bidService = bidService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            _channel = connection.CreateModel();
+            
+            _channel = connection._connection.CreateModel();
             {
                 _channel.QueueDeclare(
                        queue: "getHighestBidFromListOfIds",
@@ -35,7 +34,7 @@ namespace BidMicroService.RabbitMQ
 
                 consumer.Received += (model, ea) =>
                 {
-                    string response = null;
+                    string? response = null;
 
                     var body = ea.Body.ToArray();
                     var props = ea.BasicProperties;
@@ -46,19 +45,22 @@ namespace BidMicroService.RabbitMQ
                     {
                         Console.WriteLine("received");
                         var message = Encoding.UTF8.GetString(body);
-                        List<string> Ids = JsonSerializer.Deserialize<List<string>>(message);
-                        Console.WriteLine(Ids);
+                        List<string>? Ids = JsonSerializer.Deserialize<List<string>>(message);
+                        
+#pragma warning disable CS8604 // Possible null reference argument.
                         response = JsonSerializer.Serialize<List<HighestBid>>(_bidService.GetHighestBidFromListOfIds(Ids).Result);
+#pragma warning restore CS8604 // Possible null reference argument.
                     }
                     catch (Exception ex)
                     {
-
+                        Console.WriteLine(ex);
                     }
                     finally
                     {
-                        Console.WriteLine("Sending back");
-                        Console.WriteLine(response);
+
+#pragma warning disable CS8604 // Possible null reference argument.
                         var responseBytes = Encoding.UTF8.GetBytes(response);
+#pragma warning restore CS8604 // Possible null reference argument.
                         _channel.BasicPublish(
                             exchange: "",
                             routingKey: props.ReplyTo,

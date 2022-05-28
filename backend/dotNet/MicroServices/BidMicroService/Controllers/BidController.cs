@@ -27,7 +27,7 @@ namespace BidMicroService.Controllers
         public IActionResult CreateBid(BidPostModel bid)
         {
             Console.WriteLine(bid.Amount);
-            Bid b =  _bidService.CreateBid(bid).Result;
+            Bid? b =  _bidService.CreateBid(bid).Result;
             if(b == null)
             {
                 return BadRequest("Kan inte buda på din egna auktion");
@@ -38,7 +38,7 @@ namespace BidMicroService.Controllers
             }
         }
         [HttpGet("/api/bid/[controller]/highest")]
-        public HighestBid GetHighestBidOnAuction(string Id)
+        public HighestBid? GetHighestBidOnAuction(string Id)
         {
             return _bidService.GetHighestBidOnAuction(Id).Result;
         }

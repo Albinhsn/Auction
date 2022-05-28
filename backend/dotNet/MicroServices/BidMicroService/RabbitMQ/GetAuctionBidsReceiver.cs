@@ -11,13 +11,12 @@ namespace BidMicroService.RabbitMQ
     {
         IModel _getAuctionBidsChannel;
         BidService _bidService;
-        public GetAuctionBidsReceiver(BidService bidService)
+        public GetAuctionBidsReceiver(BidService bidService, RabbitMQConnection connection)
         {
             _bidService = bidService;
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            {
-                _getAuctionBidsChannel = connection.CreateModel();
+            
+            
+                _getAuctionBidsChannel = connection._connection.CreateModel();
                 {
                     _getAuctionBidsChannel.QueueDeclare(
                         queue: "getAuctionBids",
@@ -36,7 +35,7 @@ namespace BidMicroService.RabbitMQ
 
                     consumer.Received += (model, ea) =>
                     {
-                        string response = null;
+                        string? response = null;
 
                         var body = ea.Body.ToArray();
                         var props = ea.BasicProperties;
@@ -50,11 +49,13 @@ namespace BidMicroService.RabbitMQ
                         }
                         catch (Exception ex)
                         {
-
+                            Console.WriteLine(ex);
                         }
                         finally
                         {
+#pragma warning disable CS8604 // Possible null reference argument.
                             var responseBytes = Encoding.UTF8.GetBytes(response);
+#pragma warning restore CS8604 // Possible null reference argument.
                             _getAuctionBidsChannel.BasicPublish(
                                 exchange: "",
                                 routingKey: props.ReplyTo,
@@ -70,7 +71,7 @@ namespace BidMicroService.RabbitMQ
                     };
 
 
-                }
+                
             }
         }
     }

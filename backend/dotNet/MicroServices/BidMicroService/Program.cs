@@ -9,14 +9,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-BidService service = new();
+RabbitMQConnection connection = new();
+BidService service = new(connection);
 builder.Services.AddSingleton<BidService>(service);
 
-GetAllAuctionHighestBidReceiver messageHighestBidReceiver = new (service);
-HigestBidFromListOfIdsReceiver higestBidFromListOfIdsReceiver = new (service);
-AuctionEndedReceiver messageEndedReceiver = new (service); 
-GetAuctionBidsReceiver messageAuctionBidsReceiver = new(service);
-GetLowestHighestBidLimitedReceiver getLowestHighestBidLimitedReceiver= new(service);
+GetAllAuctionHighestBidReceiver messageHighestBidReceiver = new (service, connection);
+HigestBidFromListOfIdsReceiver higestBidFromListOfIdsReceiver = new (service, connection);
+AuctionEndedReceiver messageEndedReceiver = new (service, connection); 
+GetAuctionBidsReceiver messageAuctionBidsReceiver = new(service, connection);
+GetLowestHighestBidLimitedReceiver getLowestHighestBidLimitedReceiver= new(service, connection);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {

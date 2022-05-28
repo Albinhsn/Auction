@@ -16,14 +16,12 @@ namespace BidMicroService.RabbitMQ
         BidService _bidService;
         
         
-        public GetAllAuctionHighestBidReceiver(BidService bidService)
+        public GetAllAuctionHighestBidReceiver(BidService bidService, RabbitMQConnection connection)
         {
             _bidService = bidService;   
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            { 
+            
 
-                _channel = connection.CreateModel();
+                _channel = connection._connection.CreateModel();
                 {
                     _channel.QueueDeclare(
                        queue: "getAllAuctionHighestBid",
@@ -58,7 +56,7 @@ namespace BidMicroService.RabbitMQ
                         }
                         catch (Exception ex)
                         {
-                            
+                            Console.WriteLine(ex.ToString());   
                         }
                         finally
                         {
@@ -80,7 +78,7 @@ namespace BidMicroService.RabbitMQ
                     };
                 }
 
-            }           
+                       
            
         }
     }

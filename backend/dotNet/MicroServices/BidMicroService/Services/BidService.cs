@@ -12,12 +12,11 @@ namespace BidMicroService.Services
         private readonly IMongoCollection<Bid> _bidCollection;
         
         private readonly RabbitMQConnection _connection;
-        public BidService()
+        public BidService(RabbitMQConnection connection)
         {
             
-            MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
-            var db = client.GetDatabase("Bids");
-            RabbitMQConnection connection = new();
+            MongoClient client = new ("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+            var db = client.GetDatabase("Bids");            
             _connection = connection;            
             _bidCollection = db.GetCollection<Bid>("Bids");
         }
@@ -33,7 +32,7 @@ namespace BidMicroService.Services
                         Amount = y.Max(a => (int)a.Amount)
                     }
                 ).ToListAsync();
-            List<HighestBid> highestBids = new List<HighestBid>();
+            List<HighestBid> highestBids = new ();
             foreach (var result in results)
             {
                 HighestBid highestBid = new();
@@ -106,7 +105,7 @@ namespace BidMicroService.Services
             return results;
         }
 
-        public async Task<Bid> CreateBid(BidPostModel bid)
+        public async Task<Bid?> CreateBid(BidPostModel bid)
         {
 
             GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
@@ -134,7 +133,7 @@ namespace BidMicroService.Services
             return b;
         }
 
-        public async Task<HighestBid> GetHighestBidOnAuction(string Id)
+        public async Task<HighestBid?> GetHighestBidOnAuction(string Id)
         {
 
             var results = await _bidCollection.Aggregate()
@@ -153,8 +152,12 @@ namespace BidMicroService.Services
             foreach (var result in results)
             {
 
+#pragma warning disable CS8601 // Possible null reference assignment.
                 bid.UserId = result["UserId"].ToString();
+
+#pragma warning disable CS8604 // Possible null reference argument.
                 bid.Amount = int.Parse(result["Amount"].ToString());
+
             }
             if (bid != null)
             {

@@ -1,0 +1,145 @@
+version: "3.10.2"
+
+
+services: 
+  messages:
+   container_name: rabbitmq
+   image: rabbitmq:3-management
+   tty: true
+   hostname: rabbitmq
+   ports:
+    - 5672:5672
+    - 15672:15672
+   networks:
+     - messaging
+  user:
+   container_name: user
+   image: arlaharen/user:1.2
+   build:
+    dockerfile: ./UserMicroService/Dockerfile
+   ports: 
+    - 7279:80
+   networks:
+     - messaging
+   depends_on:   
+    - messages
+   restart: on-failure   
+  
+  auction:
+   container_name: auction
+   image: arlaharen/auction/2.1
+   build:
+    dockerfile: ./AuctionMicroService/Dockerfile
+   ports:
+    - 7086:80
+   networks:
+    - messaging
+   depends_on:
+    - messages
+   restart: on-failure
+
+  authentication:
+    container_name: authentication
+    image: arlaharen/authentication/1.0
+    build:
+     dockerfile: ./AuthenticationService/Dockerfile
+    ports: 
+     - 7292:443
+    networks:
+     - messaging
+    depends_on: 
+     - messages
+    restart: on-failure
+
+  bids:
+    container_name: bids
+    image: arlaharen/bids/1.0
+    build:
+     dockerfile: ./BidMicroService/Dockerfile
+    ports: 
+     - 7266:443
+    networks:
+     - messaging
+    depends_on: 
+     - messages
+    restart: on-failure
+
+  email:
+    container_name: email
+    image: arlaharen/email/1.0
+    build:
+     dockerfile: ./EmailService/Dockerfile
+    ports: 
+     - 7057:5057
+    networks:
+     - messaging
+    depends_on: 
+     - messages
+    restart: on-failure
+
+  image:
+    container_name: image
+    image: arlaharen/image/1.0
+    build:
+     dockerfile: ./ImageMicroservice/Dockerfile
+    ports: 
+     - 7141:443
+    networks:
+     - messaging
+    depends_on: 
+     - messages
+    restart: on-failure
+
+  postage:
+    container_name: postage
+    image: arlaharen/postage/1.0
+    build:
+     dockerfile: ./PostageMicroService/Dockerfile
+    ports: 
+     - 7151:443
+    networks:
+     - messaging
+    depends_on: 
+     - messages
+    restart: on-failure
+
+  tags:
+    container_name: tags
+    image: arlaharen/tags/1.0
+    build:
+     dockerfile: ./TagsMicroService/Dockerfile
+    ports:
+     - 7248:80
+     - 7249:443
+    networks:
+     - messaging
+    depends_on: 
+     - messages
+    restart: on-failure
+
+  watchlist:
+    container_name: watchlist
+    image: arlaharen/watchlist/1.0
+    build:
+     dockerfile: ./WatchlistMicroservice/Dockerfile
+    ports: 
+     - 7294:443
+    networks:
+     - messaging
+    depends_on: 
+     - messages
+    restart: on-failure
+  frontend:
+    container_name: frontend
+    image: auctionista/frontend/1.0
+    build:
+      dockerfile: ../../../frontend/Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+networks:
+  messaging: 
+
+volumes:
+  rabbitmq:

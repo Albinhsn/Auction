@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3k4hU/XyUb2ykZGSk1z6wM6DmhxgQ8xF3uIQHsTq4QWPOaLvqvJpnaFhRuCGot39SweFKHjPRJMydoD7pUey6g==",
+  "dgSpecHash": "Vnhaj1KLGO5SLqotm8hMyo8ZKamI9PNd1gkXGeBQuZF0KP+oTRlmqJdLGdBZl88G18rSomloClTz+SeN/acUmg==",
   "success": true,
   "projectFilePath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\UserMicroservice\\UserMicroservice.csproj",
   "expectedPackageFiles": [
@@ -13,6 +13,7 @@
     "C:\\Users\\hart9\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\hart9\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\mongodb.bson\\2.15.1\\mongodb.bson.2.15.1.nupkg.sha512",
     "C:\\Users\\hart9\\.nuget\\packages\\mongodb.driver\\2.15.1\\mongodb.driver.2.15.1.nupkg.sha512",

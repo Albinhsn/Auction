@@ -7,7 +7,13 @@ namespace PostageMicroService.RabbitMQ
         public IConnection _connection;
         public RabbitMQConnection()
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
+            var factory = new ConnectionFactory()
+            {
+                HostName = "rabbitmq",
+                Port = 5672
+            };
+            factory.UserName = "guest";
+            factory.Password = "guest";
             _connection = factory.CreateConnection();
         }
     }

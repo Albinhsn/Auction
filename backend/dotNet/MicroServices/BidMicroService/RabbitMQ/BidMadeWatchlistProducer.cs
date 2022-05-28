@@ -111,8 +111,8 @@ namespace BidMicroService.RabbitMQ
             string s = watchlistRespQueue.Take();
             
             
-            List<string> watchlistIds = JsonSerializer.Deserialize<List<string>>(s);
-            if (watchlistIds.Count > 0)
+            List<string>? watchlistIds = JsonSerializer.Deserialize<List<string>>(s);
+            if (watchlistIds?.Count > 0)
             {
                 
 

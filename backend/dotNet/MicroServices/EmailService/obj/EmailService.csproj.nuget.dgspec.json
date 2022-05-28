@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.14.0, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.15.1, )"
@@ -122,6 +126,10 @@
               "target": "Package",
               "version": "[3.2.0, )"
             },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.14.0, )"
+            },
             "MimeKit": {
               "target": "Package",
               "version": "[3.2.0, )"
@@ -196,6 +204,10 @@
             "Azure.Messaging.ServiceBus": {
               "target": "Package",
               "version": "[7.8.0, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.14.0, )"
             },
             "MongoDB.Bson": {
               "target": "Package",
