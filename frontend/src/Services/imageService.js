@@ -3,7 +3,7 @@ import axios from 'axios'
 
 class imageService {
     imageMicroService = axios.create({
-        baseURL: "http://localhost:7141",
+        baseURL: "http://188.166.50.198:7141",
         headers: {
             "Content-type": "application/json"
         }

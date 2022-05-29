@@ -131,7 +131,7 @@ services:
     restart: on-failure
   frontend:
     container_name: frontend
-    image: auctionista/frontend:1.0
+    image: auctionista/frontend:1.3
     build:
       context: ../../../frontend
       dockerfile: Dockerfile

@@ -11,12 +11,12 @@ export const convertFromGallery = (images) => {
     
     images.map(image => {
         
-        image = image.original.replace('http://localhost:7141/api/Image/', '')
+        image = image.original.replace('http://188.166.50.198:7141/api/Image/', '')
         I.push(image)
     }) 
     return I
 }
 
 export const convertToUrl = (id) => {
-    return `http://localhost:7141/api/Image/${id}`
+    return `http://188.166.50.198:7141/api/Image/${id}`
 }

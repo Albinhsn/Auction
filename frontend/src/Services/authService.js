@@ -3,7 +3,7 @@ import axios from "axios";
 
 class authService {
     authMicroService = axios.create({
-        baseURL: "http://localhost:7292",
+        baseURL: "http://188.166.50.198:7292",
         headers: {
             "Content-type": "application/json"
         }

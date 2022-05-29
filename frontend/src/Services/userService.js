@@ -3,7 +3,7 @@ import axios from 'axios'
 
 class userDataService{
     userMicroService = axios.create({
-        baseURL: "http://localhost:7279",
+        baseURL: "http://188.166.50.198:7279",
         headers: {
             "Content-type": "application/json"
         }
