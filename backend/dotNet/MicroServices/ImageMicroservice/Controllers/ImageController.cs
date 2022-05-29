@@ -1,5 +1,6 @@
 ﻿using ImageMicroservice.Models;
 using ImageMicroservice.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using System.Drawing;
@@ -10,6 +11,7 @@ namespace ImageMicroservice.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
+    [EnableCors("MyAllowSpecificOrigins")]
     public class ImageController : ControllerBase
     {
 

@@ -2,11 +2,13 @@ using PostageMicroService.Models;
 using PostageMicroService.Services;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
+using Microsoft.AspNetCore.Cors;
 
 namespace PostageMicroService.Controllers
 {
     [ApiController]
     [Route("/api/Postage/[controller]")]
+    [EnableCors("MyAllowSpecificOrigins")]
     public class PostageController : ControllerBase
     {
         PostageService _postageService;

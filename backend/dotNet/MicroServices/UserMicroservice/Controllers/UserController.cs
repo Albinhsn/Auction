@@ -3,10 +3,13 @@ using MongoDB.Bson;
 using UserMicroservice.Models;
 using UserMicroservice.Services;
 using UserMicroservice.Helpers;
+using Microsoft.AspNetCore.Cors;
+
 namespace UserMicroservice.Controllers
 {
     [ApiController]
     [Route("/api/user/[controller]")]
+    [EnableCors("MyAllowSpecificOrigins")]
     public class UserController : ControllerBase
     {
 

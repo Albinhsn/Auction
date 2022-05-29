@@ -1,5 +1,6 @@
 ﻿using BidMicroService.Models;
 using BidMicroService.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 
@@ -7,6 +8,7 @@ namespace BidMicroService.Controllers
 {
     [ApiController]
     [Route("/api/bid/[controller]")]
+    [EnableCors("MyAllowSpecificOrigins")]
     public class BidController : ControllerBase
     {
         private readonly BidService _bidService;

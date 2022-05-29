@@ -9,7 +9,7 @@ namespace AuctionMicroService.Controllers
 {
     [ApiController]
     [Route("/api/auction/[controller]")]
-    
+    [EnableCors("MyAllowSpecificOrigins")]
     public class AuctionController : ControllerBase
     {
 

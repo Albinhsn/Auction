@@ -1,5 +1,5 @@
 ﻿using AuthenticationService.Models;
-
+using Microsoft.AspNetCore.Cors;
 using AuthenticationService.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +8,7 @@ namespace AuthenticationService.Controllers
 
     [ApiController]
     [Route("/api/[controller]")]
+    [EnableCors("MyAllowSpecificOrigins")]
     public class UserAuthenticationController : ControllerBase
     {
         private UserAuthenticationService _userAuthenticationService;

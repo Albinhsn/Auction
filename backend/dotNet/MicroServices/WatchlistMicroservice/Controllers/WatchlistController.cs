@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using WatchlistMicroservice.Models;
+
 
 namespace WatchlistMicroservice.Controllers
 
 {
     [ApiController]
     [Route("/api/[controller]")]
+    [EnableCors("MyAllowSpecificOrigins")]
     public class WatchlistController : ControllerBase
     {
         private readonly Services.WatchlistService _watchlistService;

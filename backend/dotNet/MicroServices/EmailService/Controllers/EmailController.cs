@@ -1,6 +1,7 @@
 ﻿using EmailService.EmailConfig;
 using EmailService.Models;
 using EmailService.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -9,6 +10,7 @@ namespace EmailService.Controllers
 
     [ApiController]
     [Route("/api/email/[controller]")]
+    [EnableCors("MyAllowSpecificOrigins")]
     public class EmailController : ControllerBase
     {
 

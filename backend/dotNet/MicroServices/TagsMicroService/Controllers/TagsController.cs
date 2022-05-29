@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using TagsMicroService.Models;
 using TagsMicroService.Services;
 
@@ -6,6 +7,7 @@ namespace TagsMicroService.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
+    [EnableCors("MyAllowSpecificOrigins")]
     public class TagsController :ControllerBase
     {
         TagsService _tagsService;
