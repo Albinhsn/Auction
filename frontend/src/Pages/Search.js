@@ -32,8 +32,7 @@ export default function Search({token}){
             </div>
             <div className='col-6'>
                 <Searchbar getAuctionsBySearch={getAuctionsBySearch} setSearch={setSearch} search={search}/>
-                {localAuc.map(auction => {
-                    
+                {localAuc.map(auction => {                    
                     return (
                         <SearchAuctionCard key={auction.id} search={true} auction={auction} token={token}/>
                     )

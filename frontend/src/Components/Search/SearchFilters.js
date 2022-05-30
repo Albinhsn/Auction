@@ -50,7 +50,7 @@ export default function SearchFilters({setLocalAuc, auctions}){
     
 
     return (
-        <div className="col-12 row flex-column">
+        <div className="col-12 row flex-column" style={{ backgroundColor: "#f2f2f2"}}>
             <div className='col-8 ms-3'>
                 <div className='col-4 ms-4'>
                     <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">

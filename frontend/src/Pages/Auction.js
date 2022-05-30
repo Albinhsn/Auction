@@ -140,27 +140,30 @@ export default function Auction({token}) {
         <AuctionCardProductInfo auction={auction} />
         <div className='col-4 bg-light'>
           <AuctionCardTimeInfo auction={auction} />
-          <div className='row pt-2'>
-            <p className='fw-bold text-uppercase'>
-              Nuvarande bud
-            </p>
+          <div className='row pt-2'>            
             <div className='d-flex align-items-center'>
               <>
                 <AuctionPriceInfo auction={auction}/>
               </>
-              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction.id, setFavorite)} style={{ color: favorite ? "red" : "black" }} />
-              <button className='btn btn-warning ms-3' type="button"
-                onClick={() => watchlistHelpers.updateWatchlist(token, "Reminder",auction.id, setReminder, reminder)}>
-                {reminder ? "Ta bort påminnelse" : "Lägg till påminnelse"}
-              </button>
-              <button className='btn btn-warning ms-3' type="button"
-                onClick={() => watchlistHelpers.updateWatchlist(token, "Updated", auction.id, updated, setUpdated)}
-                >    
-                {updated ? "Ta bort uppdateringar" : "Håll mig uppdaterad"}
-              </button>
+              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-4 pt-2" onClick={() => auctionHelpers.favoriteChange(token, auction.id, setFavorite)} style={{ color: favorite ? "red" : "black" }} />              
+              <div className='align-items-center'>
+                <button className='btn btn-warning ms-3' type="button"
+                  onClick={() => watchlistHelpers.updateWatchlist(token, "Reminder", auction.id, setReminder, reminder)}>
+                  {reminder ? "Ta bort påminnelse" : "Lägg till påminnelse"}
+                </button>
+                <button className='btn btn-warning ms-3' type="button"
+                  onClick={() => watchlistHelpers.updateWatchlist(token, "Updated", auction.id, updated, setUpdated)}
+                >
+                  {updated ? "Ta bort bevakning" : "Bevaka"}
+                </button>
+              </div>
             </div>
             
             {renderAuctiontype()}
+            <div>
+              
+            </div>
+
           </div>
         </div>
       </div>

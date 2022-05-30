@@ -59,7 +59,7 @@ export default function HomepageAuctionCard({ auction, token}) {
               </div>
               <div className='col-4 d-flex align-items-baseline'>
                 <FontAwesomeIcon icon={faHeart} className="fa-xl mt-1"
-                      onClick={() => auctionHelpers.favoriteChange(token, auction.id, favorite, setFavorite)} style={{ color: favorite ? "red" : "black"}}
+                      onClick={(e) => {auctionHelpers.favoriteChange(token, auction.id, favorite, setFavorite); e.preventDefault();}} style={{ color: favorite ? "red" : "black"}}
                     />
               </div>
             </div>

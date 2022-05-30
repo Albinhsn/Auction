@@ -8,7 +8,7 @@ export default function SearchFilterTag({currentFilters, setCurrentFilters, arr,
     
     return(
         <div key={title}>
-            <p className='mb-0'>
+            <p className='mb-0 fs-5'>
                 {title}
             </p>
             {showMore ? 

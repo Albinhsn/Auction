@@ -56,8 +56,9 @@ export default function EnglishAuction({setAuction, auction, token}) {
                         </p>
                         <div className='d-flex align-items-center'>
                             <p className='text-success fs-1 mb-0'>
-                                {auction.highestBid}
+                                {auction.highestBid} 
                             </p>
+                            
                             <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-1" onClick={() => auctionHelpers.favoriteChange(token, auction._id, favorite, setFavorite)} style={{ color: favorite ? "red" : "black" }} />
                             <button className='btn btn-warning ms-3' type="button" 
                                 onClick={() => auctionHelpers.watchlistChange(token, auction._id, watchlist, setWatchlist)}>
