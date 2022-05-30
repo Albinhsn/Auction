@@ -1,91 +1,9 @@
-name: ci
-
-on:
-  push:
-    
-
+name: Docker Compose Actions Workflow
+on: push
 jobs:
-  docker:
+  test:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      -
-       
-        name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      -
-        name: build frontend
-        run: |
-          docker build ./frontend -t auctionista/frontend
-      -
-      
-
-        name: build watchlist
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/watchlist
-      -
-
-        name: Build tags
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/tags
-      -
-
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/postage
-      -
-
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/image
-      -
-
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/email
-      -
-
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/bids
-      -
-
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/authentication
-      -
-
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/auction
-      -
-
-         name: Build and push
-         uses: docker/build-push-action@v3
-         with:
-          push: true
-          tags: ${{secrets.DOCKER_USERNAME}}/user
-          
-          
-        
+      - uses: actions/checkout@v2
+      - name: Build the stack
+        run: ./backend/dotNet/MicroServices/docker-compose up -d
