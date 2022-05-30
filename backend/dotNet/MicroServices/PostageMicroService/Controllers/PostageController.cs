@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Cors;
 namespace PostageMicroService.Controllers
 {
     [ApiController]
-    [Route("/api/Postage/[controller]")]
-    [EnableCors("MyAllowSpecificOrigins")]
+    [Route("/api/Postage/[controller]")]    
     public class PostageController : ControllerBase
     {
         PostageService _postageService;

@@ -10,7 +10,7 @@ namespace WatchlistMicroservice.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
-    [EnableCors("MyAllowSpecificOrigins")]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class WatchlistController : ControllerBase
     {
         private readonly Services.WatchlistService _watchlistService;

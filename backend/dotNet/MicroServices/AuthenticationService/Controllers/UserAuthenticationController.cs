@@ -8,7 +8,7 @@ namespace AuthenticationService.Controllers
 
     [ApiController]
     [Route("/api/[controller]")]
-    [EnableCors("MyAllowSpecificOrigins")]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class UserAuthenticationController : ControllerBase
     {
         private UserAuthenticationService _userAuthenticationService;

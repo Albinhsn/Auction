@@ -7,7 +7,7 @@ namespace TagsMicroService.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
-    [EnableCors("MyAllowSpecificOrigins")]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class TagsController :ControllerBase
     {
         TagsService _tagsService;

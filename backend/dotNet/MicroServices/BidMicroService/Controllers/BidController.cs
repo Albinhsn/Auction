@@ -8,7 +8,7 @@ namespace BidMicroService.Controllers
 {
     [ApiController]
     [Route("/api/bid/[controller]")]
-    [EnableCors("MyAllowSpecificOrigins")]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class BidController : ControllerBase
     {
         private readonly BidService _bidService;

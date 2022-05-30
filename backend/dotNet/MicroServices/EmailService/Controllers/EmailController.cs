@@ -9,8 +9,7 @@ namespace EmailService.Controllers
 {
 
     [ApiController]
-    [Route("/api/email/[controller]")]
-    [EnableCors("MyAllowSpecificOrigins")]
+    [Route("/api/email/[controller]")]    
     public class EmailController : ControllerBase
     {
 

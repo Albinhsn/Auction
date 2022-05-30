@@ -9,7 +9,7 @@ namespace UserMicroservice.Controllers
 {
     [ApiController]
     [Route("/api/user/[controller]")]
-    [EnableCors("MyAllowSpecificOrigins")]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class UserController : ControllerBase
     {
 

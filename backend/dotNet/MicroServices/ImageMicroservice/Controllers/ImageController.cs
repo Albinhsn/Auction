@@ -11,7 +11,7 @@ namespace ImageMicroservice.Controllers
 {
     [ApiController]
     [Route("/api/[controller]")]
-    [EnableCors("MyAllowSpecificOrigins")]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class ImageController : ControllerBase
     {
 
