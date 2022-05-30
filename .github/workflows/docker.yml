@@ -2,6 +2,12 @@ name: ci
 
 on:
   push:
+    branches:
+    - 'Release-Sprint-4'
+    
+  pull_request:
+    branches:
+    - 'Release-Sprint-4'
     
 
 jobs:
