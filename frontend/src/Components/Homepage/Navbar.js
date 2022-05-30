@@ -12,14 +12,9 @@ export default function Navbar({token, setToken}) {
   return (
     token ? 
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="col-5 mx-3">
-      <Link to={"/"} className="nav-link navbar-brand">Auctionista</Link>
-      </div>
-          <p className='mb-0 fs-4'>
-            <Link to={"/search?search="} className="text-dark text-decoration-none">
-              Auktioner
-            </Link>
-          </p>
+      <div className="col-5 mx-3">
+        <Link to={"/"} className="nav-link navbar-brand">Auctionista</Link>
+        </div>        
         <ul className="container navbar-nav justify-content-end">
           <li><Link to={"/favorites"} className="nav-link">Favoriter</Link></li>
           <li><Link to={"/profile/watchlist"} className="nav-link">Watchlist</Link></li>
@@ -28,17 +23,12 @@ export default function Navbar({token, setToken}) {
           <li className="nav-item"><Link to={"/profile"} className="nav-link">Profile</Link></li>
           <li className='nav-item' onClick={() => logout()}><Link to={"/"} className='nav-link'>Logga ut</Link></li>
         </ul>
-  </nav>
+    </nav>
     :
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="col-5 mx-3">
           <Link to={"/"} className="nav-link navbar-brand">Auctionista</Link>
-          </div>
-          <p className='mb-0 fs-4'>
-            <Link to={"/search?search="} className="text-dark text-decoration-none">
-              Auktioner
-            </Link>
-          </p>
+          </div>        
             <ul className="container navbar-nav justify-content-end">
               <li className="nav-item"><Link to={"/Login"} className="nav-link">Login</Link></li>
             </ul>

@@ -62,8 +62,7 @@ function App() {
           <Route path="/create/auction" element={<CreateAuction   token={token}/>}/>
           <Route path="/favorites" element={<Favorites  token={token}/>}/>
 
-        </Routes>
-        <Footer/>
+        </Routes>    
       </div>
     </BrowserRouter>
   );
