@@ -18,14 +18,14 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      -
-        name: build frontend
-        uses: docker/build-push-action@v3
-        with:
-          image: auctionista/frontend
-          registry: docker.io
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+      #-
+        #name: build frontend
+        #uses: docker/build-push-action@v3
+        #with:
+          #image: auctionista/frontend
+          #registry: docker.io
+          #username: ${{ secrets.DOCKER_USERNAME }}
+          #password: ${{ secrets.DOCKER_PASSWORD }}
       -
       
 
