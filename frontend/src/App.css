@@ -45,3 +45,10 @@ ul.profile-list {
 .search-label{
   font-size: 1.5vh !important;
 }
+
+*{
+  -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}

@@ -4,9 +4,9 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters) => {
         setLocalAuc(auctions)
     }else{    
         let localAuc = [...auctions]
-
+        
         currentFilters.map(filter => {
-            
+            let i = 0    
             
             switch(filter.tag){
                 case "Status":
@@ -65,7 +65,7 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters) => {
                     // }
                     break; 
                 case "Minneskort":
-                    let i = localAuc.length - 1
+                    i = localAuc.length - 1
                     for(let j = i; j>=0; j--){
                         let flag = false
                         if(localAuc[j].tags.memoryCards !== null){
