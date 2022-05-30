@@ -37,9 +37,9 @@ export default function Home() {
   return (
     <>
       <Jumbo />
-      <Explore auctions={auctionsByPurchase} title={"Cheapest PurchasePrice"}/>
+      <Explore auctions={auctionsByPurchase} title={"Cheapest Purchase Price"}/>
       <Explore auctions={auctionsByTime} title={"Ending Soon..."} />
-      <Explore auctions={auctionsByBid} title={"Cheapest Bids here"} />
+      <Explore auctions={auctionsByBid} title={"Cheapest Bids Here"} />
     </>
   )
 }
