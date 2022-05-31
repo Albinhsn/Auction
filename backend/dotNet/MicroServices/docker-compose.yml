@@ -17,7 +17,7 @@ services:
    image: auctionista/user:1.2
    build:
     context: .
-    dockerfile: ./UserMicroService/Dockerfile
+    dockerfile: ./UserMicroservice/Dockerfile
    ports: 
     - 7279:80
    networks:
