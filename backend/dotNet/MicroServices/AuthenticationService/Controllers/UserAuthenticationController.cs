@@ -26,7 +26,6 @@ namespace AuthenticationService.Controllers
                 return BadRequest(new {message = "Username or password is incorrect"});
             }
             Console.WriteLine(response);
-            Response.Headers.Add("Access-Control-Allow-Origin", "http://188.166.50.198");
             return Ok(response);
         }
 

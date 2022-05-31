@@ -20,7 +20,7 @@ new IsBidderSellerReceiver(aucService, connection);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
+    options.AddDefaultPolicy(
                       policy =>
                       {
                           policy.WithOrigins("http://188.166.50.198")
