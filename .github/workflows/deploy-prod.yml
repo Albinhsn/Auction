@@ -17,6 +17,6 @@ jobs:
           script: |
             cd Auction
             git pull origin Release-Sprint-4
-            cd /backend/dotNet/MicroServices
+            cd backend/dotNet/MicroServices
             docker-compose build
             docker-compose up -d
