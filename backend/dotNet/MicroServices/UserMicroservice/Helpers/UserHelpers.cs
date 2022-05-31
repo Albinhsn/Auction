@@ -23,7 +23,7 @@ namespace UserMicroservice.Helpers
 
         public string ValidateUserPostModel(UserPostModel user)
         {
-            if (IsEmail(user.Email))
+            if (!IsEmail(user.Email))
             {
                 return "Vänligen angiv en korrekt email";
             }
