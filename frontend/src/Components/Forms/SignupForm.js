@@ -65,7 +65,7 @@ export default function SignupForm({setAuthId, token}) {
                             Bekräfta Email address
                             </label>
                         <input type="Email" className="form-control" 
-                            onChange={e => setAccountInfo({ ...accountInfo, matchingEmail: e.target.value })}
+                            onChange={e => setAccountInfo({ ...accountInfo, MatchingEmail: e.target.value })}
                         />
                     </div>
 

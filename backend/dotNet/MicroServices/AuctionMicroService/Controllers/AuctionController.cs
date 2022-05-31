@@ -3,7 +3,7 @@ using AuctionMicroService.Models;
 using AuctionMicroService.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Bson;
+
 
 namespace AuctionMicroService.Controllers
 {
@@ -13,7 +13,7 @@ namespace AuctionMicroService.Controllers
     public class AuctionController : ControllerBase
     {
 
-        AuctionService _auctionService;
+        private AuctionService _auctionService;
 
         public AuctionController(AuctionService auctionService)
         {
