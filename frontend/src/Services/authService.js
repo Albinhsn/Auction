@@ -5,7 +5,8 @@ class authService {
     authMicroService = axios.create({
         baseURL: "http://188.166.50.198:7292",
         headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            'Accept': "application/json"
         }
     })
 

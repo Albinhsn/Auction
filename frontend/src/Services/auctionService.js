@@ -5,8 +5,7 @@ class AuctionDataService{
     auctionMicroService = axios.create({
         baseURL: "http://188.166.50.198:7086",
         headers: {
-            "Content-type": "application/json",
-            'Accept': "application/json"
+            "Content-type": "application/json",            
         }
     })
     
