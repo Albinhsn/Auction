@@ -7,24 +7,27 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 UserAuthenticationService service = new();
 builder.Services.AddSingleton<UserAuthenticationService>(service);
 builder.Services.AddSingleton<JWTHelpers>();
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(
+    options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
                           policy.WithOrigins("http://188.166.50.198")
-                          .AllowAnyHeader()
-                          .AllowAnyMethod(); 
+                              .AllowAnyHeader()
+                              .AllowAnyMethod()
+                          ;
+
                       });
 });
-
+builder.Services.AddControllers();
 RabbitMQConnection connection = new();
 AccountUpdatedReceiver _messageReceiver = new(service, connection);
 AccountCreatedReceiver _messageCreatedReceiver = new(service, connection);  
