@@ -21,13 +21,12 @@ namespace AuthenticationService.Controllers
         
         public async Task<IActionResult?> AuthenticateUser([FromBody] AuthenticateUserRequest req)
         {
-            var response = await _userAuthenticationService.AuthenticateUser(req);
-
-            if(response == null)
+            var response = await _userAuthenticationService.AuthenticateUser(req);            
+            if (response == null)
             {
                 return BadRequest(new {message = "Username or password is incorrect"});
             }
-            Response.Headers.AccessControlAllowOrigin = "*";
+           
             return Ok(response.ToString());
         }
 
