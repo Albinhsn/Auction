@@ -24,12 +24,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       
-      - uses: mr-smithers-excellent/docker-build-push@v5
-        name: Build & push Docker image
+      - name: Build and push
+        uses: docker/build-push-action@v3
         with:
-          image: auctionista/auction
-          tags: v1, latest
-          registry: docker.io
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          context: ./
+          file: backend/dotNet/MicroServices/AuctionMicroService/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/auction:latest
         
