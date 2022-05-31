@@ -25,10 +25,6 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
       
-         name: Check out code
-         uses: actions/checkout@v2
-      -
-      
         name: Build the Docker image 
       - uses: actions/checkout@v2
       - run: |
