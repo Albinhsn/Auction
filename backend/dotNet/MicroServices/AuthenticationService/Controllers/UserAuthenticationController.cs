@@ -27,7 +27,7 @@ namespace AuthenticationService.Controllers
                 return BadRequest(new {message = "Username or password is incorrect"});
             }
             Console.WriteLine(response);
-            return Ok(response);
+            return Ok(response.ToString());
         }
 
         [HttpPost("AuthenticateToken")]

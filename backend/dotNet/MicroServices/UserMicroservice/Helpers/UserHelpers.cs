@@ -23,14 +23,14 @@ namespace UserMicroservice.Helpers
 
         public string ValidateUserPostModel(UserPostModel user)
         {
-            if (!IsEmail(user.Email))
-            {
-                return "Vänligen angiv en korrekt email";
-            }
             if (user.Email != user.MatchingEmail)
             {
                 return "Email adresserna matchar inte";
             }
+            if (!IsEmail(user.Email))
+            {
+                return "Vänligen angiv en korrekt email";
+            }            
             if (user.Password != user.MatchingPassword)
             {
                 return "Lösenorden matchar inte";
