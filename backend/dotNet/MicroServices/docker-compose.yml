@@ -16,6 +16,7 @@ services:
    container_name: user
    image: auctionista/user:1.2
    build:
+    context: .
     dockerfile: ./UserMicroService/Dockerfile
    ports: 
     - 7279:80
@@ -29,7 +30,8 @@ services:
    container_name: auction
    image: auctionista/auction:2.1
    build:
-    dockerfile: ./AuctionMicroService/Dockerfile
+     context: . 
+     dockerfile: ./AuctionMicroService/Dockerfile
    ports:
     - 7086:80
    networks:
@@ -42,7 +44,8 @@ services:
     container_name: authentication
     image: auctionista/authentication:1.0
     build:
-     dockerfile: ./AuthenticationService/Dockerfile
+      context: . 
+      dockerfile: ./AuthenticationService/Dockerfile
     ports: 
      - 7292:80
     networks:
@@ -55,7 +58,8 @@ services:
     container_name: bids
     image: auctionista/bids:1.0
     build:
-     dockerfile: ./BidMicroService/Dockerfile
+      context: . 
+      dockerfile: ./BidMicroService/Dockerfile
     ports: 
      - 7206:80
     networks:
@@ -68,7 +72,8 @@ services:
     container_name: email
     image: auctionista/email:1.0
     build:
-     dockerfile: ./EmailService/Dockerfile
+      context: . 
+      dockerfile: ./EmailService/Dockerfile
     ports: 
      - 7057:80
     networks:
@@ -81,7 +86,8 @@ services:
     container_name: image
     image: auctionista/image:1.0
     build:
-     dockerfile: ./ImageMicroservice/Dockerfile
+      context: . 
+      dockerfile: ./ImageMicroservice/Dockerfile
     ports: 
      - 7141:80
     networks:
@@ -94,7 +100,8 @@ services:
     container_name: postage
     image: auctionista/postage:1.0
     build:
-     dockerfile: ./PostageMicroService/Dockerfile
+      context: . 
+      dockerfile: ./PostageMicroService/Dockerfile
     ports: 
      - 7151:80
     networks:
@@ -107,7 +114,8 @@ services:
     container_name: tags
     image: auctionista/tags:1.0
     build:
-     dockerfile: ./TagsMicroService/Dockerfile
+      context: . 
+      dockerfile: ./TagsMicroService/Dockerfile
     ports:
      - 7209:80
      
@@ -121,7 +129,8 @@ services:
     container_name: watchlist
     image: auctionista/watchlist:1.0
     build:
-     dockerfile: ./WatchlistMicroservice/Dockerfile
+      context: . 
+      dockerfile: ./WatchlistMicroservice/Dockerfile
     ports: 
      - 7204:80
     networks:
