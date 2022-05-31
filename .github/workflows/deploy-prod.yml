@@ -1,0 +1,21 @@
+name: Deploy prod
+on:
+  push:
+    branches: [ Release-Sprint-4 ]  
+jobs:
+  build:
+    name: Deploy to prod
+    runs-on: ubuntu-latest
+    steps: 
+      - name: remote ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: "188.166.50.198"
+          username: ${{SSH_PASSWORD}}
+          password: ${{SSH_PASSWORD}}
+          port: ${{SSH_PORT}}
+          script: |
+            cd Auction
+            git pull origin Release-Sprint-4
+            docker-compose build
+            docker-compose up -d
