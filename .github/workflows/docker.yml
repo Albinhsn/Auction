@@ -25,6 +25,12 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
       
-        name: Build the Docker image
-        run: docker build . --file backend/dotNet/MicroServices/AuctionMicroService/Dockerfile
+         name: Check out code
+         uses: actions/checkout@v2
+      -
+      
+        name: Build the Docker image 
+      - uses: actions/checkout@v2
+      - run: |
+          docker build . --file backend/dotNet/MicroServices/AuctionMicroService/Dockerfile
         
