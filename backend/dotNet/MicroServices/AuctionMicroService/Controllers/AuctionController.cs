@@ -95,12 +95,9 @@ namespace AuctionMicroService.Controllers
             return _auctionService.GetCheapestPurchasePrice().Result;
         }
         [HttpGet("/api/auction/[controller]/sorted/endDate")]
-        public IActionResult GetAuctionsByEnddate()
+        public List<Auction> GetAuctionsByEnddate()
         {
-            List<Auction> aucs = _auctionService.GetShortestTimeRemaining().Result;
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            return Ok(aucs);
-
+            return _auctionService.GetShortestTimeRemaining().Result;
         }
         [HttpGet("/api/auction/[controller]/sorted/highestBid")]
         public List<Auction> GetAuctionsByHighestBidAsc()
