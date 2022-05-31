@@ -7,8 +7,8 @@ namespace AuthenticationService.Controllers
 {
 
     [ApiController]
-    [Route("/api/[controller]")]    
-    
+    [Route("/api/[controller]")]
+    [EnableCors("_myAllowSpecificOrigins")]
     public class UserAuthenticationController : ControllerBase
     {
         private UserAuthenticationService _userAuthenticationService;
@@ -18,7 +18,7 @@ namespace AuthenticationService.Controllers
             
 
         [HttpPost("AuthenticateUser")]
-        [EnableCors("_myAllowSpecificOrigins")]
+        
         public async Task<IActionResult?> AuthenticateUser([FromBody] AuthenticateUserRequest req)
         {
             var response = await _userAuthenticationService.AuthenticateUser(req);
@@ -27,7 +27,7 @@ namespace AuthenticationService.Controllers
             {
                 return BadRequest(new {message = "Username or password is incorrect"});
             }
-            Console.WriteLine(response);
+            Response.Headers.AccessControlAllowOrigin = "*";
             return Ok(response.ToString());
         }
 
