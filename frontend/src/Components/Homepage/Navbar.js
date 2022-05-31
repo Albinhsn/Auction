@@ -27,10 +27,11 @@ export default function Navbar({token, setToken}) {
     :
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="col-5 mx-3">
-          <Link to={"/"} className="nav-link navbar-brand">Auctionista</Link>
+          <Link to={"/"} className="nav-link navbar-brand">Auctionista</Link>          
           </div>        
             <ul className="container navbar-nav justify-content-end">
               <li className="nav-item"><Link to={"/Login"} className="nav-link">Login</Link></li>
+              <li className="nav-item"><Link to={"/profile"} className="nav-link">Profile</Link></li>
             </ul>
       </nav>
   )
