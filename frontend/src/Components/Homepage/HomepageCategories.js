@@ -15,11 +15,11 @@ export default function HomepageCategories(){
 
         return (
             <div className='' style={{backgroundColor: " #f2f2f2"}}>
-                <p className='fs-4 m-0' style={{backgroundColor: "#cccccc"}}>
+                <p className='fs-5 m-0' style={{backgroundColor: "#cccccc"}}>
                     Kategorier
                 </p>
                 <Link to={"/search?="}className='text-decoration-none text-dark'>
-                    <p className="mb-1" style={{fontSize: "2vh"}}>
+                    <p className="mb-1" style={{fontSize: "1.75vh"}}>
                         Alla föremål
                     </p>
                 </Link>

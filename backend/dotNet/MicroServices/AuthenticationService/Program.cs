@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://188.166.50.198/")
+                          policy.WithOrigins("http://188.166.50.198")
                           .AllowAnyHeader()
                           .AllowAnyMethod(); 
                       });
@@ -39,7 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors(MyAllowSpecificOrigins);
+app.UseCors();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
