@@ -79,7 +79,7 @@ export default function SignupForm({setAuthId, token}) {
                         />
                     </div>
                     
-                    <div className="mb-3">
+                    <div className="mb-1">
                         <label className="form-label">
                             Confirm Lösenord
                             </label>
@@ -90,7 +90,7 @@ export default function SignupForm({setAuthId, token}) {
                 </form>
                 
                 <div className='d-flex justify-content-center'>
-                    <button type="button" className='btn btn-primary' onClick={() => createAccount()}>
+                    <button type="button" className='btn btn-primary mb-2' onClick={() => createAccount()}>
                         Skapa Konto
                         </button>
                 </div>

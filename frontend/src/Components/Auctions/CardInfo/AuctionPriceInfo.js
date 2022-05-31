@@ -5,15 +5,25 @@ export default function AuctionPriceInfo({auction}) {
     switch(auction.auctionType){
         case "Engelsk":
             return(
-                <p className='text-success fs-1 mb-0'>
-                    {auction.highestBid === 0 ? auction.minimumBid : auction.highestBid}
-                </p>
+                <div>                
+                    <p className='fs-5 fw-bold mb-0'>Högsta bud: </p>
+                    <div className='d-flex'>
+                    <p className='text-success fs-1 mb-0'>
+                        {auction.highestBid === 0 ? auction.minimumBid : auction.highestBid}
+                    </p>
+                    <p className='ms-1 align-self-center m-0'>(Frakt: {auction.postage})</p>
+                    </div>
+                </div>
+
             )
         case "Holländsk":
             return(
-                <p className='text-success fs-1 mb-0'>
-                    {auction.purchasePrice}
-                </p>
+                <div className='d-flex'>
+                    <p className='text-success fs-1 mb-0'>
+                        {auction.purchasePrice}
+                    </p>
+                    <p className='ms-1 align-self-center m-0'>(Frakt: {auction.postage})</p>
+                </div>
             )
         case "Schweizisk":
             return(

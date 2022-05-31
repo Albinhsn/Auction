@@ -3,43 +3,63 @@ import Jumbo from '../Components/Homepage/Jumbo'
 import Explore from '../Components/Homepage/Explore'
 import {useState, useEffect} from 'react'
 import auctionService from '../Services/auctionService'
+import HomepageCategories from '../Components/Homepage/HomepageCategories'
+import SearchBar from '../Components/Homepage/SearchBar'
+import { useNavigate } from 'react-router'
+
 export default function Home() {
   
   
   const [auctionsByBid, setAuctionsByBid] = useState([]) 
   const [auctionsByPurchase, setAuctionsByPurchase] = useState([]) 
   const [auctionsByTime, setAuctionsByTime] = useState([]) 
-  
+  const [searchInput, setSearchInput] = useState("")
 
+
+  const GetAuctionsBySearch = () => {
+      const navigate = useNavigate()
+      navigate(`/search?=${searchInput}`)
+  }
   
 
   useEffect(() => {
 
     auctionService.getAuctionByHighestBidAsc().then(response => {      
-      console.log(response.data, "highestBid")
-      setAuctionsByBid(response.data)
+      
+      setAuctionsByBid(response.data.slice(0,4))
       
     })
 
-    auctionService.getAuctionsByPurchasePriceAsc().then(response => {      
-      console.log(response.data, "purchase")
-      setAuctionsByPurchase(response.data)
+    auctionService.getAuctionsByPurchasePriceAsc().then(response => {            
+      setAuctionsByPurchase(response.data.slice(0,4))
       
     })
     
     auctionService.getAuctionsByTimeRemainingAsc().then(response => {          
-      setAuctionsByTime(response.data)
-      console.log(response.data, "time")
+      setAuctionsByTime(response.data.slice(0,4))
+      
     })
 
   }, [])
 
   return (
-    <>
-      <Jumbo />
-      <Explore auctions={auctionsByPurchase} title={"Cheapest Purchase Price"}/>
-      <Explore auctions={auctionsByTime} title={"Ending Soon..."} />
-      <Explore auctions={auctionsByBid} title={"Cheapest Bids Here"} />
-    </>
+    <div className='row justify-content-center d-flex'>
+      
+      <div className='col col-lg-10'>
+        <Jumbo />
+        <SearchBar getAuctionsBySearch={GetAuctionsBySearch} search={searchInput} setSearch={setSearchInput}/>
+        <div className='row justify-content-center'>
+          <div className='col-2'>
+            <HomepageCategories /> 
+          </div>
+          <div className='col-7'>
+            <Explore auctions={auctionsByPurchase} title={"Cheapest PurchasePrice"}/>
+            <Explore auctions={auctionsByTime} title={"Ending Soon..."} />
+            <Explore auctions={auctionsByBid} title={"Cheapest Bids here"} />
+          </div>
+        </div>
+      </div>
+      
+    </div>
   )
 }

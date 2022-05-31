@@ -26,10 +26,22 @@ export const reformatDate = (date) => {
         date.Seconds = 0
         date.Minutes = 0
         date.Hour = 0
+        date.Day = 0
     } 
     else if(date.Month > 0 ){
         date.Seconds = 0
         date.Minutes = 0
+        date.Hour = 0
+        date.Day = 0 
+    }else if(date.Day> 0){
+        date.Seconds = 0
+        date.Minutes = 0
+        date.Hour = 0        
+    }else if(date.Hour > 0){
+        date.Seconds = 0
+        date.Minutes = 0
+    }else if(date.Minutes > 0){
+        date.Second = 0
     }
     
 

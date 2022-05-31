@@ -13,7 +13,7 @@ export default function Explore({auctions, title}) {
     
     
     return (
-      <div className='row justify-content-center'>
+      <div className='row'>
         <div className='col-6' style={{padding: "0"}}>
             <div className='row'>
                 <div className='fs-4 d-flex'>
@@ -21,7 +21,7 @@ export default function Explore({auctions, title}) {
                 </div>
             </div>
             <div className='row pt-2'>
-                <div className='d-flex justify-content-evenly'>
+                <div className='d-flex'>
                     {auctions.map((auction, i) =>{
                         return(                    
                             <HomepageAuctionCard key={i} auction={auction}/>

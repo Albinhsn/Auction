@@ -7,6 +7,11 @@ export default function AuctionCardProductInfo({auction}) {
     return (
       <div className='col-5 bg-light'>
         <div className='row justify-content-center' style={{ height: "50vh" }}>
+                <div className='d-flex align-items-center justify-content-center ms-5 pt-3'>
+                    <h3 className=''>
+                        {auction.name}
+                    </h3>
+                </div>
             <div className='col-10'>
                 <ImageGallery
                     items={auction.images}
@@ -17,12 +22,7 @@ export default function AuctionCardProductInfo({auction}) {
                     className="image-gallery"
                     showFullscreenButton={false}
                 />
-            </div>
-            <div className='d-flex align-items-center ms-5 pt-3'>
-                <h3 className=''>
-                    {auction.name}
-                </h3>
-            </div>
+            </div>            
             <div className='d-flex'>
                 <p className='mb-0'>
                     Skick:
