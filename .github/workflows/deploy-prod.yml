@@ -11,12 +11,12 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: "188.166.50.198"
-          username: ${{SSH_PASSWORD}}
-          password: ${{SSH_PASSWORD}}
-          port: ${{SSH_PORT}}
+          username: ${{secrets.SSH_PASSWORD}}
+          password: ${{secrets.SSH_PASSWORD}}
+          port: ${{secrets.SSH_PORT}}
           script: |
             cd Auction
             git pull origin Release-Sprint-4
             cd /backend/dotNet/MicroServices
             docker-compose build
-            docker-compose up -d
+            docker-compose up -d 
