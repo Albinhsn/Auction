@@ -25,7 +25,7 @@ builder.Services.AddCors(options =>
                       policy =>
                       {
 
-                        policy.AllowAnyOrigin()
+                        policy.WithOrigins("http://188.166.50.198/")
                           .AllowAnyHeader()
                           .AllowAnyMethod();
                       });
