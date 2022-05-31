@@ -7,8 +7,7 @@ namespace AuthenticationService.Controllers
 {
 
     [ApiController]
-    [Route("/api/[controller]")]
-    [EnableCors("_myAllowSpecificOrigins")]
+    [Route("/api/[controller]")]    
     public class UserAuthenticationController : ControllerBase
     {
         private UserAuthenticationService _userAuthenticationService;
@@ -26,7 +25,8 @@ namespace AuthenticationService.Controllers
             {
                 return BadRequest(new {message = "Username or password is incorrect"});
             }
-            Console.WriteLine(response);   
+            Console.WriteLine(response);
+            Response.Headers.Add("Access-Control-Allow-Origin", "http://188.166.50.198");
             return Ok(response);
         }
 

@@ -14,7 +14,6 @@ builder.Services.AddSwaggerGen();
 UserAuthenticationService service = new();
 builder.Services.AddSingleton<UserAuthenticationService>(service);
 builder.Services.AddSingleton<JWTHelpers>();
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(
