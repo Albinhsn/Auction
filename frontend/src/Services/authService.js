@@ -9,7 +9,16 @@ class authService {
         }
     })
 
-    validateLogin = (username, password) => {        
+    validateLogin = (username, password) => {
+        fetch("http://188.166.50.198:7292/api/UserAuthentication/AuthenticateUser", {
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            console.log(response)
+        });
         return this.authMicroService.post("/api/UserAuthentication/AuthenticateUser",{
             Email: username,
             Password: password
