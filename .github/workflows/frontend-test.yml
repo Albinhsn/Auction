@@ -17,7 +17,7 @@ jobs:
       - name: Cypress tests
         uses: ./
         with:
-          working-directory: frontend/cypress
+          working-directory: frontend
           build: npm run build
           start: npm start
           wait-on: 'http://localhost:3000'
