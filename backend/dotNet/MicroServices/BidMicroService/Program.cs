@@ -13,11 +13,11 @@ RabbitMQConnection connection = new();
 BidService service = new(connection);
 builder.Services.AddSingleton<BidService>(service);
 
-GetAllAuctionHighestBidReceiver messageHighestBidReceiver = new (service, connection);
-HigestBidFromListOfIdsReceiver higestBidFromListOfIdsReceiver = new (service, connection);
-AuctionEndedReceiver messageEndedReceiver = new (service, connection); 
+GetAllAuctionHighestBidReceiver messageHighestBidReceiver = new(service, connection);
+HigestBidFromListOfIdsReceiver higestBidFromListOfIdsReceiver = new(service, connection);
+AuctionEndedReceiver messageEndedReceiver = new(service, connection);
 GetAuctionBidsReceiver messageAuctionBidsReceiver = new(service, connection);
-GetLowestHighestBidLimitedReceiver getLowestHighestBidLimitedReceiver= new(service, connection);
+GetLowestHighestBidLimitedReceiver getLowestHighestBidLimitedReceiver = new(service, connection);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {

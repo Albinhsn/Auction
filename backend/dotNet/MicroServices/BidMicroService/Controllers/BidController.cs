@@ -18,6 +18,7 @@ namespace BidMicroService.Controllers
             _bidService = bidService;
         }
 
+        [HttpGet("/api/bid/[controller]/swiss")]
         public Bid GetMyHighestBid(string auctionId, string token)
         {
             Bid bid = _bidService.GetMyHighestBid(auctionId, token).Result;

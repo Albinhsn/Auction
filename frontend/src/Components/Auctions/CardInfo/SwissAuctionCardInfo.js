@@ -1,13 +1,19 @@
 import {React, useEffect, useState} from 'react'
 import { useNavigate } from 'react-router'
 import * as auctionHelpers from '../../../Helpers/auctionHelpers'
+import bidService from '../../../Services/bidService'
 export default function SwissAuctionCardInfo({token, auction, setAuction}) {
     const [bid, setBid] = useState()
     const [myBid, setMyBid] = useState()
 
     useEffect(() => {
+        if(!myBid){
+            bidService.getMyHighestBid(token, auction.id).then(response => {
+                console.log(response.data)
+            })
+        }
         
-    }, [myBid])
+    }, )
 
     const navigate = useNavigate
 

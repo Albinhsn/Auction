@@ -140,7 +140,7 @@ namespace BidMicroService.Services
             GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
             string userId = getIdFromTokenProducer.GetIdFromToken(Token);
             List<Bid> bid = await  _bidCollection.Find(x => x.AuctionId == auctionId && x.UserId == userId).ToListAsync();
-
+            Console.WriteLine(bid.Count);
             Bid highestBid = new();
             highestBid.Amount = -1;
             foreach(var b in bid)
@@ -150,6 +150,7 @@ namespace BidMicroService.Services
                     highestBid = b;
                 }
             }
+            Console.WriteLine(highestBid.Amount);   
             return highestBid;
         }
 
