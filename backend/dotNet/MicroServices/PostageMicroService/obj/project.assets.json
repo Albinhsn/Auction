@@ -1004,19 +1004,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hart9\\.nuget\\packages\\": {}
+    "C:\\Users\\jeppe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\PostageMicroService\\PostageMicroService.csproj",
+      "projectUniqueName": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\PostageMicroService\\PostageMicroService.csproj",
       "projectName": "PostageMicroService",
-      "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\PostageMicroService\\PostageMicroService.csproj",
-      "packagesPath": "C:\\Users\\hart9\\.nuget\\packages\\",
-      "outputPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\PostageMicroService\\obj\\",
+      "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\PostageMicroService\\PostageMicroService.csproj",
+      "packagesPath": "C:\\Users\\jeppe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\PostageMicroService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hart9\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jeppe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1081,7 +1081,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
