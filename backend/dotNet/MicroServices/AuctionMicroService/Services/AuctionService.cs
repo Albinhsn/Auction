@@ -93,26 +93,28 @@ namespace AuctionMicroService.Services
                 else
                 {
                     auctionResult.Add(await _auctionCollection.Find(x => x.Id == tagResult.Id).FirstOrDefaultAsync());
-                    auctionResult[auctionResult.Count - 1].Tags = tagResult;
                 }
             }
             
             
             //Replace seller id with name
-            List<string> aucIds = new ();
-            List<string> sellerIds = new ();
+            List<string> aucIds = new List<string>();
+            List<string> sellerIds = new List<string>();
             foreach(var auction in auctionResult)
             {
                 aucIds.Add(auction.Id);
                 sellerIds.Add(auction.Seller);
             }
             
+            GetAuctionTagsFromListOfIds getAuctionTagsFromListOfIds = new(_connection);
+            List<Tags> tags = getAuctionTagsFromListOfIds.GetAuctionBySearchTags(aucIds);
 
             GetUsernameFromListOfIdsProducer getUsernameFromListOfIdsProducer= new(_connection);
             List<User> users = getUsernameFromListOfIdsProducer.GetUsernameFromListOfIds(sellerIds);            
             foreach(var auction in auctionResult)
             {
-                auction.Seller = users.Find(x => x.Id == auction.Seller).Name;                
+                auction.Seller = users.Find(x => x.Id == auction.Seller).Name;
+                auction.Tags = tags.Find(x => x.Id == auction.Id);
             }
             
             return auctionResult;

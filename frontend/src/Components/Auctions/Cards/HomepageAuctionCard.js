@@ -42,19 +42,13 @@ export default function HomepageAuctionCard({ auction, token}) {
                   : 
                     <p className='mb-0' style={{fontSize: "1.75vh"}}>{auction.highestBid === 0 ? auction.minimumBid : auction.highestBid} kr</p>
                   }          
-                  {auction.auctionType === "Engelsk" && auction.purchasePrice !== 0 ? 
+                  {auction.auctionType != "Schweizisk" && auction.purchasePrice != 0 ? 
                     <p className='mb-0' style={{fontSize: "1.75vh"}}>
                         Köp:{auction.purchasePrice}kr
                     </p>
                   :
-                    <></>
+                    <p className='mb-0' style={{fontSize: "1.5vh"}}>Mörk budgivning</p>
                   }
-              {auction.auctionType === "Schweizisk" ? 
-                <p className='mb-0' style={{ fontSize: "1.75vh" }}>
-                  Mörk budgivning
-                </p>
-                : <></>  
-            }
               </div>
               <div className='col-4 d-flex align-items-baseline'>
                 <FontAwesomeIcon icon={faHeart} className="fa-xl mt-1"
