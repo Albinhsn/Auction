@@ -1,14 +1,15 @@
 import auctionService from '../Services/auctionService'
 import userService from '../Services/userService'
 import bidService from '../Services/bidService'
+
+
 export const favoriteChange = (token, _id, setFavorite) => {
-    
+    console.log(token, _id, setFavorite)
     if(!token) return
 
 
     
-    userService.updateFavorite(token, _id).then(response => {
-        console.log(response.data)
+    userService.updateFavorite(token, _id).then(response => {        
         setFavorite(response.data)
     })
 }
@@ -46,13 +47,17 @@ export const handleBid = (token, auction, bid, setAuction) => {
         }
     }
     
-    bidService.makeBid(token, auction.id, bid).then(response => {
-        console.log(response)
+    bidService.makeBid(token, auction.id, bid).then(response => {        
     }).then(() => {
         auctionService.getAuctionByObjectId(auction.id).then(response => {
             setAuction(response.data)
         })
-    })
+    }).catch(
+        function (error) {
+            if (error.response) {
+                alert(error.response.data)
+            }
+        })
 
 }
 
@@ -61,7 +66,11 @@ export const makePurchase = (token, auctionId, setAuction) => {
     if(!token) return
 
     auctionService.makePurchase(token, auctionId).then(response => {
-        setAuction(response.data)
-        console.log(response.data)
-    })
+        setAuction(response.data)    
+    }).catch(
+        function (error) {
+            if (error.response) {
+                alert(error.response.data)
+            }
+        })
 }

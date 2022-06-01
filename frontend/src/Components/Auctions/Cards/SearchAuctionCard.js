@@ -49,7 +49,7 @@ export default function SearchAuctionCard({auction, token, search}){
                         <p className='fs-2 '>
                             {auc.name}
                              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-l" style={{color: favorite}} 
-                            onClick={(e) => {auctionHelpers.favoriteChange(); e.preventDefault()}}
+                                onClick={(e) => { auctionHelpers.favoriteChange(token, auction.id, setFavorite); e.preventDefault()}}
                         />
                         </p>
                     </div>

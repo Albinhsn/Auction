@@ -4,7 +4,11 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters) => {
         setLocalAuc(auctions)
     }else{    
         let localAuc = [...auctions]
-        
+        for(let i = 0; i<auctions.length; i++){
+            if(auctions[i].name == "Canon EOS R5"){
+                console.log(auctions[i].tags)
+            }
+        }
         currentFilters.map(filter => {
             let i = 0    
             

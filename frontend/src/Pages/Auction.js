@@ -148,7 +148,7 @@ export default function Auction({token}) {
               <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-4 pt-2" onClick={() => auctionHelpers.favoriteChange(token, auction.id, setFavorite)} style={{ color: favorite ? "red" : "black" }} />              
               <div className='align-items-center'>
                 <button className='btn btn-warning ms-3' type="button"
-                  onClick={() => watchlistHelpers.updateWatchlist(token, "Reminder", auction.id, setReminder, reminder)}>
+                  onClick={() => watchlistHelpers.updateWatchlist(token, "Reminder", auction.id, reminder, setReminder)}>
                   {reminder ? "Ta bort påminnelse" : "Lägg till påminnelse"}
                 </button>
                 <button className='btn btn-warning ms-3' type="button"

@@ -36,10 +36,15 @@ namespace AuctionMicroService.Helpers
             {
                 return "Vänligen ange minsta bud";
             }
+            if(auction.AuctionType == "Engelsk " && auction.MinimumBid + 10 >= auction.PurchasePrice)
+            {
+                return "Vänligen ange högre utköpspris än minsta bud";
+            }
             if(auction.AuctionType == "Holländsk" && auction.PurchasePrice <= 0)
             {
                 return "Vänligen ange godtyckligt start pris";
             }
+           
 
 
 
