@@ -15,11 +15,8 @@ export default function Home() {
   const [auctionsByTime, setAuctionsByTime] = useState([]) 
   const [searchInput, setSearchInput] = useState("")
 
+  const navigate = useNavigate()
 
-  const GetAuctionsBySearch = () => {
-      const navigate = useNavigate()
-      navigate(`/search?=${searchInput}`)
-  }
   
 
   useEffect(() => {
@@ -41,6 +38,10 @@ export default function Home() {
     })
 
   }, [])
+
+  const GetAuctionsBySearch = () => {    
+    navigate(`/search?=${searchInput}`)
+  }
 
   return (
     <div className='row justify-content-center d-flex'>

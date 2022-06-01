@@ -78,7 +78,7 @@ namespace UserMicroservice.Services
                 u.Name = user.Name;
                 u.Email = user.Email;
                 u.Password = user.Password;
-                
+              
                 u.Favorites = new List<string>();
                 _userCollection.InsertOne(u);
                 AccountCreationProducer accountCreationProducer = new(_connection);

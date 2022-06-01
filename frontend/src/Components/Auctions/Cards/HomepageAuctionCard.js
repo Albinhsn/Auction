@@ -6,16 +6,13 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import * as datesHelpers from '../../../Helpers/datesHelpers'
 import * as imageHelpers from '../../../Helpers/imageHelpers'
 import * as auctionHelpers from '../../../Helpers/auctionHelpers'
-
+import { useNavigate } from 'react-router'
 
 export default function HomepageAuctionCard({ auction, token}) {
   
   const [date, setDate] = useState(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
   const [favorite, setFavorite] = useState(false)
-  
-  useEffect(() => {
-    console.log(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
-  }, [])
+  const navigate = useNavigate
   
   return (
     <Link to={`/auction?auctionId=${auction.id}`} className="text-decoration-none" key={auction.id}> 
@@ -55,7 +52,7 @@ export default function HomepageAuctionCard({ auction, token}) {
               </div>
               <div className='col-4 d-flex align-items-baseline'>
                 <FontAwesomeIcon icon={faHeart} className="fa-xl mt-1"
-                      onClick={(e) => {auctionHelpers.favoriteChange(token, auction.id, favorite, setFavorite); e.preventDefault();}} style={{ color: favorite ? "red" : "black"}}
+                onClick={(e) => { auctionHelpers.favoriteChange(token, auction.id, setFavorite, navigate); e.preventDefault();}} style={{ color: favorite ? "red" : "black"}}
                     />
               </div>
             </div>

@@ -22,6 +22,7 @@ export default function Search({token}){
             setAuctions(response.data)
             
         })
+        
     }
 
     if(!auctions || !localAuc) return <></>

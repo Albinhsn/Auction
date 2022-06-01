@@ -14,6 +14,7 @@ import DutchAuctionCardInfo from '../Components/Auctions/CardInfo/DutchAuctionCa
 import SwissAuctionCardInfo from '../Components/Auctions/CardInfo/SwissAuctionCardInfo'
 import AuctionPriceInfo from '../Components/Auctions/CardInfo/AuctionPriceInfo'
 import watchlistService from '../Services/watchlistService'
+import { useNavigate } from 'react-router'
 
 
 export default function Auction({token}) {
@@ -23,7 +24,7 @@ export default function Auction({token}) {
   const [reminder, setReminder] = useState()
   const [updated, setUpdated] = useState()
   const [favorite, setFavorite] = useState()
-
+  const navigate = useNavigate
   
   const auctionId = new URLSearchParams(window.location.search).get('auctionId')
   
@@ -145,14 +146,14 @@ export default function Auction({token}) {
               <>
                 <AuctionPriceInfo auction={auction}/>
               </>
-              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-4 pt-2" onClick={() => auctionHelpers.favoriteChange(token, auction.id, setFavorite)} style={{ color: favorite ? "red" : "black" }} />              
+              <FontAwesomeIcon icon={faHeart} className="ps-3 fa-2xl mt-4 pt-2" onClick={() => auctionHelpers.favoriteChange(token, auction.id, setFavorite, navigate)} style={{ color: favorite ? "red" : "black" }} />              
               <div className='align-items-center'>
                 <button className='btn btn-warning ms-3' type="button"
-                  onClick={() => watchlistHelpers.updateWatchlist(token, "Reminder", auction.id, reminder, setReminder)}>
+                  onClick={() => watchlistHelpers.updateWatchlist(token, "Reminder", auction.id, reminder, setReminder, navigate)}>
                   {reminder ? "Ta bort påminnelse" : "Lägg till påminnelse"}
                 </button>
                 <button className='btn btn-warning ms-3' type="button"
-                  onClick={() => watchlistHelpers.updateWatchlist(token, "Updated", auction.id, updated, setUpdated)}
+                  onClick={() => watchlistHelpers.updateWatchlist(token, "Updated", auction.id, updated, setUpdated, navigate)}
                 >
                   {updated ? "Ta bort bevakning" : "Bevaka"}
                 </button>
