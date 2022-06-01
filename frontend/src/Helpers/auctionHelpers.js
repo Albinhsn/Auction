@@ -51,11 +51,12 @@ export const handleBid = (token, auction, bid, setAuction) => {
     }).then(() => {
         auctionService.getAuctionByObjectId(auction.id).then(response => {
             setAuction(response.data)
+            alert(`Du la ett bud på ${bid}`)
         })
     }).catch(
         function (error) {
             if (error.response) {
-                alert(error.response.data)
+                alert(error.response)
             }
         })
 
@@ -67,10 +68,11 @@ export const makePurchase = (token, auctionId, setAuction) => {
 
     auctionService.makePurchase(token, auctionId).then(response => {
         setAuction(response.data)    
+        alert("Grattis du vann auktionen")
     }).catch(
         function (error) {
             if (error.response) {
-                alert(error.response.data)
+                alert(error.response)
             }
         })
 }
