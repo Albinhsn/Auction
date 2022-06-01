@@ -16,3 +16,5 @@ jobs:
           run:   CI=false
           build: npm run build
           start: npm start
+          env: 
+            CI:""
