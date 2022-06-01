@@ -32,16 +32,16 @@ export const reminderChange = (token, _id, reminder, setReminder) => {
     
 }
 
-export const handleBid = (token, auction, bid, setAuction) => {
+export const handleBid = (token, auction, bid, setAuction, setBid) => {
     
     if(!token) return
-    if(auction.highestBid > 0){
+    if(auction.highestBid > 0 && auction.auctionType !== "Schweizisk"){
         if (auction.highestBid + 10 > bid) {
             alert("Vänligen ange korrekt bud")
             return
         }
     }else{
-        if (auction.minimumBid + 10 > bid) {
+        if (auction.minimumBid + 10 > bid && auction.auctionType !== "Schweizisk") {
             alert("Vänligen ange korrekt bud")
             return
         }
@@ -51,6 +51,8 @@ export const handleBid = (token, auction, bid, setAuction) => {
     }).then(() => {
         auctionService.getAuctionByObjectId(auction.id).then(response => {
             setAuction(response.data)
+            setBid()
+            document.querySelector("#bid-input").value = null
             alert(`Du la ett bud på ${bid}`)
         })
     }).catch(

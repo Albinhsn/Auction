@@ -2,15 +2,8 @@ import {React, useState} from 'react'
 import * as auctionHelpers from "../../../Helpers/auctionHelpers"
 import { useNavigate } from 'react-router';
 export default function EnglishAuctionCardInfo({setAuction, auction, token}) {
-    const [bid, setBid] = useState(0)
-    const navigate = useNavigate()
     
-    const handleBid = () => {
-        if(!token) {
-
-            
-        }
-    }
+    const [bid, setBid] = useState()  
 
 
     return (
@@ -20,13 +13,13 @@ export default function EnglishAuctionCardInfo({setAuction, auction, token}) {
                 onChange={e => setBid(e.target.value)}
             />
             <button type="button" className="btn btn-warning ms-1" style={{ height: "5vh" }}
-                onClick={() => auctionHelpers.handleBid(token, auction, bid, setAuction, navigate)}>
+                onClick={() => auctionHelpers.handleBid(token, auction, bid, setAuction, setBid)}>
                 Lägg bud
             </button>
             
             {auction.purchasePrice > 0 ?
                 <button type="button" className='btn btn-warning ms-1' style={{ height: "5vh" }}
-                    onClick={() => auctionHelpers.makePurchase(token, auction.id, setAuction, navigate)}>
+                    onClick={() => auctionHelpers.makePurchase(token, auction.id, setAuction )}>
                     Köp Nu {auction.purchasePrice}
                 </button>
                 :

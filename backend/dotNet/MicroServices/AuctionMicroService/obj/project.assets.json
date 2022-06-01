@@ -1044,19 +1044,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jeppe\\.nuget\\packages\\": {}
+    "C:\\Users\\hart9\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\AuctionMicroService\\AuctionMicroService.csproj",
+      "projectUniqueName": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\AuctionMicroService\\AuctionMicroService.csproj",
       "projectName": "AuctionMicroService",
-      "projectPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\AuctionMicroService\\AuctionMicroService.csproj",
-      "packagesPath": "C:\\Users\\jeppe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jeppe\\Documents\\GitHub\\Auction\\backend\\dotNet\\MicroServices\\AuctionMicroService\\obj\\",
+      "projectPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\AuctionMicroService\\AuctionMicroService.csproj",
+      "packagesPath": "C:\\Users\\hart9\\.nuget\\packages\\",
+      "outputPath": "B:\\Program\\Programmering\\Github\\Auction\\backend\\dotNet\\MicroServices\\AuctionMicroService\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jeppe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hart9\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1121,7 +1121,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
