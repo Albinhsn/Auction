@@ -72,34 +72,44 @@ namespace AuctionMicroService.Services
             
         }
 
-        public async Task<List<Auction>> GetAuctionsBySearch(string search)
+        public async Task<List<Auction>> GetAuctionsBySearch(string? search)
         {
             List<Auction> auctionResult = new();
-            //Query auc by name
-          
-            var filter = Builders<Auction>.Filter.Regex("Name", new BsonRegularExpression(search, "i"));
-            auctionResult = await _auctionCollection.Aggregate()
-                .Match(filter)
-                .ToListAsync();
-            //Query auc by tags 
-            GetAuctionBySearchTagsProducer getAuctionBySearchTagsProducer = new(_connection);
-            List<Tags> tagResults = getAuctionBySearchTagsProducer.GetAuctionBySearchTags(search);
-
-            //Join them and return
-            foreach (var tagResult in tagResults)
+            if (search == null || search == "")
             {
-                if (auctionResult.Any(x => x.Id == tagResult.Id))
-                { }
-                else
+                auctionResult = GetAll().Result;
+            }
+            else
+            {
+                //Query auc by name
+
+                var filter = Builders<Auction>.Filter.Regex("Name", new BsonRegularExpression(search, "i"));
+                auctionResult = await _auctionCollection.Aggregate()
+                    .Match(filter)
+                    .ToListAsync();
+                //Query auc by tags 
+                GetAuctionBySearchTagsProducer getAuctionBySearchTagsProducer = new(_connection);
+                List<Tags> tagResults = getAuctionBySearchTagsProducer.GetAuctionBySearchTags(search);
+
+                //Join them and return
+                foreach (var tagResult in tagResults)
                 {
-                    auctionResult.Add(await _auctionCollection.Find(x => x.Id == tagResult.Id).FirstOrDefaultAsync());
+                    if (auctionResult.Any(x => x.Id == tagResult.Id))
+                    { }
+                    else
+                    {
+                        auctionResult.Add(await _auctionCollection.Find(x => x.Id == tagResult.Id).FirstOrDefaultAsync());
+                    }
                 }
             }
             
             
+            
+            
+            
             //Replace seller id with name
-            List<string> aucIds = new List<string>();
-            List<string> sellerIds = new List<string>();
+            List<string> aucIds = new ();
+            List<string> sellerIds = new ();
             foreach(var auction in auctionResult)
             {
                 aucIds.Add(auction.Id);
