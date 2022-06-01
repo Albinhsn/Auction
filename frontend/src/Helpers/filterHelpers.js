@@ -9,8 +9,8 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters, localAuc) 
             let i = 0    
             
             switch(filter.tag){
-                case "Status":
-                    if(filter.val === "Slut"){
+                case "Status":                                        
+                    if(filter.val.includes("Slut")){
                         flag = true
                     }                    
                     localAuc = localAuc.filter(auc => filter.val.includes(auc.state) === true) 
@@ -99,6 +99,7 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters, localAuc) 
                     }
                     break;
             }
+            console.log(flag)
             if(!flag){
                 localAuc = localAuc.filter(auc => auc.state !== "Slut")
             }

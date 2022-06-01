@@ -6,16 +6,13 @@ import ProfileInfo from '../Components/Profile/ProfileInfo'
 export default function Profile({token, setToken}) {
   
   const [user, setUser] = useState()
-  const navigate = useNavigate()
-  console.log(token)
+  const navigate = useNavigate()  
   useEffect(() => {
     if(!token){
       navigate("/login")
     }else{
-      userService.getUserFromToken(token).then(response => {
-        console.log(response.data)
+      userService.getUserFromToken(token).then(response => {        
         setUser(response.data)
-
       })
     }
     
@@ -36,7 +33,7 @@ export default function Profile({token, setToken}) {
                   <ProfileInfo user={user}/>
                 </div>
 
-                <ChangeProfileInfoForm token={token} setToken={setToken}/>
+                <ChangeProfileInfoForm token={token} setToken={setToken} setUser={setUser}/>
               </div>
             </div>
           </div> 

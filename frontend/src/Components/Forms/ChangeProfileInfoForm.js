@@ -3,7 +3,7 @@ import { React, useState} from 'react'
 import authService from '../../Services/authService'
 import userService from '../../Services/userService'
 import { useNavigate } from 'react-router'
-export default function ChangeProfileInfoForm({token, setToken}) {
+export default function ChangeProfileInfoForm({token, setToken, setUser}) {
     
 
     const navigation = useNavigate()
@@ -45,10 +45,12 @@ export default function ChangeProfileInfoForm({token, setToken}) {
     const changeEmail = () => {
         console.log(formInput.email, formInput.matchingEmail, token)
         userService.changeEmail(token, formInput.newEmail, formInput.matchingNewEmail).then(response => {
-                      
-            console.log(response.data)
-            // localStorage.removeItem("access_token")
-            // setToken('')
+            setUser(response.data)
+            
+            localStorage.removeItem("access_token")
+            setToken()
+            alert("Emailen byttes var god logga in igen")
+            navigation("/login")
         }).catch(function(error){
             if(error.response){
                 console.log(error.response)
@@ -82,7 +84,7 @@ export default function ChangeProfileInfoForm({token, setToken}) {
             </div>
             <div className="mb-3 row">
                 <label className="col-sm-4 col-form-label">
-                    Bekräfta nuvarande lösenord
+                    Nuvarande lösenord
                 </label>
                 <div className="col-sm-7">
                     <input type="password" className="form-control" id="matching-email"
@@ -100,7 +102,7 @@ export default function ChangeProfileInfoForm({token, setToken}) {
             <hr />
             <div className="mb-3 row">
                 <label className="col-sm-4 col-form-label">
-                    Lösenord
+                    Nytt Lösenord
                 </label>
                 <div className="col-sm-7">
                     <input type="password" className='form-control' id="password" 
@@ -111,7 +113,7 @@ export default function ChangeProfileInfoForm({token, setToken}) {
             </div>
             <div className="mb-3 row">
                 <label className="col-sm-4 col-form-label">
-                    Bekräfta Lösenord
+                    Bekräfta nytt Lösenord
                 </label>
                 <div className="col-sm-7">
                     <input type="password" className="form-control" id="matching-password" 
@@ -121,7 +123,7 @@ export default function ChangeProfileInfoForm({token, setToken}) {
             </div>
             <div className="mb-3 row">
                 <label className="col-sm-4 col-form-label">
-                    Bekräfta nuvarande lösenord
+                    Nuvarande lösenord
                 </label>
                 <div className="col-sm-7">
                     <input type="password" className="form-control" id="matching-email"

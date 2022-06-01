@@ -60,7 +60,7 @@ export default function SearchAuctionCard({auction, token, search}){
                         <TimeRemaining date={datesHelpers.reformatDate(timeRemaining)}/>                        
                         :
                         <p className='pt-1'>
-                            Tog slut: {auc.endDate}
+                            Tog slut: {auc.endDate.substring(0, 10)}
                         </p>
                     }
                     {auc.state === "Pågående" ? 

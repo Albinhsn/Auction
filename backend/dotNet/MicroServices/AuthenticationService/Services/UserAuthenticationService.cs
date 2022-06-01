@@ -59,8 +59,13 @@ namespace AuthenticationService.Services
             
             //Encrypt and update password            
             user.Password = BCrypt.Net.BCrypt.HashPassword(model.NewPassword);
-            UpdateUser(user);
-            
+            var filter = Builders<User>.Filter.Where(x => x.Id == user.Id);
+            var options = new FindOneAndReplaceOptions<User>
+            {
+                ReturnDocument = ReturnDocument.After
+            };            
+            await _userCollection.FindOneAndReplaceAsync<User>(x => x.Id == user.Id, user, options);
+
             return "good";
         }
 

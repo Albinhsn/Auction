@@ -25,7 +25,7 @@ export default function AuctionCardTimeInfo({auction}) {
                 </div>                
             :
                 <p className='fs-5 mb-0 me-1'>
-                    Slutade: {new Date(auction.endDate).toUTCString()}
+                    Slutade: {new Date(auction.endDate).substring(0, 10)}
                 </p>
         }
             
