@@ -12,21 +12,21 @@ namespace AuctionMicroService.Helpers
             {
                 return "Vänligen fyll i namn";
             }
-            if(auction.AuctionType == "")
+            if(auction.AuctionType == "" || auction.AuctionType == "Välj typ av auktion")
             {
                 return "Vänligen välj en typ av auktion";
             }            
-            if (auction.Volume == 0)
+            if (auction.Volume <= 0)
             {
                 return "Vänligen fyll i volym";
             }
-            if (auction.Weight == 0)
+            if (auction.Weight <= 0)
             {
                 return "Vänligen välj vikt";
             }
-            if (auction.Condition == "")
+            if (auction.Condition == "" || auction.Condition == "Välj skick")
             {
-                return "Vänligen välj i skick";
+                return "Vänligen välj ett skick";
             }
             if(auction.SellerToken == "")
             {

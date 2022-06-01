@@ -113,9 +113,16 @@ namespace AuctionMicroService.Controllers
         }
 
         [HttpPut("/api/[controller]/purchase")]
-        public async Task<Auction> MadePurchase(string token, string auctionId)
+        public IActionResult MadePurchase(string token, string auctionId)
         {
-            return await _auctionService.MadePurchase(token, auctionId);
+            Auction auc = _auctionService.MadePurchase(token, auctionId).Result;
+
+            if (auc == null)
+            {
+                return BadRequest("Du kan inte köpa din egna auktion");
+            }
+            return Ok(auc);
+
         }
     }
 }

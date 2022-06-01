@@ -34,7 +34,10 @@ namespace AuctionMicroService.Services
             Auction auction = await _auctionCollection.Find(x => x.Id == auctionId).FirstOrDefaultAsync();
             GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
             string userId = getIdFromTokenProducer.GetIdFromToken(token);
-            
+            if (auction.Seller == userId)
+            {
+                return null;
+            }
             auction.Winner = userId;
             auction.State = "Slut";
             
