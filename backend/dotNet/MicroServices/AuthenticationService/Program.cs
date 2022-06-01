@@ -30,11 +30,11 @@ builder.Services.AddCors(options =>
                       });
 });
 
-//RabbitMQConnection connection = new();
-//AccountUpdatedReceiver _messageReceiver = new(service, connection);
-//AccountCreatedReceiver _messageCreatedReceiver = new(service, connection);  
-//AccountDeletedReceiver _messageDeletedReceiver = new(service, connection);
-//GetIdFromTokenReceiver _getIdFromTokenReceiver = new (service, connection);
+RabbitMQConnection connection = new();
+AccountUpdatedReceiver _messageReceiver = new(service, connection);
+AccountCreatedReceiver _messageCreatedReceiver = new(service, connection);
+AccountDeletedReceiver _messageDeletedReceiver = new(service, connection);
+GetIdFromTokenReceiver _getIdFromTokenReceiver = new(service, connection);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
