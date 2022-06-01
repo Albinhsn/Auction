@@ -61,7 +61,13 @@ export default function CreateAuctionForm({ token }) {
             function (error) {
                 if (error.response) {
                     console.log(error.response.data)        
-                    alert(error.response.data)                    
+                    alert(error.response.data)
+                    // let imgs = []
+                    // auctionInfo.Images.forEach(image => {
+                    //     imgs.push(imageHelpers.convertToGallery(image))
+                    // })
+                    // auctionInfo.Images = imgs
+                    // auctionInfo.Tags = {}
                 }
             })
     }
@@ -123,7 +129,7 @@ export default function CreateAuctionForm({ token }) {
             value: document.querySelector("#tag-value").value,
             key: document.querySelector("#tags").value
         }])
-        document.querySelector("#tag-value").value = 0;
+
     }
 
     const removeTag = (e) => {

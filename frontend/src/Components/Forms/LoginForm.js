@@ -18,12 +18,8 @@ export default function LoginForm({setToken}) {
             setToken(response.data)
             localStorage.setItem("access_token", JSON.stringify(response.data))
             navigation("/")
-        }).catch(
-            function (error) {
-                if (error.response) {
-                    alert(error.response.data)
-                }
-            })
+    })
+
        
     } 
 
