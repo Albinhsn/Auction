@@ -1,20 +1,18 @@
-export const filterAuctions = (auctions, setLocalAuc, currentFilters) => {
+export const filterAuctions = (auctions, setLocalAuc, currentFilters, localAuc) => {
            
     if(currentFilters.length === 0){ 
-        setLocalAuc(auctions)
+        setLocalAuc(localAuc)
     }else{    
-        let localAuc = [...auctions]
-        for(let i = 0; i<auctions.length; i++){
-            if(auctions[i].name == "Canon EOS R5"){
-                console.log(auctions[i].tags)
-            }
-        }
+        let localAuc = [...auctions]        
+        let flag = false
         currentFilters.map(filter => {
             let i = 0    
             
             switch(filter.tag){
                 case "Status":
-                    
+                    if(filter.val === "Slut"){
+                        flag = true
+                    }                    
                     localAuc = localAuc.filter(auc => filter.val.includes(auc.state) === true) 
                     
                     break;
@@ -100,6 +98,9 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters) => {
                         }
                     }
                     break;
+            }
+            if(!flag){
+                localAuc = localAuc.filter(auc => auc.state !== "Slut")
             }
             setLocalAuc(localAuc)
             

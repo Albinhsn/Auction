@@ -5,7 +5,7 @@ import * as sortingHelpers from '../../Helpers/sortingHelpers'
 
 import SearchFilterTag from './SearchFilterTag'
 
-export default function SearchFilters({setLocalAuc, auctions, currentFilters, setCurrentFilters}){
+export default function SearchFilters({setLocalAuc, auctions, currentFilters, setCurrentFilters, localAuc}){
 
     const [sort, setSort] = useState('')
     useEffect(() => {
@@ -19,7 +19,7 @@ export default function SearchFilters({setLocalAuc, auctions, currentFilters, se
                 default: 
                     break;
             }
-            filterHelpers.filterAuctions(auctions, setLocalAuc, currentFilters)
+            filterHelpers.filterAuctions(auctions, setLocalAuc, currentFilters, localAuc)
         }, [currentFilters])
 
     const filters = [
