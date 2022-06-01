@@ -143,7 +143,7 @@ namespace AuthenticationService.Services
             {
                 ReturnDocument = ReturnDocument.After
             };
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, salt);
+
             await _userCollection.FindOneAndReplaceAsync<User>(x => x.Id == user.Id, user, options);
         }
     }
