@@ -1,25 +1,17 @@
-name: frontend-test
-on:
-  push:
-    branches: [ cypress-test ]  
-  pull_request:
-    branches: [ cypress-test ]
+name: Cypress Tests
+
+on: [push]
+
 jobs:
-
-
-  start-v10:
-
-    runs-on: ubuntu-20.04
+  cypress-run:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Cypress tests
-        uses: ./
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
         with:
-          working-directory: frontend
           build: npm run build
           start: npm start
-          wait-on: 'http://localhost:3000'
-      
-  
