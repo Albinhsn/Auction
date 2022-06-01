@@ -11,6 +11,7 @@ export default function Search({token}){
     const [auctions, setAuctions] = useState()
     const [localAuc, setLocalAuc] = useState()
     const [search, setSearch] = useState(new URLSearchParams(window.location.search).get("search"))
+    const [currentFilters, setCurrentFilters] = useState([])
     useEffect(() => {
         getAuctionsBySearch()
     }, [])
@@ -22,13 +23,22 @@ export default function Search({token}){
             setAuctions(response.data)
             
         })
+        currentFilters.map(filter => {
+            filter.val.map(v => {
+                document.getElementById(`${v.replace(/\s/g, "")}`).checked = false
+            })
+            
+        })
+        setCurrentFilters([])
     }
+    
+
 
     if(!auctions || !localAuc) return <></>
     return (
         <div className='d-flex justify-content-center pt-3'>
             <div className='col-2'>
-                <SearchFilters auctions={auctions} setLocalAuc={setLocalAuc} localAuc={localAuc}/>
+                <SearchFilters auctions={auctions} setLocalAuc={setLocalAuc} localAuc={localAuc} currentFilters={currentFilters} setCurrentFilters={setCurrentFilters}/>
             </div>
             <div className='col-6'>
                 <Searchbar getAuctionsBySearch={getAuctionsBySearch} setSearch={setSearch} search={search}/>

@@ -66,7 +66,7 @@ export default function ChangeProfileInfoForm({token, setToken}) {
                 </label>
                 <div className="col-sm-7">
                     <input type="email" className='form-control' id="email" 
-                        onChange={e => setFormInput({...formInput, email: e.target.value})}
+                        onChange={e => setFormInput({...formInput, newEmail: e.target.value})}
                     />
                 </div>
             </div>
