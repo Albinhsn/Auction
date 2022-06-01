@@ -10,12 +10,16 @@ import * as auctionHelpers from '../../../Helpers/auctionHelpers'
 
 export default function HomepageAuctionCard({ auction, token}) {
   
-  const [date, setDate] = useState(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
+  const [date, setDate] = useState()
   const [favorite, setFavorite] = useState(false)
-  
   useEffect(() => {
-    console.log(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
-  }, [])
+    if (!date) {
+      setDate(datesHelpers.reformatDate(datesHelpers.getTimeRemaining(auction.endDate)))
+    }
+  })
+  useEffect(() => {
+
+  })
   
   return (
     <Link to={`/auction?auctionId=${auction.id}`} className="text-decoration-none" key={auction.id}> 
