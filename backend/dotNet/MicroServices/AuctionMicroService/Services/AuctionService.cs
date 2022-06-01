@@ -19,8 +19,8 @@ namespace AuctionMicroService.Services
         public AuctionService()
         {
             _connection = new();
-            
-            
+
+
             MongoClient client = new MongoClient("mongodb+srv://Admin:dGFoNQuOP1nKNPI5@auctionista.9ue7r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
             var db = client.GetDatabase("Auctions");
             _database = db;
@@ -161,18 +161,18 @@ namespace AuctionMicroService.Services
 
         public async Task<List<Auction>> GetAll()
         {
-            AllAuctionHighestBidProducer allAuctionHighestBidProducer = new(_connection);
-            List<HighestBid> highestBids = allAuctionHighestBidProducer.GetAllAuctionBids();                        
+            //AllAuctionHighestBidProducer allAuctionHighestBidProducer = new(_connection);
+            //List<HighestBid> highestBids = allAuctionHighestBidProducer.GetAllAuctionBids();                        
             List<Auction> auctions = await _auctionCollection.Find(_  => true).ToListAsync();            
-            for(var i = 0; i<auctions.Count; i++)
-            {                                    
-                HighestBid highestBid = highestBids.Find(x => x.Id == auctions[i].Id);
+            //for(var i = 0; i<auctions.Count; i++)
+            //{                                    
+            //    HighestBid highestBid = highestBids.Find(x => x.Id == auctions[i].Id);
                 
-                if(highestBid != null)
-                {                    
-                    auctions[i].HighestBid = highestBid.Amount;            
-                }
-            }
+            //    if(highestBid != null)
+            //    {                    
+            //        auctions[i].HighestBid = highestBid.Amount;            
+            //    }
+            //}
             return auctions;
         }
         public async Task<List<Auction>> GetFavorites(string token)
