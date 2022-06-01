@@ -11,12 +11,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 AuctionService aucService = new();
 builder.Services.AddSingleton<AuctionService>();
-//builder.Services.AddSingleton<RabbitMQConnection>();
-//RabbitMQConnection connection = new();
+builder.Services.AddSingleton<RabbitMQConnection>();
+RabbitMQConnection connection = new();
 
-//new AuctionEndedProducer(aucService, connection);
-//new GetAuctionNameFromIdReceiver(aucService, connection);
-//new IsBidderSellerReceiver(aucService, connection);
+new AuctionEndedProducer(aucService, connection);
+new GetAuctionNameFromIdReceiver(aucService, connection);
+new IsBidderSellerReceiver(aucService, connection);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
