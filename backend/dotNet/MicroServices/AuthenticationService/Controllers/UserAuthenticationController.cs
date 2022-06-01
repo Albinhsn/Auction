@@ -26,8 +26,7 @@ namespace AuthenticationService.Controllers
             if(response == null)
             {
                 return BadRequest(new {message = "Username or password is incorrect"});
-            }
-            Response.Headers.AccessControlAllowOrigin = "*";
+            }            
             return Ok(response.ToString());
         }
 

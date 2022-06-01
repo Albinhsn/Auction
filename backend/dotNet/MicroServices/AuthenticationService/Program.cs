@@ -20,7 +20,9 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://188.166.50.198")
+                          policy.WithOrigins("http://188.166.50.198",
+                            "http://localhost:3000"
+                          )
                               .AllowAnyHeader()
                               .AllowAnyMethod()
                           ;
@@ -28,11 +30,11 @@ builder.Services.AddCors(options =>
                       });
 });
 
-RabbitMQConnection connection = new();
-AccountUpdatedReceiver _messageReceiver = new(service, connection);
-AccountCreatedReceiver _messageCreatedReceiver = new(service, connection);  
-AccountDeletedReceiver _messageDeletedReceiver = new(service, connection);
-GetIdFromTokenReceiver _getIdFromTokenReceiver = new (service, connection);
+//RabbitMQConnection connection = new();
+//AccountUpdatedReceiver _messageReceiver = new(service, connection);
+//AccountCreatedReceiver _messageCreatedReceiver = new(service, connection);  
+//AccountDeletedReceiver _messageDeletedReceiver = new(service, connection);
+//GetIdFromTokenReceiver _getIdFromTokenReceiver = new (service, connection);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

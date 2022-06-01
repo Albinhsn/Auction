@@ -92,8 +92,7 @@ namespace AuthenticationService.Services
         public async Task<string?> generateToken(AuthenticateUserRequest Req)
         {
             
-            User user = await _userCollection.Find(x => x.Email == Req.Email).FirstOrDefaultAsync();
-
+            User user = await _userCollection.Find(x => x.Email.ToLower() == Req.Email.ToLower()).FirstOrDefaultAsync();            
             if (user == null ||!BCrypt.Net.BCrypt.Verify(Req.Password, user.Password))
             {
                 return null;
