@@ -62,6 +62,22 @@ export const handleBid = (token, auction, bid, setAuction) => {
         })
 
 }
+export const handleSwissBid = (token, auction, bid, myBid, setMyBid) => {
+    if(!token) return
+    
+    if(bid <= myBid + 10){
+        alert("Ditt bud måste vara högre än ditt förra")
+        return
+    }
+
+    bidService.makeBid(token, auction.id, bid).then(response => {
+        setMyBid(response.data.amount)
+        alert(`Du la ett bud på ${bid}`)
+        setMyBid(bid)
+
+    })
+
+}
 
 export const makePurchase = (token, auctionId, setAuction) => {
 

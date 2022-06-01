@@ -17,8 +17,12 @@ class AuctionDataService {
     }
 
     getMyHighestBid(Token, id){
-        return this.bidMicroService.get("/api/bid/bid/swiss",{
-            auctionId: id, token: Token
+        if(!Token) return
+        return this.bidMicroService.get("/api/bid/bid/swiss",
+        {
+            params:{    
+                auctionId: id, token: Token
+            }
         })
     }
 
