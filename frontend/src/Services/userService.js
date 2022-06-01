@@ -98,7 +98,6 @@ class userDataService{
                 password: password,
                 matchingPassword: matchingPassword
             }
-            
         })
         // return http.get("/registration/password", {
         //     params: {token: token, password: password, matchingPassword: matchingPassword},

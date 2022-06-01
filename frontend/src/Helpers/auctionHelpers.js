@@ -15,7 +15,7 @@ export const favoriteChange = (token, _id, setFavorite) => {
 }
 
 export const updatedChange = (token, _id, updated, setUpdated) => {
-    if (!token) return
+    if (!token)
 
     //userService.updateKeepMePosted(token, _id).then(() => {
         setUpdated(!updated)
@@ -56,7 +56,7 @@ export const handleBid = (token, auction, bid, setAuction) => {
     }).catch(
         function (error) {
             if (error.response) {
-                alert(error.response)
+                alert(error.response.data)
             }
         })
 
@@ -72,7 +72,7 @@ export const makePurchase = (token, auctionId, setAuction) => {
     }).catch(
         function (error) {
             if (error.response) {
-                alert(error.response)
+                alert(error.response.data)
             }
         })
 }

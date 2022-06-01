@@ -44,7 +44,10 @@ namespace AuctionMicroService.Controllers
         [HttpGet("/api/[controller]/search")]
         public List<Auction> GetAuctionsBySearch(string? search)
         {
-            
+            if (search == null)
+            {
+                return GetAll();
+            }
             return _auctionService.GetAuctionsBySearch(search).Result;
         }
 

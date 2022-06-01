@@ -5,10 +5,10 @@ import * as sortingHelpers from '../../Helpers/sortingHelpers'
 
 import SearchFilterTag from './SearchFilterTag'
 
-export default function SearchFilters({setLocalAuc, auctions, currentFilters, setCurrentFilters}){
+export default function SearchFilters({setLocalAuc, auctions}){
 
     const [sort, setSort] = useState('')
-    
+    const [currentFilters, setCurrentFilters] = useState([])
     useEffect(() => {
             switch(sort){
                 case 'PriceAsc':

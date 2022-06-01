@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "pB2hUqqpPLnlKMmYUOYUiRepcmlAzpzuxt6oE/3apno=",
+  "Source": "AuctionMicroService",
+  "BasePath": "_content/AuctionMicroService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

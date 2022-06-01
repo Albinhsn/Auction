@@ -15,11 +15,8 @@ export default function Home() {
   const [auctionsByTime, setAuctionsByTime] = useState([]) 
   const [searchInput, setSearchInput] = useState("")
 
+  const navigate = useNavigate()
 
-  const GetAuctionsBySearch = () => {
-      const navigate = useNavigate()
-      navigate(`/search?=${searchInput}`)
-  }
   
 
   useEffect(() => {
@@ -42,6 +39,10 @@ export default function Home() {
 
   }, [])
 
+  const GetAuctionsBySearch = () => {    
+    navigate(`/search?=${searchInput}`)
+  }
+
   return (
     <div className='row justify-content-center d-flex'>
       
@@ -53,9 +54,9 @@ export default function Home() {
             <HomepageCategories /> 
           </div>
           <div className='col-7'>
-            <Explore auctions={auctionsByPurchase} title={"Lägsta Köp nu Pris"}/>
-            <Explore auctions={auctionsByTime} title={"Avslutas Snart..."} />
-            <Explore auctions={auctionsByBid} title={"Lägsta Bud"} />
+            <Explore auctions={auctionsByPurchase} title={"Cheapest PurchasePrice"}/>
+            <Explore auctions={auctionsByTime} title={"Ending Soon..."} />
+            <Explore auctions={auctionsByBid} title={"Cheapest Bids here"} />
           </div>
         </div>
       </div>
