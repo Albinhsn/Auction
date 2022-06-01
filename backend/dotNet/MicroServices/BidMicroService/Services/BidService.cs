@@ -134,6 +134,25 @@ namespace BidMicroService.Services
             return b;
         }
 
+        public async Task<Bid?> GetMyHighestBid(string auctionId, string Token)
+        {
+
+            GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
+            string userId = getIdFromTokenProducer.GetIdFromToken(Token);
+            List<Bid> bid = await  _bidCollection.Find(x => x.AuctionId == auctionId && x.UserId == userId).ToListAsync();
+
+            Bid highestBid = new();
+            highestBid.Amount = -1;
+            foreach(var b in bid)
+            {
+                if (b.Amount > highestBid.Amount)
+                {
+                    highestBid = b;
+                }
+            }
+            return highestBid;
+        }
+
         public async Task<HighestBid?> GetHighestBidOnAuction(string Id)
         {
 

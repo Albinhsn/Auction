@@ -18,7 +18,18 @@ namespace BidMicroService.Controllers
             _bidService = bidService;
         }
 
-        
+        public Bid GetMyHighestBid(string auctionId, string token)
+        {
+            Bid bid = _bidService.GetMyHighestBid(auctionId, token).Result;
+            if(bid.Amount == -1)
+            {
+                return null;
+            }
+            else
+            {
+                return bid;
+            }
+        }
 
         [HttpGet("/api/bid/[controller]/")]
         public List<Bid> GetAllBidsByAuction(string Id)

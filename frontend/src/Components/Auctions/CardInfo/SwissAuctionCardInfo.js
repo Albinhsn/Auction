@@ -1,9 +1,18 @@
-import {React, useState} from 'react'
+import {React, useEffect, useState} from 'react'
 import { useNavigate } from 'react-router'
 import * as auctionHelpers from '../../../Helpers/auctionHelpers'
 export default function SwissAuctionCardInfo({token, auction, setAuction}) {
     const [bid, setBid] = useState()
+    const [myBid, setMyBid] = useState()
+
+    useEffect(() => {
+        
+    }, [myBid])
+
     const navigate = useNavigate
+
+
+
     return (
       <div className='d-flex mt-2'>
           <input type="number" id="bid-input" className=""
