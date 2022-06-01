@@ -80,7 +80,7 @@ namespace AuthenticationService.Services
         public void CreateUser(User user)
         {
             
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, salt);
             _userCollection.InsertOneAsync(user);
             
         }
