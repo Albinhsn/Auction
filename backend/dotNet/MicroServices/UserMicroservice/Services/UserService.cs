@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using UserMicroservice.Helpers;
 using UserMicroservice.Models;
 using UserMicroservice.RabbitMQ;
 
@@ -47,7 +48,21 @@ namespace UserMicroservice.Services
         //}
         public async Task<User> UpdateEmail(string token, string email, string matchingEmail)
         {
-
+            //Helper för att kolla valid email
+            if (email != matchingEmail)
+            {
+                return null;
+            }
+            UserHelpers helper = new();
+            if (!helper.IsEmail(email))
+            {
+                return null;
+            }
+            User u = await _userCollection.Find(x => x.Email == email).FirstOrDefaultAsync();
+            if (u != null)
+            {
+                return null;
+            }
             GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
 
             string Id = getIdFromTokenProducer.GetIdFromToken(token);
@@ -57,6 +72,7 @@ namespace UserMicroservice.Services
                 ReturnDocument = ReturnDocument.After
             };
             User user = await _userCollection.Find(x => x.Id == Id).FirstOrDefaultAsync();
+
             user.Email = email;
             user = await _userCollection.FindOneAndReplaceAsync<User>(x => x.Id == Id, user, options);
 

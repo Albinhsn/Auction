@@ -52,9 +52,14 @@ namespace UserMicroservice.Controllers
         //    return _userService.UpdatePassword(token, password, matchingPassword).Result;
         //}
         [HttpPut("/api/[controller]/email")]
-        public User UpdateEmail(string token, string email, string matchingEmail)
+        public IActionResult UpdateEmail(string token, string email, string matchingEmail)
         {
-            return _userService.UpdateEmail(token, email, matchingEmail).Result;
+            User user = _userService.UpdateEmail(token, email, matchingEmail).Result;
+            if (user == null)
+            {
+                return BadRequest("Emailen används redan, är ogiltig eller stämmer inte överens");
+            }
+            return Ok(user);
         }
 
         
