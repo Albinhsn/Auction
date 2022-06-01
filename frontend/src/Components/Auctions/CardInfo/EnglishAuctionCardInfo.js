@@ -45,10 +45,10 @@ export default function EnglishAuctionCardInfo({setAuction, auction, token}) {
                             Start pris: {auction.minimumBid} Tid: {new Date(auction.startDate).toLocaleDateString("en-US")}
                         </p>
                     </li>
-                    {auction.bids.map(bid =>{                                                                                                                
+                    {auction.bids.map(bid =>{                                                                                                                                    
                         return(
                             <li key={bid.id} className="dropdown-item d-flex pb-0 ps-1 pe-1 pt-0 justify-content-center">
-                                <p className=''>Bud:{bid.amount} Tid: {new Date(bid.time).toLocaleDateString("en-US")}</p>
+                                <p className=''>Bud:{bid.amount} Tid: {new Date(bid.date).toLocaleDateString("en-US")}</p>
                                 
                             </li>
                         )

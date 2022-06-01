@@ -22,7 +22,7 @@ export default function Search({token}){
             filteredAuctions = filteredAuctions.filter(auc => auc.state !== "Slut")                              
             setLocalAuc(filteredAuctions)
             setAuctions(response.data)
-            
+            setSearch('')
         })
         currentFilters.map(filter => {
             filter.val.map(v => {

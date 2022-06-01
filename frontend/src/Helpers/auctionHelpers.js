@@ -4,12 +4,13 @@ import bidService from '../Services/bidService'
 
 
 export const favoriteChange = (token, _id, setFavorite) => {
-    console.log(token, _id, setFavorite)
+    
     if(!token) return
 
 
     
     userService.updateFavorite(token, _id).then(response => {        
+        console.log(response.data)
         setFavorite(response.data)
     })
 }

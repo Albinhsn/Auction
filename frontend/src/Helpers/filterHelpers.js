@@ -1,8 +1,11 @@
 export const filterAuctions = (auctions, setLocalAuc, currentFilters, localAuc) => {
            
-    if(currentFilters.length === 0){ 
+    if(currentFilters.length === 0 && !localAuc){ 
         setLocalAuc(localAuc)
-    }else{    
+    }else if(currentFilters.length === 0 && localAuc){
+        setLocalAuc(auctions.filter(auc => auc.state !== "Slut"))
+    }
+    else{    
         let localAuc = [...auctions]        
         let flag = false
         currentFilters.map(filter => {
@@ -51,6 +54,7 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters, localAuc) 
                     // }
                     break; 
                 case "Bildsensorstorlek":
+                    
                     localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.imageSensorSize) === true)
                     // for (let j = i; j>=0; j--){
                     //     if(!filter.val.includes(localAuc[j].tags.imageSensorSize)){
@@ -67,23 +71,12 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters, localAuc) 
                     // }
                     break; 
                 case "Minneskort":
-                    i = localAuc.length - 1
-                    for(let j = i; j>=0; j--){
-                        let flag = false
-                        if(localAuc[j].tags.memoryCards !== null){
-                            localAuc[j].tags.memoryCards.map(memoryCard => {
-                                if(filter.val.includes(memoryCard)){
-                                    flag = true
-                                }
-                            })
-                        }
-                        if(!flag){
-                            localAuc.splice(j, 1, )
-                        }
-                    }
+                    localAuc = localAuc.filter(x => x.tags.memoryCards.some(element => filter.val.includes(element)))
+                                                                                                     
                     break;
                 case "Trådlös Uppkoppling":
                     i = localAuc.length - 1
+                    
                     for(let j = i; j>=0; j--){
                         let flag = false
                         if(localAuc[j].tags.wirelessConnection !== null){    
@@ -99,7 +92,7 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters, localAuc) 
                     }
                     break;
             }
-            console.log(flag)
+            
             if(!flag){
                 localAuc = localAuc.filter(auc => auc.state !== "Slut")
             }

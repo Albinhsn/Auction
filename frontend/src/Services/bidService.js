@@ -8,11 +8,11 @@ class AuctionDataService {
         }
     })
 
-    makeBid(Token, _id, Amount) {
-        console.log(Token, _id, Amount)
+    makeBid(Token, _id, Amount) {        
+        const date = new Date();
         return this.auctionMicroService.post("/api/bid/bid",
             {
-                auctionId: _id, token: Token, amount: Amount 
+                auctionId: _id, token: Token, amount: Amount, date: date
             })
     }
 }

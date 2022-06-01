@@ -125,6 +125,7 @@ namespace BidMicroService.Services
             b.UserId = userId;
             b.Id = ObjectId.GenerateNewId().ToString();
             b.Amount = bid.Amount;
+            b.Date = bid.Date;
             //Returns all current bids on auction
             await _bidCollection.InsertOneAsync(b);
             BidMadeWatchlistProducer producer = new(_connection);

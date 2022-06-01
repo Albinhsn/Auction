@@ -6,6 +6,7 @@ namespace BidMicroService.Models
     {
         public string AuctionId { get; set; }
         public string Token { get; set; }
+        public DateTime Date { get; set; }
         public int Amount { get; set; }
     }
 }

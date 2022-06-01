@@ -15,6 +15,8 @@ namespace BidMicroService.Models
         
         [BsonRepresentation(BsonType.ObjectId)]
         public string UserId { get; set; }
+
+        public DateTime Date { get; set; }
         public int Amount { get; set; }
     }
 }

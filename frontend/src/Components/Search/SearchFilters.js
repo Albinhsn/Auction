@@ -31,7 +31,7 @@ export default function SearchFilters({setLocalAuc, auctions, currentFilters, se
         ["Ja", "Nej"],
         ["1'", "2.3'" ,"High Sens MOS", "APS-C", "43.8x32.9", "24x36"],
         ["Fast skärm", "Fällbar med selfieläge", "Fällbar", "Full router- & fällbar"],
-        ["SD", "SDHC", "SDXC", "CFexpress type B", "XQD", "UHS-II"],
+        ["SD", "SDHC", "SDXC", "CFexpress Type B", "XQD", "UHS-II"],
         ["Bluetooth", "Wi-Fi", "NFC", "GPS"]
     ]
     const titles = [

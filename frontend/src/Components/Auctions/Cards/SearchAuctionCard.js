@@ -17,13 +17,13 @@ export default function SearchAuctionCard({auction, token, search}){
             userService.checkFavorite(token, auction.id).then(response => {
                 
                 if(response.data){
-                    setFavorite("red")
+                    setFavorite(true)
                 }else{
-                    setFavorite("black")
+                    setFavorite(false)
                 }
             })
         }{
-            setFavorite("black")
+            setFavorite(false)
         }
         if(auction && !search){            
         
@@ -36,8 +36,7 @@ export default function SearchAuctionCard({auction, token, search}){
         
         
     }, [])
-    if(!auc || auction.images == null) return <></>    
-    
+    if(!auc || auction.images == null) return <></>        
     return(
        
         <div className='border border-dark'>
@@ -48,7 +47,7 @@ export default function SearchAuctionCard({auction, token, search}){
                     <div className='d-flex'>
                         <p className='fs-2 '>
                             {auc.name}
-                             <FontAwesomeIcon icon={faHeart} className="ps-3 fa-l" style={{color: favorite}} 
+                             <FontAwesomeIcon icon={faHeart} className="ps-3 fa-l" style={{color: favorite ? "red": "black"}} 
                                 onClick={(e) => { auctionHelpers.favoriteChange(token, auction.id, setFavorite); e.preventDefault()}}
                         />
                         </p>
