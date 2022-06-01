@@ -23,7 +23,7 @@ namespace UserMicroservice.RabbitMQ
             AuthUser a = new();
             a.Id = user.Id;
             a.Email = user.Email;
-            a.Password = user.Password;
+            
             string message = JsonSerializer.Serialize(a);
             
             var body = Encoding.UTF8.GetBytes(message);

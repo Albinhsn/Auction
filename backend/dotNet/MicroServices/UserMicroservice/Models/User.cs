@@ -9,7 +9,7 @@ namespace UserMicroservice.Models
         public string Id { get; set; }
         public string? Name { get; set; }
         public string? Email { get; set; }
-        public string? Password { get; set; }
+        
         [BsonRepresentation(BsonType.ObjectId)]
         public List<string> Favorites { get; set; }
 

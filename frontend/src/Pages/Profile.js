@@ -7,16 +7,19 @@ export default function Profile({token, setToken}) {
   
   const [user, setUser] = useState()
   const navigate = useNavigate()
-  console.log(user)
+  console.log(token)
   useEffect(() => {
     if(!token){
       navigate("/login")
+    }else{
+      userService.getUserFromToken(token).then(response => {
+        console.log(response.data)
+        setUser(response.data)
+
+      })
     }
-    userService.getUserFromToken(token).then(response => {
-      console.log(response.data)
-      setUser(response.data)
+    
       
-    })
 
   }, [])
 

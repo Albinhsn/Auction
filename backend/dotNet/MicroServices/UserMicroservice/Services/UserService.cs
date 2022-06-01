@@ -91,15 +91,18 @@ namespace UserMicroservice.Services
             try
             {
                 User u = new();
-                u.Name = user.Name;
+                u.Id = ObjectId.GenerateNewId().ToString();
+                u.Name = user.Name;                                
                 u.Email = user.Email;
-                u.Password = user.Password;
-              
                 u.Favorites = new List<string>();
                 _userCollection.InsertOne(u);
                 AccountCreationProducer accountCreationProducer = new(_connection);
                 accountCreationProducer = new(_connection);
-                accountCreationProducer.sendAccountCreatedMessage(u);
+                AuthUser authUser = new();
+                authUser.Id = u.Id;
+                authUser.Email = user.Email;
+                authUser.Password = user.Password;
+                accountCreationProducer.sendAccountCreatedMessage(authUser);
                 return u;
             }catch (Exception ex)
             {

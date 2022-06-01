@@ -20,10 +20,10 @@ namespace UserMicroservice.RabbitMQ
                 
             }
         }
-        public void sendAccountCreatedMessage(User user)
+        public void sendAccountCreatedMessage(AuthUser user)
         {       
             
-            string message = JsonSerializer.Serialize<User>(user);
+            string message = JsonSerializer.Serialize<AuthUser>(user);
             var body = Encoding.UTF8.GetBytes(message);
             Console.WriteLine("Sent in User");
             _channel.BasicPublish(

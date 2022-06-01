@@ -138,12 +138,13 @@ namespace AuthenticationService.Services
         }
         public async void UpdateUser(User user)
         {
+            User u = await _userCollection.Find(x => x.Id == user.Id).FirstOrDefaultAsync();
             var filter = Builders<User>.Filter.Where(x => x.Id == user.Id);
             var options = new FindOneAndReplaceOptions<User>
             {
                 ReturnDocument = ReturnDocument.After
             };
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password, salt);
+            user.Password = u.Password;
             await _userCollection.FindOneAndReplaceAsync<User>(x => x.Id == user.Id, user, options);
         }
     }
