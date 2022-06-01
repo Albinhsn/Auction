@@ -35,6 +35,9 @@ namespace UserMicroservice.Helpers
             {
                 return "Lösenorden matchar inte";
             }
+            if (user.Password == "" ||user.Password.Length <= 3){
+                return "Vänligen fyll i ett lösenord som är mer än 3 tecken";
+            }
             return "";
         }
     }
