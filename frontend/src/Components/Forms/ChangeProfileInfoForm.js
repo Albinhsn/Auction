@@ -43,8 +43,8 @@ export default function ChangeProfileInfoForm({token, setToken}) {
     }
 
     const changeEmail = () => {
-        console.log(formInput.email, formInput.matchingEmail, token)
-        userService.changeEmail(token, formInput.email, formInput.matchingEmail).then(response => {
+        
+        userService.changeEmail(token, formInput.newEmail, formInput.matchingNewEmail).then(response => {
                       
             console.log(response.data)
             // localStorage.removeItem("access_token")
