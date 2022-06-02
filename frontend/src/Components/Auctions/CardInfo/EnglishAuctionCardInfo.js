@@ -19,7 +19,7 @@ export default function EnglishAuctionCardInfo({setAuction, auction, token}) {
             <input type="number" id="bid-input" className="" placeholder={`Minsta bud: ${auction.highestBid + 10}`}
                 onChange={e => setBid(e.target.value)}
             />
-            <button type="button" className="btn btn-warning ms-1" style={{ height: "5vh" }}
+            <button type="button" className="btn btn-warning ms-1" id="make-bid-btn" style={{ height: "5vh" }}
                 onClick={() => auctionHelpers.handleBid(token, auction, bid, setAuction, navigate)}>
                 Lägg bud
             </button>

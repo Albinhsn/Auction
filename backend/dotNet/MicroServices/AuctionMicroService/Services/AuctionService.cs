@@ -288,7 +288,25 @@ namespace AuctionMicroService.Services
                 .Sort("{PurchasePrice: 1}")
                 .Limit(5)
                 .ToListAsync();
-            Console.WriteLine(results.Count);
+            
+            List<string> aucIds = new();
+            foreach(var result in results)
+            {
+                aucIds.Add(result.Id);
+            }
+            HighestBidFromListOfIdsProducer producer = new(_connection);
+            List<HighestBid> highestBids = producer.GetHighestBidFromListOfIds(aucIds);
+            foreach(var bid in highestBids)
+            {
+                foreach(var result in results)
+                {
+                    if(bid.Id == result.Id)
+                    {
+                        result.HighestBid = bid.Amount;
+                        continue;
+                    }
+                }
+            }
             return results;
         }
 
@@ -331,13 +349,31 @@ namespace AuctionMicroService.Services
 
         public async Task<List<Auction>> GetShortestTimeRemaining()
         {
-            List<Auction> auctions = await _auctionCollection.Aggregate()
+            List<Auction> results = await _auctionCollection.Aggregate()
                 .Match(x => x.State != "Slut")
                 .Sort("{EndDate: 1}")
                 .Limit(5)
                 .ToListAsync();
-           
-            return auctions;
+
+            List<string> aucIds = new();
+            foreach (var result in results)
+            {
+                aucIds.Add(result.Id);
+            }
+            HighestBidFromListOfIdsProducer producer = new(_connection);
+            List<HighestBid> highestBids = producer.GetHighestBidFromListOfIds(aucIds);
+            foreach (var bid in highestBids)
+            {
+                foreach (var result in results)
+                {
+                    if (bid.Id == result.Id)
+                    {
+                        result.HighestBid = bid.Amount;
+                        continue;
+                    }
+                }
+            }
+            return results;
         }
         public async Task<List<Auction>> GetAuctionsSortedLimited(string sort, int direction, int limitedBy)
         {           

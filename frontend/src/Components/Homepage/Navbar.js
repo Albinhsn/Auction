@@ -19,9 +19,9 @@ export default function Navbar({token, setToken}) {
           <li><Link to={"/favorites"} className="nav-link">Favoriter</Link></li>
           <li><Link to={"/profile/watchlist"} className="nav-link">Watchlist</Link></li>
           <li><Link to={"/profile/auction"} className="nav-link">Mina Auktioner</Link></li>
-          <li><Link to={"/create/auction"} className="nav-link">Skapa Auktion</Link></li>
+          <li><Link to={"/create/auction"} className="nav-link" id="create-auc-nav">Skapa Auktion</Link></li>
           <li className="nav-item"><Link to={"/profile"} className="nav-link">Profile</Link></li>
-          <li className='nav-item' onClick={() => logout()}><Link to={"/"} className='nav-link'>Logga ut</Link></li>
+          <li className='nav-item' onClick={() => logout()}><Link to={"/"} className='nav-link' id="logout">Logga ut</Link></li>
         </ul>
     </nav>
     :

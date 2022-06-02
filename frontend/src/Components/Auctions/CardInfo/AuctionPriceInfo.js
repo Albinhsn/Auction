@@ -8,7 +8,7 @@ export default function AuctionPriceInfo({auction}) {
                 <div>                
                     <p className='fs-5 fw-bold mb-0'>Högsta bud: </p>
                     <div className='d-flex'>
-                    <p className='text-success fs-1 mb-0'>
+                    <p className='text-success fs-1 mb-0' id="highest-bid">
                         {auction.highestBid === 0 ? auction.minimumBid : auction.highestBid}
                     </p>
                     <p className='ms-1 align-self-center m-0'>(Frakt: {auction.postage})</p>

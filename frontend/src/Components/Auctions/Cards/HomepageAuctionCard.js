@@ -42,7 +42,7 @@ export default function HomepageAuctionCard({ auction, token}) {
                   : 
                     <p className='mb-0' style={{fontSize: "1.75vh"}}>{auction.highestBid === 0 ? auction.minimumBid : auction.highestBid} kr</p>
                   }          
-                  {auction.auctionType === "Engelsk" && auction.purchasePrice != 0 ? 
+                  {(auction.auctionType === "Engelsk" && auction.purchasePrice != 0)  || auction.auctionType === "Holländsk"? 
                     <p className='mb-0' style={{fontSize: "1.75vh"}}>
                         Köp:{auction.purchasePrice}kr
                     </p>

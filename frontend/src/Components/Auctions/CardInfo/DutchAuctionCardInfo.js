@@ -5,7 +5,7 @@ export default function DutchAuctionCardInfo({token, auction, setAuction}) {
   const navigate = useNavigate
   return (
       <div className='d-flex'>          
-          <button type="button" className="btn btn-warning ms-3"
+          <button type="button" className="btn btn-warning ms-3" id="make-purchase-btn"
               onClick={() => auctionHelpers.makePurchase(token, auction.id, setAuction, navigate)}
           >
               Köp
