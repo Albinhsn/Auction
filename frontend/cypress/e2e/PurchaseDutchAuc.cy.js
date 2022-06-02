@@ -13,7 +13,7 @@ describe('PurchaseDutchAuc.cy.js', () => {
 
         cy.url().should('include', '/')
 
-        cy.visit("http://localhost:3000/auction?auctionId=6247545c643cc19aaa52da95")
+        cy.visit("http://localhost:3000/auction?auctionId=6247545c643cc19aaa52da93")
 
         cy.get("#make-purchase-btn").click()
 
@@ -22,7 +22,7 @@ describe('PurchaseDutchAuc.cy.js', () => {
 
         cy.on('window:alert', (t) => {
             expect(t).to.eq("Grattis du vann auktionen")
-            console.log(t)
+          
         })
 
         cy.on('window:confirm', () => true)

@@ -32,8 +32,6 @@ import Watchlist from './Pages/Watchlist';
 function App() {
 
   const [token, setToken] = useState()
-
-  console.log(token)
   useEffect(() => {
     
     if(!token){

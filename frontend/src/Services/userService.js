@@ -52,8 +52,7 @@ class userDataService{
     }
 
     updateFavorite(token, auctionId){
-        console.log(token)
-        console.log(auctionId)        
+      
         return this.userMicroService.get("/api/User/update/favorite",
             {
                 params: { token: token, auctionId: auctionId },                

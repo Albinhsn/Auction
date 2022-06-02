@@ -43,7 +43,7 @@ export default function ChangeProfileInfoForm({token, setToken, setUser}) {
     }
 
     const changeEmail = () => {
-        console.log(formInput.email, formInput.matchingEmail, token)
+       
         userService.changeEmail(token, formInput.newEmail, formInput.matchingNewEmail).then(response => {
             setUser(response.data)
             
@@ -53,7 +53,7 @@ export default function ChangeProfileInfoForm({token, setToken, setUser}) {
             navigation("/login")
         }).catch(function(error){
             if(error.response){
-                console.log(error.response)
+                
                 alert(error.response.data.message)
             }
         })

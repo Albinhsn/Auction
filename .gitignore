@@ -6,3 +6,13 @@ backend/dotNet/MicroServices/AuctionMicroService/obj/Debug/net6.0/apphost.exe
 *.cache
 *.editorconfig
 *.sentinel
+backend/dotNet/MicroServices/AuthenticationService/obj/Debug/net6.0/project.razor.json
+backend/dotNet/MicroServices/AuctionMicroService/obj/Debug/net6.0/project.razor.json
+backend/dotNet/MicroServices/AuthenticationService/obj/Debug/net6.0/project.razor.json
+backend/dotNet/MicroServices/BidMicroService/obj/Debug/net6.0/project.razor.json
+backend/dotNet/MicroServices/EmailService/obj/Debug/net6.0/project.razor.json
+backend/dotNet/MicroServices/ImageMicroservice/obj/Debug/net6.0/project.razor.json
+backend/dotNet/MicroServices/PostageMicroService/obj/Debug/net6.0/project.razor.json
+backend/dotNet/MicroServices/TagsMicroService/obj/Debug/net6.0/project.razor.json
+backend/dotNet/MicroServices/UserMicroservice/obj/Debug/net6.0/project.razor.json
+backend/dotNet/MicroServices/WatchlistMicroservice/obj/Debug/net6.0/project.razor.json

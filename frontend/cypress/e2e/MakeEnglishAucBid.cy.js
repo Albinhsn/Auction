@@ -13,7 +13,7 @@ describe('CreateAccount.cy.js', () => {
 
         cy.url().should('include', '/')
 
-        cy.visit("http://localhost:3000/auction?auctionId=6247545c643cc19aaa52dad5")
+        cy.visit("http://localhost:3000/auction?auctionId=6247545c643cc19aaa52da90")
 
         cy.get("input[type='number']").type(2300)
 
@@ -23,7 +23,7 @@ describe('CreateAccount.cy.js', () => {
 
         cy.on('window:alert', (t) => {
             expect(t).to.eq("Du la ett bud på 2300")
-            console.log(t)
+            
         })
 
         cy.on('window:confirm', () => true)

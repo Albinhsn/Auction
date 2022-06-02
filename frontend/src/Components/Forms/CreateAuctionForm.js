@@ -53,15 +53,15 @@ export default function CreateAuctionForm({ token }) {
 
         auctionInfo.Images = imageHelpers.convertFromGallery(auctionInfo.Images)
         //Post auction
-        console.log(auctionInfo) 
+        
         auctionService.postAuction(auctionInfo).then(response => {
-            console.log(response)
+            
             alert("Auktionen skapades")
             navigate(`/auction?auctionId=${response.data}`)
         }).catch(
             function (error) {
                 if (error.response) {
-                    console.log(error.response.data)        
+                           
                     alert(error.response.data)                    
                 }
             })
@@ -88,7 +88,7 @@ export default function CreateAuctionForm({ token }) {
     }
     const addImage = async e => {
         imageService.uploadImage(e.target.files[0]).then(response => {
-            console.log(response)
+            
             let image = imageHelpers.convertToGallery(`http://188.166.50.198:7141/api/Image/${response.data}`)
             setAuctionInfo({ ...auctionInfo, Images: [...auctionInfo.Images, image] })
 
@@ -133,7 +133,7 @@ export default function CreateAuctionForm({ token }) {
     const removeTag = (e) => {
         for (let i = 0; i < tags.length; i++) {
             if (e.target.value === tags[i].name + tags[i].value) {
-                console.log(tags)
+               
                 setTags(tags.filter(item => item.name + item.value !== e.target.value))
                 delete auctionInfo.Tags[tags[i].key]
                 return

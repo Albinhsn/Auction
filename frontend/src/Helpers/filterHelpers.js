@@ -30,45 +30,24 @@ export const filterAuctions = (auctions, setLocalAuc, currentFilters, localAuc) 
                     break; 
                 case "Lens":
                     localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.lens) === true)
-                    // for (let j = i; j>=0; j--){
-                    //     console.log(localAuc[j])
-                    //     if(!filter.val.includes(localAuc[j].tags.lens)){
-                    //         localAuc.splice(j, 1, )
-                    //     }
-                    // }
+                    
                     break;
                 case "Upplösning":
                     localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.resolution) === true)    
-                    // for (let j = i; j>=0; j--){
-                    //     if(!filter.val.includes(localAuc[j].tags.resolution)){
-                    //         localAuc.splice(j, 1, )
-                    //     }
-                    // }
+                   
                     break; 
                 case "Vädertålig":
                     localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.weatherProof) === true)
-                    // for (let j = i; j>=0; j--){
-                    //     if(!filter.val.includes(localAuc[j].tags.weatherProof)){
-                    //         localAuc.splice(j, 1, )
-                    //     }
-                    // }
+                    
                     break; 
                 case "Bildsensorstorlek":
                     
                     localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.imageSensorSize) === true)
-                    // for (let j = i; j>=0; j--){
-                    //     if(!filter.val.includes(localAuc[j].tags.imageSensorSize)){
-                    //         localAuc.splice(j, 1, )
-                    //     }
-                    // }
+                    
                     break; 
                 case "Skärmvinkel":
                     localAuc = localAuc.filter(auc => filter.val.includes(auc.tags.angledScreen) === true)
-                    // for (let j = i; j>=0; j--){
-                    //     if(!filter.val.includes(localAuc[j].tags.angledScreen)){
-                    //         localAuc.splice(j, 1, )
-                    //     }
-                    // }
+                    
                     break; 
                 case "Minneskort":
                     localAuc = localAuc.filter(x => x.tags.memoryCards.some(element => filter.val.includes(element)))
@@ -125,7 +104,7 @@ export const handleFilterChange = (currentFilters, setCurrentFilters, tag, val) 
             val: [val]
         })
     }
-    console.log(locFilters)
+    
     setCurrentFilters(locFilters)
     
 }

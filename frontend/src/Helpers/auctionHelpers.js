@@ -3,31 +3,31 @@ import userService from '../Services/userService'
 import bidService from '../Services/bidService'
 
 
-export const favoriteChange = (token, _id, setFavorite) => {
+export const favoriteChange = (token, id, setFavorite) => {
     
     if(!token) return
 
 
     
-    userService.updateFavorite(token, _id).then(response => {        
-        console.log(response.data)
+    userService.updateFavorite(token, id).then(response => {        
+        
         setFavorite(response.data)
     })
 }
 
-export const updatedChange = (token, _id, updated, setUpdated) => {
+export const updatedChange = (token, id, updated, setUpdated) => {
     if (!token)
 
-    //userService.updateKeepMePosted(token, _id).then(() => {
+    //userService.updateKeepMePosted(token, id).then(() => {
         setUpdated(!updated)
     //})
 }
 
-export const reminderChange = (token, _id, reminder, setReminder) => {
+export const reminderChange = (token, id, reminder, setReminder) => {
 
     if(!token) return
 
-    userService.updateWatclist(token, _id).then(() => {
+    userService.updateWatclist(token, id).then(() => {
         setReminder(!reminder)
     })
     
@@ -71,7 +71,7 @@ export const handleSwissBid = (token, auction, bid, myBid, setMyBid) => {
     }
 
     bidService.makeBid(token, auction.id, bid).then(response => {
-        console.log(response.data)
+        
         setMyBid(response.data.amount)
         alert(`Du la ett bud på ${bid}`)        
 

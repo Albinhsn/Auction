@@ -39,7 +39,7 @@ class AuctionDataService{
     
 
     makePurchase(token, auctionId){
-        console.log(token, auctionId)
+       
         return this.auctionMicroService.put("/api/Auction/purchase", null, {
             params: {
                 token: token, 
