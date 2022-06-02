@@ -101,6 +101,9 @@ export default function CreateAuctionForm({ token }) {
 
     const addTag = () => {
         var e = document.querySelector("#tags")
+        if (e.options[e.selectedIndex].text === "Välj tag"){
+            return
+        }
         if (e.options[e.selectedIndex].text !== "Minneskort (flera val)" && e.options[e.selectedIndex].text !== "Uppkoppling (flera val)") {
             for (let i = 0; i < tags.length; i++) {
                 if (e.options[e.selectedIndex].text === tags[i].name) {
@@ -231,8 +234,16 @@ export default function CreateAuctionForm({ token }) {
                                 />
                                 :
                                 <></>}
-                            {auctionInfo.AuctionType === "Engelsk" || auctionInfo.AuctionType === "Holländsk" ?
+                            {auctionInfo.AuctionType === "Engelsk" ?
                                 <input type="number" placeholder="Köpa direkt" className='mt-2 align-self-center ' id="bid-input" style={{ width: "20vw" }}
+                                    onChange={e => setAuctionInfo({ ...auctionInfo, PurchasePrice: parseInt(e.target.value) })}
+                                />
+                                :
+                                <></>
+                            }
+                            {
+                            auctionInfo.AuctionType === "Holländsk" ?
+                                <input type="number" placeholder="Start pris" className='mt-2 align-self-center ' id="bid-input" style={{ width: "20vw" }}
                                     onChange={e => setAuctionInfo({ ...auctionInfo, PurchasePrice: parseInt(e.target.value) })}
                                 />
                                 :
