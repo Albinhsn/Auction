@@ -9,12 +9,12 @@ namespace AuthenticationService.RabbitMQ
         {
             var factory = new ConnectionFactory()
             {
-                //HostName = "rabbitmq",
-                //Port = 5672
-                HostName = "localhost"
+                HostName = "rabbitmq",
+                Port = 5672
+                
             };
-            //factory.UserName = "guest";
-            //factory.Password = "guest";
+            factory.UserName = "guest";
+            factory.Password = "guest";
             _connection = factory.CreateConnection();
         }
     }
