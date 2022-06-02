@@ -31,7 +31,7 @@ export default function SwissAuctionCardInfo({token, auction, setAuction}) {
             />
             
                 
-            <button type="button" className="btn btn-warning ms-3"
+                <button type="button" className="btn btn-warning ms-3" id='make-bid-btn'
                 onClick={() => {auctionHelpers.handleSwissBid(token, auction, bid, myBid, setMyBid); document.querySelector("#bid-input").value = ""}}
             >
                 Lägg bud
@@ -39,7 +39,7 @@ export default function SwissAuctionCardInfo({token, auction, setAuction}) {
             <p className='ms-1 align-self-center m-0'>Frakt: {auction.postage}</p>
             
         </div>
-            <p className='text-success fs-5 mb-0'> {myBid === -1 ? "Du har inte lagt något bud" : myBid}</p>
+            <p className='text-success fs-5 mb-0' id="current-bid"> {myBid === -1 ? "Du har inte lagt något bud" : myBid}</p>
     </>
   )
 }

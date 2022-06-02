@@ -56,6 +56,7 @@ export default function CreateAuctionForm({ token }) {
         console.log(auctionInfo) 
         auctionService.postAuction(auctionInfo).then(response => {
             console.log(response)
+            alert("Auktionen skapades")
             navigate(`/auction?auctionId=${response.data}`)
         }).catch(
             function (error) {
@@ -180,7 +181,7 @@ export default function CreateAuctionForm({ token }) {
                     </div>
                     <div className='col-6'>
                         <div className='d-flex flex-column'>
-                            <input type="text" placeholder="Titel" style={{ width: "20vw" }} className='align-self-center'
+                            <input type="text" placeholder="Titel" style={{ width: "20vw" }} className='align-self-center' id="title"
                                 onChange={e => setAuctionInfo({ ...auctionInfo, Name: e.target.value })}
                             />
                         </div>
@@ -229,13 +230,13 @@ export default function CreateAuctionForm({ token }) {
                         </div>
                         <div className='d-flex flex-column'>
                             {auctionInfo.AuctionType === "Engelsk" ?
-                                <input type="number" placeholder="Minimumbud" className='mt-2 align-self-center' id="bid-input" style={{ width: "20vw" }}
+                                <input type="number" placeholder="Minimumbud" className='mt-2 align-self-center' id="english-bid-input" style={{ width: "20vw" }}
                                     onChange={e => setAuctionInfo({ ...auctionInfo, MinimumBid: parseInt(e.target.value) })}
                                 />
                                 :
                                 <></>}
                             {auctionInfo.AuctionType === "Engelsk" ?
-                                <input type="number" placeholder="Köpa direkt" className='mt-2 align-self-center ' id="bid-input" style={{ width: "20vw" }}
+                                <input type="number" placeholder="Köpa direkt" className='mt-2 align-self-center ' id="purchase-english-input" style={{ width: "20vw" }}
                                     onChange={e => setAuctionInfo({ ...auctionInfo, PurchasePrice: parseInt(e.target.value) })}
                                 />
                                 :
@@ -243,7 +244,7 @@ export default function CreateAuctionForm({ token }) {
                             }
                             {
                             auctionInfo.AuctionType === "Holländsk" ?
-                                <input type="number" placeholder="Start pris" className='mt-2 align-self-center ' id="bid-input" style={{ width: "20vw" }}
+                                <input type="number" placeholder="Start pris" className='mt-2 align-self-center ' id="purchase-dutch-input" style={{ width: "20vw" }}
                                     onChange={e => setAuctionInfo({ ...auctionInfo, PurchasePrice: parseInt(e.target.value) })}
                                 />
                                 :
@@ -251,13 +252,13 @@ export default function CreateAuctionForm({ token }) {
                             }
                         </div>
                         <div className='d-flex flex-column'>
-                            <input type="number" placeholder="Vikt" className='mt-2 align-self-center' id="bid-input" style={{ width: "20vw" }}
+                            <input type="number" placeholder="Vikt" className='mt-2 align-self-center' id="weight-input" style={{ width: "20vw" }}
                                 onChange={e => setAuctionInfo({ ...auctionInfo, Weight: parseInt(e.target.value) })}
                             />
-                            <input type="number" placeholder="Volym" className='mt-2 align-self-center' id="bid-input" style={{ width: "20vw" }}
+                            <input type="number" placeholder="Volym" className='mt-2 align-self-center' id="volume-input" style={{ width: "20vw" }}
                                 onChange={e => setAuctionInfo({ ...auctionInfo, Volume: parseInt(e.target.value) })}
                             />
-                            <TextAreaAutoSize maxRows={5} minRows={5} placeholder="Beskrivning" className='mt-2' id="bid-input" style={{ resize: "none" }}
+                            <TextAreaAutoSize maxRows={5} minRows={5} placeholder="Beskrivning" className='mt-2' id="description-input" style={{ resize: "none" }}
                                 onChange={e => setAuctionInfo({ ...auctionInfo, Description: e.target.value })}
                             />
                             <div className='input-group pt-2'>
@@ -308,7 +309,7 @@ export default function CreateAuctionForm({ token }) {
                                     })}
                                 </li>
                             </div>
-                            <button type="button" className='btn btn-primary align-self-center mt-2' style={{ width: "40%" }}
+                            <button type="button" className='btn btn-primary align-self-center mt-2' id="create-auc-btn"style={{ width: "40%" }}
                                 onClick={() => createAuction()}>
                                 Skapa auktion
                             </button>

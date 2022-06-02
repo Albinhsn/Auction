@@ -47,7 +47,7 @@ export default function SignupForm({setAuthId, token}) {
                         <label className="form-label">
                                 Användarnamn
                             </label>
-                        <input type="text" className="form-control" 
+                        <input type="text" className="form-control" id="name"
                             onChange={e => setAccountInfo({...accountInfo, Name: e.target.value})}/>
                     </div>
 
@@ -56,7 +56,7 @@ export default function SignupForm({setAuthId, token}) {
                         <label className="form-label">
                             Email address
                             </label>
-                        <input type="Email" className="form-control" 
+                        <input type="Email" className="form-control" id="email"
                             onChange={e => setAccountInfo({ ...accountInfo, Email: e.target.value })}/>
                     </div>
                     
@@ -64,7 +64,7 @@ export default function SignupForm({setAuthId, token}) {
                         <label className="form-label">
                             Bekräfta Email address
                             </label>
-                        <input type="Email" className="form-control" 
+                        <input type="Email" className="form-control" id="matchingEmail"
                             onChange={e => setAccountInfo({ ...accountInfo, MatchingEmail: e.target.value })}
                         />
                     </div>
@@ -74,7 +74,7 @@ export default function SignupForm({setAuthId, token}) {
                         <label className="form-label">
                             Lösenord
                             </label>
-                        <input type="Password" className="form-control" 
+                        <input type="Password" className="form-control"  id="password"
                             onChange={e => setAccountInfo({ ...accountInfo, Password: e.target.value })}
                         />
                     </div>
@@ -83,14 +83,14 @@ export default function SignupForm({setAuthId, token}) {
                         <label className="form-label">
                             Confirm Lösenord
                             </label>
-                        <input type="Password" className="form-control" 
+                        <input type="Password" className="form-control" id="matchingPassword"
                             onChange={e => setAccountInfo({ ...accountInfo, MatchingPassword: e.target.value })}
                         />
                     </div>
                 </form>
                 
                 <div className='d-flex justify-content-center'>
-                    <button type="button" className='btn btn-primary mb-2' onClick={() => createAccount()}>
+                    <button type="button" className='btn btn-primary mb-2' id="submit-btn" onClick={() => createAccount()}>
                         Skapa Konto
                         </button>
                 </div>
