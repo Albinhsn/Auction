@@ -41,7 +41,7 @@ function App() {
         setToken(JSON.parse(localStorage.getItem("access_token")))
         
       } catch (error) {
-        console.log(error)
+        
       }
     }
   }, )
