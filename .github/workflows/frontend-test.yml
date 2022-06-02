@@ -8,14 +8,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: Cypress tests
+        uses: cypress-io/github-action@v4
         with:
-          working-directory: frontend
-          
+          working-directory: frontend/CypressJS
           build: npm run build
           start: npm start
           wait-on: 'http://localhost:3000'
           
-      
-        
       
   
