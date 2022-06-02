@@ -8,12 +8,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Starting server
         with:
-            working-directory: frontend
-            build: npm run build
-            start: npm start
-            wait-on: 'http://localhost:3000'
+          working-directory: frontend
+          
+          build: npm run build
+          start: npm start
+          wait-on: 'http://localhost:3000'
+          
       
         
       
