@@ -20,6 +20,6 @@ jobs:
             cd backend/dotNet/MicroServices
             docker-compose build
             docker-compose up -d
-            docker system prune 
-            printf '%s\n' y
+            echo docker system prune 
+
             
