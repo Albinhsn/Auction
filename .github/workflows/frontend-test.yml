@@ -1,7 +1,7 @@
 name: frontend test
 on:
   pull_request:
-    branches: [Relase-Sprint-4]
+    branches: [Release-Sprint-4]
 jobs:
   cypress-run:
     runs-on: ubuntu-20.04
