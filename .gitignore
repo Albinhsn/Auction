@@ -1,1 +1,8 @@
 node_modules
+backend/dotNet/MicroServices/.vs/MicroServices/v17/.suo
+*.dll
+*.pdb
+backend/dotNet/MicroServices/AuctionMicroService/obj/Debug/net6.0/apphost.exe
+*.cache
+*.editorconfig
+*.sentinel

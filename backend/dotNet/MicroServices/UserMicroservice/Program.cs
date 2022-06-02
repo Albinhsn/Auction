@@ -11,9 +11,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 UserService service = new();
 builder.Services.AddSingleton<UserService>(service);
-//RabbitMQConnection connection = new ();
-//new GetFavoritesFromUserReceiver(service, connection);
-//new GetUsernameFromListOfIdsReceiver(service, connection);
+RabbitMQConnection connection = new();
+new GetFavoritesFromUserReceiver(service, connection);
+new GetUsernameFromListOfIdsReceiver(service, connection);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(options =>

@@ -120,11 +120,23 @@ namespace AuctionMicroService.Services
             List<Tags> tags = getAuctionTagsFromListOfIds.GetAuctionBySearchTags(aucIds);
 
             GetUsernameFromListOfIdsProducer getUsernameFromListOfIdsProducer= new(_connection);
-            List<User> users = getUsernameFromListOfIdsProducer.GetUsernameFromListOfIds(sellerIds);            
+            List<User> users = getUsernameFromListOfIdsProducer.GetUsernameFromListOfIds(sellerIds);
+
+            HighestBidFromListOfIdsProducer producer = new(_connection);
+            List<HighestBid> bids = producer.GetHighestBidFromListOfIds(aucIds);
+            
             foreach(var auction in auctionResult)
             {
-                auction.Seller = users.Find(x => x.Id == auction.Seller).Name;
+                auction.Seller = users.Find(x => x.Id == auction.Seller).Name;            
                 auction.Tags = tags.Find(x => x.Id == auction.Id);
+                foreach (var bid in bids)
+                {
+                    if(bid.Id == auction.Id)
+                    {
+                        auction.HighestBid = bid.Amount;
+                        continue;
+                    }
+                }
             }
             
             return auctionResult;
