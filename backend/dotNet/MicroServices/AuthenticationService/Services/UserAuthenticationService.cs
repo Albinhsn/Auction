@@ -120,6 +120,7 @@ namespace AuthenticationService.Services
 
         public string validateToken(string Token)
         {
+            Console.WriteLine(Token);
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_env.Secret);
             try
@@ -138,6 +139,7 @@ namespace AuthenticationService.Services
             }
             catch
             {
+                Console.WriteLine("exception");
                 return null;
             }
         }

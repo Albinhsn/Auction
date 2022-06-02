@@ -130,6 +130,7 @@ namespace UserMicroservice.Services
         {
 
             GetIdFromTokenProducer getIdFromTokenProducer = new(_connection);
+            Console.WriteLine(token);
             string id = getIdFromTokenProducer.GetIdFromToken(token);
             User user = await _userCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
             Console.WriteLine(token, id);

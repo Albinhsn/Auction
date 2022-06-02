@@ -54,7 +54,12 @@ namespace AuthenticationService.RabbitMQ
                     {
                         Console.WriteLine("Returning");
                         Console.WriteLine(response);
-                        var responseBytes = Encoding.UTF8.GetBytes(response);
+                        var responseBytes = Encoding.UTF8.GetBytes("");
+                        if (response != null)
+                        {
+                            responseBytes = Encoding.UTF8.GetBytes(response);
+                        }                        
+                        
                         _channel.BasicPublish(
                             exchange: "",
                             routingKey: props.ReplyTo,

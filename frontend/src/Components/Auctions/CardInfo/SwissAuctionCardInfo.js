@@ -9,18 +9,15 @@ export default function SwissAuctionCardInfo({token, auction, setAuction}) {
     const navigate = useNavigate
     useEffect(() => {
         if(!myBid){
-            bidService.getMyHighestBid(token, auction.id).then(response => {
-                console.log(response.data)
+            bidService.getMyHighestBid(token, auction.id).then(response => {                
                 if(!response.data){
                     setMyBid(-1)
                 }else{
-                    setMyBid(response.data)
-                }
-                
+                    setMyBid(response.data.amount)
+                }                
             })
-        }
-        
-    }, )
+        }        
+    }, [myBid])
 
     
 

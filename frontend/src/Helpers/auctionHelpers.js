@@ -71,9 +71,9 @@ export const handleSwissBid = (token, auction, bid, myBid, setMyBid) => {
     }
 
     bidService.makeBid(token, auction.id, bid).then(response => {
-        setMyBid(response.data.amount)
-        alert(`Du la ett bud på ${bid}`)
-        setMyBid(bid)
+        console.log(response.data.amount)
+        
+        alert(`Du la ett bud på ${bid}`)        
 
     })
 
